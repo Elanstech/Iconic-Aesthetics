@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iconic Aesthetics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f7e1e1, #fff);
+            color: #333;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f7e1e1;
+        }
+        section {
+            padding: 60px;
+            text-align: center;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .three-d-model {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="animate__animated animate__fadeInDown">
+        <div class="logo">
+            <h1>Iconic Aesthetics</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 3D Background Animation -->
+    <div id="background-animation"></div>
+    <script>
+        // THREE.js 3D Background Animation
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('background-animation').appendChild(renderer.domElement);
+
+        let geometry = new THREE.SphereGeometry(1, 32, 32);
+        let material = new THREE.MeshBasicMaterial({ color: 0xff0051, wireframe: true });
+        let sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.x += 0.01;
+            sphere.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+
+    <!-- About Section -->
+    <section id="about" class="animate__animated animate__fadeIn">
+        <h2>About Us</h2>
+        <p>Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.</p>
+        <p>I pride myself on providing personalized, one-on-one treatments that enhance your natural beauty. Every service is tailored to fit your unique style and features, whether you’re looking for a subtle enhancement or a bolder transformation. My goal is always to bring out the best version of you.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="animate__animated animate__fadeInUp">
+        <h2>Services</h2>
+        <div class="service-container">
+            <div class="service-card animate__animated animate__zoomIn">
+                <h3>Eyebrows</h3>
+                <p>Microblading, Nano blading, Microshading, Ombre styling, Powder brow styling</p>
+            </div>
+            <div class="service-card animate__animated animate__zoomIn">
+                <h3>Eyelash Enhancements</h3>
+                <p>Lash perming, Lash lift and tint</p>
+            </div>
+            <div class="service-card animate__animated animate__zoomIn">
+                <h3>Permanent Makeup</h3>
+                <p>Eyebrow tattooing, Permanent eyeliner, Permanent lip makeup, Lip blushing, Permanent makeup touch-ups</p>
+            </div>
+            <div class="service-card animate__animated animate__zoomIn">
+                <h3>Facial Treatments</h3>
+                <p>Dermaplaning, Scar camouflage</p>
+            </div>
+            <div class="service-card animate__animated animate__zoomIn">
+                <h3>Brow Treatments</h3>
+                <p>Eyebrow tinting, Brow lamination, Brow tint</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="animate__animated animate__fadeIn">
+        <h2>Permanent Makeup FAQ</h2>
+        <div class="faq-item animate__animated animate__slideInUp">
+            <h3>What is permanent makeup?</h3>
+            <p>Permanent makeup (also known as cosmetic tattooing or micropigmentation) is a technique where pigments are implanted into the skin to create the appearance of makeup. It can be used for eyebrows, eyeliner, lips, and more, enhancing your natural features.</p>
+        </div>
+        <div class="faq-item animate__animated animate__slideInUp">
+            <h3>How long does permanent makeup last?</h3>
+            <p>The results of permanent makeup typically last 1-3 years, depending on factors like skin type, lifestyle, and how well you take care of the treated area. Touch-ups are recommended to maintain the desired look over time.</p>
+        </div>
+        <div class="faq-item animate__animated animate__slideInUp">
+            <h3>Does it hurt?</h3>
+            <p>The discomfort level varies by person, but most clients report minimal pain during the procedure. Numbing creams are applied to ensure you remain comfortable throughout the process.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="animate__animated animate__fadeInUp">
+        <h2>Contact</h2>
+        <p>Have questions or ready to book an appointment? Reach out and let's get started on your beauty journey!</p>
+        <p>Email: <a href="mailto:contact@iconicaesthetics.com">contact@iconicaesthetics.com</a></p>
+        <p>Phone: <a href="tel:+123456789">(123) 456-7890</a></p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="animate__animated animate__fadeInUp">
+        <p>&copy; 2024 Iconic Aesthetics. All rights reserved.</p>
+    </footer>
+</body>
+</html>
