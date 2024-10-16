@@ -30,18 +30,19 @@
             color: #d8a39d;
         }
 
-        /* Header Styles - Black with Dark Gold Outline */
-        header {
-            display: flex;
-            justify-content: center; /* Center alignment */
-            align-items: center;
-            padding: 20px 50px;
-            background-color: #000; /* Black background */
-            border-bottom: 4px solid #b89d5a; /* Dark gold border */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            animation: fadeInDown 1s ease;
+   header {
+    display: flex;
+    justify-content: space-between; /* Align logo and nav on full width */
+    width: 100%; /* Make sure header takes full width */
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #000;
+    border-bottom: 4px solid #b89d5a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInDown 1s ease;
+        
         }
         .logo {
             margin-right: auto; /* Align logo on the left */
@@ -70,23 +71,23 @@
             color: #d8a39d;
         }
 
-        /* Hero Section Styles (Parallax) */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
-            background-attachment: fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            overflow: hidden;
-            width: 100%;
-            animation: fadeIn 2s ease;
-        }
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    width: 100vw; /* Ensure full viewport width */
+    animation: fadeIn 2s ease;
+}
+
         .hero-section::before {
             content: '';
             position: absolute;
