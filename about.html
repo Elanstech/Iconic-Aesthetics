@@ -95,7 +95,17 @@
             height: 100vh;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+
+        .mobile-nav.open {
+            display: flex;  /* Make visible */
+            opacity: 1;
+            visibility: visible;
+        }
+
         .mobile-nav a {
             color: #fff;
             padding: 15px;
@@ -244,20 +254,12 @@
 
     <!-- JavaScript for Hamburger Menu -->
     <script>
-       const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobile-nav');
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
 
-hamburger.addEventListener('click', function() {
-    mobileNav.classList.toggle('open');
-    hamburger.classList.toggle('is-active');
-});
         hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('active');
-            if (mobileNav.style.display === "flex") {
-                mobileNav.style.display = "none";
-            } else {
-                mobileNav.style.display = "flex";
-            }
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('is-active');
         });
     </script>
 </body>
