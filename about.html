@@ -244,9 +244,13 @@
 
     <!-- JavaScript for Hamburger Menu -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+       const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
 
+hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('is-active');
+});
         hamburger.addEventListener('click', function() {
             mobileNav.classList.toggle('active');
             if (mobileNav.style.display === "flex") {
