@@ -85,18 +85,29 @@
             transition: all 0.3s ease;
         }
 
-        /* Mobile Navigation Menu */
+         /* Update Mobile Navigation Menu */
         .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: #000;
-            position: absolute;
-            top: 70px;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
+        display: flex;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;  /* Initially hidden */
+        visibility: hidden;  /* Initially not visible */
+        transition: visibility 0.3s, opacity 0.3s ease-in-out; /* Smooth transition */
+    }
+
+       /* When active, show mobile menu */
+        .mobile-nav.active {
+        opacity: 1;
+        visibility: visible;
+}
+
         }
         .mobile-nav a {
             color: #fff;
