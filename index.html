@@ -486,13 +486,11 @@
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
 
-        // Improved function for toggling the menu
-        function toggleMenu() {
+        // Simplified function for toggling the menu
+        hamburger.addEventListener('click', function() {
             mobileNav.classList.toggle('open');
             hamburger.classList.toggle('is-active');
-        }
-
-        hamburger.addEventListener('click', toggleMenu);
+        });
     </script>
 </body>
 </html>
