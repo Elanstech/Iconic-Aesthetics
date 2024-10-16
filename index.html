@@ -95,7 +95,7 @@
         .hero-section {
             position: relative;
             height: 80vh;
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center/cover;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -159,29 +159,18 @@
 
     <!-- 3D Background Animation -->
     <div id="background-animation"></div>
-    <script>
-        // THREE.js 3D Background Animation
-        let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        let renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('background-animation').appendChild(renderer.domElement);
-
-        let geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-        let material = new THREE.MeshBasicMaterial({ color: 0xff7e6b, wireframe: true });
-        let torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
-
-        camera.position.z = 4;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.01;
-            torusKnot.rotation.y += 0.01;
-            renderer.render(scene, camera);
+    <style>
+        #background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080/ffe4e1/333?text=Beauty+Background') no-repeat center center/cover;
+            z-index: -1;
+            filter: blur(4px) brightness(0.7);
         }
-        animate();
-    </script>
+    </style>
 
     <!-- About Section -->
     <section id="about" class="animate__animated animate__fadeIn">
