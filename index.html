@@ -87,7 +87,6 @@
 
         /* Mobile Navigation Menu */
         .mobile-nav {
-            display: none;
             flex-direction: column;
             background-color: #333;
             position: absolute;
@@ -103,7 +102,6 @@
         }
 
         .mobile-nav.open {
-            display: flex;
             opacity: 1;
             visibility: visible;
         }
@@ -485,10 +483,12 @@
         const mobileNav = document.getElementById('mobile-nav');
 
         // Improved function for toggling the menu
-        hamburger.addEventListener('click', function() {
+        function toggleMenu() {
             mobileNav.classList.toggle('open');
             hamburger.classList.toggle('is-active');
-        });
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
