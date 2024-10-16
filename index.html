@@ -92,6 +92,45 @@
         #contact a:hover {
             text-decoration: underline;
         }
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            animation: fadeInUp 1.5s ease;
+        }
     </style>
 </head>
 <body>
@@ -109,6 +148,14 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Hero Section with Parallax Image -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Iconic Aesthetics</h1>
+            <p class="hero-tagline">Enhancing your natural beauty with precision and care</p>
+        </div>
+    </section>
 
     <!-- 3D Background Animation -->
     <div id="background-animation"></div>
