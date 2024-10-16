@@ -5,48 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iconic Aesthetics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for softer typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Global Styles */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffe4e1, #fff5f5);
-            color: #333;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #fdf6f0, #fffaf6);
+            color: #444;
             margin: 0;
             overflow-x: hidden;
         }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #5a3d3d;
+        }
+        a {
+            color: #5a3d3d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #d8a39d;
+        }
+
+        /* Header Styles */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
             background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
             animation: fadeInDown 1s ease;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #5a3d3d;
         }
         nav ul {
             list-style-type: none;
             display: flex;
-            gap: 30px;
+            gap: 25px;
         }
         nav a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s, border-bottom 0.3s;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
         }
         nav a:hover {
-            color: #ff7e6b;
-            border-bottom: 2px solid #ff7e6b;
+            border-color: #d8a39d;
+            color: #d8a39d;
         }
+
+        /* Hero Section Styles */
         .hero-section {
             position: relative;
             height: 100vh;
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
+            background: url('https://www.laurasbeautytouch.com/wp-content/uploads/2022/06/beauty-background.jpg') no-repeat center center;
             background-attachment: fixed;
             background-size: cover;
             display: flex;
@@ -66,7 +91,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(90, 61, 61, 0.5);
             z-index: 1;
         }
         .hero-content {
@@ -76,47 +101,81 @@
             padding: 20px;
         }
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             animation: fadeInUp 1.5s ease;
         }
         .hero-tagline {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 300;
             animation: fadeInUp 2s ease;
         }
         .scroll-down {
             margin-top: 50px;
             color: #fff;
-            font-size: 2rem;
+            font-size: 1.8rem;
             animation: bounce 2s infinite;
         }
         .scroll-down i {
-            color: #ff7e6b;
+            color: #d8a39d;
         }
+
+        /* Section Styles */
         section {
-            padding: 100px 50px;
+            padding: 80px 50px;
             text-align: center;
             width: 100%;
         }
-        #about p {
-            max-width: 800px;
+        #about h2, #services h2, #testimonials h2, .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #about p, #testimonials p {
+            max-width: 700px;
             margin: 20px auto;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+
+        /* Service Section Styles */
+        .bubbly-section {
+            background: linear-gradient(135deg, #d8a39d, #f6c1b0);
+            color: #fff;
+            padding: 80px 50px;
+            position: relative;
+            overflow: hidden;
             animation: fadeIn 2s ease;
+        }
+        .bubbly-section::before, .bubbly-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: bubble 20s infinite linear;
+        }
+        .bubbly-section::before {
+            width: 180px;
+            height: 180px;
+            top: 15%;
+            left: 10%;
+        }
+        .bubbly-section::after {
+            width: 130px;
+            height: 130px;
+            bottom: 20%;
+            right: 15%;
         }
         .service-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
             margin-top: 40px;
         }
         .service-card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             padding: 30px;
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
@@ -126,70 +185,49 @@
         .service-card img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 20px;
             transition: transform 0.3s;
         }
         .service-card:hover img {
             transform: scale(1.05);
         }
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #5a3d3d;
+        }
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+        }
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        .bubbly-section {
-            background: linear-gradient(135deg, #ff7e6b 0%, #ffcc66 100%);
-            color: #fff;
-            padding: 100px 50px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 2s ease;
-        }
-        .bubbly-section::before, .bubbly-section::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            animation: bubble 20s infinite linear;
-        }
-        .bubbly-section::before {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 15%;
-        }
-        .bubbly-section::after {
-            width: 150px;
-            height: 150px;
-            bottom: 15%;
-            right: 20%;
-        }
-        @keyframes bubble {
-            0% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.1) translateY(-20px); }
-            100% { transform: scale(1) translateY(0); }
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
         .animated-button {
             display: inline-block;
             margin-top: 40px;
-            padding: 15px 30px;
+            padding: 12px 35px;
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background: #ff7e6b;
+            background: #5a3d3d;
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
             transition: transform 0.3s, background 0.3s;
-            animation: bounce 2s infinite;
+            animation: float 3s ease-in-out infinite;
         }
         .animated-button:hover {
-            background: #ffcc66;
+            background: #d8a39d;
             transform: translateY(-5px);
         }
+
+        /* Testimonial Section Styles */
         .testimonial-section {
-            background: #f7f7f7;
-            padding: 100px 50px;
+            background: #fef7f3;
+            padding: 80px 50px;
             position: relative;
             animation: fadeIn 2s ease;
         }
@@ -200,46 +238,86 @@
         }
         .testimonial {
             background: #fff;
-            padding: 30px;
+            padding: 25px 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
             animation: fadeInUp 1.5s ease;
+            position: relative;
         }
         .testimonial .quote {
-            font-size: 1.5rem;
-            color: #ff7e6b;
+            font-size: 1.4rem;
+            color: #d8a39d;
+            font-style: italic;
+            margin-bottom: 15px;
         }
         .testimonial .author {
-            margin-top: 15px;
+            font-size: 1rem;
             font-weight: 600;
+            color: #5a3d3d;
+            text-align: right;
         }
+
+        /* CTA Section Styles */
         .cta-section {
-            background: linear-gradient(135deg, #ffcc66, #333);
+            background: linear-gradient(135deg, #f6c1b0, #5a3d3d);
             color: #fff;
-            padding: 100px 50px;
+            padding: 80px 50px;
             text-align: center;
             position: relative;
             overflow: hidden;
             animation: fadeIn 2s ease;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .cta-section::before, .cta-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: bubble 25s infinite linear;
+        }
+        .cta-section::before {
+            width: 220px;
+            height: 220px;
+            top: 10%;
+            left: 5%;
+        }
+        .cta-section::after {
+            width: 170px;
+            height: 170px;
+            bottom: 15%;
+            right: 10%;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 300;
         }
         .cta-section .cta-button {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 12px 35px;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #333;
-            background: #ff7e6b;
+            color: #5a3d3d;
+            background: #d8a39d;
             border: none;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
             transition: background 0.3s;
-            animation: bounce 2s infinite;
+            animation: float 3s ease-in-out infinite;
         }
         .cta-section .cta-button:hover {
-            background: #ffcc66;
+            background: #f6c1b0;
         }
+
+        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -268,9 +346,51 @@
                 opacity: 1;
             }
         }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        @keyframes bubble {
+            0% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-25px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 30px;
+            }
+            nav ul {
+                gap: 20px;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 60px 20px;
+            }
+            .service-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .cta-section {
+                padding: 60px 20px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">Iconic Aesthetics</div>
         <nav>
@@ -283,6 +403,8 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title animate__animated animate__fadeInUp">Beauty Beyond Limits</h1>
@@ -292,31 +414,37 @@
             </div>
         </div>
     </div>
+
+    <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
         <p>At Iconic Aesthetics, we offer a variety of services to help you feel and look your best. Our experienced team is dedicated to providing top-quality beauty treatments that cater to your individual needs.</p>
     </section>
+
+    <!-- Services Section -->
     <section id="services" class="bubbly-section">
         <h2>Our Services</h2>
         <div class="service-container">
             <div class="service-card">
-                <img src="https://via.placeholder.com/300" alt="Service 1">
+                <img src="https://via.placeholder.com/300" alt="Facials">
                 <h3>Facials</h3>
                 <p>Pamper your skin with our luxurious facials, customized to your needs.</p>
             </div>
             <div class="service-card">
-                <img src="https://via.placeholder.com/300" alt="Service 2">
+                <img src="https://via.placeholder.com/300" alt="Massages">
                 <h3>Massages</h3>
                 <p>Relax and unwind with our variety of massages, designed for ultimate relaxation.</p>
             </div>
             <div class="service-card">
-                <img src="https://via.placeholder.com/300" alt="Service 3">
+                <img src="https://via.placeholder.com/300" alt="Makeup">
                 <h3>Makeup</h3>
                 <p>Look and feel your best for any occasion with our professional makeup services.</p>
             </div>
         </div>
         <button class="animated-button">Explore More</button>
     </section>
+
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonial-section">
         <h2>What Our Clients Say</h2>
         <div class="testimonial-container">
@@ -330,6 +458,8 @@
             </div>
         </div>
     </section>
+
+    <!-- CTA Section -->
     <section class="cta-section">
         <h2>Ready to Transform?</h2>
         <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
