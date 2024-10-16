@@ -32,20 +32,19 @@
         }
 
         /* Header Styles */
-       header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px 30px; /* Reduced padding */
-    background-color: #000;
-    border-bottom: 4px solid #b89d5a;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-       
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px; /* Adjusted padding for thinner header */
+            background-color: #000;
+            border-bottom: 4px solid #b89d5a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .logo img {
-            width: 150px;
+            width: 120px; /* Reduced logo size */
             height: auto;
             display: block;
         }
@@ -56,7 +55,7 @@
         nav ul {
             list-style-type: none;
             display: flex;
-            gap: 25px;
+            gap: 20px; /* Adjusted gap */
             margin: 0;
         }
         nav a {
@@ -114,22 +113,21 @@
         }
 
         /* Hero Section Styles */
-      .hero-section {
-    position: relative;
-    height: 100vh;
-    background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center; /* Ensure the background is centered */
-    background-size: cover; /* Make sure the image covers the entire section */
-    background-attachment: fixed; /* Keep parallax effect */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-    width: 100vw;
-    overflow: hidden;
-      
-         }
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            width: 100vw;
+            overflow: hidden;
+        }
         .hero-section::before {
             content: '';
             position: absolute;
@@ -147,15 +145,13 @@
             padding: 20px;
         }
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem; /* Reduced font size for elegance */
             font-weight: 700;
             margin-bottom: 20px;
-            animation: fadeInUp 1.5s ease;
         }
         .hero-tagline {
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* Smaller tagline */
             font-weight: 300;
-            animation: fadeInUp 2s ease;
         }
         .scroll-down {
             margin-top: 50px;
@@ -169,7 +165,7 @@
 
         /* Section Styles */
         section {
-            padding: 80px 50px;
+            padding: 60px 40px; /* Reduced section padding */
             text-align: center;
             width: 100%;
             background-color: #f9e7e5;
@@ -179,13 +175,8 @@
             margin-bottom: 20px;
         }
         #services h2 {
-    font-size: 1.2rem; /* Adjust this value to make it smaller */
-        
-        }
-        html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+            font-size: 1.2rem; /* Adjusted 'Our Services' title size */
+            font-weight: 600;
         }
         #about p, #testimonials p {
             max-width: 700px;
@@ -226,7 +217,7 @@
             transform: scale(1.05);
         }
         .service-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem; /* Adjusted size */
             margin-bottom: 15px;
             color: #5a3d3d;
         }
@@ -374,7 +365,6 @@
                 padding: 60px 20px;
             }
         }
-
     </style>
 </head>
 <body>
