@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Iconic Aesthetics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #fdf6f0, #fffaf6);
+            color: #444;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #5a3d3d;
+        }
+        a {
+            color: #5a3d3d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #d8a39d;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #000;
+            border-bottom: 4px solid #b89d5a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            border-color: #d8a39d;
+            color: #d8a39d;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        .hamburger div {
+            height: 4px;
+            background-color: #d8a39d;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #000;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .mobile-nav a {
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid #b89d5a;
+            width: 100%;
+        }
+        .mobile-nav a:hover {
+            background-color: #b89d5a;
+            color: #000;
+        }
+
+        /* About Us Section */
+        .about-section {
+            background: linear-gradient(135deg, #f9e7e5, #fff5f5);
+            padding: 80px 50px;
+            text-align: center;
+        }
+        .about-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s ease;
+        }
+        .about-section p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #5a3d3d;
+            animation: fadeInUp 2s ease;
+        }
+        .about-section img {
+            width: 300px;
+            border-radius: 50%;
+            margin-top: 30px;
+            animation: fadeInUp 2s ease;
+        }
+
+        /* Button Styling */
+        .about-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+        .about-button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav ul {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 30px;
+            }
+            .about-section h1 {
+                font-size: 2.5rem;
+            }
+            .about-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Hamburger Icon for Mobile/Tablet -->
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- About Us Section -->
+    <section class="about-section">
+        <h1>About Me</h1>
+        <p>
+            Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. 
+            From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. 
+            That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.<br><br>
+
+            I pride myself on providing personalized, one-on-one treatments that enhance your natural beauty. Every service is tailored to fit your unique style and features, 
+            whether you’re looking for a subtle enhancement or a bolder transformation. My goal is always to bring out the best version of you.<br><br>
+
+            Your satisfaction and confidence are my top priorities. Whether it’s your first time or you’re a returning client, I’m here to ensure you leave my studio feeling radiant 
+            and refreshed. I’m excited to continue growing this business I love while building meaningful connections with each of you.<br><br>
+
+            Thank you for trusting me to be a part of your beauty journey!
+        </p>
+        <a href="#services" class="about-button">Explore Services</a>
+    </section>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            if (mobileNav.style.display === "flex") {
+                mobileNav.style.display = "none";
+            } else {
+                mobileNav.style.display = "flex";
+            }
+        });
+    </script>
+</body>
+</html>
