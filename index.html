@@ -32,17 +32,17 @@
         }
 
         /* Header Styles */
-        header {
-            display: flex;
-            justify-content: space-between; /* Align logo and nav */
-            width: 100%; /* Full width */
-            align-items: center;
-            padding: 20px 50px;
-            background-color: #000; /* Black background */
-            border-bottom: 4px solid #b89d5a; /* Dark gold border */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+       header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Reduced padding */
+    background-color: #000;
+    border-bottom: 4px solid #b89d5a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+       
         }
         .logo img {
             width: 150px;
@@ -114,21 +114,22 @@
         }
 
         /* Hero Section Styles */
-        .hero-section {
-            position: relative;
-            height: 100vh; /* Full viewport height */
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
-            background-attachment: fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            overflow: hidden;
-            width: 100vw; /* Full width */
-        }
+      .hero-section {
+    position: relative;
+    height: 100vh;
+    background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center; /* Ensure the background is centered */
+    background-size: cover; /* Make sure the image covers the entire section */
+    background-attachment: fixed; /* Keep parallax effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    width: 100vw;
+    overflow: hidden;
+      
+         }
         .hero-section::before {
             content: '';
             position: absolute;
