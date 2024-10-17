@@ -172,6 +172,28 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        .show-details {
+            max-height: 200px;
+        }
+        .details-button {
+            cursor: pointer;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: #5a3d3d;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+        .details-button:hover {
+            color: #d8a39d;
+        }
 
         /* Animations */
         @keyframes fadeInUp {
@@ -248,58 +270,86 @@
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot.jpg?raw=true" alt="Eyebrows">
                 <h3>Eyebrows</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">This procedure includes shaping, grooming, and enhancing eyebrows for a fuller, more defined look.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(3).jpg?raw=true" alt="Dermaplaning">
                 <h3>Dermaplaning</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">Dermaplaning exfoliates the skin, removing dead cells and peach fuzz for a smoother complexion.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(2).jpg?raw=true" alt="Eyebrow tattooing">
                 <h3>Eyebrow tattooing</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A semi-permanent procedure that enhances and defines eyebrows by implanting pigment into the skin.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4527.jpg?raw=true" alt="Eyebrow tinting">
                 <h3>Eyebrow tinting</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A technique that involves applying a safe, semi-permanent dye to enhance the color and shape of eyebrows.</div>
             </div>
             <div class="service-card">
                 <img src="https://via.placeholder.com/150" alt="Eyelash enhancements">
                 <h3>Eyelash enhancements</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">Enhance the natural appearance of eyelashes by adding length, volume, and definition through extensions or serums.</div>
             </div>
             <div class="service-card">
                 <img src="https://via.placeholder.com/150" alt="Lash perming">
                 <h3>Lash perming</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A semi-permanent treatment that curls the lashes, providing a more lifted and open look to the eyes.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true" alt="Lip blushing">
                 <h3>Lip blushing</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A cosmetic tattoo that enhances the natural color and shape of the lips for a more youthful, fuller appearance.</div>
             </div>
             <div class="service-card">
                 <img src="https://via.placeholder.com/150" alt="Microblading">
                 <h3>Microblading</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A semi-permanent tattoo technique used to create the illusion of fuller, more defined eyebrows by adding fine hair-like strokes.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/cameraRollTempImage.jpg?raw=true" alt="Microshading">
                 <h3>Microshading</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A semi-permanent eyebrow styling technique that uses small dots of pigment to create a powdered, soft look.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true" alt="Nanoblading">
                 <h3>Nanoblading</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A more precise version of microblading that uses ultra-fine needles to create highly realistic, natural-looking brow strokes.</div>
             </div>
             <div class="service-card">
                 <img src="https://via.placeholder.com/150" alt="Ombre eyebrow styling">
                 <h3>Ombre eyebrow styling</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A semi-permanent eyebrow shading technique that creates a soft, gradient look, with lighter fronts and darker tails.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_5517.jpg?raw=true" alt="Permanent eyeliner">
                 <h3>Permanent eyeliner</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A cosmetic tattoo procedure that enhances the lash line to create a fuller, more defined eye appearance.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true" alt="Permanent lip makeup">
                 <h3>Permanent lip makeup</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A procedure that defines the shape of the lips and adds a touch of color for a consistent, polished look without the need for lipstick.</div>
             </div>
             <div class="service-card">
                 <img src="https://via.placeholder.com/150" alt="Scar camouflage">
                 <h3>Scar camouflage</h3>
+                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
+                <div class="service-details">A paramedical tattooing procedure that helps minimize the appearance of scars by blending them with the surrounding skin tone.</div>
             </div>
         </div>
     </section>
@@ -312,6 +362,12 @@
             mobileNav.classList.toggle('open');
             hamburger.classList.toggle('is-active');
         });
+
+        function toggleDetails(button) {
+            const details = button.nextElementSibling;
+            details.classList.toggle('show-details');
+            button.textContent = details.classList.contains('show-details') ? '▲ Less Info' : '▼ More Info';
+        }
     </script>
 </body>
 </html>
