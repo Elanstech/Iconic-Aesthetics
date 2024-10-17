@@ -224,7 +224,7 @@
     <!-- Testimonials Page Section -->
     <section class="testimonial-page">
         <h1>What Our Clients Say</h1>
-        <div class="testimonial-container">
+        <div class="testimonial-container" id="testimonial-container">
             <div class="testimonial">
                 <p class="quote">"I had an amazing experience at Iconic Aesthetics. The staff is incredibly friendly and made me feel right at home. I will definitely be coming back!"</p>
                 <p class="author">- Emily S.</p>
@@ -286,15 +286,15 @@
         <!-- Add a Review Section -->
         <div class="add-review">
             <h2>Add Your Review</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <textarea rows="5" placeholder="Your Review" required></textarea>
+            <form id="add-review-form">
+                <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                <textarea id="review-text" rows="5" placeholder="Your Review" required></textarea>
                 <button type="submit">Submit Review</button>
             </form>
         </div>
     </section>
 
-    <!-- JavaScript for Scroll Animations -->
+    <!-- JavaScript for Scroll Animations and Adding Reviews -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             ScrollReveal().reveal('.testimonial', {
@@ -303,6 +303,39 @@
                 easing: 'ease-in-out',
                 origin: 'bottom',
                 interval: 200
+            });
+
+            // Add Review Form Submission
+            const addReviewForm = document.getElementById('add-review-form');
+            addReviewForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('reviewer-name').value;
+                const review = document.getElementById('review-text').value;
+
+                // Add the review to the testimonials container
+                const testimonialContainer = document.getElementById('testimonial-container');
+                const newTestimonial = document.createElement('div');
+                newTestimonial.classList.add('testimonial');
+                newTestimonial.innerHTML = `
+                    <p class="quote">"${review}"</p>
+                    <p class="author">- ${name}</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                `;
+                testimonialContainer.appendChild(newTestimonial);
+
+                // Send the review to email
+                const emailContent = `New Review Submitted:\n\nName: ${name}\nReview: ${review}`;
+                window.location.href = `mailto:your-email@example.com?subject=New Review Submitted&body=${encodeURIComponent(emailContent)}`;
+
+                // Clear form fields
+                addReviewForm.reset();
             });
         });
     </script>
