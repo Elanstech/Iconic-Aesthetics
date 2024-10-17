@@ -105,6 +105,7 @@
             opacity: 1;
             visibility: visible;
         }
+
         .mobile-nav a {
             color: #fff;
             padding: 15px;
@@ -121,15 +122,18 @@
 
         /* Hero Section Styles */
         .hero-section {
-            padding: 60px 40px;
-            text-align: center;
-            width: 100%;
-            background-color: #f9e7e5;
+            position: relative;
+            height: 100vh;
+            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
+            background-size: cover;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 2s ease;
+            color: #fff;
+            text-align: center;
+            width: 100vw;
+            overflow: hidden;
         }
         .hero-section::before {
             content: '';
@@ -151,12 +155,10 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
-            animation: fadeInDown 2s ease;
         }
         .hero-tagline {
             font-size: 1.2rem;
             font-weight: 300;
-            animation: fadeInUp 2s ease;
         }
         .scroll-down {
             margin-top: 50px;
@@ -174,17 +176,10 @@
             text-align: center;
             width: 100%;
             background-color: #f9e7e5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-            animation: fadeIn 2s ease;
         }
         #about h2, #services h2, #testimonials h2, .cta-section h2 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            animation: zoomIn 1.5s ease;
         }
         #services h2 {
             font-size: 1.2rem;
@@ -195,7 +190,6 @@
             margin: 20px auto;
             font-weight: 300;
             line-height: 1.8;
-            animation: fadeInUp 2s ease;
         }
 
         /* Services Section */
@@ -205,11 +199,6 @@
             padding: 80px 50px;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 2s ease;
         }
         .service-container {
             display: grid;
@@ -223,7 +212,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             padding: 30px;
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: bounceIn 1.5s ease;
         }
         .service-card img {
             width: 100%;
@@ -252,16 +240,43 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
+        /* Instagram Feed Section */
+        .instagram-feed {
+            padding: 60px 0;
+            background-color: #f9e7e5;
+            text-align: center;
+        }
+        .instagram-feed h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #5a3d3d;
+        }
+
+        /* Button Styling */
+        .animated-button, .cta-button {
+            display: inline-block;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+        .animated-button:hover, .cta-button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
+        }
+
         /* Redesigned Testimonials Section */
         .testimonial-section {
             background: linear-gradient(135deg, #f6c1b0, #fff5f5);
             padding: 80px 50px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 2s ease;
         }
         .testimonial-container {
             display: grid;
@@ -276,7 +291,6 @@
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: zoomIn 1.5s ease;
         }
         .testimonial:hover {
             transform: translateY(-10px);
@@ -306,7 +320,6 @@
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
-            animation: rubberBand 1.5s ease;
         }
         .view-more-button:hover {
             background: #d8a39d;
@@ -322,23 +335,16 @@
             position: relative;
             border-top-left-radius: 50px;
             border-bottom-right-radius: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 2s ease;
         }
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            animation: zoomIn 1.5s ease;
         }
         .cta-section p {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 30px;
             font-weight: 300;
-            animation: fadeInUp 2s ease;
         }
 
         /* Animations */
@@ -346,37 +352,6 @@
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes zoomIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes rubberBand {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.25, 0.75); }
-            40% { transform: scale(0.75, 1.25); }
-            50% { transform: scale(1.15, 0.85); }
-            65% { transform: scale(0.95, 1.05); }
-            75% { transform: scale(1.05, 0.95); }
-            100% { transform: scale(1); }
-        }
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
         }
 
         /* Responsive Design */
@@ -533,8 +508,4 @@
 
         hamburger.addEventListener('click', function() {
             mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('open');
-        });
-    </script>
-</body>
-</html>
+            hamburger.classList.toggle('
