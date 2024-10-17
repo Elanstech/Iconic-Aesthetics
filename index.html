@@ -272,33 +272,58 @@
             transform: translateY(-5px);
         }
 
-        /* Testimonials Section */
+        /* Redesigned Testimonials Section */
         .testimonial-section {
-            background: #fef7f3;
+            background: linear-gradient(135deg, #f6c1b0, #fff5f5);
             padding: 80px 50px;
+            text-align: center;
         }
         .testimonial-container {
-            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
             margin: auto;
         }
         .testimonial {
             background: #fff;
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
         .testimonial .quote {
-            font-size: 1.4rem;
-            color: #d8a39d;
+            font-size: 1.2rem;
+            color: #5a3d3d;
             font-style: italic;
             margin-bottom: 15px;
         }
         .testimonial .author {
             font-size: 1rem;
             font-weight: 600;
-            color: #5a3d3d;
+            color: #d8a39d;
             text-align: right;
+        }
+        .view-more-button {
+            margin-top: 40px;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .view-more-button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
         }
 
         /* CTA Section */
@@ -448,7 +473,7 @@
         <div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Redesigned Testimonials Section -->
     <section id="testimonials" class="testimonial-section">
         <h2>What Our Clients Say</h2>
         <div class="testimonial-container">
@@ -461,6 +486,7 @@
                 <p class="author">- Sarah T.</p>
             </div>
         </div>
+        <a href="testimonial.html" class="view-more-button">View More</a>
     </section>
 
     <!-- CTA Section -->
