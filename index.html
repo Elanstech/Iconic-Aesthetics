@@ -47,7 +47,6 @@
             width: 120px;
             height: auto;
         }
-
         nav {
             display: flex;
             align-items: center;
@@ -56,7 +55,6 @@
             list-style-type: none;
             display: flex;
             gap: 20px;
-            margin: 0;
         }
         nav a {
             font-weight: 600;
@@ -90,8 +88,8 @@
             display: none;
             flex-direction: column;
             background-color: #000;
-            position: fixed;
-            top: 0;
+            position: absolute;
+            top: 70px;
             right: 0;
             width: 100%;
             height: 100vh;
@@ -100,18 +98,11 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
-            z-index: 9999; /* Ensure it's on top of other elements */
         }
         .mobile-nav.open {
             display: flex;
             opacity: 1;
             visibility: visible;
-        }
-
-        .mobile-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
         }
 
         .mobile-nav a {
@@ -122,22 +113,10 @@
             font-weight: 600;
             border-bottom: 1px solid #b89d5a;
             width: 100%;
-            display: block;
         }
         .mobile-nav a:hover {
             background-color: #b89d5a;
             color: #000;
-        }
-
-        /* Hamburger animation */
-        .hamburger.is-active div:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
-        }
-        .hamburger.is-active div:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.is-active div:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
         }
 
         /* Hero Section Styles */
@@ -395,7 +374,7 @@
             <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
         </div>
         <nav>
-            <ul class="desktop-menu">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -413,13 +392,11 @@
 
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" id="mobile-nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
     <!-- Hero Section -->
@@ -467,7 +444,7 @@
     <section class="instagram-feed">
         <h2>Instagram Feed</h2>
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
     </section>
 
     <!-- Testimonials Section -->
