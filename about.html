@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Iconic Aesthetics</title>
+    <title>Iconic Aesthetics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -11,12 +11,12 @@
     <style>
         /* Global Styles */
         html, body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
             font-family: 'Open Sans', sans-serif;
             background: linear-gradient(135deg, #fdf6f0, #fffaf6);
             color: #444;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
@@ -99,9 +99,8 @@
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-
         .mobile-nav.open {
-            display: flex;  /* Make visible */
+            display: flex;
             opacity: 1;
             visibility: visible;
         }
@@ -120,37 +119,141 @@
             color: #000;
         }
 
-        /* About Us Section */
-        .about-section {
-            background: linear-gradient(135deg, #f9e7e5, #fff5f5);
+        /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/beautyfront.jpeg?raw=true') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 61, 61, 0.5);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .scroll-down {
+            margin-top: 50px;
+            color: #fff;
+            font-size: 1.8rem;
+            animation: bounce 2s infinite;
+        }
+        .scroll-down i {
+            color: #d8a39d;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 40px;
+            text-align: center;
+            width: 100%;
+            background-color: #f9e7e5;
+        }
+        #about h2, #services h2, #testimonials h2, .cta-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        #services h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        #about p, #testimonials p {
+            max-width: 700px;
+            margin: 20px auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .bubbly-section {
+            background: linear-gradient(135deg, #d8a39d, #f6c1b0);
+            color: #fff;
             padding: 80px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            /* Lazy loading */
+            loading: lazy;
+        }
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #5a3d3d;
+        }
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Instagram Feed Section */
+        .instagram-feed {
+            padding: 60px 0;
+            background-color: #f9e7e5;
             text-align: center;
         }
-        .about-section h1 {
-            font-size: 3rem;
+        .instagram-feed h2 {
+            font-size: 1.5rem;
             margin-bottom: 20px;
-            animation: fadeInDown 1.5s ease;
-        }
-        .about-section p {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            font-weight: 300;
             color: #5a3d3d;
-            animation: fadeInUp 2s ease;
-        }
-        .about-section img {
-            width: 300px;
-            border-radius: 50%;
-            margin-top: 30px;
-            animation: fadeInUp 2s ease;
         }
 
         /* Button Styling */
-        .about-button {
+        .animated-button, .cta-button {
             display: inline-block;
-            margin-top: 40px;
             padding: 12px 35px;
             font-size: 1rem;
             font-weight: 600;
@@ -163,24 +266,66 @@
             transition: background 0.3s, transform 0.3s;
             animation: float 3s ease-in-out infinite;
         }
-        .about-button:hover {
+        .animated-button:hover, .cta-button:hover {
             background: #d8a39d;
             transform: translateY(-5px);
         }
 
+        /* Testimonials Section */
+        .testimonial-section {
+            background: #fef7f3;
+            padding: 80px 50px;
+        }
+        .testimonial-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .testimonial {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        .testimonial .quote {
+            font-size: 1.4rem;
+            color: #d8a39d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .testimonial .author {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #5a3d3d;
+            text-align: right;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f6c1b0, #5a3d3d);
+            color: #fff;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
         /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
         /* Responsive Design */
@@ -197,11 +342,28 @@
                 flex-direction: column;
                 padding: 15px 30px;
             }
-            .about-section h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
-            .about-section p {
-                font-size: 1rem;
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 60px 20px;
+            }
+            .service-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .cta-section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Fix for mobile background-attachment issue */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
             }
         }
     </style>
@@ -214,8 +376,10 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <!-- Hamburger Icon for Mobile/Tablet -->
@@ -229,27 +393,80 @@
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" id="mobile-nav">
         <a href="index.html">Home</a>
+        <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="#">Contact</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <!-- About Us Section -->
-    <section class="about-section">
-        <h1>About Me</h1>
-        <p>
-            Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. 
-            From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. 
-            That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.<br><br>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title animate__animated animate__fadeInUp">Beauty Beyond Limits</h1>
+            <p class="hero-tagline animate__animated animate__fadeInUp">Discover the art of aesthetics with our unparalleled services.</p>
+            <div class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
 
-            I pride myself on providing personalized, one-on-one treatments that enhance your natural beauty. Every service is tailored to fit your unique style and features, 
-            whether you’re looking for a subtle enhancement or a bolder transformation. My goal is always to bring out the best version of you.<br><br>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Iconic Aesthetics, we offer a variety of services to help you feel and look your best. Our experienced team is dedicated to providing top-quality beauty treatments that cater to your individual needs.</p>
+        <a href="about.html" class="animated-button">Learn More</a>
+    </section>
 
-            Your satisfaction and confidence are my top priorities. Whether it’s your first time or you’re a returning client, I’m here to ensure you leave my studio feeling radiant 
-            and refreshed. I’m excited to continue growing this business I love while building meaningful connections with each of you.<br><br>
+    <!-- Services Section -->
+    <section id="services" class="bubbly-section">
+        <h2>Our Services</h2>
+        <div class="service-container">
+            <div class="service-card">
+                <img src="https://via.placeholder.com/300" alt="Facials service image" loading="lazy">
+                <h3>Facials</h3>
+                <p>Pamper your skin with our luxurious facials, customized to your needs.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://via.placeholder.com/300" alt="Massages service image" loading="lazy">
+                <h3>Massages</h3>
+                <p>Relax and unwind with our variety of massages, designed for ultimate relaxation.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://via.placeholder.com/300" alt="Makeup service image" loading="lazy">
+                <h3>Makeup</h3>
+                <p>Look and feel your best for any occasion with our professional makeup services.</p>
+            </div>
+        </div>
+        <a href="services.html" class="animated-button">Explore More</a>
+    </section>
 
-            Thank you for trusting me to be a part of your beauty journey!
-        </p>
-  <a href="services.html" class="animated-button">Explore Services</a>   
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed">
+        <h2>Instagram Feed</h2>
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonial-section">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p class="quote">"Iconic Aesthetics made me feel like a brand new person. The services were exceptional!"</p>
+                <p class="author">- Jessica R.</p>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"The facials here are absolutely divine! I have never felt more pampered."</p>
+                <p class="author">- Sarah T.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform?</h2>
+        <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
+        <a href="contact.html" class="cta-button">Book Now</a>
     </section>
 
     <!-- JavaScript for Hamburger Menu -->
