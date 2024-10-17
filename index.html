@@ -105,7 +105,6 @@
             opacity: 1;
             visibility: visible;
         }
-
         .mobile-nav a {
             color: #fff;
             padding: 15px;
@@ -176,6 +175,11 @@
             text-align: center;
             width: 100%;
             background-color: #f9e7e5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
         }
         #about h2, #services h2, #testimonials h2, .cta-section h2 {
             font-size: 1.5rem;
@@ -199,6 +203,11 @@
             padding: 80px 50px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
         }
         .service-container {
             display: grid;
@@ -240,43 +249,16 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Instagram Feed Section */
-        .instagram-feed {
-            padding: 60px 0;
-            background-color: #f9e7e5;
-            text-align: center;
-        }
-        .instagram-feed h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #5a3d3d;
-        }
-
-        /* Button Styling */
-        .animated-button, .cta-button {
-            display: inline-block;
-            padding: 12px 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            background: #5a3d3d;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.3s;
-            animation: float 3s ease-in-out infinite;
-        }
-        .animated-button:hover, .cta-button:hover {
-            background: #d8a39d;
-            transform: translateY(-5px);
-        }
-
         /* Redesigned Testimonials Section */
         .testimonial-section {
             background: linear-gradient(135deg, #f6c1b0, #fff5f5);
             padding: 80px 50px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
         }
         .testimonial-container {
             display: grid;
@@ -335,6 +317,11 @@
             position: relative;
             border-top-left-radius: 50px;
             border-bottom-right-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
         }
         .cta-section h2 {
             font-size: 2.5rem;
@@ -508,4 +495,8 @@
 
         hamburger.addEventListener('click', function() {
             mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('
+            hamburger.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
