@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
     <style>
         /* Global Styles */
         html, body {
@@ -450,27 +451,27 @@
     </div>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="reveal">
         <h2>About Us</h2>
         <p>At Iconic Aesthetics, we offer a variety of services to help you feel and look your best. Our experienced team is dedicated to providing top-quality beauty treatments that cater to your individual needs.</p>
         <a href="about.html" class="animated-button">Learn More</a>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="bubbly-section">
+    <section id="services" class="bubbly-section reveal">
         <h2>Our Services</h2>
         <div class="service-container">
-            <div class="service-card">
+            <div class="service-card reveal">
                 <img src="https://via.placeholder.com/300" alt="Facials service image" loading="lazy">
                 <h3>Facials</h3>
                 <p>Pamper your skin with our luxurious facials, customized to your needs.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal">
                 <img src="https://via.placeholder.com/300" alt="Massages service image" loading="lazy">
                 <h3>Massages</h3>
                 <p>Relax and unwind with our variety of massages, designed for ultimate relaxation.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card reveal">
                 <img src="https://via.placeholder.com/300" alt="Makeup service image" loading="lazy">
                 <h3>Makeup</h3>
                 <p>Look and feel your best for any occasion with our professional makeup services.</p>
@@ -480,21 +481,21 @@
     </section>
 
     <!-- Instagram Feed Section -->
-    <section class="instagram-feed">
+    <section class="instagram-feed reveal">
         <h2>Instagram Feed</h2>
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
     </section>
 
     <!-- Redesigned Testimonials Section -->
-    <section id="testimonials" class="testimonial-section">
+    <section id="testimonials" class="testimonial-section reveal">
         <h2>What Our Clients Say</h2>
         <div class="testimonial-container">
-            <div class="testimonial">
+            <div class="testimonial reveal">
                 <p class="quote">"Iconic Aesthetics made me feel like a brand new person. The services were exceptional!"</p>
                 <p class="author">- Jessica R.</p>
             </div>
-            <div class="testimonial">
+            <div class="testimonial reveal">
                 <p class="quote">"The facials here are absolutely divine! I have never felt more pampered."</p>
                 <p class="author">- Sarah T.</p>
             </div>
@@ -503,7 +504,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section reveal">
         <h2>Ready to Transform?</h2>
         <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
         <a href="contact.html" class="cta-button">Book Now</a>
@@ -527,6 +528,17 @@
                 mobileNav.style.display = 'none';
             }
             hamburger.classList.toggle('open');
+        });
+
+        // ScrollReveal animations
+        document.addEventListener('DOMContentLoaded', function() {
+            ScrollReveal().reveal('.reveal', {
+                distance: '50px',
+                duration: 1000,
+                easing: 'ease-in-out',
+                origin: 'bottom',
+                interval: 200
+            });
         });
     </script>
 </body>
