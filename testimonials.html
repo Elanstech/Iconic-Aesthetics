@@ -69,7 +69,7 @@
 
         /* Testimonials Page Styles */
         .testimonial-page {
-            padding: 80px 50px;
+            padding: 80px 5%;
             text-align: center;
             background-color: #f9e7e5;
         }
@@ -109,6 +109,75 @@
             color: #d8a39d;
             text-align: right;
         }
+        .testimonial .rating {
+            margin-top: 15px;
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* View More Button */
+        .view-more-button {
+            margin-top: 40px;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .view-more-button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
+        }
+
+        /* Add a Review Section Styles */
+        .add-review {
+            margin-top: 60px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .add-review h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #5a3d3d;
+        }
+        .add-review form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .add-review input, .add-review textarea {
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .add-review button {
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .add-review button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
+        }
 
         /* Animations */
         @keyframes fadeInDown {
@@ -119,16 +188,12 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            nav ul {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -150,62 +215,95 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="testimonial.html">Testimonials</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        <!-- Hamburger Icon for Mobile/Tablet -->
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
     </header>
-
-    <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="testimonial.html">Testimonials</a>
-        <a href="contact.html">Contact</a>
-    </nav>
 
     <!-- Testimonials Page Section -->
     <section class="testimonial-page">
-        <h1>Client Testimonials</h1>
+        <h1>What Our Clients Say</h1>
         <div class="testimonial-container">
             <div class="testimonial">
                 <p class="quote">"I had an amazing experience at Iconic Aesthetics. The staff is incredibly friendly and made me feel right at home. I will definitely be coming back!"</p>
                 <p class="author">- Emily S.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
             </div>
             <div class="testimonial">
                 <p class="quote">"The services are top-notch, and the environment is so relaxing. I felt completely rejuvenated after my facial treatment."</p>
                 <p class="author">- Michael B.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
             </div>
             <div class="testimonial">
                 <p class="quote">"Iconic Aesthetics offers the best beauty treatments I've ever experienced. The attention to detail is incredible, and the results speak for themselves."</p>
                 <p class="author">- Sophia L.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
             </div>
             <div class="testimonial">
                 <p class="quote">"I was a bit nervous at first, but the staff made me feel completely comfortable. The results were beyond my expectations!"</p>
                 <p class="author">- Amanda K.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
             </div>
             <div class="testimonial">
                 <p class="quote">"Such an amazing experience! The ambiance, the service, and the results were all perfect. I can't recommend Iconic Aesthetics enough."</p>
                 <p class="author">- David R.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
             </div>
+        </div>
+        <a href="contact.html" class="view-more-button">Book Your Appointment</a>
+
+        <!-- Add a Review Section -->
+        <div class="add-review">
+            <h2>Add Your Review</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <textarea rows="5" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
         </div>
     </section>
 
-    <!-- JavaScript for Hamburger Menu -->
+    <!-- JavaScript for Scroll Animations -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('is-active');
+        document.addEventListener('DOMContentLoaded', function() {
+            ScrollReveal().reveal('.testimonial', {
+                distance: '50px',
+                duration: 1000,
+                easing: 'ease-in-out',
+                origin: 'bottom',
+                interval: 200
+            });
         });
     </script>
 </body>
