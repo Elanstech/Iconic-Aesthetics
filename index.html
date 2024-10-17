@@ -42,6 +42,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: fadeInDown 1s ease-in-out;
         }
         .logo img {
             width: 120px;
@@ -101,7 +102,6 @@
             z-index: 999;
         }
         .mobile-nav.open {
-            display: flex;
             opacity: 1;
             visibility: visible;
         }
@@ -155,10 +155,12 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
+            animation: fadeInUp 2s ease;
         }
         .hero-tagline {
             font-size: 1.2rem;
             font-weight: 300;
+            animation: fadeInUp 2.5s ease;
         }
         .scroll-down {
             margin-top: 50px;
@@ -176,6 +178,7 @@
             text-align: center;
             width: 100%;
             background-color: #f9e7e5;
+            animation: fadeIn 1.5s ease;
         }
         #about h2, #services h2, #testimonials h2, .cta-section h2 {
             font-size: 1.5rem;
@@ -212,6 +215,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             padding: 30px;
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.5s ease;
         }
         .service-card img {
             width: 100%;
@@ -222,6 +226,7 @@
             transition: transform 0.3s ease;
             /* Lazy loading */
             loading: lazy;
+            animation: zoomIn 1.5s ease;
         }
         .service-card:hover img {
             transform: scale(1.05);
@@ -250,6 +255,7 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             color: #5a3d3d;
+            animation: fadeIn 2s ease;
         }
 
         /* Button Styling */
@@ -265,7 +271,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
-            animation: float 3s ease-in-out infinite;
+            animation: pulse 3s ease-in-out infinite;
         }
         .animated-button:hover, .cta-button:hover {
             background: #d8a39d;
@@ -291,6 +297,7 @@
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.5s ease;
         }
         .testimonial:hover {
             transform: translateY(-10px);
@@ -320,6 +327,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
+            animation: pulse 2s ease-in-out infinite;
         }
         .view-more-button:hover {
             background: #d8a39d;
@@ -335,6 +343,7 @@
             position: relative;
             border-top-left-radius: 50px;
             border-bottom-right-radius: 50px;
+            animation: fadeIn 2s ease;
         }
         .cta-section h2 {
             font-size: 2.5rem;
@@ -352,6 +361,10 @@
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Responsive Design */
@@ -508,4 +521,13 @@
 
         hamburger.addEventListener('click', function() {
             mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('
+            if (mobileNav.classList.contains('open')) {
+                mobileNav.style.display = 'flex';
+            } else {
+                mobileNav.style.display = 'none';
+            }
+            hamburger.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
