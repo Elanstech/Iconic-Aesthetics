@@ -28,6 +28,7 @@
         a:hover {
             color: #d8a39d;
         }
+
         /* Header and Hamburger */
         header {
             display: flex;
@@ -111,6 +112,22 @@
             background-color: #b89d5a;
             color: #000;
         }
+
+        /* Parallax Hero */
+        .parallax {
+            background: url('https://via.placeholder.com/1500x800') no-repeat center center fixed;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .parallax h1 {
+            color: white;
+            font-size: 3rem;
+            animation: fadeInDown 2s ease;
+        }
+
         /* Services Section */
         .services-section {
             padding: 60px 40px;
@@ -134,21 +151,26 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            perspective: 1000px;
             animation: fadeInUp 2s ease;
+        }
+        .service-card:hover {
+            transform: rotateY(10deg) translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
         .service-card img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover img {
+            transform: scale(1.05);
         }
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-        }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
         }
 
         /* Animations */
@@ -156,6 +178,17 @@
             from {
                 opacity: 0;
                 transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -200,6 +233,11 @@
         <a href="services.html">Services</a>
         <a href="#contact">Contact</a>
     </nav>
+
+    <!-- Parallax Section -->
+    <div class="parallax">
+        <h1>Explore Our Services</h1>
+    </div>
 
     <!-- Services Section -->
     <section class="services-section">
