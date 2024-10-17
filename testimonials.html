@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - Iconic Aesthetics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #fdf6f0, #fffaf6);
+            color: #444;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #5a3d3d;
+        }
+        a {
+            color: #5a3d3d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #d8a39d;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #000;
+            border-bottom: 4px solid #b89d5a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            border-color: #d8a39d;
+            color: #d8a39d;
+        }
+
+        /* Testimonials Page Styles */
+        .testimonial-page {
+            padding: 80px 50px;
+            text-align: center;
+        }
+        .testimonial-page h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            animation: fadeInDown 1.5s ease;
+        }
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .testimonial {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 2s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial .quote {
+            font-size: 1.3rem;
+            color: #5a3d3d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .testimonial .author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #d8a39d;
+            text-align: right;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav ul {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 30px;
+            }
+            .testimonial-page h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="testimonial.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Hamburger Icon for Mobile/Tablet -->
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="testimonial.html">Testimonials</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Testimonials Page Section -->
+    <section class="testimonial-page">
+        <h1>Client Testimonials</h1>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p class="quote">"I had an amazing experience at Iconic Aesthetics. The staff is incredibly friendly and made me feel right at home. I will definitely be coming back!"</p>
+                <p class="author">- Emily S.</p>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"The services are top-notch, and the environment is so relaxing. I felt completely rejuvenated after my facial treatment."</p>
+                <p class="author">- Michael B.</p>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"Iconic Aesthetics offers the best beauty treatments I've ever experienced. The attention to detail is incredible, and the results speak for themselves."</p>
+                <p class="author">- Sophia L.</p>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"I was a bit nervous at first, but the staff made me feel completely comfortable. The results were beyond my expectations!"</p>
+                <p class="author">- Amanda K.</p>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"Such an amazing experience! The ambiance, the service, and the results were all perfect. I can't recommend Iconic Aesthetics enough."</p>
+                <p class="author">- David R.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('is-active');
+        });
+    </script>
+</body>
+</html>
