@@ -87,11 +87,11 @@
 
         /* Mobile Navigation Menu */
         .mobile-nav {
-            display: flex;
+            display: none;
             flex-direction: column;
             background-color: #000;
-            position: absolute;
-            top: 70px;
+            position: fixed;
+            top: 0;
             right: 0;
             width: 100%;
             height: 100vh;
@@ -100,9 +100,10 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
-            z-index: 999; /* Ensure it's on top of other elements */
+            z-index: 9999; /* Ensure it's on top of other elements */
         }
         .mobile-nav.open {
+            display: flex;
             opacity: 1;
             visibility: visible;
         }
@@ -465,8 +466,8 @@
     <!-- Instagram Feed Section -->
     <section class="instagram-feed">
         <h2>Instagram Feed</h2>
-        <div id="elfsight-app-your-widget-id"></div>
-        <script src="https://static.elfsight.com/platform/platform.js" async defer></script>
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
     </section>
 
     <!-- Testimonials Section -->
