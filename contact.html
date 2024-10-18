@@ -84,6 +84,16 @@
             transition: all 0.3s ease;
         }
 
+        .hamburger.is-active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.is-active div:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.is-active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         /* Mobile Navigation Menu */
         .mobile-nav {
             display: none;
@@ -102,7 +112,7 @@
         }
 
         .mobile-nav.open {
-            display: flex;  /* Make visible */
+            display: flex;  
             opacity: 1;
             visibility: visible;
         }
@@ -254,27 +264,13 @@
             We'd love to hear from you! Whether you have a question about our services or want to schedule an appointment, 
             feel free to reach out through the form below or give us a call.
         </p>
-
+      
         <div class="contact-form">
-            <form action="mailto:your-email@example.com" method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="tel" name="phone" placeholder="Your Phone Number">
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- JavaScript for Hamburger Menu -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('is-active');
-        });
-    </script>
-</body>
-</html>
+    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required style="margin-bottom: 20px;">
+        <input type="email" name="email" placeholder="Your Email" required style="margin-bottom: 20px;">
+        <input type="tel" name="phone" placeholder="Your Phone Number" style="margin-bottom: 20px;">
+        <textarea name="message" placeholder="Your Message" required style="margin-bottom: 20px;"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
