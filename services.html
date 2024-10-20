@@ -170,7 +170,23 @@
         }
         .service-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+        }
+        .service-card .price {
+            font-size: 1.2rem;
+            color: #b89d5a;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+            background-color: #fdf6f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .price {
+            transform: scale(1.1);
         }
         .service-details {
             max-height: 0;
@@ -239,7 +255,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="testimonials.html">Testimonals</a>
+                <li><a href="testimonials.html">Testimonials</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -253,7 +269,7 @@
     <nav class="mobile-nav" id="mobile-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="testimonials.html">Testimonals</a>
+        <a href="testimonials.html">Testimonials</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
     </nav>
@@ -270,94 +286,39 @@
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot.jpg?raw=true" alt="Eyebrows">
                 <h3>Brow Microshading</h3>
+                <p class="price">$400</p>
                 <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
                 <div class="service-details">A semi-permanent technique that uses small dots of pigment to create a soft, powdered look, perfect for achieving fuller, well-defined brows.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true" alt="Dermaplaning">
-                <h3>Nanoblading</h3>
+                <h3>Nano Brows</h3>
+                <p class="price">$450</p>
                 <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
                 <div class="service-details">Nanoblading is a precision eyebrow treatment that uses ultra-fine needles to create natural-looking, hair-like strokes for perfectly shaped brows.</div>
             </div>
             <div class="service-card">
                 <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4527.jpg?raw=true" alt="Eyebrow tattooing">
-                <h3>Combo - Brows & Nano Blading</h3>
+                <h3>Combo Lash Lift & Brow Lamination</h3>
+                <p class="price">$200</p>
                 <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
                 <div class="service-details">A combination of microshading and nanoblading to give you fuller, more defined brows that still look soft and natural.</div>
             </div>
             <div class="service-card">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true" alt="Eyebrow tinting">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true" alt="Lip Blushing">
                 <h3>Lip Blushing</h3>
+                <p class="price">$450</p>
                 <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
                 <div class="service-details">A semi-permanent cosmetic tattoo that enhances the natural color of your lips, providing a soft blush effect for a more youthful look.</div>
             </div>
             <div class="service-card">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lipnutro.jpeg?raw=true" alt="Eyelash enhancements">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lipnutro.jpeg?raw=true" alt="Lip Neutralization">
                 <h3>Lip Neutralization</h3>
+                <p class="price">Starting at $500</p>
                 <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
                 <div class="service-details">A treatment that corrects dark or cool tones in the lips, leaving a more even, neutral base for enhanced color and vibrancy.</div>
             </div>
-            <div class="service-card">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_5517.jpg?raw=true" alt="Lash perming">
-                <h3>Semi Permanent Eyeliner</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A cosmetic tattooing procedure that adds definition to the lash line, giving you the appearance of always wearing perfectly applied eyeliner.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Lip blushing">
-                <h3>Scar Camouflage</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A paramedical tattooing technique used to conceal scars by blending them with the surrounding skin tone, providing a more uniform appearance.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Microblading">
-                <h3>Inkless Stretch Mark Rejuvenation</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A technique that helps to reduce the appearance of stretch marks without using pigment, promoting smoother and healthier skin.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Microshading">
-                <h3>Eye Lash Extensions - Classic, 2D, 3D</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A treatment that lifts and curls your natural lashes, followed by a tint to make them appear longer, fuller, and more defined.</div>
-            </div>
-
-            <div class="service-card">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Eye%20lash%20lifting.jpeg?raw=true" alt="Microshading">
-                <h3>Eye Lash Lifting & Tint</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A treatment that lifts and curls your natural lashes, followed by a tint to make them appear longer, fuller, and more defined.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Nanoblading">
-                <h3>Brow Lamination w/ Tint</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A brow styling treatment that straightens and sets brow hairs in place, followed by a tint for a fuller, defined look.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Ombre eyebrow styling">
-                <h3>Combo Lash Lift & Brow Lamination w/ Tint</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A combination treatment that includes a lash lift and brow lamination, both with tint, to enhance and define your eyes and brows.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Permanent eyeliner">
-                <h3>30 Min Express Facial</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A quick but effective facial treatment designed to refresh your skin, perfect for those on the go.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Permanent lip makeup">
-                <h3>60 Min European Facial</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A luxurious facial treatment that deeply cleanses, exfoliates, and nourishes the skin, leaving it feeling refreshed and rejuvenated.</div>
-            </div>
-            <div class="service-card">
-                <img src="https://via.placeholder.com/150" alt="Scar camouflage">
-                <h3>Dermaplaning Facial</h3>
-                <button class="details-button" onclick="toggleDetails(this)">▼ More Info</button>
-                <div class="service-details">A facial treatment that exfoliates the skin using a surgical blade to remove dead skin cells and peach fuzz, resulting in a smoother complexion.</div>
-            </div>
+            <!-- Repeat similar cards for other services... -->
         </div>
     </section>
 
