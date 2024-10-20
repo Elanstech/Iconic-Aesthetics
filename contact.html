@@ -266,11 +266,33 @@
         </p>
       
         <div class="contact-form">
-    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required style="margin-bottom: 20px;">
-        <input type="email" name="email" placeholder="Your Email" required style="margin-bottom: 20px;">
-        <input type="tel" name="phone" placeholder="Your Phone Number" style="margin-bottom: 20px;">
-        <textarea name="message" placeholder="Your Message" required style="margin-bottom: 20px;"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</div>
+            <form action="iconic.aesthetics.is@gmail.com" method="POST" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" required style="margin-bottom: 20px;">
+                <input type="email" name="email" placeholder="Your Email" required style="margin-bottom: 20px;">
+                <input type="tel" name="phone" placeholder="Your Phone Number" style="margin-bottom: 20px;">
+                <textarea name="message" placeholder="Your Message" required style="margin-bottom: 20px;"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Square Appointments Booking Button -->
+        <div class="square-booking-button" style="margin-top: 30px;">
+            <!-- Start Square Appointments Embed code -->
+            <a style="background-color: #006aff; color: white; height: 40px; text-transform: uppercase; font-family: 'Square Market', 'helvetica neue', helvetica, arial, sans-serif; letter-spacing: 1px; line-height: 38px; padding: 0 28px; border-radius: 3px; font-weight: 500; font-size: 14px; cursor: pointer; display: inline-block;" href="https://squareup.com/appointments/buyer/widget/k37fl11hh424sv/LYQ508E1JDQ79">
+                Book an Appointment
+            </a>
+            <!-- End Square Appointments Embed code -->
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('is-active');
+        });
+    </script>
+</body>
+</html>
