@@ -121,8 +121,9 @@
             visibility: visible;
         }
 
+        /* Fix for text visibility in mobile nav */
         .mobile-nav a {
-            color: #fff;
+            color: #fff !important; /* Ensure the text color is white */
             padding: 15px;
             text-align: center;
             font-size: 1.5rem;
@@ -132,7 +133,7 @@
         }
         .mobile-nav a:hover {
             background-color: #b89d5a;
-            color: #000;
+            color: #000 !important; /* Ensure text color changes when hovered */
         }
 
         /* Contact Us Section */
