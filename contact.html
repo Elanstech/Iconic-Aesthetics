@@ -121,7 +121,16 @@
             visibility: visible;
         }
 
-        /* Fix for text visibility in mobile nav */
+        /* Mobile Nav List (Vertically aligned items) */
+        .mobile-nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;  /* This makes the items stack vertically */
+            align-items: center;      /* Center the items horizontally */
+        }
+
         .mobile-nav a {
             color: #fff !important; /* Ensure the text color is white */
             padding: 15px;
