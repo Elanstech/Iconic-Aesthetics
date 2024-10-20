@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Iconic Aesthetics</title>
+    
+    <!-- Google Font: Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Normalize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* Global Styles */
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #fdf6f0, #fffaf6);
             color: #444;
             margin: 0;
@@ -17,7 +22,7 @@
             overflow-x: hidden;
         }
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Quicksand', sans-serif;
             color: #5a3d3d;
         }
         a {
@@ -34,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 30px;
+            padding: 20px 30px;
             background-color: #000;
             border-bottom: 4px solid #b89d5a;
             position: sticky;
@@ -42,7 +47,7 @@
             z-index: 1000;
         }
         .logo img {
-            width: 120px;
+            width: 140px;
             height: auto;
         }
         nav {
@@ -52,18 +57,82 @@
         nav ul {
             list-style-type: none;
             display: flex;
-            gap: 20px;
+            gap: 30px;
             margin: 0;
         }
         nav a {
             font-weight: 600;
             padding-bottom: 5px;
+            font-size: 1.1rem;
+            color: white;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s, color 0.3s;
         }
         nav a:hover {
             border-color: #d8a39d;
             color: #d8a39d;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        .hamburger div {
+            height: 4px;
+            background-color: #d8a39d;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.is-active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.is-active div:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.is-active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #000;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid #b89d5a;
+            width: 100%;
+        }
+        .mobile-nav a:hover {
+            background-color: #b89d5a;
+            color: #000;
         }
 
         /* Contact Us Section */
@@ -135,7 +204,7 @@
             color: white;
             height: 40px;
             text-transform: uppercase;
-            font-family: 'Square Market', 'helvetica neue', helvetica, arial, sans-serif;
+            font-family: 'Quicksand', sans-serif;
             letter-spacing: 1px;
             line-height: 38px;
             padding: 0 28px;
@@ -203,7 +272,24 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <!-- Hamburger Icon for Mobile/Tablet -->
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- Contact Section -->
     <section class="contact-section">
@@ -230,8 +316,7 @@
             <!-- End Square Appointments Embed code -->
         </div>
     </section>
-</body>
-</html>
+
     <script>
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
