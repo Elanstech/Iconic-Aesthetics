@@ -410,12 +410,28 @@
     </div>
 </section>
 <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
+   // Function to toggle service details visibility
+function toggleDetails(button) {
+    const details = button.nextElementSibling;  // Select the next sibling (the .service-details div)
+    details.classList.toggle('show-details');   // Toggle the 'show-details' class
 
-    hamburger.addEventListener('click', function() {
-        mobileNav.classList.toggle('open');  // Toggle the 'open' class to show/hide the mobile navigation
-    });
+    // Change the button text depending on whether the details are shown or hidden
+    if (details.classList.contains('show-details')) {
+        button.textContent = '▲ Less Info';
+    } else {
+        button.textContent = '▼ More Info';
+    }
+}
+
+// Hamburger menu functionality for mobile navigation
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+
+hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('open');  // Toggle the 'open' class to show/hide the mobile navigation
+    hamburger.classList.toggle('is-active');  // Change hamburger to an 'X' when the menu is active
+});
+
 </script>
 </body>
 </html>
