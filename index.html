@@ -127,19 +127,21 @@
 
         /* Hero Section Styles */
         .hero-section {
-            position: relative;
-            height: 100vh;
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/backround111.jpeg?raw=true') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            width: 100%;
-            overflow: hidden;
-            box-sizing: border-box;
+         position: relative;
+         height: 100vh;
+         background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/backround111.jpeg?raw=true') no-repeat center center;
+         background-size: contain; /* Changed from cover to contain to show the full image */
+        background-position: center; /* Ensures the image is centered */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+
         }
         .hero-section::before {
             content: '';
