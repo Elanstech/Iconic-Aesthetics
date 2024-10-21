@@ -12,7 +12,7 @@
         html, body {
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-x: hidden;
             font-family: 'Tangerine', sans-serif;
             background: linear-gradient(135deg, #fdf6f0, #fffaf6);
             color: #444;
@@ -55,20 +55,18 @@
             display: flex;
             gap: 20px;
         }
-        /* Updated Header Text Color */
+
         nav a {
-        color: #d8a39d; /* Use the same color as in index.html */
-        font-weight: 600;
-        padding-bottom: 5px;
-        border-bottom: 2px solid transparent;
-        transition: border-color 0.3s, color 0.3s;
-        
+            color: #d8a39d;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
         }
 
         nav a:hover {
-        border-color: #b89d8e; /* You can adjust this hover color to match */
-        color: #b89d8e; /* Hover effect to match index.html */
-        
+            border-color: #b89d8e;
+            color: #b89d8e;
         }
 
         /* Hamburger Menu */
@@ -103,23 +101,25 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
-            z-index: 1001; /* Ensure it appears above all other content */
+            z-index: 1001;
         }
 
         .mobile-nav.open {
             opacity: 1;
             visibility: visible;
+            display: flex; /* Ensure it displays when open */
         }
 
         .mobile-nav a {
             color: #fff;
             padding: 15px;
             text-align: center;
-            font-size: 2.0rem;
+            font-size: 1.5rem;
             font-weight: 600;
             border-bottom: 1px solid #b89d5a;
             width: 100%;
         }
+
         .mobile-nav a:hover {
             background-color: #b89d5a;
             color: #000;
@@ -130,7 +130,7 @@
             transform: rotate(45deg) translate(5px, 5px);
         }
         .hamburger.is-active div:nth-child(2) {
-            opacity: 0; /* Hide middle bar */
+            opacity: 0;
         }
         .hamburger.is-active div:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
@@ -151,13 +151,15 @@
             max-width: 600px;
             margin-right: 20px;
         }
+
         .about-text h1 {
             font-size: 3rem;
             margin-bottom: 20px;
         }
+
         /* Apply Open Sans to paragraph text */
         .about-text p {
-            font-family: 'Open Sans', sans-serif; /* Use Open Sans */
+            font-family: 'Open Sans', sans-serif;
             font-size: 1.2rem;
             line-height: 1.8;
             color: #5a3d3d;
@@ -169,6 +171,7 @@
             max-width: 400px;
             position: relative;
         }
+
         .about-image img {
             width: 100%;
             height: auto;
@@ -176,8 +179,9 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
+
         .about-image img:hover {
-            transform: scale(1.05); /* Hover effect on image */
+            transform: scale(1.05);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
@@ -196,6 +200,7 @@
             text-decoration: none;
             transition: background 0.3s, transform 0.3s;
         }
+
         .about-button:hover {
             background: #d8a39d;
             transform: translateY(-5px);
@@ -204,26 +209,33 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             nav ul {
-                display: none; /* Hide the desktop menu */
+                display: none;
             }
+
             .hamburger {
-                display: flex; /* Show hamburger menu on smaller screens */
+                display: flex;
             }
+
             .about-section {
                 flex-direction: column;
             }
-            .about-text, .about-image {
+
+            .about-text,
+            .about-image {
                 margin: 0;
                 max-width: 100%;
             }
+
             .about-image {
                 margin-top: 30px;
             }
         }
+
         @media (max-width: 768px) {
             .about-text h1 {
                 font-size: 2.5rem;
             }
+
             .about-text p {
                 font-size: 1rem;
             }
@@ -279,13 +291,19 @@
 
     <!-- JavaScript for Hamburger Menu -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
 
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('is-active');
-        });
+hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('is-active');
+
+    if (mobileNav.classList.contains('open')) {
+        mobileNav.style.display = 'flex'; // Show mobile nav when open
+    } else {
+        mobileNav.style.display = 'none'; // Hide mobile nav when closed
+    }
+});
     </script>
 </body>
 </html>
