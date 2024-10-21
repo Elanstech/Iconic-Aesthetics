@@ -331,6 +331,26 @@
             color: #d8a39d;
             text-align: right;
         }
+        /* Button Styling for Testimonials Redirect */
+        .testimonials-button {
+            display: inline-block;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #5a3d3d;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            animation: pulse 3s ease-in-out infinite;
+            margin-top: 70px;
+        }
+        .testimonials-button:hover {
+            background: #d8a39d;
+            transform: translateY(-5px);
+        }
         .view-more-button {
             margin-top: 80px;
             padding: 12px 35px;
@@ -529,20 +549,13 @@
         <div class="elfsight-app-06cb77b5-923b-4b17-9866-cae11247b8e8" data-elfsight-app-lazy></div>
     </section>
 
-    <!-- Redesigned Testimonials Section -->
-    <section id="testimonials" class="testimonial-section reveal">
+    <!-- Google Reviews Section -->
+    <section class="google-reviews-section reveal">
         <h2>What Our Clients Say</h2>
-        <div class="testimonial-container">
-            <div class="testimonial reveal">
-                <p class="quote">"I had an amazing experience at Iconic Aesthetics. The staff is incredibly friendly and made me feel right at home. I will definitely be coming back!"</p>
-                <p class="author">- Emily S.</p>
-            </div>
-            <div class="testimonial reveal">
-                <p class="quote">"The services are top-notch, and the environment is so relaxing. I felt completely rejuvenated after my facial treatment."</p>
-                <p class="author">- Sarah B.</p>
-            </div>
-        </div>
-        <a href="testimonials.html" class="view-more-button">View More</a>
+        <!-- Google reviews widget -->
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-879ff4a8-69d5-4e42-a5bd-bfa942072e29" data-elfsight-app-lazy></div>
+        <a href="testimonials.html" class="testimonials-button">Read More Testimonials</a>
     </section>
 
     <!-- CTA Section -->
