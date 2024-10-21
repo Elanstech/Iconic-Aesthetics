@@ -113,7 +113,7 @@
             color: #000;
         }
 
-        /* Parallax Hero */
+        /* Parallax Hero - Desktop Only */
         .parallax {
             background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true') no-repeat center center fixed;
             background-size: cover;
@@ -234,7 +234,74 @@
             }
         }
 
+        /* Keyframe animation for slide-in and fade-in effect */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Keyframe animation for slide-out effect */
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Apply animation to each navigation link */
+.mobile-nav.open a {
+    animation: slideIn 0.5s ease forwards;
+        }
+
+/* Add staggered animation to each link */
+.mobile-nav.open a:nth-child(1) {
+    animation-delay: 0.1s;
+        }
+.mobile-nav.open a:nth-child(2) {
+    animation-delay: 0.2s;
+        }
+.mobile-nav.open a:nth-child(3) {
+    animation-delay: 0.3s;
+        }
+.mobile-nav.open a:nth-child(4) {
+    animation-delay: 0.4s;
+        }
+.mobile-nav.open a:nth-child(5) {
+    animation-delay: 0.5s;
+        }
+
+/* When closing, trigger slide-out */
+.mobile-nav a {
+    animation: slideOut 0.3s ease forwards;
+        }
+    
         /* Responsive */
+
+        /* On screens smaller than 1024px (Tablet & Mobile), use a static image instead of parallax */
+        @media (max-width: 1024px) {
+            .parallax {
+                background-attachment: scroll; /* Remove parallax effect */
+                background-size: cover;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .parallax {
+                background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true') no-repeat center center;
+                height: 300px; /* You can adjust this for mobile screens */
+            }
+        }
+
         @media (max-width: 1024px) {
             nav ul {
                 display: none;
@@ -407,20 +474,14 @@
     </div>
 </section>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
 
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('is-active');
-        });
+    hamburger.addEventListener('click', function() {
+        mobileNav.classList.toggle('open');  // Toggle the 'open' class
+    });
+</script>
 
-        function toggleDetails(button) {
-            const details = button.nextElementSibling;
-            details.classList.toggle('show-details');
-            button.textContent = details.classList.contains('show-details') ? '▲ Less Info' : '▼ More Info';
-        }
-    </script>
 </body>
 </html>
