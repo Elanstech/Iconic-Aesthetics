@@ -140,9 +140,10 @@
             animation: fadeInUp 2s ease;
         }
 
-        /* Add an image of yourself */
+        /* Image Styles */
         .about-section img {
             width: 300px;
+            height: auto;
             border-radius: 50%;
             margin-top: 30px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -151,6 +152,13 @@
         }
         .about-section img:hover {
             transform: scale(1.05); /* Hover effect on image */
+        }
+
+        /* Responsive Image */
+        @media (max-width: 768px) {
+            .about-section img {
+                width: 200px; /* Reduce size for mobile screens */
+            }
         }
 
         /* Button Styling */
@@ -249,18 +257,10 @@
         <p>
             Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. 
             From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. 
-            That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.<br><br>
-
-            I pride myself on providing personalized, one-on-one treatments that enhance your natural beauty. Every service is tailored to fit your unique style and features, 
-            whether you’re looking for a subtle enhancement or a bolder transformation. My goal is always to bring out the best version of you.<br><br>
-
-            Your satisfaction and confidence are my top priorities. Whether it’s your first time or you’re a returning client, I’m here to ensure you leave my studio feeling radiant 
-            and refreshed. I’m excited to continue growing this business I love while building meaningful connections with each of you.<br><br>
-
-            Thank you for trusting me to be a part of your beauty journey!
+            That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.
         </p>
         <!-- Add an image of yourself -->
-        <img srchttps://github.com/Elanstech/Iconic-Aesthetics/blob/main/illanit.jpeg?raw=true" alt="Ilanit Sholomov">
+        <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/illanit.jpeg?raw=true" alt="Ilanit Sholomov">
 
         <a href="services.html" class="about-button">Explore Services</a>
     </section>
