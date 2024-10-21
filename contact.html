@@ -127,12 +127,12 @@
             padding: 0;
             margin: 0;
             display: flex;
-            flex-direction: column;  /* This makes the items stack vertically */
-            align-items: center;      /* Center the items horizontally */
+            flex-direction: column;
+            align-items: center;
         }
 
         .mobile-nav a {
-            color: #fff !important; /* Ensure the text color is white */
+            color: #fff !important;
             padding: 15px;
             text-align: center;
             font-size: 1.5rem;
@@ -142,7 +142,7 @@
         }
         .mobile-nav a:hover {
             background-color: #b89d5a;
-            color: #000 !important; /* Ensure text color changes when hovered */
+            color: #000 !important;
         }
 
         /* Contact Us Section */
@@ -205,29 +205,22 @@
             transform: translateY(-5px);
         }
 
-        /* Square Booking Button */
+        /* Booking Button */
         .square-booking-button {
             margin-top: 30px;
         }
-        .square-booking-button a {
+        .square-booking-button button {
             background-color: #006aff;
-            color: white;
-            height: 40px;
-            text-transform: uppercase;
-            font-family: 'Quicksand', sans-serif;
-            letter-spacing: 1px;
-            line-height: 38px;
-            padding: 0 28px;
-            border-radius: 3px;
-            font-weight: 500;
-            font-size: 14px;
+            color: #fff;
+            font-size: 16px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
             cursor: pointer;
-            display: inline-block;
-            transition: background 0.3s, transform 0.3s;
+            transition: background-color 0.3s ease;
         }
-        .square-booking-button a:hover {
+        .square-booking-button button:hover {
             background-color: #004fca;
-            transform: translateY(-5px);
         }
 
         /* Animations */
@@ -282,7 +275,6 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        <!-- Hamburger Icon for Mobile/Tablet -->
         <div class="hamburger" id="hamburger">
             <div></div>
             <div></div>
@@ -290,7 +282,6 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" id="mobile-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -308,7 +299,7 @@
             We'd love to hear from you! Whether you have a question about our services or want to schedule an appointment, 
             feel free to reach out through the form below or give us a call.
         </p>
-      
+
         <div class="contact-form">
             <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -319,11 +310,30 @@
             </form>
         </div>
 
+        <!-- Embedded Square Appointments Widget -->
+        <div class="square-appointments-widget">
+            <script src='https://squareup.com/appointments/buyer/widget/qqdx82yqiak9iz/LYQ508E1JDQ79.js'></script>
+        </div>
+
         <!-- Square Appointments Booking Button -->
         <div class="square-booking-button">
-            <!-- Start Square Appointments Embed code -->
-            <a href="https://squareup.com/appointments/buyer/widget/k37fl11hh424sv/LYQ508E1JDQ79">Book an Appointment</a>
-            <!-- End Square Appointments Embed code -->
+            <a style="background-color: #006aff; 
+                      color: white; 
+                      height: 50px; 
+                      text-transform: uppercase; 
+                      font-family: 'Quicksand', sans-serif; 
+                      letter-spacing: 1px; 
+                      line-height: 50px; 
+                      padding: 0 35px; 
+                      border-radius: 30px; 
+                      font-weight: 600; 
+                      font-size: 16px; 
+                      cursor: pointer; 
+                      display: inline-block; 
+                      transition: background-color 0.3s ease;" 
+               href="https://squareup.com/appointments/buyer/widget/qqdx82yqiak9iz/LYQ508E1JDQ79">
+               Book an Appointment
+            </a>
         </div>
     </section>
 
