@@ -81,19 +81,30 @@
             transition: all 0.3s ease;
         }
         .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: #000;
-            position: absolute;
-            top: 70px;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: fixed; /* Change to fixed so it covers the entire page */
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000; /* Make sure it's on top */
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        body.menu-open {
+    pointer-events: none; /* Disable interaction with the page */
+        
+        }
+
+        body.menu-open .mobile-nav {
+    pointer-events: auto; /* Enable interaction with the mobile menu */
+
+
         }
         .mobile-nav.open {
             display: flex;
@@ -218,7 +229,7 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <!-- FAQ Section -->
+    <!-- Permanent Makeup FAQ Section -->
     <section class="faq-section">
         <h1>Permanent Makeup FAQ</h1>
         <div class="faq-item">
@@ -251,18 +262,115 @@
                 Permanent makeup procedures generally have minimal downtime. You may experience some swelling and redness immediately after, but this usually subsides within a few days. The treated area may also appear darker for a week or two before softening to the final shade.
             </div>
         </div>
-        <!-- Add more FAQ items here -->
+        <div class="faq-item">
+            <div class="faq-question">6. Can I still wear regular makeup?</div>
+            <div class="faq-answer">
+                Absolutely! Permanent makeup enhances your natural look, but you can still apply regular makeup to achieve different styles or bolder looks.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">7. Who is a good candidate for permanent makeup?</div>
+            <div class="faq-answer">
+                Permanent makeup is ideal for anyone who wants to enhance their natural features, save time on their daily beauty routine, or has difficulty applying traditional makeup due to vision issues, shaky hands, or allergies to conventional products.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">8. How do I prepare for my appointment?</div>
+            <div class="faq-answer">
+                Avoid alcohol, caffeine, and blood-thinning medications (like aspirin) for at least 24 hours before your procedure. Arrive with clean skin, and if you’re doing lips or brows, avoid tweezing, waxing, or tinting the area beforehand.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">9. What should I expect during the healing process?</div>
+            <div class="faq-answer">
+                During the first few days, the color will appear more intense and may feel slightly swollen. You may experience light flaking as the area heals. It’s important to follow aftercare instructions closely, avoid picking at the treated area, and keep it moisturized.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">10. How soon can I schedule a touch-up?</div>
+            <div class="faq-answer">
+                A touch-up is usually recommended 6-8 weeks after the initial procedure to perfect the results and ensure the pigment has settled evenly.
+            </div>
+        </div>
     </section>
 
+    <!-- Lash Lift and Brow Lamination FAQ Section -->
+    <section class="faq-section">
+        <h1>Lash Lift and Brow Lamination FAQ</h1>
+        <div class="faq-item">
+            <div class="faq-question">1. What is a lash lift and tint?</div>
+            <div class="faq-answer">
+                A lash lift is a semi-permanent treatment that curls your natural lashes from the base, making them appear longer and more lifted. A lash tint is added to enhance the color, making the lashes look darker and fuller.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">2. How long does a lash lift and tint last?</div>
+            <div class="faq-answer">
+                A lash lift typically lasts 6-8 weeks, depending on your lash growth cycle. The tint usually lasts about 4-6 weeks, gradually fading as your lashes shed and regrow.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">3. Is the lash lift treatment safe for my eyes?</div>
+            <div class="faq-answer">
+                Yes, the lash lift is a gentle process. The products are formulated for the delicate eye area, and the procedure is performed with your eyes closed for comfort. Your technician is trained to ensure your safety during the treatment.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">4. Can I wear mascara after a lash lift and tint?</div>
+            <div class="faq-answer">
+                Yes, you can! After the first 24 hours, you’re free to wear mascara and other eye makeup if you’d like, though many clients find they no longer need mascara after a lash lift and tint.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">5. How should I care for my lashes after a lash lift and tint?</div>
+            <div class="faq-answer">
+                For the first 24 hours, avoid getting your lashes wet, using makeup, or exposing them to steam or heat. After that, you can resume your regular skincare and makeup routine. Avoid waterproof mascara, as it can weaken the lift over time.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">6. Will a lash lift damage my natural lashes?</div>
+            <div class="faq-answer">
+                No, a lash lift does not damage your natural lashes when done correctly by a trained professional. Proper aftercare and following maintenance guidelines will keep your lashes healthy.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">7. What is brow lamination and tint?</div>
+            <div class="faq-answer">
+                Brow lamination is a non-invasive treatment that smooths and lifts your eyebrow hairs, creating a fuller, more defined look. Brow tint is added to enhance the color and make the brows appear more uniform and bold.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">8. How long does brow lamination and tint last?</div>
+            <div class="faq-answer">
+                Brow lamination can last up to 6-8 weeks with proper aftercare. The tint typically lasts 4-6 weeks, gradually fading as your brows shed and grow.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">9. Who is a good candidate for brow lamination?</div>
+            <div class="faq-answer">
+                Brow lamination is perfect for anyone with thin, unruly, or uneven brows. It’s ideal for those who want to achieve a fuller look without the need for daily grooming.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">10. How do I care for my brows after lamination?</div>
+            <div class="faq-answer">
+                For the first 24 hours, avoid getting your brows wet or using any harsh products. Afterward, keep your brows moisturized with nourishing oils or creams to prolong the effect. Avoid rubbing or scrubbing the area.
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Hamburger Menu and FAQ Accordion -->
     <script>
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobile-nav');
+      const body = document.body;
 
         hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('is-active');
-        });
+        mobileNav.classList.toggle('open');
+         hamburger.classList.toggle('is-active');
+        body.classList.toggle('menu-open');  // Add or remove the class to disable pointer events
+    });
+
 
         // FAQ Accordion Toggle
         const faqItems = document.querySelectorAll('.faq-item');
