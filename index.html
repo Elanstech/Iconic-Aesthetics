@@ -578,31 +578,32 @@
     </footer>
 
 
-    <!-- JavaScript for Hamburger Menu -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
+ <!-- JavaScript for Hamburger Menu and ScrollReveal Animations -->
+<script>
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
 
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            if (mobileNav.classList.contains('open')) {
-                mobileNav.style.display = 'flex';
-            } else {
-                mobileNav.style.display = 'none';
-            }
-            hamburger.classList.toggle('open');
-        });
+    hamburger.addEventListener('click', function() {
+        mobileNav.classList.toggle('open');
+        if (mobileNav.classList.contains('open')) {
+            mobileNav.style.display = 'flex';
+        } else {
+            mobileNav.style.display = 'none';
+        }
+        hamburger.classList.toggle('open');
+    });
 
-        // ScrollReveal animations
-        document.addEventListener('DOMContentLoaded', function() {
-            ScrollReveal().reveal('.reveal', {
-                distance: '50px',
-                duration: 1000,
-                easing: 'ease-in-out',
-                origin: 'bottom',
-                interval: 200
-            });
+    // ScrollReveal animations for elements with class 'reveal'
+    document.addEventListener('DOMContentLoaded', function() {
+        ScrollReveal().reveal('.reveal', {
+            distance: '50px',    // Movement distance for the reveal animation
+            duration: 1000,      // Animation duration in milliseconds
+            easing: 'ease-in-out', // Smooth transition easing
+            origin: 'bottom',    // Origin direction of the animation (bottom of the screen)
+            interval: 200        // Delay between each reveal in a sequence of elements
         });
-    </script>
+    });
+</script>
 </body>
 </html>
