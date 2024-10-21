@@ -100,7 +100,7 @@
         }
 
         .mobile-nav.open {
-            display: flex;  /* Make visible */
+            display: flex;
             opacity: 1;
             visibility: visible;
         }
@@ -121,44 +121,47 @@
 
         /* About Me Section */
         .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             background: linear-gradient(135deg, #f9e7e5, #fff5f5);
             padding: 80px 50px;
-            text-align: center;
         }
-        .about-section h1 {
+
+        .about-text {
+            flex: 1;
+            max-width: 600px;
+            margin-right: 20px;
+        }
+        .about-text h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             animation: fadeInDown 1.5s ease;
         }
-        .about-section p {
-            max-width: 900px;
-            margin: 0 auto;
+        .about-text p {
             font-size: 1.2rem;
             line-height: 1.8;
-            font-weight: 300;
             color: #5a3d3d;
             animation: fadeInUp 2s ease;
         }
 
-        /* Image Styles */
-        .about-section img {
-            width: 300px;
+        /* Modern Image Styling */
+        .about-image {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
             height: auto;
-            border-radius: 50%;
-            margin-top: 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            animation: fadeInUp 2s ease;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .about-section img:hover {
+        .about-image img:hover {
             transform: scale(1.05); /* Hover effect on image */
-        }
-
-        /* Responsive Image */
-        @media (max-width: 768px) {
-            .about-section img {
-                width: 200px; /* Reduce size for mobile screens */
-            }
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         /* Button Styling */
@@ -199,22 +202,22 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            nav ul {
-                display: none;
+            .about-section {
+                flex-direction: column;
             }
-            .hamburger {
-                display: flex;
+            .about-text, .about-image {
+                margin: 0;
+                max-width: 100%;
+            }
+            .about-image {
+                margin-top: 30px;
             }
         }
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px 30px;
-            }
-            .about-section h1 {
+            .about-text h1 {
                 font-size: 2.5rem;
             }
-            .about-section p {
+            .about-text p {
                 font-size: 1rem;
             }
         }
@@ -253,16 +256,18 @@
 
     <!-- About Me Section -->
     <section class="about-section">
-        <h1>About Me</h1>
-        <p>
-            Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. 
-            From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. 
-            That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.
-        </p>
-        <!-- Add an image of yourself -->
-        <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/illanit.jpeg?raw=true" alt="Ilanit Sholomov">
-
-        <a href="services.html" class="about-button">Explore Services</a>
+        <div class="about-text">
+            <h1>About Me</h1>
+            <p>
+                Welcome! I’m Ilanit Sholomov, a New York City-based permanent makeup artist and aesthetician with a deep passion for helping people feel confident in their own skin. 
+                From a young age, I was drawn to the art of beauty. Friends and classmates would often compliment my makeup and tell me I had an artistic touch. 
+                That early love for enhancing beauty has grown into a fulfilling career where I now offer services like lash lifts, brow lamination, lip blushing, and nano blading.
+            </p>
+            <a href="services.html" class="about-button">Explore Services</a>
+        </div>
+        <div class="about-image">
+            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/illanit.jpeg?raw=true" alt="Ilanit Sholomov">
+        </div>
     </section>
 
     <!-- JavaScript for Hamburger Menu -->
