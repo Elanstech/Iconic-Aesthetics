@@ -362,16 +362,16 @@
     </section>
 
     <!-- JavaScript for Hamburger Menu and FAQ Accordion -->
-    <script>
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobile-nav');
-      const body = document.body;
+   <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        const body = document.body;
 
         hamburger.addEventListener('click', function() {
-        mobileNav.classList.toggle('open');
-         hamburger.classList.toggle('is-active');
-        body.classList.toggle('menu-open');  // Add or remove the class to disable pointer events
-    });
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('is-active');
+            body.classList.toggle('menu-open');
+        });
 
 
         // FAQ Accordion Toggle
