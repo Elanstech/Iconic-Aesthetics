@@ -119,18 +119,38 @@
         }
 
         /* Parallax Hero */
+        /* Parallax Hero */
         .parallax {
-        background: linear-gradient(135deg, #ffb6c1, #db7093) no-repeat center center fixed;
-        background-size: cover;
+        background: linear-gradient(135deg, #f6c1b0, #5a3d3d); /* Rose gradient */
+        background-attachment: fixed; /* Parallax effect for desktop */
+        color: #fff;
         height: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        overflow: hidden;
+        
+        }
+
+        .parallax::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Optional overlay for text readability */
+        z-index: 1;
+        
         }
 
         .parallax h1 {
-            color: white;
-            font-size: 3rem;
+        z-index: 2;
+        color: white;
+        font-size: 3rem;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Text shadow for better contrast */
+        
         }
 
         /* Services Section */
