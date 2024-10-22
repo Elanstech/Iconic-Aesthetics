@@ -34,13 +34,14 @@
             color: #5a3d3d;
         }
 
+         }
         a {
-            color: #d8a39d;
+            color: #5a3d3d;
             text-decoration: none;
             transition: color 0.3s;
         }
         a:hover {
-            color: #b89d8e;
+            color: #d8a39d;
         }
 
         /* Header Styles */
@@ -48,15 +49,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5%;
+            padding: 10px 30px;
             background-color: #000;
             border-bottom: 4px solid #b89d5a;
             position: sticky;
             top: 0;
             z-index: 1000;
-            animation: fadeInDown 1s ease-in-out;
-            width: 100%;
-            box-sizing: border-box;
         }
         .logo img {
             width: 120px;
@@ -83,11 +81,67 @@
             color: #d8a39d;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        .hamburger div {
+            height: 4px;
+            background-color: #d8a39d;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 999;
+        }
+        .mobile-nav.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid #b89d5a;
+            width: 100%;
+        }
+        .mobile-nav a:hover {
+            background-color: #b89d5a;
+            color: #000;
+        }
+
         /* Testimonials Page Styles */
         .testimonial-page {
             padding: 80px 5%;
             text-align: center;
             background-color: #f9e7e5;
+        }
+        h1, .add-review h2, .view-more-button {
+            font-family: 'Tangerine', sans-serif;
+            color: #b89d5a; /* Match the header color */
         }
         .testimonial-container {
             display: grid;
@@ -127,7 +181,7 @@
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background-color: #b89d5a;
+            background-color: #b89d5a; /* Match the index color */
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -136,7 +190,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
         .view-more-button:hover {
-            background-color: #d8a39d;
+            background-color: #d8a39d; /* Lighter gold */
             transform: translateY(-5px);
         }
 
@@ -167,51 +221,52 @@
             border-radius: 10px;
             box-sizing: border-box;
         }
-
-        /* Star Rating */
-        .star-rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-        }
-        .star-rating input[type="radio"] {
-            display: none;
-        }
-        .star-rating label {
-            font-size: 2rem;
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .star-rating label:hover,
-        .star-rating label:hover ~ label,
-        .star-rating input:checked ~ label {
-            color: #ffd700;
-        }
-
-        /* Submit Button */
         .add-review button {
             padding: 12px;
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background-color: #b89d5a;
+            background-color: #b89d5a; /* Match the index color */
             border: none;
             border-radius: 30px;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
         .add-review button:hover {
-            background-color: #d8a39d;
+            background-color: #d8a39d; /* Lighter gold */
             transform: translateY(-5px);
         }
 
         /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            header {
+                flex-direction: column;
+                padding: 15px 30px;
+            }
+            .testimonial-page h1 {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -229,8 +284,25 @@
                 <li><a href="contact.html">Book A Appointment</a></li>
             </ul>
         </nav>
+        <!-- Hamburger Icon for Mobile/Tablet -->
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Book A Appointment</a>
+    </nav>
+
+    <!-- Testimonials Page Section -->
     <section class="testimonial-page">
         <h1>What Our Clients Say</h1>
         <div class="testimonial-container" id="testimonial-container">
@@ -245,65 +317,107 @@
                     <i class="fas fa-star"></i>
                 </div>
             </div>
+            <div class="testimonial">
+                <p class="quote">"The services are top-notch, and the environment is so relaxing. I felt completely rejuvenated after my facial treatment."</p>
+                <p class="author">- Sarah B.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"Iconic Aesthetics offers the best beauty treatments I've ever experienced. The attention to detail is incredible, and the results speak for themselves."</p>
+                <p class="author">- Sophia L.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <!-- Additional Testimonials -->
+            <div class="testimonial">
+                <p class="quote">"Absolutely wonderful service! The team at Iconic Aesthetics is amazing, and I feel more confident than ever!"</p>
+                <p class="author">- Amanda R.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="quote">"The treatments are customized to your needs. I couldn’t be happier with the results!"</p>
+                <p class="author">- Olivia T.</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <a href="contact.html" class="view-more-button">Book Your Appointment</a>
+
+        <!-- Add a Review Section -->
+        <div class="add-review">
+            <h2>Add Your Review</h2>
+            <form id="add-review-form">
+                <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                <textarea id="review-text" rows="5" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
         </div>
     </section>
 
-    <!-- Add a Review Section -->
-    <div class="add-review">
-        <h2>Add Your Review</h2>
-        <form id="add-review-form">
-            <input type="text" id="reviewer-name" placeholder="Your Name" required>
-            <textarea id="review-text" rows="5" placeholder="Your Review" required></textarea>
-
-            <!-- Star Rating System -->
-            <div class="star-rating">
-                <input type="radio" id="5-stars" name="rating" value="5" required />
-                <label for="5-stars" class="fas fa-star"></label>
-                <input type="radio" id="4-stars" name="rating" value="4" />
-                <label for="4-stars" class="fas fa-star"></label>
-                <input type="radio" id="3-stars" name="rating" value="3" />
-                <label for="3-stars" class="fas fa-star"></label>
-                <input type="radio" id="2-stars" name="rating" value="2" />
-                <label for="2-stars" class="fas fa-star"></label>
-                <input type="radio" id="1-star" name="rating" value="1" />
-                <label for="1-star" class="fas fa-star"></label>
-            </div>
-
-            <button type="submit">Submit Review</button>
-        </form>
-    </div>
-
+    <!-- JavaScript for Hamburger Menu and Adding Reviews -->
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            if (mobileNav.classList.contains('open')) {
+                mobileNav.style.display = 'flex';
+            } else {
+                mobileNav.style.display = 'none';
+            }
+            hamburger.classList.toggle('open');
+        });
+
+        // Add Review Form Submission
         const addReviewForm = document.getElementById('add-review-form');
         addReviewForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
             const name = document.getElementById('reviewer-name').value;
             const review = document.getElementById('review-text').value;
-            const rating = document.querySelector('input[name="rating"]:checked').value;
 
+            // Add the review to the testimonials container dynamically
             const testimonialContainer = document.getElementById('testimonial-container');
             const newTestimonial = document.createElement('div');
             newTestimonial.classList.add('testimonial');
-            newTestimonial.innerHTML = 
+            newTestimonial.innerHTML = `
                 <p class="quote">"${review}"</p>
                 <p class="author">- ${name}</p>
-                <div class="rating">${generateStars(rating)}</div>;
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>`;
             testimonialContainer.appendChild(newTestimonial);
 
+            // Clear the form fields
             addReviewForm.reset();
         });
-
-        function generateStars(rating) {
-            let stars = '';
-            for (let i = 0; i < rating; i++) {
-                stars += '<i class="fas fa-star"></i>';
-            }
-            for (let i = rating; i < 5; i++) {
-                stars += '<i class="far fa-star"></i>';
-            }
-            return stars;
-        }
     </script>
 </body>
 </html>
