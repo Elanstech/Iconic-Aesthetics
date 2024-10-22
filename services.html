@@ -257,9 +257,11 @@
                 display: flex;
             }
         }
-        @media (max-width: 768px) {
+     /* Disable Parallax on Mobile */
+@media (max-width: 768px) {
     .parallax {
-        background: linear-gradient(135deg, #ffb6c1, #db7093);
+        background: linear-gradient(135deg, #f6c1b0, #5a3d3d); /* Same gradient without parallax */
+        background-attachment: scroll;
         height: 300px;
     }
 }
