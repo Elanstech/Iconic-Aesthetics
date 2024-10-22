@@ -19,8 +19,8 @@
             overflow-x: hidden;
         }
         h1, h2, h3 {
-            font-family: 'Quicksand', sans-serif;
-            color: #5a3d3d;
+            font-family: 'Tangerine', sans-serif;
+            color: #b89d5a;
         }
         a {
             color: #5a3d3d;
@@ -58,7 +58,7 @@
         }
         nav a {
             font-weight: 600;
-            font-size: 1.8rem; /* Updated to 1.8rem */
+            font-size: 1.8rem;
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s, color 0.3s;
@@ -169,7 +169,7 @@
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background-color: #b89d5a; /* Match the index color */
+            background-color: #b89d5a;
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -178,7 +178,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
         .view-more-button:hover {
-            background-color: #d8a39d; /* Lighter gold */
+            background-color: #d8a39d;
             transform: translateY(-5px);
         }
 
@@ -209,52 +209,51 @@
             border-radius: 10px;
             box-sizing: border-box;
         }
+
+        /* Star Rating */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffd700;
+        }
+
+        /* Submit Button */
         .add-review button {
             padding: 12px;
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background-color: #b89d5a; /* Match the index color */
+            background-color: #b89d5a;
             border: none;
             border-radius: 30px;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
         .add-review button:hover {
-            background-color: #d8a39d; /* Lighter gold */
+            background-color: #d8a39d;
             transform: translateY(-5px);
         }
 
         /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-            header {
-                flex-direction: column;
-                padding: 15px 30px;
-            }
-            .testimonial-page h1 {
-                font-size: 2.5rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -272,25 +271,8 @@
                 <li><a href="contact.html">Book A Appointment</a></li>
             </ul>
         </nav>
-        <!-- Hamburger Icon for Mobile/Tablet -->
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
     </header>
 
-    <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="testimonials.html">Testimonials</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Book A Appointment</a>
-    </nav>
-
-    <!-- Testimonials Page Section -->
     <section class="testimonial-page">
         <h1>What Our Clients Say</h1>
         <div class="testimonial-container" id="testimonial-container">
@@ -305,84 +287,65 @@
                     <i class="fas fa-star"></i>
                 </div>
             </div>
-            <div class="testimonial">
-                <p class="quote">"The services are top-notch, and the environment is so relaxing. I felt completely rejuvenated after my facial treatment."</p>
-                <p class="author">- Sarah B.</p>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-            <div class="testimonial">
-                <p class="quote">"Iconic Aesthetics offers the best beauty treatments I've ever experienced. The attention to detail is incredible, and the results speak for themselves."</p>
-                <p class="author">- Sophia L.</p>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <a href="contact.html" class="view-more-button">Book Your Appointment</a>
-
-        <!-- Add a Review Section -->
-        <div class="add-review">
-            <h2>Add Your Review</h2>
-            <form id="add-review-form">
-                <input type="text" id="reviewer-name" placeholder="Your Name" required>
-                <textarea id="review-text" rows="5" placeholder="Your Review" required></textarea>
-                <button type="submit">Submit Review</button>
-            </form>
         </div>
     </section>
 
-    <!-- JavaScript for Hamburger Menu and Adding Reviews -->
+    <!-- Add a Review Section -->
+    <div class="add-review">
+        <h2>Add Your Review</h2>
+        <form id="add-review-form">
+            <input type="text" id="reviewer-name" placeholder="Your Name" required>
+            <textarea id="review-text" rows="5" placeholder="Your Review" required></textarea>
+
+            <!-- Star Rating System -->
+            <div class="star-rating">
+                <input type="radio" id="5-stars" name="rating" value="5" required />
+                <label for="5-stars" class="fas fa-star"></label>
+                <input type="radio" id="4-stars" name="rating" value="4" />
+                <label for="4-stars" class="fas fa-star"></label>
+                <input type="radio" id="3-stars" name="rating" value="3" />
+                <label for="3-stars" class="fas fa-star"></label>
+                <input type="radio" id="2-stars" name="rating" value="2" />
+                <label for="2-stars" class="fas fa-star"></label>
+                <input type="radio" id="1-star" name="rating" value="1" />
+                <label for="1-star" class="fas fa-star"></label>
+            </div>
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.toggle('open');
-            if (mobileNav.classList.contains('open')) {
-                mobileNav.style.display = 'flex';
-            } else {
-                mobileNav.style.display = 'none';
-            }
-            hamburger.classList.toggle('open');
-        });
-
-        // Add Review Form Submission
         const addReviewForm = document.getElementById('add-review-form');
         addReviewForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
             const name = document.getElementById('reviewer-name').value;
             const review = document.getElementById('review-text').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
 
-            // Add the review to the testimonials container dynamically
             const testimonialContainer = document.getElementById('testimonial-container');
             const newTestimonial = document.createElement('div');
             newTestimonial.classList.add('testimonial');
             newTestimonial.innerHTML = `
                 <p class="quote">"${review}"</p>
                 <p class="author">- ${name}</p>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>`;
+                <div class="rating">${generateStars(rating)}</div>`;
             testimonialContainer.appendChild(newTestimonial);
 
-            // Clear the form fields
             addReviewForm.reset();
         });
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 0; i < rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            for (let i = rating; i < 5; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            return stars;
+        }
     </script>
 </body>
 </html>
