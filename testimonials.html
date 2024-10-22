@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonials - Iconic Aesthetics</title>
-    <!-- Ensure the Tangerine font is loaded properly -->
+    <title>Iconic Aesthetics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
     <style>
-        /* Specifically target the header text to apply Tangerine */
-        h1, h2, h3 {
-            font-family: 'Tangerine', cursive !important; /* Apply font with !important */
-            color: #b89d5a; /* Use matching color for the header */
+        /* Global Styles */
+        html, body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdf6f0, #fffaf6);
+            color: #444;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Apply Tangerine font to header text */
+        h1, h2, h3, nav a {
+            font-family: 'Tangerine', sans-serif;
+            color: #d8a39d;
+        }
+
+        /* Ensure rest of the text uses Quicksand */
+        p, li, a {
+            font-family: 'Quicksand', sans-serif;
+            color: #5a3d3d;
         }
 
         a {
-            color: #5a3d3d;
+            color: #d8a39d;
             text-decoration: none;
             transition: color 0.3s;
         }
         a:hover {
-            color: #d8a39d;
+            color: #b89d8e;
         }
 
         /* Header Styles */
@@ -28,12 +48,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 30px;
+            padding: 10px 5%;
             background-color: #000;
             border-bottom: 4px solid #b89d5a;
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: fadeInDown 1s ease-in-out;
+            width: 100%;
+            box-sizing: border-box;
         }
         .logo img {
             width: 120px;
@@ -50,7 +73,7 @@
         }
         nav a {
             font-weight: 600;
-            font-size: 1.8rem;
+            font-size: 1.8rem; /* Updated to 1.8rem */
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s, color 0.3s;
@@ -188,6 +211,7 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+
     </style>
 </head>
 <body>
@@ -261,10 +285,10 @@
             const testimonialContainer = document.getElementById('testimonial-container');
             const newTestimonial = document.createElement('div');
             newTestimonial.classList.add('testimonial');
-            newTestimonial.innerHTML = `
+            newTestimonial.innerHTML = 
                 <p class="quote">"${review}"</p>
                 <p class="author">- ${name}</p>
-                <div class="rating">${generateStars(rating)}</div>`;
+                <div class="rating">${generateStars(rating)}</div>;
             testimonialContainer.appendChild(newTestimonial);
 
             addReviewForm.reset();
