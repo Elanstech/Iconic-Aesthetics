@@ -6,7 +6,7 @@
     <title>Testimonials - Iconic Aesthetics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Global Styles */
@@ -58,6 +58,7 @@
         }
         nav a {
             font-weight: 600;
+            font-size: 1.8rem; /* Updated to 1.8rem */
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s, color 0.3s;
@@ -125,10 +126,10 @@
             text-align: center;
             background-color: #f9e7e5;
         }
-        .testimonial-page h1 {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            animation: fadeInDown 1.5s ease;
+        /* Applying Tangerine font to specific elements */
+        h1, .add-review h2, .view-more-button {
+            font-family: 'Tangerine', sans-serif;
+            color: #b89d5a; /* Match the header color */
         }
         .testimonial-container {
             display: grid;
@@ -143,7 +144,6 @@
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 2s ease;
         }
         .testimonial:hover {
             transform: translateY(-10px);
@@ -161,11 +161,6 @@
             color: #d8a39d;
             text-align: right;
         }
-        .testimonial .rating {
-            margin-top: 15px;
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
 
         /* View More Button */
         .view-more-button {
@@ -174,7 +169,7 @@
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background: #5a3d3d;
+            background-color: #b89d5a; /* Match the index color */
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -183,7 +178,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
         .view-more-button:hover {
-            background: #d8a39d;
+            background-color: #d8a39d; /* Lighter gold */
             transform: translateY(-5px);
         }
 
@@ -201,7 +196,6 @@
         .add-review h2 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: #5a3d3d;
         }
         .add-review form {
             display: flex;
@@ -220,14 +214,14 @@
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background: #5a3d3d;
+            background-color: #b89d5a; /* Match the index color */
             border: none;
             border-radius: 30px;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
         .add-review button:hover {
-            background: #d8a39d;
+            background-color: #d8a39d; /* Lighter gold */
             transform: translateY(-5px);
         }
 
@@ -331,28 +325,6 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                </div>
-            </div>
-            <div class="testimonial">
-                <p class="quote">"I was a bit nervous at first, but the staff made me feel completely comfortable. The results were beyond my expectations!"</p>
-                <p class="author">- Amanda K.</p>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-            <div class="testimonial">
-                <p class="quote">"Such an amazing experience! The ambiance, the service, and the results were all perfect. I can't recommend Iconic Aesthetics enough."</p>
-                <p class="author">- Ludmila R.</p>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
                 </div>
             </div>
         </div>
