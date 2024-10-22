@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonials - Iconic Aesthetics</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Ensure the Tangerine font is loaded properly -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -18,10 +17,13 @@
             padding: 0;
             overflow-x: hidden;
         }
+
+        /* Specifically target the header text to apply Tangerine */
         h1, h2, h3 {
-            font-family: 'Tangerine', cursive; /* Updated correctly to Tangerine */
-            color: #b89d5a; /* Match the header color */
+            font-family: 'Tangerine', cursive !important; /* Apply font with !important */
+            color: #b89d5a; /* Use matching color for the header */
         }
+
         a {
             color: #5a3d3d;
             text-decoration: none;
@@ -68,68 +70,11 @@
             color: #d8a39d;
         }
 
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-        }
-        .hamburger div {
-            height: 4px;
-            background-color: #d8a39d;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        /* Mobile Navigation Menu */
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: #000;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-            z-index: 999;
-        }
-        .mobile-nav.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-nav a {
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            border-bottom: 1px solid #b89d5a;
-            width: 100%;
-        }
-        .mobile-nav a:hover {
-            background-color: #b89d5a;
-            color: #000;
-        }
-
         /* Testimonials Page Styles */
         .testimonial-page {
             padding: 80px 5%;
             text-align: center;
             background-color: #f9e7e5;
-        }
-        /* Applying Tangerine font to specific elements */
-        h1, .add-review h2, .view-more-button {
-            font-family: 'Tangerine', cursive; /* Correct Tangerine application */
-            color: #b89d5a; /* Match the header color */
         }
         .testimonial-container {
             display: grid;
