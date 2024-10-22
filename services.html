@@ -120,13 +120,14 @@
 
         /* Parallax Hero */
         .parallax {
-            background: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true') no-repeat center center fixed;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        background: linear-gradient(135deg, #ffb6c1, #db7093) no-repeat center center fixed;
+        background-size: cover;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
+
         .parallax h1 {
             color: white;
             font-size: 3rem;
@@ -236,6 +237,12 @@
                 display: flex;
             }
         }
+        @media (max-width: 768px) {
+    .parallax {
+        background: linear-gradient(135deg, #ffb6c1, #db7093);
+        height: 300px;
+    }
+}
     </style>
 </head>
 <body>
