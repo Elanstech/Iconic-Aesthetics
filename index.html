@@ -259,8 +259,6 @@ section {
     border-radius: 15px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
-    /* Lazy loading */
-    loading: lazy;
     animation: zoomIn 1.5s ease;
 }
 .service-card:hover img {
@@ -357,91 +355,6 @@ section {
     text-align: right;
 }
 
-/* Button Styling for Testimonials Redirect */
-.testimonials-button {
-    display: inline-block;
-    padding: 12px 35px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background: #5a3d3d;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s, transform 0.3s;
-    animation: pulse 3s ease-in-out infinite;
-    margin-top: 70px;
-}
-.testimonials-button:hover {
-    background: #d8a39d;
-    transform: translateY(-5px);
-}
-.view-more-button {
-    margin-top: 80px;
-    padding: 12px 35px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background: #5a3d3d;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-decoration: none;
-    margin-top: 70px;
-    transition: background 0.3s, transform 0.3s;
-    animation: pulse 2s ease-in-out infinite;
-}
-.view-more-button:hover {
-    background: #d8a39d;
-    transform: translateY(-5px);
-}
-
-/* CTA Section with Parallax Gradient */
-.cta-section {
-    background: linear-gradient(135deg, #f6c1b0, #5a3d3d);
-    background-attachment: fixed; /* Parallax effect for gradient */
-    color: #fff;
-    padding: 80px 5%;
-    text-align: center;
-    position: relative;
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    animation: fadeIn 2s ease;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-        
-    .cta-section h2 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
-
-    .cta-section p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    font-weight: 300;
-}
-
-/* Dark gold color for Instagram Feed and Reviews & Testimonials headings */
-.instagram-feed h2, .google-reviews-section h2 {
-    color: #b89d5a; /* Dark gold color */
-}
-
-/* Dark gold color for buttons */
-.animated-button, .cta-button, .testimonials-button, .view-more-button {
-    background-color: #b89d5a; /* Dark gold button background */
-    color: #fff; /* Ensure button text is white for contrast */
-    border: none; /* Remove border if needed */
-}
-
-/* Button hover effect */
-.animated-button:hover, .cta-button:hover, .testimonials-button:hover, .view-more-button:hover {
-    background-color: #d8a39d; /* Slightly lighter gold for hover effect */
-    transform: translateY(-5px); /* Keep hover animation */
-}
-
 /* Footer */
 footer {
     background-color: #000;
@@ -464,17 +377,6 @@ footer p {
 footer a {
     color: #d8a39d;
     text-decoration: underline;
-}
-
-/* Animations */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
 }
 
 /* Responsive Design */
@@ -585,19 +487,19 @@ footer a {
         <h2>Our Services</h2>
         <div class="service-container">
             <div class="service-card reveal">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" alt="Facials service image" loading="lazy">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" alt="Facials service image">
                 <h3> Permanent Make-up</h3>
-                <p>Achieve long-lasting beauty with our permanent make-up solutions. From perfectly defined eyebrows to natural-looking lip color, our services are designed to enhance your features and simplify your daily routine. Whether you're looking for subtle enhancements or bold transformations, our team ensures precision and a personalized approach to help you look and feel your best every day.</p>
+                <p>Achieve long-lasting beauty with our permanent make-up solutions...</p>
             </div>
             <div class="service-card reveal">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" alt="Massages service image" loading="lazy">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" alt="Massages service image">
                 <h3>Eyelashes</h3>
-                <p>Our eyelash services go beyond extensions, offering a variety of treatments including lifts, tints, and high-quality extensions to enhance the natural beauty of your lashes. Whether you're seeking a natural lift or a bold, voluminous look, we tailor each service to complement your unique style and preferences.</p>
+                <p>Our eyelash services go beyond extensions...</p>
             </div>
             <div class="service-card reveal">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" alt="Makeup service image" loading="lazy">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" alt="Makeup service image">
                 <h3>Facials</h3>
-                <p>Revitalize your skin with our range of facial and skincare treatments. From deep-cleansing facials to advanced anti-aging solutions, our services are designed to nourish, repair, and rejuvenate your skin. We use only the finest products and techniques to create a personalized treatment plan that addresses your skin's unique needs for a healthy, radiant glow.</p>
+                <p>Revitalize your skin with our range of facial and skincare treatments...</p>
             </div>
         </div>
         <a href="services.html" class="animated-button">Explore More</a>
@@ -626,13 +528,6 @@ footer a {
         <a href="contact.html" class="cta-button">Book Now</a>
     </section>
 
-<!-- Floating Call Button from Elf -->
-<div class="elfsight-app-b2b4c60b-96f5-4a1c-b1f1-8d7f0f0a7805"></div>
-<div class="elfsight-app-a67fb907-1072-47b7-8017-21715e159ac6" data-elfsight-app-lazy></div>
-<!-- New Elf Widget -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-ee465e77-71ca-4aa6-8029-28b1982ebacd" data-elfsight-app-lazy></div>
-    
     <!-- Footer Section -->
     <footer>
         <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/elanstechlogo.jpeg?raw=true" alt="Elan's Tech World Logo" class="footer-logo">
@@ -640,33 +535,32 @@ footer a {
         <p>Designed by <a href="https://elanstechworld.com">Elan's Tech World</a></p>
     </footer>
 
+    <!-- JavaScript for Hamburger Menu and ScrollReveal Animations -->
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
 
- <!-- JavaScript for Hamburger Menu and ScrollReveal Animations -->
-<script>
-    // Hamburger menu functionality
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    hamburger.addEventListener('click', function() {
-        mobileNav.classList.toggle('open');
-        if (mobileNav.classList.contains('open')) {
-            mobileNav.style.display = 'flex';
-        } else {
-            mobileNav.style.display = 'none';
-        }
-        hamburger.classList.toggle('open');
-    });
-
-    // ScrollReveal animations for elements with class 'reveal'
-    document.addEventListener('DOMContentLoaded', function() {
-        ScrollReveal().reveal('.reveal', {
-            distance: '50px',    // Movement distance for the reveal animation
-            duration: 1000,      // Animation duration in milliseconds
-            easing: 'ease-in-out', // Smooth transition easing
-            origin: 'bottom',    // Origin direction of the animation (bottom of the screen)
-            interval: 200        // Delay between each reveal in a sequence of elements
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('open');
+            if (mobileNav.classList.contains('open')) {
+                mobileNav.style.display = 'flex';
+            } else {
+                mobileNav.style.display = 'none';
+            }
+            hamburger.classList.toggle('open');
         });
-    });
-</script>
+
+        // ScrollReveal animations for elements with class 'reveal'
+        document.addEventListener('DOMContentLoaded', function() {
+            ScrollReveal().reveal('.reveal', {
+                distance: '50px',    // Movement distance for the reveal animation
+                duration: 1000,      // Animation duration in milliseconds
+                easing: 'ease-in-out', // Smooth transition easing
+                origin: 'bottom',    // Origin direction of the animation (bottom of the screen)
+                interval: 200        // Delay between each reveal in a sequence of elements
+            });
+        });
+    </script>
 </body>
 </html>
