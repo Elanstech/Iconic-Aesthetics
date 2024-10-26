@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://cdnjs.cloudflare.com;
+        style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        img-src 'self' https://github.com data:;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self';
+        object-src 'none';
+        frame-src 'none';
+    ">
+
     <style>
         /* Global Styles */
         html, body {
@@ -429,8 +440,7 @@ footer a {
         font-size: 1.5rem; /* Smaller navigation text on mobile */
     }
 }
-    </style>
-</head>
+    </style></head>
 <body>
     <header>
         <div class="logo">
@@ -446,7 +456,6 @@ footer a {
                 <li><a href="contact.html">Book A Appointment</a></li>
             </ul>
         </nav>
-        <!-- Hamburger Icon for Mobile/Tablet -->
         <div class="hamburger" id="hamburger">
             <div></div>
             <div></div>
@@ -454,7 +463,6 @@ footer a {
         </div>
     </header>
 
-    <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" id="mobile-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -464,7 +472,6 @@ footer a {
         <a href="contact.html">Book A Appointment</a>
     </nav>
 
-    <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title animate__animated animate__fadeInUp">Beauty Beyond Limits</h1>
@@ -475,14 +482,12 @@ footer a {
         </div>
     </div>
 
-    <!-- About Section -->
     <section id="about" class="reveal">
         <h2>About Us</h2>
         <p>At Iconic Aesthetics, we offer a variety of services to help you feel and look your best. Our experienced team is dedicated to providing top-quality beauty treatments that cater to your individual needs.</p>
         <a href="about.html" class="animated-button">Learn More</a>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="bubbly-section reveal">
         <h2>Our Services</h2>
         <div class="service-container">
@@ -505,37 +510,32 @@ footer a {
         <a href="services.html" class="animated-button">Explore More</a>
     </section>
 
-    <!-- Instagram Feed Section -->
     <section class="instagram-feed reveal">
-    <h2>Instagram Feed</h2>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    <div class="elfsight-app-733f1639-eab6-45e9-bb48-480e830299ca" data-elfsight-app-lazy></div>
+        <h2>Instagram Feed</h2>
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-733f1639-eab6-45e9-bb48-480e830299ca" data-elfsight-app-lazy></div>
     </section>
 
-
-    <!-- Google Reviews Section -->
     <section class="google-reviews-section reveal">
-        <!-- Google reviews widget -->
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <div class="elfsight-app-879ff4a8-69d5-4e42-a5bd-bfa942072e29" data-elfsight-app-lazy></div>
         <a href="testimonials.html" class="testimonials-button">Read More Testimonials</a>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section reveal">
         <h2>Ready to Transform?</h2>
         <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
         <a href="contact.html" class="cta-button">Book Now</a>
     </section>
 
-    <!-- Footer Section -->
     <footer>
         <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/elanstechlogo.jpeg?raw=true" alt="Elan's Tech World Logo" class="footer-logo">
         <p>&copy; 2025 Iconic Aesthetics. All Rights Reserved.</p>
         <p>Designed by <a href="https://elanstechworld.com">Elan's Tech World</a></p>
     </footer>
 
-    <!-- JavaScript for Hamburger Menu and ScrollReveal Animations -->
+    <!-- External JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
     <script>
         // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
