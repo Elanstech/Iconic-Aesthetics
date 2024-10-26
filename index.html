@@ -139,7 +139,7 @@
             height: 100vh;
             background: url('https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/fronttest.jpeg?raw=true') no-repeat center center;
             background-size: cover;
-            background-attachment: fixed; /* Parallax effect for desktop */
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -479,7 +479,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+            <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo" crossorigin="anonymous" onerror="this.src='images/fallback-image.jpg'">
         </div>
         <nav>
             <ul>
@@ -491,6 +491,7 @@
                 <li><a href="contact.html">Book A Appointment</a></li>
             </ul>
         </nav>
+        <!-- Hamburger Icon for Mobile/Tablet -->
         <div class="hamburger" id="hamburger">
             <div></div>
             <div></div>
@@ -498,6 +499,7 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav" id="mobile-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -507,6 +509,7 @@
         <a href="contact.html">Book A Appointment</a>
     </nav>
 
+    <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title animate__animated animate__fadeInUp">Beauty Beyond Limits</h1>
@@ -517,27 +520,29 @@
         </div>
     </div>
 
+    <!-- About Section -->
     <section id="about" class="reveal">
         <h2>About Us</h2>
         <p>At Iconic Aesthetics, a variety of services are offered to help you feel and look your best. Each treatment is tailored to meet your individual needs, ensuring top-quality results with a personalized approach.</p>
         <a href="about.html" class="animated-button">Learn More</a>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="bubbly-section reveal">
         <h2>Our Services</h2>
         <div class="service-container">
             <div class="service-card reveal">
-                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/micro.jpeg?raw=true" alt="Permanent Make-up service image" loading="lazy">
+                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/micro.jpeg?raw=true" alt="Permanent Make-up service image" loading="lazy" crossorigin="anonymous" onerror="this.src='images/fallback-makeup.jpg'">
                 <h3> Permanent Make-up</h3>
                 <p>Achieve long-lasting beauty with our permanent make-up solutions. From perfectly defined eyebrows to natural-looking lip color, our services are designed to enhance your features and simplify your daily routine.</p>
             </div>
             <div class="service-card reveal">
-                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/lash.jpeg?raw=true" alt="Eyelashes service image" loading="lazy">
+                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/lash.jpeg?raw=true" alt="Eyelashes service image" loading="lazy" crossorigin="anonymous" onerror="this.src='images/fallback-lashes.jpg'">
                 <h3>Eyelashes</h3>
                 <p>Our eyelash services go beyond extensions, offering a variety of treatments including lifts, tints, and high-quality extensions to enhance the natural beauty of your lashes.</p>
             </div>
             <div class="service-card reveal">
-                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/Facials.jpeg?raw=true" alt="Facials service image" loading="lazy">
+                <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/Facials.jpeg?raw=true" alt="Facials service image" loading="lazy" crossorigin="anonymous" onerror="this.src='images/fallback-facials.jpg'">
                 <h3>Facials</h3>
                 <p>Revitalize your skin with our range of facial and skincare treatments. From deep-cleansing facials to advanced anti-aging solutions, our services are designed to nourish, repair, and rejuvenate your skin.</p>
             </div>
@@ -545,31 +550,38 @@
         <a href="services.html" class="animated-button">Explore More</a>
     </section>
 
+    <!-- Instagram Feed Section -->
     <section class="instagram-feed reveal">
         <h2>Instagram Feed</h2>
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <div class="elfsight-app-733f1639-eab6-45e9-bb48-480e830299ca" data-elfsight-app-lazy></div>
     </section>
 
+    <!-- Google Reviews Section -->
     <section class="google-reviews-section reveal">
+        <!-- Google reviews widget -->
         <script src="https://static.elfsight.com/platform/platform.js" async></script>
         <div class="elfsight-app-879ff4a8-69d5-4e42-a5bd-bfa942072e29" data-elfsight-app-lazy></div>
         <a href="testimonials.html" class="testimonials-button">Read More Testimonials</a>
     </section>
 
+    <!-- CTA Section -->
     <section class="cta-section reveal">
         <h2>Ready to Transform?</h2>
         <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
         <a href="contact.html" class="cta-button">Book Now</a>
     </section>
 
+    <!-- Footer Section -->
     <footer>
-        <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/elanstechlogo.jpeg?raw=true" alt="Elan's Tech World Logo" class="footer-logo">
+        <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/main/elanstechlogo.jpeg?raw=true" alt="Elan's Tech World Logo" class="footer-logo" crossorigin="anonymous" onerror="this.src='images/fallback-logo.jpg'">
         <p>&copy; 2025 Iconic Aesthetics. All Rights Reserved.</p>
         <p>Designed by <a href="https://elanstechworld.com">Elan's Tech World</a></p>
     </footer>
 
+    <!-- JavaScript for Hamburger Menu and ScrollReveal Animations -->
     <script>
+        // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
 
@@ -583,14 +595,19 @@
             hamburger.classList.toggle('open');
         });
 
+        // ScrollReveal animations for elements with class 'reveal'
         document.addEventListener('DOMContentLoaded', function() {
-            ScrollReveal().reveal('.reveal', {
-                distance: '50px',
-                duration: 1000,
-                easing: 'ease-in-out',
-                origin: 'bottom',
-                interval: 200
-            });
+            if (typeof ScrollReveal !== 'undefined') {
+                ScrollReveal().reveal('.reveal', {
+                    distance: '50px',
+                    duration: 1000,
+                    easing: 'ease-in-out',
+                    origin: 'bottom',
+                    interval: 200
+                });
+            } else {
+                console.error('ScrollReveal is not loaded properly.');
+            }
         });
     </script>
 </body>
