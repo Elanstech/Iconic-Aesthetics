@@ -706,143 +706,425 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ------------------------------------------------------------------------
-    // ABOUT
+    // LEGACY ABOUT SECTION
     // ------------------------------------------------------------------------
-    
     function initModernAboutSection() {
-    // Select elements for animations
-    const featureCards = document.querySelectorAll('.feature-card');
-    const aboutImages = document.querySelectorAll('.about-image-main, .about-image-accent');
-    const experienceTag = document.querySelector('.experience-tag');
-    const quoteSection = document.querySelector('.owner-quote');
-    
-    // Parallax scrolling effect for main image if GSAP is available
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        // Subtle parallax for main image
-        gsap.to('.about-image-main img', {
-            scrollTrigger: {
-                trigger: '.about-modern',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-            },
-            y: 50,
-            ease: 'none'
-        });
+        // Select elements for animations
+        const featureCards = document.querySelectorAll('.feature-card');
+        const aboutImages = document.querySelectorAll('.about-image-main, .about-image-accent');
+        const experienceTag = document.querySelector('.experience-tag');
+        const quoteSection = document.querySelector('.owner-quote');
         
-        // Animate the experience tag with a slight rotation on scroll
-        gsap.from(experienceTag, {
-            scrollTrigger: {
-                trigger: '.about-image-wrapper',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            scale: 0.5,
-            rotation: -15,
-            duration: 0.8,
-            ease: 'back.out(1.7)'
-        });
+        // Parallax scrolling effect for main image if GSAP is available
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            // Subtle parallax for main image
+            gsap.to('.about-image-main img', {
+                scrollTrigger: {
+                    trigger: '.about-modern',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                },
+                y: 50,
+                ease: 'none'
+            });
+            
+            // Animate the experience tag with a slight rotation on scroll
+            gsap.from(experienceTag, {
+                scrollTrigger: {
+                    trigger: '.about-image-wrapper',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                scale: 0.5,
+                rotation: -15,
+                duration: 0.8,
+                ease: 'back.out(1.7)'
+            });
+            
+            // Animate feature cards
+            gsap.from(featureCards, {
+                scrollTrigger: {
+                    trigger: '.about-features',
+                    start: 'top 80%'
+                },
+                y: 30,
+                opacity: 0,
+                stagger: 0.15,
+                duration: 0.6
+            });
+            
+            // Animate quote section
+            gsap.from(quoteSection, {
+                scrollTrigger: {
+                    trigger: quoteSection,
+                    start: 'top 80%'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8
+            });
+        }
         
-        // Animate feature cards
-        gsap.from(featureCards, {
-            scrollTrigger: {
-                trigger: '.about-features',
-                start: 'top 80%'
-            },
-            y: 30,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.6
-        });
+        // Add hover interactions for feature cards with vanilla JS
+        if (featureCards) {
+            featureCards.forEach(card => {
+                // Add mouse hover effects
+                card.addEventListener('mouseenter', function() {
+                    // Add subtle scale effect to icon
+                    const icon = this.querySelector('.feature-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.1) rotate(5deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    // Reset icon
+                    const icon = this.querySelector('.feature-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                    }
+                });
+            });
+        }
         
-        // Animate quote section
-        gsap.from(quoteSection, {
-            scrollTrigger: {
-                trigger: quoteSection,
-                start: 'top 80%'
-            },
-            x: -50,
-            opacity: 0,
-            duration: 0.8
-        });
+        // Add scroll-based animations for elements without GSAP
+        if (!window.gsap) {
+            // Simple intersection observer for fade-in effects
+            const fadeInElements = [
+                ...featureCards, 
+                experienceTag, 
+                quoteSection,
+                ...aboutImages
+            ].filter(el => el); // Filter out null elements
+            
+            if (fadeInElements.length && 'IntersectionObserver' in window) {
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                            fadeInObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                fadeInElements.forEach(el => {
+                    el.classList.add('will-animate');
+                    fadeInObserver.observe(el);
+                });
+            }
+        }
+        
+        // Add these classes to your CSS for the fallback animations
+        const styleSheet = document.styleSheets[0];
+        const fadeInRules = `
+            .will-animate {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            .fade-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        
+        try {
+            styleSheet.insertRule(fadeInRules, styleSheet.cssRules.length);
+        } catch (e) {
+            // If can't modify stylesheet, create a new style tag
+            const styleTag = document.createElement('style');
+            styleTag.textContent = fadeInRules;
+            document.head.appendChild(styleTag);
+        }
     }
-    
-    // Add hover interactions for feature cards with vanilla JS
-    if (featureCards) {
+
+    // ------------------------------------------------------------------------
+    // NEW BUBBLE ABOUT SECTION 
+    // ------------------------------------------------------------------------
+    function initBubbleAboutSection() {
+        // Get elements
+        const aboutSection = document.querySelector('.about-bubble');
+        if (!aboutSection) return;
+
+        const showcase = document.querySelector('.about-showcase');
+        const showcaseMain = document.querySelector('.showcase-main');
+        const showcaseAccent = document.querySelector('.showcase-accent');
+        const experienceBadge = document.querySelector('.experience-badge');
+        const featureCards = document.querySelectorAll('.feature-card');
+        const testimonial = document.querySelector('.owner-testimonial');
+        const bubbles = document.querySelectorAll('.bubble');
+
+        // Advanced mouse movement effects for image showcase
+        if (showcase && window.innerWidth > 992) {
+            showcase.addEventListener('mousemove', function(e) {
+                // Get mouse position relative to the showcase
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element
+                const y = e.clientY - rect.top;  // y position within the element
+                
+                // Calculate mouse position percentage
+                const xPercent = x / rect.width;
+                const yPercent = y / rect.height;
+                
+                // Calculate rotation and transform values (limited range of motion)
+                const rotateY = (xPercent - 0.5) * 10; // -5 to 5 degrees
+                const rotateX = (yPercent - 0.5) * -10; // -5 to 5 degrees
+                const translateZ = 20; // px
+                
+                // Apply 3D transforms to main image
+                if (showcaseMain) {
+                    showcaseMain.style.transform = `
+                        perspective(1000px) 
+                        rotateX(${rotateX}deg) 
+                        rotateY(${rotateY}deg)
+                        translateZ(${translateZ}px)
+                    `;
+                }
+                
+                // Subtle parallax for accent image (moves opposite to mouse)
+                if (showcaseAccent) {
+                    const moveX = (xPercent - 0.5) * -20; // -10 to 10 px
+                    const moveY = (yPercent - 0.5) * -20; // -10 to 10 px
+                    
+                    showcaseAccent.style.transform = `
+                        rotate(5deg)
+                        translate(${moveX}px, ${moveY}px)
+                    `;
+                }
+                
+                // Badge follows mouse slightly
+                if (experienceBadge) {
+                    const badgeMoveX = (xPercent - 0.5) * 15; // -7.5 to 7.5 px
+                    const badgeMoveY = (yPercent - 0.5) * 15; // -7.5 to 7.5 px
+                    
+                    experienceBadge.style.transform = `
+                        translate(${badgeMoveX}px, ${badgeMoveY}px)
+                        rotate(${-badgeMoveX / 2}deg)
+                        scale(1.1)
+                    `;
+                }
+            });
+            
+            // Reset transforms when mouse leaves
+            showcase.addEventListener('mouseleave', function() {
+                if (showcaseMain) {
+                    showcaseMain.style.transform = 'perspective(1000px) rotateY(5deg)';
+                }
+                
+                if (showcaseAccent) {
+                    showcaseAccent.style.transform = 'rotate(5deg)';
+                }
+                
+                if (experienceBadge) {
+                    experienceBadge.style.transform = '';
+                }
+            });
+        }
+        
+        // Add animated entrance for feature cards
+        if (featureCards.length && typeof gsap !== 'undefined') {
+            gsap.from(featureCards, {
+                scrollTrigger: {
+                    trigger: '.feature-cards',
+                    start: 'top 80%'
+                },
+                y: 50,
+                opacity: 0,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            });
+        }
+        
+        // Animate testimonial on scroll
+        if (testimonial && typeof gsap !== 'undefined') {
+            gsap.from(testimonial, {
+                scrollTrigger: {
+                    trigger: testimonial,
+                    start: 'top 75%'
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        }
+        
+        // Advanced bubble animations
+        if (bubbles.length && typeof gsap !== 'undefined') {
+            bubbles.forEach(bubble => {
+                // Random initial position within bounds
+                const xPos = gsap.utils.random(-30, 30);
+                const yPos = gsap.utils.random(-30, 30);
+                const rotation = gsap.utils.random(-15, 15);
+                const duration = gsap.utils.random(20, 40);
+                const delay = gsap.utils.random(0, 10);
+                
+                // Set initial position
+                gsap.set(bubble, {
+                    x: xPos,
+                    y: yPos,
+                    rotation: rotation
+                });
+                
+                // Create floating animation
+                gsap.to(bubble, {
+                    x: xPos + gsap.utils.random(-40, 40),
+                    y: yPos + gsap.utils.random(-40, 40),
+                    rotation: rotation + gsap.utils.random(-20, 20),
+                    repeat: -1,
+                    yoyo: true,
+                    duration: duration,
+                    delay: delay,
+                    ease: "sine.inOut"
+                });
+            });
+        }
+        
+        // Optional: Add parallax effect to background bubbles on scroll
+        window.addEventListener('scroll', function() {
+            if (bubbles.length && aboutSection) {
+                // Get scroll position relative to the about section
+                const rect = aboutSection.getBoundingClientRect();
+                const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isInView) {
+                    const scrollPos = window.scrollY;
+                    const sectionTop = scrollPos + rect.top;
+                    const relativeScroll = scrollPos - sectionTop;
+                    
+                    bubbles.forEach((bubble, index) => {
+                        // Different parallax speeds for each bubble
+                        const speed = 0.05 + (index * 0.02);
+                        const yOffset = relativeScroll * speed;
+                        
+                        // Apply transform - extract existing transform and add parallax
+                        const currentTransform = bubble.style.transform;
+                        
+                        // If bubble has GSAP transform, we don't want to overwrite it completely
+                        if (currentTransform && !currentTransform.includes('translateY')) {
+                            bubble.style.transform = `${currentTransform} translateY(${yOffset}px)`;
+                        } else {
+                            // Just update the Y transform
+                            const regex = /translateY\([^)]+\)/;
+                            const newTransform = currentTransform.replace(regex, `translateY(${yOffset}px)`);
+                            
+                            if (newTransform === currentTransform) {
+                                bubble.style.transform = `${currentTransform} translateY(${yOffset}px)`;
+                            } else {
+                                bubble.style.transform = newTransform;
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        
+        // Feature card hover animations
         featureCards.forEach(card => {
-            // Add mouse hover effects
             card.addEventListener('mouseenter', function() {
-                // Add subtle scale effect to icon
-                const icon = this.querySelector('.feature-icon');
-                if (icon) {
-                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                const icon = this.querySelector('.card-icon');
+                const siblings = Array.from(featureCards).filter(item => item !== this);
+                
+                // Bounce animation for icon
+                if (icon && typeof gsap !== 'undefined') {
+                    gsap.to(icon, {
+                        scale: 1.2,
+                        rotation: 15,
+                        duration: 0.4,
+                        ease: "back.out(1.7)"
+                    });
+                }
+                
+                // Subtle push-back effect on sibling cards
+                if (siblings.length && typeof gsap !== 'undefined') {
+                    gsap.to(siblings, {
+                        scale: 0.98,
+                        opacity: 0.8,
+                        duration: 0.3
+                    });
                 }
             });
             
             card.addEventListener('mouseleave', function() {
-                // Reset icon
-                const icon = this.querySelector('.feature-icon');
-                if (icon) {
-                    icon.style.transform = 'scale(1) rotate(0deg)';
+                const icon = this.querySelector('.card-icon');
+                const siblings = Array.from(featureCards).filter(item => item !== this);
+                
+                // Reset icon animation
+                if (icon && typeof gsap !== 'undefined') {
+                    gsap.to(icon, {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.3
+                    });
+                }
+                
+                // Reset sibling cards
+                if (siblings.length && typeof gsap !== 'undefined') {
+                    gsap.to(siblings, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.3
+                    });
                 }
             });
         });
-    }
-    
-    // Add scroll-based animations for elements without GSAP
-    if (!window.gsap) {
-        // Simple intersection observer for fade-in effects
-        const fadeInElements = [
-            ...featureCards, 
-            experienceTag, 
-            quoteSection,
-            ...aboutImages
-        ].filter(el => el); // Filter out null elements
         
-        if (fadeInElements.length && 'IntersectionObserver' in window) {
-            const fadeInObserver = new IntersectionObserver((entries) => {
+        // Fallback animations using Intersection Observer if GSAP is not available
+        if (typeof gsap === 'undefined' && 'IntersectionObserver' in window) {
+            const fadeItems = [
+                ...featureCards,
+                testimonial,
+                showcaseMain,
+                showcaseAccent,
+                experienceBadge
+            ].filter(item => item); // Filter out null/undefined
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        fadeInObserver.unobserve(entry.target);
+                        entry.target.classList.add('animate-in');
+                        fadeObserver.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0.2,
+                rootMargin: '0px 0px -10% 0px'
             });
             
-            fadeInElements.forEach(el => {
-                el.classList.add('will-animate');
-                fadeInObserver.observe(el);
+            fadeItems.forEach(item => {
+                item.classList.add('will-animate');
+                fadeObserver.observe(item);
             });
+            
+            // Add necessary CSS classes for fallback animations
+            const styleSheet = document.styleSheets[0];
+            const fallbackRules = `
+                .will-animate {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.8s ease, transform 0.8s ease;
+                }
+                .animate-in {
+                    opacity: 1 !important;
+                    transform: translateY(0) !important;
+                }
+            `;
+            
+            try {
+                styleSheet.insertRule(fallbackRules, styleSheet.cssRules.length);
+            } catch (e) {
+                // If can't modify stylesheet, create a new style tag
+                const styleTag = document.createElement('style');
+                styleTag.textContent = fallbackRules;
+                document.head.appendChild(styleTag);
+            }
         }
     }
-    
-    // Add these classes to your CSS for the fallback animations
-    const styleSheet = document.styleSheets[0];
-    const fadeInRules = `
-        .will-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    
-    try {
-        styleSheet.insertRule(fadeInRules, styleSheet.cssRules.length);
-    } catch (e) {
-        // If can't modify stylesheet, create a new style tag
-        const styleTag = document.createElement('style');
-        styleTag.textContent = fadeInRules;
-        document.head.appendChild(styleTag);
-    }
-}
-
     
     // ------------------------------------------------------------------------
     // INITIALIZE ALL COMPONENTS
@@ -860,6 +1142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeFormValidation();
         initializeCookieConsent();
         initModernAboutSection();
+        initBubbleAboutSection(); // Initialize new bubble about section
     }
     
     // Start initialization
