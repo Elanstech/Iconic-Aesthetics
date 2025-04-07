@@ -421,46 +421,43 @@
         /* Header */
         header {
             position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1400px;
+            top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-            border-radius: var(--border-radius-pill);
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1rem;
+            background: var(--black);
+            padding: 0;
             transition: all var(--transition-medium);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         header.scrolled {
-            top: 15px;
-            padding: 0.7rem;
-            background: rgba(0, 0, 0, 0.7);
-            width: 95%;
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 2rem;
+            padding: 1.5rem 4rem;
             position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .header-inner::before {
-            content: '';
+        .pill-nav {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
             border-radius: var(--border-radius-pill);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            pointer-events: none;
+            padding: 1rem 3rem;
+            box-shadow: var(--box-shadow);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .logo {
@@ -514,7 +511,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold-gradient);
+            background: var(--primary-color);
             transition: width var(--transition-medium) var(--cubic-smooth);
             border-radius: var(--border-radius-pill);
         }
@@ -530,23 +527,47 @@
         .nav-desktop a.active::after {
             width: 100%;
         }
-
-        /* Book Now Button in Nav */
-        .nav-cta {
-            margin-left: 2rem;
+        
+        /* Pill Nav */
+        .pill-nav-items ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
         }
-
-        .nav-cta .btn {
-            padding: 1rem 2rem;
-            font-size: 1.4rem;
-            background: var(--gold-gradient);
-            background-size: 200% auto;
-            animation: gradientShift 3s linear infinite;
+        
+        .pill-nav-items li {
+            position: relative;
         }
-
-        .nav-cta .btn::before {
-            background: var(--rose-gold-gradient);
-            background-size: 200% auto;
+        
+        .pill-nav-items a {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            position: relative;
+            display: block;
+        }
+        
+        .pill-nav-items a:hover {
+            color: var(--black);
+        }
+        
+        .btn-small {
+            background: var(--white);
+            color: var(--primary-color) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius-pill);
+            transition: all var(--transition-fast);
+        }
+        
+        .btn-small:hover {
+            background: var(--secondary-color);
+            color: var(--white) !important;
+            transform: translateY(-2px);
         }
 
         @keyframes gradientShift {
@@ -712,10 +733,11 @@
             height: 100vh;
             min-height: 700px;
             overflow: hidden;
-            padding-top: 100px;
+            padding-top: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 50px;
         }
 
         .hero-video-container {
@@ -1000,7 +1022,7 @@
         /* Services Section */
         .services {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
+            padding: 10rem 0 5rem;
             position: relative;
         }
 
@@ -1020,11 +1042,13 @@
         }
 
         .service-card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 4rem;
+            justify-content: center;
             position: relative;
             z-index: 2;
+            margin-top: 5rem;
         }
 
         .service-card {
@@ -1032,9 +1056,23 @@
             border-radius: var(--border-radius-xl);
             overflow: hidden;
             box-shadow: var(--box-shadow-lg);
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            transition: all var(--transition-medium);
+            flex: 0 0 calc(33.333% - 4rem);
+            max-width: 380px;
             position: relative;
-            top: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .service-card {
+                flex: 0 0 calc(50% - 4rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .service-card {
+                flex: 0 0 100%;
+                max-width: 450px;
+            }
         }
 
         .service-card:hover {
@@ -1054,6 +1092,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform var(--transition-medium);
+            display: block;
         }
 
         .service-card:hover .service-card-img img {
@@ -1067,12 +1106,27 @@
         }
 
         .service-card-content h3 {
-            font-size: 4rem;
+            font-size: 3.8rem;
             margin-bottom: 1.5rem;
+            color: var(--primary-color);
         }
 
         .service-card-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--border-radius-pill);
+            text-decoration: none;
+            font-weight: 500;
             margin-top: 2rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .service-card-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
         }
 
         /* Instagram Section */
@@ -1434,7 +1488,7 @@
                 font-size: 56%;
             }
 
-            .nav-desktop, .nav-cta {
+            .nav-desktop {
                 display: none;
             }
 
@@ -1443,7 +1497,15 @@
             }
 
             .header-inner {
-                padding: 0.5rem 1.5rem;
+                padding: 1.5rem 2rem;
+            }
+            
+            .pill-nav {
+                display: none;
+            }
+            
+            .hero {
+                margin-top: 0;
             }
 
             .about-card {
@@ -1467,6 +1529,10 @@
             section {
                 padding: 8rem 0;
             }
+            
+            .services {
+                padding: 10rem 0 5rem;
+            }
 
             .hero-subtitle {
                 font-size: 2rem;
@@ -1487,6 +1553,10 @@
             .cta-card {
                 padding: 4rem 2rem;
             }
+            
+            .header-inner {
+                padding: 1.2rem 2rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1505,36 +1575,19 @@
             .section-header {
                 margin-bottom: 4rem;
             }
-
-            header {
-                width: 92%;
-                top: 15px;
-            }
-
-            header.scrolled {
-                width: 95%;
-                top: 10px;
+            
+            .header-inner {
+                padding: 1rem 1.5rem;
             }
 
             .logo img {
                 height: 45px;
             }
 
-            header.scrolled .logo img {
-                height: 40px;
-            }
-
             .nav-mobile {
                 width: 85%;
                 padding: 3rem 1.5rem;
                 top: 80px;
-                right: 50%;
-                transform: translateX(150%);
-            }
-
-            .nav-mobile.active {
-                right: 50%;
-                transform: translateX(50%);
             }
 
             .service-card-content {
@@ -1587,12 +1640,9 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
                     <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Book An Appointment</a></li>
                 </ul>
             </nav>
-            
-            <div class="nav-cta">
-                <a href="contact.html" class="btn">Book Now</a>
-            </div>
             
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
                 <div class="nav-toggle-inner">
@@ -1602,6 +1652,17 @@
                     <span></span>
                 </div>
             </button>
+        </div>
+        
+        <div class="pill-nav">
+            <nav class="pill-nav-items" role="navigation" aria-label="Quick links">
+                <ul>
+                    <li><a href="services.html#makeup">Make-up</a></li>
+                    <li><a href="services.html#lashes">Lashes</a></li>
+                    <li><a href="services.html#facials">Facials</a></li>
+                    <li><a href="contact.html" class="btn-small">Book Now</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -1690,61 +1751,55 @@
         <!-- Services Section -->
         <section class="services" id="services">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <p class="subtitle text-white">What We Offer</p>
-                    <h2 class="section-title text-white">Our <span class="section-title-accent">Services</span></h2>
-                    <p class="section-description text-white">Explore our range of premium beauty services designed to enhance your natural beauty.</p>
+                <div class="section-header">
+                    <p class="subtitle" style="color: white;">What We Offer</p>
+                    <h2 class="section-title" style="color: white;">Our <span class="section-title-accent">Services</span></h2>
+                    <p class="section-description" style="color: white;">Explore our range of premium beauty services designed to enhance your natural beauty.</p>
                 </div>
                 
                 <div class="service-card-container">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
                         <div class="service-card-img">
                             <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" 
                                  alt="Permanent Make-up services" 
-                                 loading="lazy"
-                                 width="300"
-                                 height="250">
+                                 loading="lazy">
                         </div>
                         <div class="service-card-content">
                             <h3>Permanent Make-up</h3>
                             <p>Achieve long-lasting beauty with our permanent make-up solutions. From perfectly defined eyebrows to natural-looking lip color, our services are designed to enhance your features and simplify your daily routine.</p>
-                            <a href="services.html" class="btn service-card-btn">Learn More</a>
+                            <a href="services.html" class="service-card-btn">Learn More</a>
                         </div>
                     </div>
                     
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
                         <div class="service-card-img">
                             <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" 
                                  alt="Eyelash enhancement services" 
-                                 loading="lazy"
-                                 width="300"
-                                 height="250">
+                                 loading="lazy">
                         </div>
                         <div class="service-card-content">
                             <h3>Eyelashes</h3>
                             <p>Our eyelash services go beyond extensions, offering a variety of treatments including lifts, tints, and high-quality extensions to enhance the natural beauty of your lashes.</p>
-                            <a href="services.html" class="btn service-card-btn">Learn More</a>
+                            <a href="services.html" class="service-card-btn">Learn More</a>
                         </div>
                     </div>
                     
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
                         <div class="service-card-img">
                             <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" 
                                  alt="Facial treatment services" 
-                                 loading="lazy"
-                                 width="300"
-                                 height="250">
+                                 loading="lazy">
                         </div>
                         <div class="service-card-content">
                             <h3>Facials</h3>
                             <p>Revitalize your skin with our range of facial and skincare treatments. From deep-cleansing facials to advanced anti-aging solutions, our services are designed to nourish, repair, and rejuvenate your skin.</p>
-                            <a href="services.html" class="btn service-card-btn">Learn More</a>
+                            <a href="services.html" class="service-card-btn">Learn More</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
-                    <a href="services.html" class="btn btn-icon">
+                <div class="text-center" style="margin-top: 5rem;">
+                    <a href="services.html" class="btn btn-icon" style="background: white; color: var(--primary-color);">
                         Explore All Services
                         <i class="fas fa-arrow-right"></i>
                     </a>
