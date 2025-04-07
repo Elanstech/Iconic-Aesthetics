@@ -704,6 +704,145 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // ------------------------------------------------------------------------
+    // ABOUT
+    // ------------------------------------------------------------------------
+    
+    function initModernAboutSection() {
+    // Select elements for animations
+    const featureCards = document.querySelectorAll('.feature-card');
+    const aboutImages = document.querySelectorAll('.about-image-main, .about-image-accent');
+    const experienceTag = document.querySelector('.experience-tag');
+    const quoteSection = document.querySelector('.owner-quote');
+    
+    // Parallax scrolling effect for main image if GSAP is available
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        // Subtle parallax for main image
+        gsap.to('.about-image-main img', {
+            scrollTrigger: {
+                trigger: '.about-modern',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            },
+            y: 50,
+            ease: 'none'
+        });
+        
+        // Animate the experience tag with a slight rotation on scroll
+        gsap.from(experienceTag, {
+            scrollTrigger: {
+                trigger: '.about-image-wrapper',
+                start: 'top 80%'
+            },
+            opacity: 0,
+            scale: 0.5,
+            rotation: -15,
+            duration: 0.8,
+            ease: 'back.out(1.7)'
+        });
+        
+        // Animate feature cards
+        gsap.from(featureCards, {
+            scrollTrigger: {
+                trigger: '.about-features',
+                start: 'top 80%'
+            },
+            y: 30,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.6
+        });
+        
+        // Animate quote section
+        gsap.from(quoteSection, {
+            scrollTrigger: {
+                trigger: quoteSection,
+                start: 'top 80%'
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.8
+        });
+    }
+    
+    // Add hover interactions for feature cards with vanilla JS
+    if (featureCards) {
+        featureCards.forEach(card => {
+            // Add mouse hover effects
+            card.addEventListener('mouseenter', function() {
+                // Add subtle scale effect to icon
+                const icon = this.querySelector('.feature-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                // Reset icon
+                const icon = this.querySelector('.feature-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+    }
+    
+    // Add scroll-based animations for elements without GSAP
+    if (!window.gsap) {
+        // Simple intersection observer for fade-in effects
+        const fadeInElements = [
+            ...featureCards, 
+            experienceTag, 
+            quoteSection,
+            ...aboutImages
+        ].filter(el => el); // Filter out null elements
+        
+        if (fadeInElements.length && 'IntersectionObserver' in window) {
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeInElements.forEach(el => {
+                el.classList.add('will-animate');
+                fadeInObserver.observe(el);
+            });
+        }
+    }
+    
+    // Add these classes to your CSS for the fallback animations
+    const styleSheet = document.styleSheets[0];
+    const fadeInRules = `
+        .will-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    `;
+    
+    try {
+        styleSheet.insertRule(fadeInRules, styleSheet.cssRules.length);
+    } catch (e) {
+        // If can't modify stylesheet, create a new style tag
+        const styleTag = document.createElement('style');
+        styleTag.textContent = fadeInRules;
+        document.head.appendChild(styleTag);
+    }
+}
+
     
     // ------------------------------------------------------------------------
     // INITIALIZE ALL COMPONENTS
@@ -720,6 +859,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeBeforeAfterSlider();
         initializeFormValidation();
         initializeCookieConsent();
+        initModernAboutSection();
     }
     
     // Start initialization
