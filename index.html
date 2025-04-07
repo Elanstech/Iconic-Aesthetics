@@ -7,2161 +7,848 @@
     <meta name="theme-color" content="#d8a39d">
     <title>Iconic Aesthetics - Beauty Beyond Limits</title>
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Tangerine:wght@400;700&display=swap" as="style">
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/demo/image/fetch/https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" type="image/jpeg">
     
     <!-- CSS Imports -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Swiper.js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS Variables */
-        :root {
-            --primary-color: #d8a39d;
-            --primary-light: #ffd8d3;
-            --primary-dark: #b27b76;
-            --secondary-color: #b89d5a;
-            --secondary-light: #d9c08b;
-            --secondary-dark: #8c7841;
-            --text-color: #5a3d3d;
-            --text-light: #a97c7c;
-            --background-color: #f9e7e5;
-            --white: #ffffff;
-            --black: #000000;
-            --gray-light: #f5f5f5;
-            --gray: #eaeaea;
-            --gray-dark: #a0a0a0;
-            
-            /* Glass effects */
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-            
-            /* Transitions */
-            --transition-fast: 0.3s;
-            --transition-medium: 0.5s;
-            --transition-slow: 0.8s;
-            --transition-very-slow: 1.5s;
-            --cubic-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            --cubic-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-            
-            /* Border Radius */
-            --border-radius-sm: 8px;
-            --border-radius-md: 16px;
-            --border-radius-lg: 24px;
-            --border-radius-xl: 32px;
-            --border-radius-xxl: 48px;
-            --border-radius-pill: 100px;
-            
-            /* Shadows */
-            --box-shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --box-shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
-            --box-shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.2);
-            --inner-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
-            
-            /* Gold gradient */
-            --gold-gradient: linear-gradient(45deg, #b89d5a, #e6c681, #b89d5a);
-            --rose-gold-gradient: linear-gradient(45deg, #b76e79, #e2b6bc, #b76e79);
-        }
-
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 62.5%; /* 1rem = 10px */
-            scroll-padding-top: 120px;
-            overflow-x: hidden;
-            height: 100%;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--background-color), var(--white));
-            color: var(--text-color);
-            font-size: 1.6rem;
-            line-height: 1.7;
-            overflow-x: hidden;
-            min-height: 100%;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 15% 50%, rgba(216, 163, 157, 0.1), transparent 25%),
-                        radial-gradient(circle at 85% 30%, rgba(184, 157, 90, 0.1), transparent 25%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Tangerine', cursive;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h2 {
-            font-size: 7rem;
-            position: relative;
-            display: inline-block;
-            margin-bottom: 4rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15rem;
-            height: 3px;
-            background: var(--gold-gradient);
-            border-radius: var(--border-radius-pill);
-        }
-
-        h3 {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-        }
-
-        p {
-            margin-bottom: 2rem;
-            font-weight: 300;
-            font-size: 1.8rem;
-            letter-spacing: 0.02em;
-        }
-
-        .subtitle {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 4rem;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 2rem;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-        
-        .text-left {
-            text-align: left;
-        }
-        
-        .text-right {
-            text-align: right;
-        }
-        
-        .text-gradient {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .text-primary {
-            color: var(--primary-color);
-        }
-        
-        .text-secondary {
-            color: var(--secondary-color);
-        }
-        
-        .text-white {
-            color: var(--white);
-        }
-
-        .mt-1 { margin-top: 1rem; }
-        .mt-2 { margin-top: 2rem; }
-        .mt-3 { margin-top: 3rem; }
-        .mt-4 { margin-top: 4rem; }
-        .mt-5 { margin-top: 5rem; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mb-3 { margin-bottom: 3rem; }
-        .mb-4 { margin-bottom: 4rem; }
-        .mb-5 { margin-bottom: 5rem; }
-        .ml-1 { margin-left: 1rem; }
-        .ml-2 { margin-left: 2rem; }
-        .mr-1 { margin-right: 1rem; }
-        .mr-2 { margin-right: 2rem; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-2 { padding-top: 2rem; padding-bottom: 2rem; }
-        .py-3 { padding-top: 3rem; padding-bottom: 3rem; }
-        .py-4 { padding-top: 4rem; padding-bottom: 4rem; }
-        .py-5 { padding-top: 5rem; padding-bottom: 5rem; }
-        .px-1 { padding-left: 1rem; padding-right: 1rem; }
-        .px-2 { padding-left: 2rem; padding-right: 2rem; }
-        .px-3 { padding-left: 3rem; padding-right: 3rem; }
-        .px-4 { padding-left: 4rem; padding-right: 4rem; }
-        .px-5 { padding-left: 5rem; padding-right: 5rem; }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: var(--primary-color);
-            color: var(--white);
-            font-size: 1.6rem;
-            font-weight: 500;
-            padding: 1.6rem 3.5rem;
-            border-radius: var(--border-radius-pill);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            border: none;
-            outline: none;
-            text-decoration: none;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transform: translateY(0);
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--secondary-color);
-            z-index: -1;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform var(--transition-medium) var(--cubic-smooth);
-            border-radius: var(--border-radius-pill);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow-lg);
-        }
-
-        .btn:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--secondary-color);
-        }
-
-        .btn-secondary::before {
-            background: var(--primary-color);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            color: var(--white);
-        }
-
-        .btn-glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-        }
-
-        .btn-glass::before {
-            background: var(--primary-color);
-            opacity: 0.8;
-        }
-
-        .btn-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .btn-icon i {
-            font-size: 1.8rem;
-            transition: transform var(--transition-fast);
-        }
-
-        .btn-icon:hover i {
-            transform: translateX(5px);
-        }
-
-        /* Loader */
-        .loader-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity var(--transition-medium), visibility var(--transition-medium);
-        }
-
-        .loader {
-            display: flex;
-            align-items: center;
-        }
-
-        .loader-text {
-            font-family: 'Tangerine', cursive;
-            font-size: 5rem;
-            color: var(--primary-color);
-            margin-right: 2rem;
-            position: relative;
-            animation: pulse 1.5s infinite alternate;
-        }
-
-        .loader-spinner {
-            position: relative;
-            width: 60px;
-            height: 60px;
-        }
-
-        .loader-spinner::before,
-        .loader-spinner::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            animation: pulse-ring 1.5s linear infinite;
-        }
-
-        .loader-spinner::before {
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary-color);
-            animation-delay: 0s;
-            opacity: 0.7;
-        }
-
-        .loader-spinner::after {
-            width: 80%;
-            height: 80%;
-            background-color: var(--primary-light);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.5);
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 0;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Header Styles */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-}
-
-.header-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 4rem;
-}
-
-.logo img {
-    height: 60px;
-    width: auto;
-    transition: height 0.3s ease;
-}
-
-.site-header.scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.site-header.scrolled .logo img {
-    height: 50px;
-}
-
-/* Desktop Navigation */
-.desktop-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-.desktop-nav a {
-    color: #ffffff;
-    font-size: 1.6rem;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.8rem 1.2rem;
-    border-radius: 100px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.desktop-nav a:hover {
-    color: #d8a39d;
-}
-
-.desktop-nav a.active {
-    background: #d8a39d;
-    color: #ffffff;
-}
-
-.desktop-nav a.active:hover {
-    background: #b27b76;
-}
-
-.desktop-nav .special-links {
-    margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-cta {
-    background: #d8a39d;
-    color: #ffffff !important;
-    padding: 1rem 2rem !important;
-    border-radius: 100px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.nav-cta:hover {
-    background: #b89d5a !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Mobile Nav Toggle */
-.mobile-nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    z-index: 1001;
-}
-
-.mobile-nav-toggle span {
-    display: block;
-    width: 30px;
-    height: 3px;
-    background: #ffffff;
-    margin: 6px 5px;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.mobile-nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-}
-
-.mobile-nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Mobile Menu */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 400px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 1000;
-    transition: right 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-    overflow-y: auto;
-}
-
-.mobile-menu.active {
-    right: 0;
-    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
-}
-
-.mobile-menu-container {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-}
-
-.mobile-logo img {
-    height: 50px;
-    width: auto;
-}
-
-.mobile-menu-close {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 2.4rem;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.mobile-nav {
-    margin-bottom: 3rem;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-nav li {
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    transition-delay: calc(var(--i, 0) * 0.1s);
-}
-
-.mobile-menu.active .mobile-nav li {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-nav a {
-    display: block;
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 1rem 0;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-nav a:hover, 
-.mobile-nav a.active {
-    color: #d8a39d;
-    padding-left: 1rem;
-}
-
-.mobile-cta {
-    margin-top: auto;
-    margin-bottom: 3rem;
-}
-
-.mobile-cta .btn {
-    display: block;
-    background: #d8a39d;
-    color: #ffffff;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 1.5rem;
-    border-radius: 100px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: all 0.3s ease;
-}
-
-.mobile-cta .btn:hover {
-    background: #b89d5a;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-social {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.mobile-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1.8rem;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.mobile-social a:hover {
-    background: #d8a39d;
-    transform: translateY(-3px);
-}
-
-/* Overlay for mobile menu */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-}
-
-    .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-        
-        }
-        
-        /* Hero Section */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 700px;
-            overflow: hidden;
-            padding-top: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .hero-video-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-            z-index: 1;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        .hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .hero-img::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            text-align: center;
-            padding: 0 2rem;
-        }
-
-        .hero-title {
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeInDown 1s forwards 0.5s;
-        }
-
-        .hero-subtitle {
-            color: var(--primary-light);
-            font-size: 2.4rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeIn 1s forwards 0.3s;
-        }
-
-        .hero-description {
-            color: var(--white);
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards 0.8s;
-        }
-
-        .hero-btn {
-            opacity: 0;
-            animation: fadeIn 1s forwards 1.2s;
-        }
-
-        /* Floating shapes in hero */
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-shape {
-            position: absolute;
-            opacity: 0.15;
-            border-radius: var(--border-radius-pill);
-        }
-
-        .shape-1 {
-            top: 10%;
-            left: 10%;
-            width: 100px;
-            height: 30px;
-            background: var(--primary-color);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            top: 20%;
-            right: 10%;
-            width: 150px;
-            height: 40px;
-            background: var(--secondary-color);
-            animation: float 9s ease-in-out infinite 1s;
-        }
-
-        .shape-3 {
-            bottom: 30%;
-            left: 15%;
-            width: 80px;
-            height: 25px;
-            background: var(--primary-light);
-            animation: float 7s ease-in-out infinite 0.5s;
-        }
-
-        .shape-4 {
-            bottom: 20%;
-            right: 15%;
-            width: 120px;
-            height: 35px;
-            background: var(--secondary-light);
-            animation: float 10s ease-in-out infinite 1.5s;
-        }
-
-        /* Scroll down arrow */
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            transition: opacity var(--transition-fast);
-        }
-
-        .scroll-down:hover {
-            opacity: 0.8;
-        }
-
-        .scroll-down i {
-            color: var(--white);
-            font-size: 2.4rem;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 10rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 6rem;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title-accent {
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title-accent::before {
-            content: '';
-            position: absolute;
-            bottom: 0.5rem;
-            left: 0;
-            width: 100%;
-            height: 1rem;
-            background-color: rgba(216, 163, 157, 0.3);
-            z-index: -1;
-            border-radius: var(--border-radius-pill);
-        }
-
-        .section-description {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.8rem;
-        }
-
-        /* Curved section dividers */
-        .curve-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .curve-divider svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 65px;
-        }
-
-        .curve-divider.curve-top {
-            top: 0;
-            bottom: auto;
-            transform: rotate(180deg);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(var(--primary-light) 1px, transparent 1px),
-                radial-gradient(var(--primary-light) 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            opacity: 0.2;
-        }
-
-        .about-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: var(--border-radius-xxl);
-            overflow: hidden;
-            padding: 5rem;
-            box-shadow: var(--box-shadow);
-            position: relative;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: var(--border-radius-xxl);
-            border: 1px solid rgba(216, 163, 157, 0.2);
-            pointer-events: none;
-        }
-
-        /* Services Section Redesigned */
-        .services {
-            background: linear-gradient(135deg, #f9f9f9, #ffffff);
-            padding: 12rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d8a39d' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.8;
-        }
-
-        .services-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-tab {
-            padding: 1.5rem 3rem;
-            background: var(--white);
-            border-radius: var(--border-radius-pill);
-            color: var(--text-color);
-            font-size: 1.6rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            border: none;
-            box-shadow: var(--box-shadow-sm);
-        }
-
-        .service-tab.active {
-            background: var(--primary-color);
-            color: var(--white);
-            box-shadow: var(--box-shadow);
-        }
-
-        .service-tab:hover:not(.active) {
-            background: var(--gray-light);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
-        }
-
-        .services-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-panels {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 4rem;
-        }
-
-        .service-panel {
-            display: none;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all var(--transition-medium);
-        }
-
-        .service-panel.active {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-            opacity: 1;
-            transform: translateY(0);
-            animation: fadeIn 0.8s forwards;
-        }
-
-        .service-image {
-            border-radius: var(--border-radius-xxl);
-            overflow: hidden;
-            box-shadow: var(--box-shadow-lg);
-            position: relative;
-            height: 100%;
-            min-height: 450px;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform var(--transition-medium);
-        }
-
-        .service-panel:hover .service-image img {
-            transform: scale(1.05);
-        }
-
-        .service-details {
-            padding: 2rem;
-        }
-
-        .service-details h3 {
-            font-size: 6rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .service-details p {
-            margin-bottom: 3rem;
-            font-size: 1.8rem;
-        }
-
-        .service-features {
-            margin-bottom: 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .service-feature {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .service-feature i {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-radius: 50%;
-            font-size: 1.6rem;
-            flex-shrink: 0;
-        }
-
-        .service-feature span {
-            font-size: 1.6rem;
-            color: var(--text-color);
-        }
-
-        .service-price {
-            display: inline-block;
-            background: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: var(--border-radius-pill);
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 3rem;
-            box-shadow: var(--box-shadow-sm);
-        }
-
-        /* Instagram Section */
-        .instagram {
-            background-color: var(--gray-light);
-            position: relative;
-        }
-
-        .instagram::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(216, 163, 157, 0.1) 25%, transparent 25%, transparent 50%, rgba(216, 163, 157, 0.1) 50%, rgba(216, 163, 157, 0.1) 75%, transparent 75%, transparent);
-            background-size: 20px 20px;
-            opacity: 0.3;
-        }
-
-        .instagram-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Reviews Section */
-        .reviews {
-            background-color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reviews::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30%;
-            background: linear-gradient(to top, var(--background-color), transparent);
-            pointer-events: none;
-        }
-
-        .reviews-container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
-            background-size: 20px 20px;
-            animation: backgroundScroll 20s linear infinite;
-            opacity: 0.3;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .cta-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: var(--border-radius-xl);
-            padding: 5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .cta h2, .cta p {
-            color: var(--white);
-        }
-
-        .cta .btn {
-            background: var(--white);
-            color: var(--primary-color);
-        }
-
-        .cta .btn::before {
-            background: var(--gold-gradient);
-        }
-
-        .cta .btn:hover {
-            color: var(--white);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--black);
-            color: var(--white);
-            position: relative;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            padding: 6rem 0 4rem;
-        }
-
-        .footer-logo {
-            margin-bottom: 2rem;
-            max-width: 150px;
-        }
-
-        .footer-col h3 {
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: var(--border-radius-pill);
-        }
-
-        .footer-nav {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-nav li {
-            margin-bottom: 1rem;
-        }
-
-        .footer-nav a {
-            color: var(--gray-dark);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            font-size: 1.6rem;
-        }
-
-        .footer-nav a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-contact li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-contact i {
-            margin-right: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-top: 0.3rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            border-radius: 50%;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-        }
-
-        .footer-social a:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--gray-dark);
-        }
-
-        .footer-bottom a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Back to top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition-fast);
-            box-shadow: var(--box-shadow);
-        }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0);
-            }
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        @keyframes backgroundScroll {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(-50px, -50px);
-            }
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            html {
-                font-size: 58%;
-            }
-
-            .service-panel.active {
-                gap: 4rem;
-            }
-            .header-container {
-            padding: 1.5rem 2rem;
-
-            }
-    
-            .desktop-nav ul {
-             gap: 1.5rem;
-            
-            }
-    
-            .desktop-nav a {
-             font-size: 1.4rem;
-            padding: 0.7rem 1rem;
-            
-            }
-
-            .service-feature {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            html {
-                font-size: 56%;
-            }
-
-            .desktop-nav {
-        display: none;
-           
-            }
-    
-       .mobile-nav-toggle {
-       display: block;
-             }
-    
-        .logo img {
-        height: 50px;
-        
-            }
-    
-        .header-container {
-        padding: 1.2rem 2rem;
-            
-            }
-
-
-            .hero {
-                margin-top: 0;
-            }
-
-            /* Services Responsive */
-            .service-panel.active {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-
-            .service-image {
-                min-height: 350px;
-            }
-
-            .services-tabs {
-                flex-wrap: wrap;
-            }
-
-            .about-card {
-                padding: 4rem 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            html {
-                font-size: 54%;
-            }
-
-            h1 {
-                font-size: 7rem;
-            }
-
-            h2 {
-                font-size: 6rem;
-            }
-
-            section {
-                padding: 8rem 0;
-            }
-             .header-container {
-        padding: 1rem 1.5rem;
-           
-             }
-    
-            .mobile-menu {
-            width: 100%;
-            max-width: none;
-                
-             }
-    
-            .logo img {
-            height: 45px;
-              
-            }
-    
-            .mobile-menu-container {
-            padding: 1.5rem;
-            
-            }
-            
-            .services {
-                padding: 10rem 0 5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 2rem;
-            }
-
-            .hero-description {
-                font-size: 1.8rem;
-            }
-
-            .about-card {
-                padding: 3rem 2rem;
-            }
-
-            .curve-divider svg {
-                height: 40px;
-            }
-
-            .cta-card {
-                padding: 4rem 2rem;
-            }
-            
-            .header-inner {
-                padding: 1.2rem 2rem;
-            }
-
-            .services-tabs {
-                gap: 1rem;
-            }
-
-            .service-tab {
-                padding: 1.2rem 2rem;
-                font-size: 1.4rem;
-            }
-
-            .service-features {
-                grid-template-columns: 1fr;
-            }
-
-            .service-details h3 {
-                font-size: 4.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            html {
-                font-size: 52%;
-            }
-
-            h1 {
-                font-size: 6rem;
-            }
-
-            h2 {
-                font-size: 5rem;
-            }
-
-            .section-header {
-                margin-bottom: 4rem;
-            }
-            
-            .header-inner {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo img {
-                height: 45px;
-            }
-
-            .service-card-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .services-tabs {
-                flex-direction: column;
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .service-tab {
-                width: 100%;
-                text-align: center;
-            }
-
-            .service-image {
-                min-height: 250px;
-            }
-        }
-
-        /* For users who prefer reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Preloader -->
-    <div class="loader-overlay" id="loader">
-        <div class="loader">
-            <div class="loader-text">Iconic Aesthetics</div>
-            <div class="loader-spinner"></div>
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="loader-logo">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+            </div>
+            <div class="loader-progress">
+                <span class="loader-bar"></span>
+            </div>
         </div>
     </div>
 
-   <!-- Modern Header -->
-<header class="site-header" id="site-header">
-    <div class="header-container">
-        <div class="logo">
-            <a href="index.html">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" 
-                     alt="Iconic Aesthetics Logo" 
-                     width="auto" 
-                     height="60"
-                     fetchpriority="high">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+                    </a>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="#booking" class="btn btn-primary">Book Now</a>
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-header">
+                <div class="mobile-logo">
+                    <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+                </div>
+                <button class="mobile-nav-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item"><a href="#home" class="mobile-nav-link">Home</a></li>
+                <li class="mobile-nav-item"><a href="#about" class="mobile-nav-link">About</a></li>
+                <li class="mobile-nav-item"><a href="#services" class="mobile-nav-link">Services</a></li>
+                <li class="mobile-nav-item"><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+                <li class="mobile-nav-item"><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+                <li class="mobile-nav-item"><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+                <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="mobile-nav-cta">
+                <a href="#booking" class="btn btn-primary btn-block">Book Your Appointment</a>
+            </div>
+            
+            <div class="mobile-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-having-makeup-done-while-sitting-52155-large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <span class="hero-tagline">Welcome to Iconic Aesthetics</span>
+                <h1 class="hero-title">Beauty Beyond Limits</h1>
+                <p class="hero-description">Enhance your natural beauty with expert care and precision, revealing the confidence that's already within you.</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn btn-primary">Book Appointment</a>
+                    <a href="#services" class="btn btn-outline">Explore Services</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <a href="#about" class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
             </a>
         </div>
         
-        <nav class="desktop-nav" role="navigation" aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li class="special-links"><a href="services.html#makeup">Make-up</a></li>
-                <li><a href="services.html#lashes">Lashes</a></li>
-                <li><a href="services.html#facials">Facials</a></li>
-                <li><a href="contact.html" class="nav-cta">Book Now</a></li>
-            </ul>
-        </nav>
-        
-        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </section>
 
-<!-- Mobile Navigation Menu -->
-<div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-container">
-        <div class="mobile-menu-header">
-            <div class="mobile-logo">
-                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" 
-                     alt="Iconic Aesthetics Logo" 
-                     width="auto" 
-                     height="50">
-            </div>
-            <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="services.html#makeup">Make-up</a></li>
-                <li><a href="services.html#lashes">Lashes</a></li>
-                <li><a href="services.html#facials">Facials</a></li>
-            </ul>
-        </nav>
-        
-        <div class="mobile-cta">
-            <a href="contact.html" class="btn">Book an Appointment</a>
-        </div>
-        
-        <div class="mobile-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
-</div>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-video-container">
-                <!-- Video Source - Replace with your own video or use this placeholder -->
-                <video class="hero-video" autoplay muted loop playsinline poster="https://assets.mixkit.co/videos/52155/52155-720.mp4">
-                    <source src="https://assets.mixkit.co/videos/52155/52155-720.mp4" type="video/mp4">
-                    <!-- Fallback image if video fails to load -->
-                    <img src="https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/refs/heads/main/fronttest.jpeg" alt="Beauty salon background" class="hero-img">
-                </video>
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Our Story</span>
+                <h2 class="section-title">About Iconic Aesthetics</h2>
+                <div class="section-divider"></div>
             </div>
             
-            <div class="floating-shapes">
-                <div class="floating-shape shape-1"></div>
-                <div class="floating-shape shape-2"></div>
-                <div class="floating-shape shape-3"></div>
-                <div class="floating-shape shape-4"></div>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Spa treatment room">
+                    <div class="about-experience">
+                        <span class="about-experience-number">10+</span>
+                        <span class="about-experience-text">Years Experience</span>
+                    </div>
+                </div>
+                
+                <div class="about-text" data-aos="fade-left">
+                    <h3 class="about-heading">Elevate Your Beauty Journey</h3>
+                    <p>At Iconic Aesthetics, we believe beauty is an art form. Our team of dedicated professionals combines artistic vision with technical expertise to craft personalized beauty experiences that enhance your natural features.</p>
+                    <p>We're committed to providing a serene environment where you can relax and rejuvenate while receiving premium services tailored to your unique beauty needs.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Premium Quality</h4>
+                                <p>We use only the finest products and cutting-edge techniques</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Expert Technicians</h4>
+                                <p>Our staff is certified, skilled, and continually trained</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Relaxing Atmosphere</h4>
+                                <p>A tranquil sanctuary designed for your comfort</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">What We Offer</span>
+                <h2 class="section-title">Our Premium Services</h2>
+                <div class="section-divider"></div>
             </div>
             
-            <div class="hero-content">
-                <p class="hero-subtitle">Welcome to Iconic Aesthetics</p>
-                <h1 class="hero-title">Beauty Beyond Limits</h1>
-                <p class="hero-description">Enhance your natural beauty with expert care and precision, revealing the confidence that's already within you.</p>
-                <a href="contact.html" class="btn btn-icon hero-btn">
-                    Book Your Consultation
-                    <i class="fas fa-arrow-right"></i>
+            <div class="services-tabs" data-aos="fade-up">
+                <button class="service-tab active" data-service="permanent-makeup">Permanent Makeup</button>
+                <button class="service-tab" data-service="eyelashes">Eyelashes</button>
+                <button class="service-tab" data-service="facials">Facials</button>
+            </div>
+            
+            <div class="services-content">
+                <!-- Permanent Makeup -->
+                <div class="service-panel active" id="permanent-makeup" data-aos="fade-up">
+                    <div class="service-info">
+                        <h3 class="service-title">Permanent Makeup</h3>
+                        <p class="service-description">Enhance your natural features with our premium permanent makeup services. Wake up every day with perfect brows, lips, and eyeliner.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Microblading</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Powder Brows</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lip Blush</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Eyeliner</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Nano Brows</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Touch-ups</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-price">Starting at $250</div>
+                        
+                        <a href="#booking" class="btn btn-primary">Book Now</a>
+                    </div>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Makeup">
+                    </div>
+                </div>
+                
+                <!-- Eyelashes -->
+                <div class="service-panel" id="eyelashes">
+                    <div class="service-info">
+                        <h3 class="service-title">Eyelash Services</h3>
+                        <p class="service-description">Transform your eyes with our luxury lash services. From classic extensions to dramatic volume, we create customized looks that enhance your natural beauty.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Classic Extensions</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Volume Extensions</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Hybrid Extensions</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lash Lift</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lash Tint</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Lash Maintenance</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-price">Starting at $85</div>
+                        
+                        <a href="#booking" class="btn btn-primary">Book Now</a>
+                    </div>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1577952178716-3ad3d7052a97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1739&q=80" alt="Eyelash Extensions">
+                    </div>
+                </div>
+                
+                <!-- Facials -->
+                <div class="service-panel" id="facials">
+                    <div class="service-info">
+                        <h3 class="service-title">Facial Treatments</h3>
+                        <p class="service-description">Revitalize your skin with our luxurious facial treatments. From deep cleansing to anti-aging, our facials are customized to address your unique skin concerns.</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Signature Facial</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Deep Cleansing</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Anti-Aging</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Hydrating</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acne Treatment</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Chemical Peels</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-price">Starting at $75</div>
+                        
+                        <a href="#booking" class="btn btn-primary">Book Now</a>
+                    </div>
+                    
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Facial Treatment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (New) -->
+    <section class="gallery section-padding" id="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Our Work</span>
+                <h2 class="section-title">Before & After Gallery</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="gallery-filters" data-aos="fade-up">
+                <button class="gallery-filter active" data-filter="all">All</button>
+                <button class="gallery-filter" data-filter="makeup">Permanent Makeup</button>
+                <button class="gallery-filter" data-filter="lashes">Eyelashes</button>
+                <button class="gallery-filter" data-filter="facials">Facials</button>
+            </div>
+            
+            <div class="gallery-grid" data-aos="fade-up">
+                <!-- Before/After Item 1 -->
+                <div class="gallery-item" data-category="makeup">
+                    <div class="before-after-container">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="Before Microblading">
+                            <span class="label">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="After Microblading">
+                            <span class="label">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Microblading Transformation</h4>
+                        <p>Natural-looking brows that frame your face perfectly</p>
+                    </div>
+                </div>
+                
+                <!-- Before/After Item 2 -->
+                <div class="gallery-item" data-category="lashes">
+                    <div class="before-after-container">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1630122729919-0e9c8dd9d734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="Before Lash Extensions">
+                            <span class="label">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1593560368921-9754f54587b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="After Lash Extensions">
+                            <span class="label">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Volume Lash Extensions</h4>
+                        <p>Dramatic lashes that enhance your eyes</p>
+                    </div>
+                </div>
+                
+                <!-- Before/After Item 3 -->
+                <div class="gallery-item" data-category="facials">
+                    <div class="before-after-container">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1586179253019-2fec91a18a55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="Before Facial">
+                            <span class="label">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80" alt="After Facial">
+                            <span class="label">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h4>Hydrating Facial Results</h4>
+                        <p>Restored skin radiance and hydration</p>
+                    </div>
+                </div>
+                
+                <!-- Additional gallery items can be added here -->
+            </div>
+            
+            <div class="text-center" data-aos="fade-up">
+                <a href="#contact" class="btn btn-outline">Schedule Your Transformation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Happy Clients</span>
+                <h2 class="section-title">Client Reviews</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="reviews-container" data-aos="fade-up">
+                <div class="elfsight-app-879ff4a8-69d5-4e42-a5bd-bfa942072e29" data-elfsight-app-lazy></div>
+            </div>
+            
+            <div class="text-center mt-50" data-aos="fade-up">
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ Section (New) -->
+    <section class="faq section-padding" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Common Questions</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="faq-content" data-aos="fade-up">
+                <div class="faq-column">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long do permanent makeup results last?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Permanent makeup typically lasts between 1-3 years, depending on your skin type, lifestyle, and aftercare. Touch-up appointments are recommended every 12-18 months to maintain the color and shape.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is permanent makeup painful?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We apply a topical numbing cream before and during the procedure to minimize discomfort. Most clients describe the sensation as mild to moderate, similar to a scratching feeling rather than sharp pain.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long do eyelash extensions last?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Eyelash extensions typically last for the natural growth cycle of your lashes, around 6-8 weeks. However, we recommend maintenance appointments every 2-3 weeks to fill in any lashes that have naturally shed.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-column">
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How often should I get a facial?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For optimal results, we recommend getting a facial every 4-6 weeks, which aligns with your skin's natural cell turnover cycle. However, the frequency can vary based on your specific skin concerns and goals.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What should I do before my appointment?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To prepare for your appointment, avoid caffeine and alcohol 24 hours before, come with a clean face (no makeup), and avoid sun exposure or tanning for at least a week prior. Specific instructions will be provided based on your service.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer gift cards?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Gift cards are available for purchase in our spa or online. They make perfect gifts for birthdays, holidays, or any special occasion. Gift cards can be used for any service or product we offer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-50" data-aos="fade-up">
+                <p class="faq-contact-text">Don't see your question? Contact us directly.</p>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section (New) -->
+    <section class="booking section-padding" id="booking">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Schedule Your Visit</span>
+                <h2 class="section-title">Book Your Appointment</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="booking-content" data-aos="fade-up">
+                <div class="booking-info">
+                    <h3>Ready for Your Transformation?</h3>
+                    <p>Book your appointment today and take the first step toward enhancing your natural beauty. Our expert team is ready to provide you with personalized service in a relaxing environment.</p>
+                    
+                    <div class="booking-steps">
+                        <div class="booking-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Choose Your Service</h4>
+                                <p>Select the service that best fits your beauty goals</p>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Select Date & Time</h4>
+                                <p>Pick a convenient appointment time for your schedule</p>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Confirmation</h4>
+                                <p>Receive your booking confirmation via email or text</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(123) 456-7890</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@iconicaesthetics.com</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Beauty Lane, Suite 100<br>Your City, State 12345</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="booking-form">
+                    <form action="#" method="post" id="booking-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service</label>
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="microblading">Microblading</option>
+                                <option value="powder-brows">Powder Brows</option>
+                                <option value="lip-blush">Lip Blush</option>
+                                <option value="eyeliner">Permanent Eyeliner</option>
+                                <option value="lash-classic">Classic Lash Extensions</option>
+                                <option value="lash-volume">Volume Lash Extensions</option>
+                                <option value="lash-lift">Lash Lift & Tint</option>
+                                <option value="facial-signature">Signature Facial</option>
+                                <option value="facial-hydrating">Hydrating Facial</option>
+                                <option value="facial-anti-aging">Anti-Aging Facial</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="time">Preferred Time</label>
+                                <select id="time" name="time" required>
+                                    <option value="" disabled selected>Select Time</option>
+                                    <option value="9:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Special Requests or Questions</label>
+                            <textarea id="message" name="message" placeholder="Any special requests or questions?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram section-padding" id="instagram-feed">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Follow Us</span>
+                <h2 class="section-title">Instagram Feed</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="instagram-content" data-aos="fade-up">
+                <div class="elfsight-app-733f1639-eab6-45e9-bb48-480e830299ca" data-elfsight-app-lazy></div>
+            </div>
+            
+            <div class="text-center mt-50" data-aos="fade-up">
+                <a href="https://www.instagram.com/" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-instagram mr-10"></i> Follow Us on Instagram
                 </a>
             </div>
-            
-            <div class="scroll-down" id="scroll-to-about">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="curve-divider curve-top">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill" fill="#f9e7e5"></path>
-                </svg>
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+                <div class="section-divider"></div>
             </div>
             
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <p class="subtitle">Our Story</p>
-                    <h2 class="section-title">About <span class="section-title-accent">Us</span></h2>
-                    <p class="section-description">At Iconic Aesthetics, we believe that beauty is an expression of self-love and confidence.</p>
-                </div>
-                
-                <div class="about-content" data-aos="fade-up" data-aos-delay="200">
-                    <div class="about-card">
-                        <p>At Iconic Aesthetics, we offer a variety of services to help you feel and look your best. Our experienced team is dedicated to providing top-quality beauty treatments that cater to your individual needs.</p>
-                        <div class="text-center mt-4">
-                            <a href="about.html" class="btn btn-icon">
-                                Learn More
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+            <div class="contact-content" data-aos="fade-up">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Our Location</h3>
+                            <p>123 Beauty Lane, Suite 100<br>Your City, State 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <p>(123) 456-7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Address</h3>
+                            <p>info@iconicaesthetics.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>
+                                Monday - Friday: 9:00 AM - 7:00 PM<br>
+                                Saturday: 10:00 AM - 5:00 PM<br>
+                                Sunday: Closed
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="curve-divider">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill" fill="#d8a39d"></path>
-                </svg>
-            </div>
-        </section>
-
-        <!-- Redesigned Services Section -->
-        <section class="services" id="services">
-            <div class="container">
-                <div class="section-header">
-                    <p class="subtitle">What We Offer</p>
-                    <h2 class="section-title">Our <span class="section-title-accent">Services</span></h2>
-                    <p class="section-description">Explore our range of premium beauty services designed to enhance your natural beauty.</p>
-                </div>
                 
-                <div class="services-tabs" id="services-tabs">
-                    <button class="service-tab active" data-target="permanent-makeup">Permanent Make-up</button>
-                    <button class="service-tab" data-target="eyelashes">Eyelashes</button>
-                    <button class="service-tab" data-target="facials">Facials</button>
-                </div>
-                
-                <div class="services-content">
-                    <div class="service-panels">
-                        <!-- Permanent Makeup Panel -->
-                        <div class="service-panel active" id="permanent-makeup">
-                            <div class="service-image">
-                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" 
-                                     alt="Permanent Make-up services" 
-                                     loading="lazy">
-                            </div>
-                            <div class="service-details">
-                                <h3>Permanent Make-up</h3>
-                                <p>Achieve long-lasting beauty with our premium permanent make-up solutions. Our expert technicians use state-of-the-art techniques to enhance your natural features, creating stunning, lasting results.</p>
-                                
-                                <div class="service-features">
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Microblading</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Powder Brows</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Lip Blush</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Eyeliner</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Nano Brows</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Touch-ups</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="service-price">Starting at $250</div>
-                                
-                                <a href="services.html#permanent-makeup" class="btn btn-icon">
-                                    View Details
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                <div class="contact-form-container">
+                    <form action="#" method="post" id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" name="contact-name" placeholder="Your Name" required>
                         </div>
                         
-                        <!-- Eyelashes Panel -->
-                        <div class="service-panel" id="eyelashes">
-                            <div class="service-image">
-                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" 
-                                     alt="Eyelash enhancement services" 
-                                     loading="lazy">
-                            </div>
-                            <div class="service-details">
-                                <h3>Eyelashes</h3>
-                                <p>Transform your look with our premium eyelash services. From volume extensions to lash lifts and tints, our skilled technicians help you achieve the perfect lash look that enhances your natural beauty.</p>
-                                
-                                <div class="service-features">
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Classic Extensions</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Volume Extensions</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Hybrid Extensions</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Lash Lift</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Lash Tint</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Lash Maintenance</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="service-price">Starting at $85</div>
-                                
-                                <a href="services.html#eyelashes" class="btn btn-icon">
-                                    View Details
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" name="contact-email" placeholder="Your Email" required>
                         </div>
                         
-                        <!-- Facials Panel -->
-                        <div class="service-panel" id="facials">
-                            <div class="service-image">
-                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" 
-                                     alt="Facial treatment services" 
-                                     loading="lazy">
-                            </div>
-                            <div class="service-details">
-                                <h3>Facials</h3>
-                                <p>Revitalize your skin with our luxurious facial treatments. Using premium products and advanced techniques, our facials are customized to address your unique skin concerns and help you achieve a radiant complexion.</p>
-                                
-                                <div class="service-features">
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Signature Facial</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Deep Cleansing</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Anti-Aging</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Hydrating</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Acne Treatment</span>
-                                    </div>
-                                    <div class="service-feature">
-                                        <i class="fas fa-check"></i>
-                                        <span>Chemical Peels</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="service-price">Starting at $75</div>
-                                
-                                <a href="services.html#facials" class="btn btn-icon">
-                                    View Details
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <input type="text" id="contact-subject" name="contact-subject" placeholder="Subject" required>
                         </div>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="contact-message" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="map-container" data-aos="fade-up">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343015!2d-74.0066351842818!3d40.74165444379744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzMwLjAiTiA3NMKwMDAnMjIuOSJX!5e0!3m2!1sen!2sus!4v1583599837743!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
 
-        <!-- Instagram Feed Section -->
-        <section class="instagram" id="instagram">
-            <div class="curve-divider curve-top">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill" fill="#d8a39d"></path>
-                </svg>
-            </div>
-            
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <p class="subtitle">Follow Us</p>
-                    <h2 class="section-title">Instagram <span class="section-title-accent">Feed</span></h2>
-                    <p class="section-description">Stay connected and get inspired by our latest work and beauty tips.</p>
+    <!-- Newsletter Section (New) -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <div class="newsletter-text">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Stay updated with our latest beauty tips, promotions, and events.</p>
                 </div>
                 
-                <div class="instagram-content" data-aos="fade-up" data-aos-delay="200">
-                    <div class="elfsight-app-733f1639-eab6-45e9-bb48-480e830299ca" data-elfsight-app-lazy></div>
-                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
-        </section>
-
-        <!-- Reviews Section -->
-        <section class="reviews" id="reviews">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <p class="subtitle">Happy Clients</p>
-                    <h2 class="section-title">Client <span class="section-title-accent">Reviews</span></h2>
-                    <p class="section-description">Discover what our clients have to say about their experiences at Iconic Aesthetics.</p>
-                </div>
-                
-                <div class="reviews-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="elfsight-app-879ff4a8-69d5-4e42-a5bd-bfa942072e29" data-elfsight-app-lazy></div>
-                </div>
-                
-                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                    <a href="testimonials.html" class="btn btn-icon">
-                        Read More Testimonials
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta" id="cta">
-            <div class="container">
-                <div class="cta-content" data-aos="fade-up">
-                    <div class="cta-card">
-                        <h2>Ready to Transform?</h2>
-                        <p>Contact us today to schedule your appointment and experience beauty beyond limits.</p>
-                        <a href="contact.html" class="btn btn-icon mt-4">
-                            Book Now
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Floating Contact Buttons -->
-    <div class="elfsight-app-b2b4c60b-96f5-4a1c-b1f1-8d7f0f0a7805"></div>
-    <div class="elfsight-app-a67fb907-1072-47b7-8017-21715e159ac6" data-elfsight-app-lazy></div>
-    <div class="elfsight-app-ee465e77-71ca-4aa6-8029-28b1982ebacd" data-elfsight-app-lazy></div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
-                    <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" 
-                         alt="Iconic Aesthetics Logo" 
-                         class="footer-logo"
-                         loading="lazy"
-                         width="150"
-                         height="auto">
-                    <p>Experience beauty transformation with our expert care and precision. We're dedicated to enhancing your natural beauty and revealing the confidence within you.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
+                <div class="footer-logo">
+                    <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+                    <p>Enhance your natural beauty with our expert care and precision at Iconic Aesthetics.</p>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-links">
                     <h3>Quick Links</h3>
-                    <ul class="footer-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-services">
                     <h3>Our Services</h3>
-                    <ul class="footer-nav">
-                        <li><a href="services.html#permanent-makeup">Permanent Make-up</a></li>
-                        <li><a href="services.html#eyelashes">Eyelash Extensions</a></li>
-                        <li><a href="services.html#facials">Facials</a></li>
-                        <li><a href="services.html">Skin Care</a></li>
-                        <li><a href="services.html">Beauty Consultations</a></li>
+                    <ul>
+                        <li><a href="#services">Permanent Makeup</a></li>
+                        <li><a href="#services">Microblading</a></li>
+                        <li><a href="#services">Eyelash Extensions</a></li>
+                        <li><a href="#services">Lash Lift & Tint</a></li>
+                        <li><a href="#services">Facials</a></li>
+                        <li><a href="#services">Skin Care</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <ul class="footer-contact">
+                    <ul>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <span>123 Beauty Lane, Suite 100<br>Your City, State 12345</span>
@@ -2183,8 +870,20 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> Iconic Aesthetics. All Rights Reserved.</p>
-                <p>Designed by <a href="https://elanstechworld.com" target="_blank" rel="noopener">Elan's Tech World</a></p>
+                <div class="copyright">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Iconic Aesthetics. All Rights Reserved.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                
+                <div class="designer-credit">
+                    <p>Designed by <a href="https://elanstechworld.com" target="_blank" rel="noopener">Elan's Tech World</a></p>
+                </div>
             </div>
         </div>
     </footer>
@@ -2194,265 +893,38 @@
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- JS Libraries -->
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <a href="#booking" class="floating-btn book-btn" aria-label="Book Appointment">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Book</span>
+        </a>
+        <a href="tel:1234567890" class="floating-btn call-btn" aria-label="Call Us">
+            <i class="fas fa-phone-alt"></i>
+            <span>Call</span>
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank" class="floating-btn whatsapp-btn" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat</span>
+        </a>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookie-consent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your browsing experience. By continuing to use our website, you agree to our <a href="#">Privacy Policy</a>.</p>
+            <div class="cookie-buttons">
+                <button class="btn btn-outline btn-sm" id="cookie-accept">Accept</button>
+                <button class="btn btn-text btn-sm" id="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    <script src="https://static.elfsight.com/platform/platform.js" defer></script>
-
-    <!-- Custom JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false,
-        offset: 100
-    });
-    
-    // DOM Elements
-    const siteHeader = document.getElementById('site-header');
-    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const scrollToAbout = document.getElementById('scroll-to-about');
-    const backToTop = document.getElementById('back-to-top');
-    const loader = document.getElementById('loader');
-    const body = document.body;
-    
-    // Create overlay element for mobile menu
-    const menuOverlay = document.createElement('div');
-    menuOverlay.className = 'menu-overlay';
-    body.appendChild(menuOverlay);
-    
-    // Tab functionality for services
-    const tabs = document.querySelectorAll('.service-tab');
-    const panels = document.querySelectorAll('.service-panel');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            this.classList.add('active');
-            
-            // Get target panel id
-            const targetId = this.getAttribute('data-target');
-            
-            // Hide all panels
-            panels.forEach(panel => {
-                panel.classList.remove('active');
-            });
-            
-            // Show target panel
-            document.getElementById(targetId).classList.add('active');
-        });
-    });
-    
-    // Hide loader when page is loaded
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            loader.style.opacity = '0';
-            setTimeout(function() {
-                loader.style.display = 'none';
-            }, 500);
-        }, 500);
-    });
-    
-    // Debounce function
-    function debounce(func, wait = 20, immediate = true) {
-        let timeout;
-        return function() {
-            const context = this, args = arguments;
-            const later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    }
-    
-    // Toggle mobile menu
-    function toggleMobileMenu() {
-        mobileNavToggle.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        
-        if (mobileMenu.classList.contains('active')) {
-            body.style.overflow = 'hidden'; // Prevent background scrolling
-            
-            // Add animation delays to list items
-            document.querySelectorAll('.mobile-nav li').forEach((item, index) => {
-                item.style.setProperty('--i', index);
-            });
-        } else {
-            body.style.overflow = '';
-        }
-    }
-    
-    // Close mobile menu
-    function closeMobileMenu() {
-        mobileNavToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        body.style.overflow = '';
-    }
-    
-    // Scroll to section
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            window.scrollTo({
-                top: section.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
-    }
-    
-    // Toggle header on scroll
-    function handleScroll() {
-        if (window.scrollY > 50) {
-            siteHeader.classList.add('scrolled');
-        } else {
-            siteHeader.classList.remove('scrolled');
-        }
-        
-        // Back to top button visibility
-        if (window.scrollY > 500) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
-        }
-    }
-    
-    // Set active menu item based on current page
-    function setActiveMenuItem() {
-        const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            
-            // Compare the link href with current path
-            const linkPath = link.getAttribute('href');
-            
-            if (currentPath === linkPath || 
-                (currentPath === '/' && linkPath === 'index.html') ||
-                (currentPath.includes(linkPath) && linkPath !== 'index.html')) {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    // Add event listeners
-    window.addEventListener('scroll', debounce(handleScroll));
-    
-    if (mobileNavToggle) {
-        mobileNavToggle.addEventListener('click', toggleMobileMenu);
-    }
-    
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-    }
-    
-    if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close mobile menu when clicking on a link
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-    
-    // Scroll to About section when clicking on scroll down arrow
-    if (scrollToAbout) {
-        scrollToAbout.addEventListener('click', () => {
-            scrollToSection('about');
-        });
-    }
-    
-    // Scroll to top
-    if (backToTop) {
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href').substring(1);
-            if (targetId && targetId !== '') {
-                e.preventDefault();
-                scrollToSection(targetId);
-            }
-        });
-    });
-    
-    // Add tilt effect to service images
-    if (window.innerWidth > 992 && typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll('.service-image'), {
-            max: 5,
-            speed: 400,
-            glare: true,
-            'max-glare': 0.2,
-            scale: 1.02
-        });
-    }
-    
-    // GSAP Animations
-    if (typeof gsap !== 'undefined') {
-        // Header animation
-        gsap.from('header', {
-            y: -100,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out',
-            delay: 0.5
-        });
-        
-        // Service panels staggered animation
-        gsap.from('.service-tab', {
-            scrollTrigger: {
-                trigger: '.services',
-                start: 'top 80%'
-            },
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power3.out'
-        });
-        
-        // CTA section animation
-        gsap.from('.cta-card', {
-            scrollTrigger: {
-                trigger: '.cta',
-                start: 'top 80%'
-            },
-            scale: 0.9,
-            opacity: 0,
-            duration: 1,
-            ease: 'elastic.out(1, 0.5)'
-        });
-    }
-    
-    // Initialize state
-    handleScroll();
-    setActiveMenuItem();
-});
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
