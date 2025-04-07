@@ -420,20 +420,18 @@
 
         /* Modern Pill Header */
         .header {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 95%;
-            max-width: 1400px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: var(--border-radius-pill);
-            padding: 1rem;
-            box-shadow: var(--box-shadow-lg);
-            transition: all var(--transition-medium);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 1rem;
+        box-shadow: var(--box-shadow-lg);
+        transition: all var(--transition-medium);
+        
         }
 
         .header.scrolled {
@@ -442,10 +440,13 @@
         }
 
         .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+        
         }
 
         .logo {
