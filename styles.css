@@ -444,13 +444,13 @@ p {
 }
 
 .logo img {
-    height: 70px;
+    height: 120px;
     width: auto;
     transition: height var(--transition-fast);
 }
 
 .site-header.scrolled .logo img {
-    height: 50px;
+    height: 80px;
 }
 
 /* Main Navigation */
