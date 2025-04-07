@@ -188,20 +188,26 @@
         /* Header */
         header {
             position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
+            width: 80%;
+            max-width: 1200px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
-            padding: 2rem 4rem;
+            padding: 1.2rem 3rem;
             transition: all var(--transition-fast);
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-pill);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         header.scrolled {
-            padding: 1rem 4rem;
+            padding: 0.8rem 3rem;
             background: rgba(0, 0, 0, 0.9);
+            width: 90%;
+            top: 15px;
         }
 
         .header-container {
@@ -216,13 +222,13 @@
         }
 
         .logo img {
-            max-width: 150px;
+            max-width: 130px;
             height: auto;
             transition: all var(--transition-fast);
         }
 
         header.scrolled .logo img {
-            max-width: 120px;
+            max-width: 100px;
         }
 
         /* Navigation */
@@ -286,11 +292,11 @@
         /* Mobile Navigation */
         .nav-mobile {
             position: fixed;
-            top: 0;
+            top: 100px;
             right: -100%;
             width: 80%;
             max-width: 400px;
-            height: 100vh;
+            height: calc(100vh - 200px);
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -300,7 +306,9 @@
             align-items: center;
             z-index: 1500;
             transition: right var(--transition-medium) ease;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .nav-mobile.active {
@@ -378,7 +386,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 80px;
+            padding-top: 120px;
             overflow: hidden;
             background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/Elanstech/Iconic-Aesthetics/refs/heads/main/fronttest.jpeg') no-repeat center/cover;
         }
@@ -860,11 +868,17 @@
             }
 
             header {
-                padding: 1.5rem 2rem;
+                width: 90%;
+                padding: 1.2rem 2rem;
             }
 
             header.scrolled {
-                padding: 1rem 2rem;
+                width: 95%;
+                padding: 0.8rem 2rem;
+            }
+
+            .nav-mobile {
+                top: 90px;
             }
 
             .services-container {
@@ -918,6 +932,26 @@
             .footer-links {
                 flex-direction: column;
                 gap: 1.5rem;
+            }
+            
+            header {
+                width: 95%;
+                top: 10px;
+                padding: 1rem 1.5rem;
+            }
+            
+            header.scrolled {
+                width: 98%;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .nav-mobile {
+                top: 80px;
+                width: 90%;
+            }
+            
+            .hero {
+                padding-top: 100px;
             }
         }
 
