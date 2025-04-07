@@ -418,20 +418,26 @@
             }
         }
 
-        /* Header */
-        header {
+        /* Modern Pill Header */
+        .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1400px;
             z-index: 1000;
-            background: var(--black);
-            padding: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-pill);
+            padding: 1rem;
+            box-shadow: var(--box-shadow-lg);
             transition: all var(--transition-medium);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        header.scrolled {
+        .header.scrolled {
+            top: 1rem;
             background: rgba(0, 0, 0, 0.9);
         }
 
@@ -439,25 +445,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 4rem;
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .pill-nav {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            border-radius: var(--border-radius-pill);
-            padding: 1rem 3rem;
-            box-shadow: var(--box-shadow);
-            z-index: 1001;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
@@ -466,16 +454,15 @@
         }
 
         .logo img {
-            height: 55px;
+            height: 50px;
             width: auto;
             transition: height var(--transition-medium);
         }
 
-        header.scrolled .logo img {
+        .header.scrolled .logo img {
             height: 45px;
         }
 
-        /* Navigation */
         .nav-desktop {
             display: flex;
         }
@@ -483,9 +470,10 @@
         .nav-desktop ul {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 2.5rem;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         .nav-desktop li {
@@ -498,88 +486,41 @@
             font-weight: 400;
             letter-spacing: 0.05em;
             text-decoration: none;
-            padding: 0.5rem 0;
-            transition: color var(--transition-fast);
+            padding: 0.8rem 1.5rem;
+            transition: all var(--transition-fast);
             position: relative;
             display: block;
-        }
-
-        .nav-desktop a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width var(--transition-medium) var(--cubic-smooth);
             border-radius: var(--border-radius-pill);
         }
 
         .nav-desktop a:hover {
+            background: rgba(255, 255, 255, 0.1);
             color: var(--primary-light);
         }
 
-        .nav-desktop a:hover::after {
-            width: 100%;
+        .nav-desktop a.active {
+            background: var(--primary-color);
+            color: var(--white);
         }
 
-        .nav-desktop a.active::after {
-            width: 100%;
+        .nav-desktop .special-links {
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 1.5rem;
+            padding-left: 1.5rem;
         }
-        
-        /* Pill Nav */
-        .pill-nav-items ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .pill-nav-items li {
-            position: relative;
-        }
-        
-        .pill-nav-items a {
+
+        .nav-desktop .btn-nav {
+            background: var(--primary-color);
             color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            position: relative;
-            display: block;
-        }
-        
-        .pill-nav-items a:hover {
-            color: var(--black);
-        }
-        
-        .btn-small {
-            background: var(--white);
-            color: var(--primary-color) !important;
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: var(--border-radius-pill);
             transition: all var(--transition-fast);
         }
-        
-        .btn-small:hover {
-            background: var(--secondary-color);
-            color: var(--white) !important;
-            transform: translateY(-2px);
-        }
 
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% center;
-            }
-            50% {
-                background-position: 100% center;
-            }
-            100% {
-                background-position: 0% center;
-            }
+        .nav-desktop .btn-nav:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-sm);
         }
 
         /* Mobile Nav Toggle */
@@ -649,81 +590,119 @@
         /* Mobile Navigation */
         .nav-mobile {
             position: fixed;
-            top: 100px;
+            top: 0;
             right: -100%;
-            width: 80%;
-            max-width: 400px;
-            height: auto;
-            max-height: calc(100vh - 150px);
-            background: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            z-index: 1000;
+            align-items: center;
+            z-index: 999;
             transition: right var(--transition-medium) var(--cubic-smooth);
-            padding: 4rem 2rem;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--box-shadow-lg);
-            overflow-y: auto;
         }
 
         .nav-mobile.active {
-            right: 20px;
+            right: 0;
+        }
+
+        .nav-mobile-inner {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
         }
 
         .nav-mobile ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            text-align: center;
         }
 
         .nav-mobile li {
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateY(20px);
             transition: all var(--transition-medium) var(--cubic-smooth);
             transition-delay: calc(var(--i) * 0.1s);
+            margin-bottom: 2rem;
         }
 
         .nav-mobile.active li {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
         .nav-mobile a {
             display: block;
             color: var(--white);
-            font-size: 2rem;
-            padding: 1.5rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 2.4rem;
+            padding: 1.5rem;
             text-decoration: none;
             transition: all var(--transition-fast);
+            border-radius: var(--border-radius-pill);
         }
 
         .nav-mobile a:hover {
+            background: rgba(255, 255, 255, 0.1);
             color: var(--primary-color);
-            padding-left: 2rem;
         }
 
-        .nav-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--transition-medium), visibility var(--transition-medium);
+        .nav-mobile .mobile-special {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .nav-backdrop.active {
-            opacity: 1;
-            visibility: visible;
+        .nav-mobile .mobile-special a {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem 3rem;
+            border-radius: var(--border-radius-pill);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-mobile .mobile-special a:hover {
+            background: var(--secondary-color);
+        }
+
+        .nav-mobile .social-mobile {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .nav-mobile .social-mobile a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 2rem;
+            padding: 0;
+        }
+
+        .nav-mobile .social-mobile a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .mobile-logo {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .mobile-logo img {
+            height: 70px;
+            width: auto;
         }
 
         /* Hero Section */
@@ -737,7 +716,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 50px;
         }
 
         .hero-video-container {
@@ -1019,11 +997,12 @@
             pointer-events: none;
         }
 
-        /* Services Section */
+        /* Services Section Redesigned */
         .services {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+            padding: 12rem 0;
             position: relative;
+            overflow: hidden;
         }
 
         .services::before {
@@ -1033,100 +1012,149 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(var(--primary-dark) 1px, transparent 1px),
-                radial-gradient(var(--primary-dark) 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d8a39d' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
         }
 
-        .service-card-container {
+        .services-tabs {
             display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
             justify-content: center;
+            gap: 2rem;
+            margin-bottom: 5rem;
             position: relative;
             z-index: 2;
-            margin-top: 5rem;
         }
 
-        .service-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius-xl);
+        .service-tab {
+            padding: 1.5rem 3rem;
+            background: var(--white);
+            border-radius: var(--border-radius-pill);
+            color: var(--text-color);
+            font-size: 1.6rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .service-tab.active {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--box-shadow);
+        }
+
+        .service-tab:hover:not(.active) {
+            background: var(--gray-light);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .services-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-panels {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .service-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition-medium);
+        }
+
+        .service-panel.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .service-image {
+            border-radius: var(--border-radius-xxl);
             overflow: hidden;
             box-shadow: var(--box-shadow-lg);
-            transition: all var(--transition-medium);
-            flex: 0 0 calc(33.333% - 4rem);
-            max-width: 380px;
             position: relative;
+            height: 100%;
+            min-height: 450px;
         }
 
-        @media (max-width: 1200px) {
-            .service-card {
-                flex: 0 0 calc(50% - 4rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .service-card {
-                flex: 0 0 100%;
-                max-width: 450px;
-            }
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-xl);
-        }
-
-        .service-card-img {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .service-card-img img {
+        .service-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform var(--transition-medium);
             display: block;
+            transition: transform var(--transition-medium);
         }
 
-        .service-card:hover .service-card-img img {
-            transform: scale(1.1);
+        .service-panel:hover .service-image img {
+            transform: scale(1.05);
         }
 
-        .service-card-content {
-            padding: 3rem;
-            text-align: center;
-            color: var(--text-color);
+        .service-details {
+            padding: 2rem;
         }
 
-        .service-card-content h3 {
-            font-size: 3.8rem;
-            margin-bottom: 1.5rem;
+        .service-details h3 {
+            font-size: 6rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
         }
 
-        .service-card-btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: var(--border-radius-pill);
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 2rem;
-            transition: all var(--transition-fast);
+        .service-details p {
+            margin-bottom: 3rem;
+            font-size: 1.8rem;
         }
-        
-        .service-card-btn:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
+
+        .service-features {
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .service-feature i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .service-feature span {
+            font-size: 1.6rem;
+            color: var(--text-color);
+        }
+
+        .service-price {
+            display: inline-block;
+            background: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-pill);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            box-shadow: var(--box-shadow-sm);
         }
 
         /* Instagram Section */
@@ -1381,9 +1409,11 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -1481,6 +1511,14 @@
             html {
                 font-size: 58%;
             }
+
+            .service-panel.active {
+                gap: 4rem;
+            }
+
+            .service-feature {
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 992px) {
@@ -1488,6 +1526,7 @@
                 font-size: 56%;
             }
 
+            /* Header Responsive */
             .nav-desktop {
                 display: none;
             }
@@ -1500,12 +1539,22 @@
                 padding: 1.5rem 2rem;
             }
             
-            .pill-nav {
-                display: none;
-            }
-            
             .hero {
                 margin-top: 0;
+            }
+
+            /* Services Responsive */
+            .service-panel.active {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .service-image {
+                min-height: 350px;
+            }
+
+            .services-tabs {
+                flex-wrap: wrap;
             }
 
             .about-card {
@@ -1557,6 +1606,23 @@
             .header-inner {
                 padding: 1.2rem 2rem;
             }
+
+            .services-tabs {
+                gap: 1rem;
+            }
+
+            .service-tab {
+                padding: 1.2rem 2rem;
+                font-size: 1.4rem;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .service-details h3 {
+                font-size: 4.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1584,12 +1650,6 @@
                 height: 45px;
             }
 
-            .nav-mobile {
-                width: 85%;
-                padding: 3rem 1.5rem;
-                top: 80px;
-            }
-
             .service-card-content {
                 padding: 2rem 1.5rem;
             }
@@ -1597,6 +1657,22 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
+            }
+
+            .services-tabs {
+                flex-direction: column;
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .service-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .service-image {
+                min-height: 250px;
             }
         }
 
@@ -1620,15 +1696,15 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header id="header">
+    <!-- Modern Pill Header -->
+    <header class="header" id="header">
         <div class="header-inner">
             <div class="logo">
                 <a href="index.html">
                     <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" 
                          alt="Iconic Aesthetics Logo" 
                          width="auto" 
-                         height="55"
+                         height="50"
                          fetchpriority="high">
                 </a>
             </div>
@@ -1640,7 +1716,10 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Book An Appointment</a></li>
+                    <li class="special-links"><a href="services.html#makeup">Make-up</a></li>
+                    <li><a href="services.html#lashes">Lashes</a></li>
+                    <li><a href="services.html#facials">Facials</a></li>
+                    <li><a href="contact.html" class="btn-nav">Book Now</a></li>
                 </ul>
             </nav>
             
@@ -1653,31 +1732,38 @@
                 </div>
             </button>
         </div>
-        
-        <div class="pill-nav">
-            <nav class="pill-nav-items" role="navigation" aria-label="Quick links">
-                <ul>
-                    <li><a href="services.html#makeup">Make-up</a></li>
-                    <li><a href="services.html#lashes">Lashes</a></li>
-                    <li><a href="services.html#facials">Facials</a></li>
-                    <li><a href="contact.html" class="btn-small">Book Now</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
     <!-- Mobile Navigation -->
     <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile navigation">
-        <ul>
-            <li style="--i:0"><a href="index.html" aria-current="page">Home</a></li>
-            <li style="--i:1"><a href="about.html">About</a></li>
-            <li style="--i:2"><a href="services.html">Services</a></li>
-            <li style="--i:3"><a href="testimonials.html">Testimonials</a></li>
-            <li style="--i:4"><a href="faq.html">FAQ</a></li>
-            <li style="--i:5"><a href="contact.html">Book An Appointment</a></li>
-        </ul>
+        <div class="nav-mobile-inner">
+            <div class="mobile-logo">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" 
+                     alt="Iconic Aesthetics Logo" 
+                     loading="lazy">
+            </div>
+            <ul>
+                <li style="--i:0"><a href="index.html" aria-current="page">Home</a></li>
+                <li style="--i:1"><a href="about.html">About</a></li>
+                <li style="--i:2"><a href="services.html">Services</a></li>
+                <li style="--i:3"><a href="testimonials.html">Testimonials</a></li>
+                <li style="--i:4"><a href="faq.html">FAQ</a></li>
+            </ul>
+            
+            <div class="mobile-special">
+                <a href="services.html#makeup" style="--i:5">Make-up</a>
+                <a href="services.html#lashes" style="--i:6">Lashes</a>
+                <a href="services.html#facials" style="--i:7">Facials</a>
+                <a href="contact.html" style="--i:8">Book An Appointment</a>
+            </div>
+            
+            <div class="social-mobile">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
     </nav>
-    <div class="nav-backdrop" id="nav-backdrop"></div>
 
     <main>
         <!-- Hero Section -->
@@ -1748,61 +1834,164 @@
             </div>
         </section>
 
-        <!-- Services Section -->
+        <!-- Redesigned Services Section -->
         <section class="services" id="services">
             <div class="container">
                 <div class="section-header">
-                    <p class="subtitle" style="color: white;">What We Offer</p>
-                    <h2 class="section-title" style="color: white;">Our <span class="section-title-accent">Services</span></h2>
-                    <p class="section-description" style="color: white;">Explore our range of premium beauty services designed to enhance your natural beauty.</p>
+                    <p class="subtitle">What We Offer</p>
+                    <h2 class="section-title">Our <span class="section-title-accent">Services</span></h2>
+                    <p class="section-description">Explore our range of premium beauty services designed to enhance your natural beauty.</p>
                 </div>
                 
-                <div class="service-card-container">
-                    <div class="service-card">
-                        <div class="service-card-img">
-                            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" 
-                                 alt="Permanent Make-up services" 
-                                 loading="lazy">
-                        </div>
-                        <div class="service-card-content">
-                            <h3>Permanent Make-up</h3>
-                            <p>Achieve long-lasting beauty with our permanent make-up solutions. From perfectly defined eyebrows to natural-looking lip color, our services are designed to enhance your features and simplify your daily routine.</p>
-                            <a href="services.html" class="service-card-btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-img">
-                            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" 
-                                 alt="Eyelash enhancement services" 
-                                 loading="lazy">
-                        </div>
-                        <div class="service-card-content">
-                            <h3>Eyelashes</h3>
-                            <p>Our eyelash services go beyond extensions, offering a variety of treatments including lifts, tints, and high-quality extensions to enhance the natural beauty of your lashes.</p>
-                            <a href="services.html" class="service-card-btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card-img">
-                            <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" 
-                                 alt="Facial treatment services" 
-                                 loading="lazy">
-                        </div>
-                        <div class="service-card-content">
-                            <h3>Facials</h3>
-                            <p>Revitalize your skin with our range of facial and skincare treatments. From deep-cleansing facials to advanced anti-aging solutions, our services are designed to nourish, repair, and rejuvenate your skin.</p>
-                            <a href="services.html" class="service-card-btn">Learn More</a>
-                        </div>
-                    </div>
+                <div class="services-tabs" id="services-tabs">
+                    <button class="service-tab active" data-target="permanent-makeup">Permanent Make-up</button>
+                    <button class="service-tab" data-target="eyelashes">Eyelashes</button>
+                    <button class="service-tab" data-target="facials">Facials</button>
                 </div>
                 
-                <div class="text-center" style="margin-top: 5rem;">
-                    <a href="services.html" class="btn btn-icon" style="background: white; color: var(--primary-color);">
-                        Explore All Services
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="services-content">
+                    <div class="service-panels">
+                        <!-- Permanent Makeup Panel -->
+                        <div class="service-panel active" id="permanent-makeup">
+                            <div class="service-image">
+                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/micro.jpeg?raw=true" 
+                                     alt="Permanent Make-up services" 
+                                     loading="lazy">
+                            </div>
+                            <div class="service-details">
+                                <h3>Permanent Make-up</h3>
+                                <p>Achieve long-lasting beauty with our premium permanent make-up solutions. Our expert technicians use state-of-the-art techniques to enhance your natural features, creating stunning, lasting results.</p>
+                                
+                                <div class="service-features">
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Microblading</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Powder Brows</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lip Blush</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Eyeliner</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Nano Brows</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Touch-ups</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-price">Starting at $250</div>
+                                
+                                <a href="services.html#permanent-makeup" class="btn btn-icon">
+                                    View Details
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Eyelashes Panel -->
+                        <div class="service-panel" id="eyelashes">
+                            <div class="service-image">
+                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lash.jpeg?raw=true" 
+                                     alt="Eyelash enhancement services" 
+                                     loading="lazy">
+                            </div>
+                            <div class="service-details">
+                                <h3>Eyelashes</h3>
+                                <p>Transform your look with our premium eyelash services. From volume extensions to lash lifts and tints, our skilled technicians help you achieve the perfect lash look that enhances your natural beauty.</p>
+                                
+                                <div class="service-features">
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Classic Extensions</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Volume Extensions</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Hybrid Extensions</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lash Lift</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lash Tint</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lash Maintenance</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-price">Starting at $85</div>
+                                
+                                <a href="services.html#eyelashes" class="btn btn-icon">
+                                    View Details
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Facials Panel -->
+                        <div class="service-panel" id="facials">
+                            <div class="service-image">
+                                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Facials.jpeg?raw=true" 
+                                     alt="Facial treatment services" 
+                                     loading="lazy">
+                            </div>
+                            <div class="service-details">
+                                <h3>Facials</h3>
+                                <p>Revitalize your skin with our luxurious facial treatments. Using premium products and advanced techniques, our facials are customized to address your unique skin concerns and help you achieve a radiant complexion.</p>
+                                
+                                <div class="service-features">
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Signature Facial</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Deep Cleansing</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Anti-Aging</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Hydrating</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Acne Treatment</span>
+                                    </div>
+                                    <div class="service-feature">
+                                        <i class="fas fa-check"></i>
+                                        <span>Chemical Peels</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-price">Starting at $75</div>
+                                
+                                <a href="services.html#facials" class="btn btn-icon">
+                                    View Details
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1907,9 +2096,9 @@
                 <div class="footer-col">
                     <h3>Our Services</h3>
                     <ul class="footer-nav">
-                        <li><a href="services.html">Permanent Make-up</a></li>
-                        <li><a href="services.html">Eyelash Extensions</a></li>
-                        <li><a href="services.html">Facials</a></li>
+                        <li><a href="services.html#permanent-makeup">Permanent Make-up</a></li>
+                        <li><a href="services.html#eyelashes">Eyelash Extensions</a></li>
+                        <li><a href="services.html#facials">Facials</a></li>
                         <li><a href="services.html">Skin Care</a></li>
                         <li><a href="services.html">Beauty Consultations</a></li>
                     </ul>
@@ -1956,6 +2145,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://static.elfsight.com/platform/platform.js" defer></script>
 
     <!-- Custom JS -->
     <script>
@@ -1973,10 +2163,34 @@
             const header = document.getElementById('header');
             const navToggle = document.getElementById('nav-toggle');
             const navMobile = document.getElementById('nav-mobile');
-            const navBackdrop = document.getElementById('nav-backdrop');
             const scrollToAbout = document.getElementById('scroll-to-about');
             const backToTop = document.getElementById('back-to-top');
             const loader = document.getElementById('loader');
+            
+            // Tab functionality for services
+            const tabs = document.querySelectorAll('.service-tab');
+            const panels = document.querySelectorAll('.service-panel');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Get target panel id
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Hide all panels
+                    panels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    
+                    // Show target panel
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
             
             // Hide loader when page is loaded
             window.addEventListener('load', function() {
@@ -1986,12 +2200,6 @@
                         loader.style.display = 'none';
                     }, 500);
                 }, 500);
-                
-                // Load Elfsight widgets
-                const elfsightScript = document.createElement('script');
-                elfsightScript.src = 'https://static.elfsight.com/platform/platform.js';
-                elfsightScript.defer = true;
-                document.body.appendChild(elfsightScript);
             });
             
             // Debounce function
@@ -2014,7 +2222,6 @@
             function toggleMobileMenu() {
                 navToggle.classList.toggle('active');
                 navMobile.classList.toggle('active');
-                navBackdrop.classList.toggle('active');
                 document.body.classList.toggle('no-scroll');
                 
                 const isExpanded = navToggle.classList.contains('active');
@@ -2052,7 +2259,6 @@
             window.addEventListener('scroll', debounce(handleScroll));
             
             navToggle.addEventListener('click', toggleMobileMenu);
-            navBackdrop.addEventListener('click', toggleMobileMenu);
             
             // Close mobile menu when clicking on a link
             const mobileLinks = navMobile.querySelectorAll('a');
@@ -2090,15 +2296,14 @@
                 });
             });
             
-            // Add tilt effect to service cards
-            const tiltElements = document.querySelectorAll('.service-card');
-            if (window.innerWidth > 992) {
-                VanillaTilt.init(tiltElements, {
+            // Add tilt effect to service images
+            if (window.innerWidth > 992 && typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll('.service-image'), {
                     max: 5,
                     speed: 400,
                     glare: true,
                     'max-glare': 0.2,
-                    scale: 1.05
+                    scale: 1.02
                 });
             }
             
@@ -2113,16 +2318,16 @@
                     delay: 0.5
                 });
                 
-                // Service cards staggered animation
-                gsap.from('.service-card', {
+                // Service panels staggered animation
+                gsap.from('.service-tab', {
                     scrollTrigger: {
                         trigger: '.services',
                         start: 'top 80%'
                     },
-                    y: 50,
+                    y: 30,
                     opacity: 0,
-                    duration: 0.8,
-                    stagger: 0.2,
+                    duration: 0.6,
+                    stagger: 0.1,
                     ease: 'power3.out'
                 });
                 
@@ -2139,32 +2344,8 @@
                 });
             }
             
-            // Handle active nav items
-            const sections = document.querySelectorAll('section[id]');
-            function highlightNav() {
-                const scrollPosition = window.scrollY + 200;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        document.querySelectorAll('.nav-desktop a').forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `${sectionId}.html` || link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', debounce(highlightNav));
-            
             // Initialize state
             handleScroll();
-            highlightNav();
         });
     </script>
 </body>
