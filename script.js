@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
                 duration: 800,
                 easing: 'ease-in-out',
-                once: true,
-                mirror: false,
+                once: false,  // Changed from true to false to allow animations to trigger on scroll up
+                mirror: true, // Changed from false to true to animate elements when scrolling up
                 offset: 50
             });
         }
@@ -222,7 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.from('.service-tab', {
                     scrollTrigger: {
                         trigger: '.services-tabs',
-                        start: 'top 80%'
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse' // Added proper toggle actions
                     },
                     opacity: 0,
                     y: 20,
@@ -234,7 +235,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.from('.feature', {
                     scrollTrigger: {
                         trigger: '.about-features',
-                        start: 'top 80%'
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse' // Added proper toggle actions
                     },
                     opacity: 0,
                     x: -30,
@@ -246,7 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.from('.gallery-item', {
                     scrollTrigger: {
                         trigger: '.gallery-grid',
-                        start: 'top 80%'
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse' // Added proper toggle actions
                     },
                     opacity: 0,
                     y: 30,
@@ -258,7 +261,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.from('.booking-step', {
                     scrollTrigger: {
                         trigger: '.booking-steps',
-                        start: 'top 80%'
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse' // Added proper toggle actions
                     },
                     opacity: 0,
                     x: -30,
@@ -270,7 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.from('.contact-card', {
                     scrollTrigger: {
                         trigger: '.contact-info',
-                        start: 'top 80%'
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse' // Added proper toggle actions
                     },
                     opacity: 0,
                     y: 30,
@@ -733,7 +738,8 @@ document.addEventListener('DOMContentLoaded', function() {
             gsap.from(experienceTag, {
                 scrollTrigger: {
                     trigger: '.about-image-wrapper',
-                    start: 'top 80%'
+                    start: 'top 80%',
+                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
                 },
                 opacity: 0,
                 scale: 0.5,
@@ -742,11 +748,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'back.out(1.7)'
             });
             
-            // Animate feature cards
+            // Animate feature cards with proper bidirectional control
             gsap.from(featureCards, {
                 scrollTrigger: {
                     trigger: '.about-features',
-                    start: 'top 80%'
+                    start: 'top 80%',
+                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
                 },
                 y: 30,
                 opacity: 0,
@@ -758,7 +765,8 @@ document.addEventListener('DOMContentLoaded', function() {
             gsap.from(quoteSection, {
                 scrollTrigger: {
                     trigger: quoteSection,
-                    start: 'top 80%'
+                    start: 'top 80%',
+                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
                 },
                 x: -50,
                 opacity: 0,
@@ -803,8 +811,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('fade-in');
-                            fadeInObserver.unobserve(entry.target);
+                        } else {
+                            // Remove the class when scrolling back up
+                            entry.target.classList.remove('fade-in');
                         }
+                        // Don't unobserve - keep observing to handle scroll up/down
                     });
                 }, {
                     threshold: 0.1,
@@ -843,7 +854,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ------------------------------------------------------------------------
-    // NEW BUBBLE ABOUT SECTION 
+    // NEW BUBBLE ABOUT SECTION - UPDATED WITH FIXED ANIMATIONS 
     // ------------------------------------------------------------------------
     function initBubbleAboutSection() {
         // Get elements
@@ -925,32 +936,94 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Add animated entrance for feature cards
-        if (featureCards.length && typeof gsap !== 'undefined') {
-            gsap.from(featureCards, {
-                scrollTrigger: {
-                    trigger: '.feature-cards',
-                    start: 'top 80%'
+        // IMPROVED FEATURE CARDS ANIMATION - This is the key fix
+        if (featureCards.length && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            // First ensure all cards are initially at their final state for a clean animation setup
+            gsap.set(featureCards, { opacity: 0, y: 50 });
+            
+            // Create a ScrollTrigger that properly handles bidirectional scrolling
+            ScrollTrigger.create({
+                trigger: '.feature-cards',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                markers: false, // Set to true for debugging
+                toggleActions: 'play reverse restart reverse', // This handles forward and backward scrolling
+                onEnter: () => {
+                    gsap.to(featureCards, {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.15,
+                        duration: 0.6,
+                        ease: "back.out(1.7)"
+                    });
                 },
-                y: 50,
-                opacity: 0,
-                stagger: 0.15,
-                duration: 0.8,
-                ease: "back.out(1.7)"
+                onLeave: () => {
+                    gsap.to(featureCards, {
+                        opacity: 0,
+                        y: 50,
+                        stagger: 0.1,
+                        duration: 0.4
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to(featureCards, {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.15,
+                        duration: 0.6,
+                        ease: "back.out(1.7)"
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to(featureCards, {
+                        opacity: 0,
+                        y: 50,
+                        stagger: 0.1,
+                        duration: 0.4
+                    });
+                }
             });
         }
         
-        // Animate testimonial on scroll
-        if (testimonial && typeof gsap !== 'undefined') {
-            gsap.from(testimonial, {
-                scrollTrigger: {
-                    trigger: testimonial,
-                    start: 'top 75%'
+        // Animate testimonial on scroll - Updated with proper bidirectional animation
+        if (testimonial && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.set(testimonial, { opacity: 0, y: 40 });
+            
+            ScrollTrigger.create({
+                trigger: testimonial,
+                start: 'top 75%',
+                end: 'bottom 25%',
+                toggleActions: 'play reverse restart reverse',
+                onEnter: () => {
+                    gsap.to(testimonial, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
                 },
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power2.out"
+                onLeave: () => {
+                    gsap.to(testimonial, {
+                        opacity: 0,
+                        y: 40,
+                        duration: 0.4
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to(testimonial, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to(testimonial, {
+                        opacity: 0,
+                        y: 40,
+                        duration: 0.4
+                    });
+                }
             });
         }
         
@@ -1074,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Fallback animations using Intersection Observer if GSAP is not available
+        // Improved Intersection Observer fallback for sites without GSAP
         if (typeof gsap === 'undefined' && 'IntersectionObserver' in window) {
             const fadeItems = [
                 ...featureCards,
@@ -1082,14 +1155,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 showcaseMain,
                 showcaseAccent,
                 experienceBadge
-            ].filter(item => item); // Filter out null/undefined
+            ].filter(item => item);
             
             const fadeObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-in');
-                        fadeObserver.unobserve(entry.target);
+                    } else {
+                        // Remove class when scrolling away - this enables bidirectional animation
+                        entry.target.classList.remove('animate-in');
                     }
+                    // Don't unobserve - we want to keep tracking for scroll up/down
                 });
             }, {
                 threshold: 0.2,
@@ -1101,7 +1177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 fadeObserver.observe(item);
             });
             
-            // Add necessary CSS classes for fallback animations
+            // Add necessary CSS for fallback animations
             const styleSheet = document.styleSheets[0];
             const fallbackRules = `
                 .will-animate {
