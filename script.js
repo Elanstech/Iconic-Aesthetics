@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ------------------------------------------------------------------------
-    // SERVICES AND TABS
+    // SERVICES AND TABS (Legacy version)
     // ------------------------------------------------------------------------
     function initializeServiceTabs() {
         if (!serviceTabs.length || !servicePanels.length) return;
@@ -472,6 +472,173 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (targetPanel) targetPanel.classList.add('active');
             });
         });
+    }
+    
+    // ------------------------------------------------------------------------
+    // MODERN SERVICES SECTION
+    // ------------------------------------------------------------------------
+    function initializeModernServices() {
+        // Elements
+        const selectorTabs = document.querySelectorAll('.selector-tab');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const detailsButtons = document.querySelectorAll('.service-details-toggle');
+        const closeButtons = document.querySelectorAll('.service-close');
+        const selectorIndicator = document.querySelector('.selector-indicator');
+        
+        if (!selectorTabs.length || !serviceCards.length) return;
+        
+        // Height management for cards
+        function updateServiceCardsHeight() {
+            // Find tallest card for consistent height
+            let maxHeight = 0;
+            serviceCards.forEach(card => {
+                // Reset height first
+                card.style.height = 'auto';
+                const frontHeight = card.querySelector('.service-front').offsetHeight;
+                const backHeight = card.querySelector('.service-back').offsetHeight;
+                const cardHeight = Math.max(frontHeight, backHeight);
+                
+                if (cardHeight > maxHeight) {
+                    maxHeight = cardHeight;
+                }
+            });
+            
+            // Apply the max height to all cards
+            serviceCards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+        }
+        
+        // Tab switching
+        function switchToTab(tabIndex) {
+            // Update the selector indicator position
+            if (selectorIndicator) {
+                const isMobile = window.innerWidth <= 768;
+                
+                if (isMobile) {
+                    // For mobile: move vertically
+                    selectorIndicator.style.transform = `translateY(${tabIndex * 100}%)`;
+                } else {
+                    // For desktop: move horizontally
+                    selectorIndicator.style.transform = `translateX(${tabIndex * 100}%)`;
+                }
+            }
+            
+            // Update active states
+            selectorTabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Update service cards
+            serviceCards.forEach((card, index) => {
+                if (index === tabIndex) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                    // Reset any flipped cards when switching tabs
+                    card.classList.remove('flipped');
+                }
+            });
+        }
+        
+        // Initialize tab click events
+        selectorTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                switchToTab(index);
+                
+                // Add animation for the tab icon
+                const icon = tab.querySelector('.tab-icon');
+                if (icon) {
+                    // Create pop animation
+                    if (typeof gsap !== 'undefined') {
+                        gsap.fromTo(icon, 
+                            { scale: 0.8 },
+                            { scale: 1.1, duration: 0.4, ease: "back.out(1.7)" }
+                        );
+                    } else {
+                        // Fallback animation without GSAP
+                        icon.animate([
+                            { transform: 'scale(0.8)' },
+                            { transform: 'scale(1.1)' }
+                        ], {
+                            duration: 400,
+                            easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Card flipping functionality
+        detailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                if (card) {
+                    card.classList.add('flipped');
+                }
+            });
+        });
+        
+        // Close detail view
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                if (card) {
+                    card.classList.remove('flipped');
+                }
+            });
+        });
+        
+        // Handle resize events to update UI
+        window.addEventListener('resize', () => {
+            // Update the indicator position
+            const activeIndex = Array.from(selectorTabs).findIndex(tab => tab.classList.contains('active'));
+            if (activeIndex >= 0) {
+                const isMobile = window.innerWidth <= 768;
+                
+                if (isMobile) {
+                    selectorIndicator.style.transform = `translateY(${activeIndex * 100}%)`;
+                } else {
+                    selectorIndicator.style.transform = `translateX(${activeIndex * 100}%)`;
+                }
+            }
+            
+            // Update card heights
+            updateServiceCardsHeight();
+        });
+        
+        // Initialize heights after content is loaded
+        window.addEventListener('load', () => {
+            updateServiceCardsHeight();
+            
+            // Add some initial animations if GSAP is available
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.services-selector', {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    delay: 0.3,
+                    clearProps: "all"
+                });
+                
+                gsap.from('.service-card.active', {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    delay: 0.5,
+                    clearProps: "opacity,transform"
+                });
+            }
+        });
+        
+        // Initialize with default tab (first one)
+        switchToTab(0);
     }
     
     // ------------------------------------------------------------------------
@@ -1211,14 +1378,20 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeAnimations();
         initializeScrollEffects();
         initializeNavigation();
+        
+        // Note: The legacy service tabs function will run if the old structure exists
         initializeServiceTabs();
+        
+        // New services section - this will only run if the modern structure exists
+        initializeModernServices();
+        
         initializeFAQ();
         initializeGallery();
         initializeBeforeAfterSlider();
         initializeFormValidation();
         initializeCookieConsent();
         initModernAboutSection();
-        initBubbleAboutSection(); // Initialize new bubble about section
+        initBubbleAboutSection();
     }
     
     // Start initialization
