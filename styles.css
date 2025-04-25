@@ -1499,7 +1499,8 @@ blockquote {
    Services Section
    ========================================= */
 /* =========================================
-   Enhanced Services Carousel Styling with Fixes
+   PREMIUM SERVICES CAROUSEL STYLING
+   Completely refined and polished version
    ========================================= */
    
 /* Base Section Styling */
@@ -1508,7 +1509,21 @@ blockquote {
   padding: 10rem 0;
   background: linear-gradient(135deg, #f9f9f9, #f5f5f5);
   overflow: hidden;
-  z-index: 1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Section Background Elements */
+.services-carousel-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(216, 163, 157, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(184, 157, 90, 0.06) 0%, transparent 40%);
+  pointer-events: none;
 }
 
 /* Container */
@@ -1520,10 +1535,11 @@ blockquote {
   z-index: 2;
 }
 
-/* Section Header */
+/* Section Header - FIXED CENTER ALIGNMENT */
 .services-carousel-section .section-header {
   text-align: center;
-  margin-bottom: 5rem;
+  max-width: 800px;
+  margin: 0 auto 6rem;
   position: relative;
 }
 
@@ -1538,6 +1554,7 @@ blockquote {
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .services-carousel-section .section-title {
@@ -1546,13 +1563,15 @@ blockquote {
   color: #5a3d3d;
   margin-bottom: 1.5rem;
   position: relative;
-  display: inline-block;
+  padding-bottom: 1.5rem;
+  text-align: center;
+  display: block;
 }
 
 .services-carousel-section .section-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
@@ -1567,19 +1586,21 @@ blockquote {
   font-size: 1.6rem;
   color: #a97c7c;
   line-height: 1.7;
+  text-align: center;
 }
 
-/* Services Filter - FIXED */
+/* Services Filter - REFINED */
 .services-carousel-section .services-filter {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 4rem;
+  margin: 0 auto 4rem;
   padding: 0;
   list-style: none;
   width: 100%;
+  max-width: 800px;
 }
 
 .services-carousel-section .filter-btn {
@@ -1595,14 +1616,10 @@ blockquote {
   font-size: 1.4rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .services-carousel-section .filter-btn::before {
@@ -1614,9 +1631,9 @@ blockquote {
   height: 100%;
   background: linear-gradient(135deg, #d8a39d, #b27b76);
   opacity: 0;
-  z-index: -1;
   transition: opacity 0.3s ease;
   border-radius: 50px;
+  z-index: 0;
 }
 
 .services-carousel-section .filter-btn:hover, 
@@ -1637,6 +1654,13 @@ blockquote {
   justify-content: center;
   font-size: 1.4rem;
   transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.services-carousel-section .filter-btn span {
+  position: relative;
+  z-index: 1;
 }
 
 .services-carousel-section .filter-btn:hover .filter-icon,
@@ -1644,26 +1668,20 @@ blockquote {
   transform: scale(1.2);
 }
 
-/* Fix for buttons on hover */
-.services-carousel-section .filter-btn:hover {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Services Carousel Wrapper */
+/* Services Carousel Wrapper - REFINED */
 .services-carousel-section .services-carousel-wrapper {
   position: relative;
-  margin-bottom: 5rem;
   padding: 2rem 0;
-  z-index: 2;
+  margin: 0 auto 5rem;
+  max-width: 1400px;
 }
 
-/* Swiper Carousel - FIXED */
+/* Swiper Carousel */
 .services-carousel-section .services-carousel {
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
-  padding: 1rem 0;
+  padding: 20px 10px;
   margin: 0 auto;
 }
 
@@ -1671,7 +1689,6 @@ blockquote {
   display: flex;
   transition-property: transform;
   box-sizing: content-box;
-  height: auto;
 }
 
 .services-carousel-section .swiper-slide {
@@ -1681,17 +1698,13 @@ blockquote {
   position: relative;
   transition-property: transform;
   margin-right: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Service Cards - FIXED */
+/* Service Cards - REFINED */
 .services-carousel-section .service-card {
   perspective: 1000px;
   height: 480px;
   width: 100%;
-  margin: 0;
   position: relative;
 }
 
@@ -1699,11 +1712,11 @@ blockquote {
   position: absolute;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s ease;
   transform-style: preserve-3d;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 
 .services-carousel-section .service-card:hover .service-card-inner {
@@ -1729,7 +1742,6 @@ blockquote {
   background-color: white;
   display: flex;
   flex-direction: column;
-  z-index: 1;
 }
 
 .services-carousel-section .service-back {
@@ -1738,8 +1750,6 @@ blockquote {
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  z-index: 1;
 }
 
 .services-carousel-section .service-close {
@@ -1764,12 +1774,12 @@ blockquote {
 .services-carousel-section .service-close:hover {
   background-color: #d8a39d;
   color: white;
+  transform: rotate(90deg);
 }
 
-/* Service Front Content - FIXED */
+/* Service Front Content - REFINED */
 .services-carousel-section .service-image {
   height: 220px;
-  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -1779,7 +1789,6 @@ blockquote {
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-  display: block;
 }
 
 .services-carousel-section .service-card:hover .service-image img {
@@ -1795,7 +1804,6 @@ blockquote {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
-  pointer-events: none;
 }
 
 .services-carousel-section .service-card:hover .service-image-overlay {
@@ -1807,9 +1815,6 @@ blockquote {
   flex: 1;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 2;
-  background-color: white;
 }
 
 .services-carousel-section .service-title {
@@ -1872,7 +1877,7 @@ blockquote {
   color: #d8a39d;
 }
 
-/* Service Details Button - FIXED */
+/* Service Details Button - REFINED */
 .services-carousel-section .service-details-btn {
   width: 100%;
   padding: 1.2rem;
@@ -1884,10 +1889,20 @@ blockquote {
   font-size: 1.4rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: center;
   position: relative;
-  z-index: 3;
-  display: block;
+  overflow: hidden;
+}
+
+.services-carousel-section .service-details-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 .services-carousel-section .service-details-btn:hover {
@@ -1895,11 +1910,11 @@ blockquote {
   box-shadow: 0 5px 15px rgba(216, 163, 157, 0.3);
 }
 
-.services-carousel-section .service-details-btn:active {
-  transform: translateY(-1px);
+.services-carousel-section .service-details-btn:hover::before {
+  transform: translateX(0);
 }
 
-/* Service Back Content */
+/* Service Back Content - REFINED */
 .services-carousel-section .service-back .service-title {
   text-align: center;
   margin-bottom: 2rem;
@@ -1983,7 +1998,19 @@ blockquote {
   transition: all 0.3s ease;
   margin-top: auto;
   position: relative;
-  z-index: 3;
+  overflow: hidden;
+}
+
+.services-carousel-section .book-service-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 .services-carousel-section .book-service-btn:hover {
@@ -1991,15 +2018,17 @@ blockquote {
   box-shadow: 0 5px 15px rgba(216, 163, 157, 0.3);
 }
 
-/* Carousel Navigation - FIXED */
+.services-carousel-section .book-service-btn:hover::before {
+  transform: translateX(0);
+}
+
+/* Carousel Navigation - COMPLETELY REDESIGNED */
 .services-carousel-section .carousel-navigation {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
-  gap: 2rem;
-  position: relative;
-  z-index: 3;
+  margin-top: 4rem;
+  gap: 3rem;
 }
 
 .services-carousel-section .carousel-prev,
@@ -2007,37 +2036,55 @@ blockquote {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: white;
-  color: #5a3d3d;
+  background: linear-gradient(135deg, #d8a39d, #b27b76);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(216, 163, 157, 0.3);
   transition: all 0.3s ease;
   position: relative;
-  z-index: 3;
+  overflow: hidden;
   border: none;
+}
+
+.services-carousel-section .carousel-prev::before,
+.services-carousel-section .carousel-next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 .services-carousel-section .carousel-prev:hover,
 .services-carousel-section .carousel-next:hover {
-  background: linear-gradient(135deg, #d8a39d, #b27b76);
-  color: white;
   transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(216, 163, 157, 0.4);
+}
+
+.services-carousel-section .carousel-prev:hover::before,
+.services-carousel-section .carousel-next:hover::before {
+  transform: translateX(0);
 }
 
 .services-carousel-section .carousel-prev.swiper-button-disabled,
 .services-carousel-section .carousel-next.swiper-button-disabled {
-  opacity: 0.3;
+  background: rgba(216, 163, 157, 0.5);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .services-carousel-section .carousel-pagination {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
 }
 
 .services-carousel-section .swiper-pagination-bullet {
@@ -2057,12 +2104,10 @@ blockquote {
   background-color: #d8a39d;
 }
 
-/* View All Link */
+/* View All Link - REFINED */
 .services-carousel-section .view-all-container {
   text-align: center;
   margin-top: 5rem;
-  position: relative;
-  z-index: 3;
 }
 
 .services-carousel-section .view-all-link {
@@ -2100,6 +2145,7 @@ blockquote {
 .services-carousel-section .view-all-link:hover {
   color: white;
   border-color: #b27b76;
+  transform: translateY(-3px);
 }
 
 .services-carousel-section .view-all-link:hover::before {
@@ -2116,54 +2162,10 @@ blockquote {
 
 /* Hidden Slides - FIXED */
 .services-carousel-section .swiper-slide-hidden {
-  visibility: hidden;
-  opacity: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  position: absolute;
+  display: none !important;
 }
 
-/* 3D Effect Enhancement */
-.services-carousel-section .service-card {
-  transform: perspective(1000px);
-}
-
-.services-carousel-section .service-card-inner {
-  transform: translateZ(0);
-  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-}
-
-.services-carousel-section .service-card:hover .service-card-inner {
-  transform: translateY(-10px) translateZ(10px);
-}
-
-/* Animated Card Background */
-.services-carousel-section .service-front::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(216, 163, 157, 0.05) 0%, transparent 50%);
-  transform: rotate(0deg);
-  animation: rotateGradient 15s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes rotateGradient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Media Queries - IMPROVED FOR MOBILE */
+/* Media Queries - REFINED */
 @media (max-width: 1200px) {
   .services-carousel-section .swiper-slide {
     width: 320px;
@@ -2197,10 +2199,6 @@ blockquote {
   
   .services-carousel-section .section-description {
     font-size: 1.5rem;
-  }
-  
-  .services-carousel-section .services-filter {
-    margin-bottom: 3rem;
   }
   
   .services-carousel-section .filter-btn {
@@ -2238,7 +2236,7 @@ blockquote {
     font-size: 1.3rem;
   }
   
-  /* FIXED: Services filter for mobile */
+  /* Mobile Filter - FIXED HORIZONTAL SCROLLING */
   .services-carousel-section .services-filter {
     justify-content: flex-start;
     overflow-x: auto;
@@ -2247,6 +2245,9 @@ blockquote {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    flex-wrap: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .services-carousel-section .services-filter::-webkit-scrollbar {
@@ -2256,8 +2257,6 @@ blockquote {
   .services-carousel-section .filter-btn {
     flex-shrink: 0;
     white-space: nowrap;
-    padding: 0.8rem 1.5rem;
-    font-size: 1.3rem;
   }
   
   .services-carousel-section .carousel-navigation {
@@ -2266,8 +2265,8 @@ blockquote {
   
   .services-carousel-section .carousel-prev,
   .services-carousel-section .carousel-next {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     font-size: 1.4rem;
   }
 }
@@ -2275,6 +2274,10 @@ blockquote {
 @media (max-width: 576px) {
   .services-carousel-section {
     padding: 5rem 0;
+  }
+  
+  .services-carousel-section .container {
+    width: 95%;
   }
   
   .services-carousel-section .swiper-slide {
@@ -2294,22 +2297,20 @@ blockquote {
     height: 420px;
   }
   
-  /* FIXED: Mobile buttons */
   .services-carousel-section .filter-btn {
     padding: 0.7rem 1.2rem;
     font-size: 1.2rem;
-    min-width: auto;
-    gap: 0.5rem;
   }
   
   .services-carousel-section .filter-icon {
     font-size: 1.2rem;
   }
   
-  .services-carousel-section .service-details-btn,
-  .services-carousel-section .book-service-btn {
-    padding: 1.2rem;
-    font-size: 1.4rem;
+  .services-carousel-section .carousel-prev,
+  .services-carousel-section .carousel-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
   }
   
   .services-carousel-section .view-all-link {
@@ -2318,80 +2319,65 @@ blockquote {
   }
 }
 
-/* Touch Device Support - FIXED */
+/* Touch Device Support - REFINED */
 @media (hover: none) {
-  .services-carousel-section .service-card:hover .service-card-inner {
-    transform: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .services-carousel-section .service-card:hover .service-image img {
-    transform: none;
-  }
-  
-  .services-carousel-section .service-card:hover .service-image-overlay {
-    opacity: 0.5;
-  }
-  
-  .services-carousel-section .service-card-inner {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-  
   .services-carousel-section .service-image-overlay {
     opacity: 0.3;
   }
   
-  /* FIXED: Make sure buttons work on touch devices */
-  .services-carousel-section .service-details-btn,
-  .services-carousel-section .book-service-btn,
-  .services-carousel-section .service-close,
-  .services-carousel-section .filter-btn {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
   .services-carousel-section .filter-btn:active {
-    background-color: rgba(216, 163, 157, 0.8);
-    color: white;
+    transform: scale(0.95);
   }
   
-  .services-carousel-section .filter-btn.active {
-    background-color: #d8a39d;
-    color: white;
+  .services-carousel-section .service-details-btn:active,
+  .services-carousel-section .book-service-btn:active {
+    transform: scale(0.98);
+  }
+  
+  .services-carousel-section .carousel-prev:active,
+  .services-carousel-section .carousel-next:active {
+    transform: scale(0.95);
+  }
+  
+  .services-carousel-section .view-all-link:active {
+    transform: scale(0.98);
   }
 }
 
-/* Reduced Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-  .services-carousel-section .service-card-inner,
-  .services-carousel-section .service-image img,
-  .services-carousel-section .filter-btn,
-  .services-carousel-section .service-details-btn,
-  .services-carousel-section .book-service-btn,
-  .services-carousel-section .view-all-link,
-  .services-carousel-section .service-title::after {
-    transition-duration: 0.1s;
+/* Animations and Effects */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(216, 163, 157, 0.4);
   }
-  
-  .services-carousel-section .service-front::before {
-    animation: none;
+  70% {
+    box-shadow: 0 0 0 10px rgba(216, 163, 157, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 163, 157, 0);
   }
 }
 
-/* Force visibility for important elements */
+.services-carousel-section .service-card {
+  animation: pulse 2s infinite;
+}
+
+/* Ensure buttons are always visible and properly styled */
 .services-carousel-section .filter-btn,
 .services-carousel-section .service-details-btn,
 .services-carousel-section .book-service-btn,
+.services-carousel-section .service-close,
 .services-carousel-section .carousel-prev,
-.services-carousel-section .carousel-next,
-.services-carousel-section .service-card {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
+.services-carousel-section .carousel-next {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
-.services-carousel-section .swiper-slide-hidden {
-  display: none !important;
+/* Ensure smooth transitions */
+.services-carousel-section * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================================
