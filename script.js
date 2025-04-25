@@ -25,11 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const cookieDecline = document.getElementById('cookie-decline');
     const forms = document.querySelectorAll('form');
     
-    // Modern Services Elements
-    const filterButtons = document.querySelectorAll('.services-showcase .filter-btn');
-    const serviceCards = document.querySelectorAll('.services-showcase .service-card');
-    const detailButtons = document.querySelectorAll('.services-showcase .service-details-btn');
-    const closeButtons = document.querySelectorAll('.services-showcase .service-close');
+    // Services Carousel Elements
+    const servicesCarousel = document.querySelector('.services-carousel');
+    const filterButtons = document.querySelectorAll('.services-filter .filter-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const detailButtons = document.querySelectorAll('.service-details-btn');
+    const closeButtons = document.querySelectorAll('.service-close');
     
     // ------------------------------------------------------------------------
     // HERO VIDEO FUNCTIONALITY
@@ -153,36 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
             AOS.init({
                 duration: 800,
                 easing: 'ease-in-out',
-                once: false,  // Changed from true to false to allow animations to trigger on scroll up
-                mirror: true, // Changed from false to true to animate elements when scrolling up
+                once: false,
+                mirror: true,
                 offset: 50
-            });
-        }
-        
-        // Initialize Swiper for testimonials
-        if (typeof Swiper !== 'undefined' && document.querySelector('.testimonials-slider')) {
-            const swiper = new Swiper('.testimonials-slider', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 30
-                    }
-                }
             });
         }
         
@@ -272,50 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     y: 30,
                     stagger: 0.1,
                     duration: 0.6
-                });
-                
-                // Services section animations
-                gsap.from('.services-showcase .section-badge', {
-                    scrollTrigger: {
-                        trigger: '.services-showcase',
-                        start: 'top 85%'
-                    },
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.6
-                });
-                
-                gsap.from('.services-showcase .section-title', {
-                    scrollTrigger: {
-                        trigger: '.services-showcase',
-                        start: 'top 85%'
-                    },
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.6,
-                    delay: 0.2
-                });
-                
-                gsap.from('.services-showcase .section-description', {
-                    scrollTrigger: {
-                        trigger: '.services-showcase',
-                        start: 'top 85%'
-                    },
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.6,
-                    delay: 0.3
-                });
-                
-                gsap.from('.services-showcase .filter-btn', {
-                    scrollTrigger: {
-                        trigger: '.services-filter',
-                        start: 'top 90%'
-                    },
-                    opacity: 0,
-                    y: 20,
-                    stagger: 0.1,
-                    duration: 0.5
                 });
             }
         }
@@ -481,73 +411,118 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ------------------------------------------------------------------------
-    // MODERN SERVICES SECTION
+    // SERVICES CAROUSEL
     // ------------------------------------------------------------------------
-    function initializeServicesSection() {
-        if (!serviceCards.length) return;
+    function initializeServicesCarousel() {
+        // Initialize Swiper Carousel
+        let servicesSwiper;
         
-        // Set up category filtering
-        if (filterButtons.length) {
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active state
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Get category from data attribute
-                    const category = this.getAttribute('data-filter');
-                    
-                    // Animate category icon
-                    const icon = this.querySelector('.filter-icon');
-                    if (icon) {
-                        icon.style.transform = 'scale(1.4)';
-                        setTimeout(() => {
-                            icon.style.transform = 'scale(1.2)';
-                        }, 300);
+        // Check if Swiper is available
+        if (typeof Swiper !== 'undefined' && servicesCarousel) {
+            // Initialize Swiper with options
+            servicesSwiper = new Swiper('.services-carousel', {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                grabCursor: true,
+                speed: 800,
+                loop: false,
+                pagination: {
+                    el: '.carousel-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.carousel-next',
+                    prevEl: '.carousel-prev',
+                },
+                breakpoints: {
+                    // When window width is >= 320px
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    // When window width is >= 480px
+                    480: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    // When window width is >= 640px
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    // When window width is >= 992px
+                    992: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
                     }
-                    
-                    // Filter services by category
-                    filterServices(category);
-                });
+                },
+                on: {
+                    init: function() {
+                        initializeCardsInteraction();
+                    }
+                }
             });
-        }
-        
-        // Set up card flip behavior
-        if (detailButtons.length) {
-            detailButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const card = this.closest('.service-card');
-                    if (card) {
-                        // Reset any other flipped cards
-                        serviceCards.forEach(c => {
-                            if (c !== card) c.classList.remove('flipped');
-                        });
+            
+            // Category filtering
+            if (filterButtons.length) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Update active state on buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
                         
-                        // Flip this card
-                        card.classList.add('flipped');
-                    }
+                        // Get selected category
+                        const category = this.getAttribute('data-filter');
+                        
+                        // Filter slides
+                        filterServices(category, servicesSwiper);
+                    });
                 });
-            });
+            }
+        } else {
+            // Fallback if Swiper is not available
+            initializeFallbackCarousel();
         }
         
-        // Close button to flip back
-        if (closeButtons.length) {
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const card = this.closest('.service-card');
-                    if (card) {
-                        card.classList.remove('flipped');
-                    }
-                });
+        // Initialize cards interaction (flip effect)
+        initializeCardsInteraction();
+    }
+    
+    /**
+     * Initialize card flipping and other interactions
+     */
+    function initializeCardsInteraction() {
+        // Detail buttons to flip cards
+        detailButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                if (card) {
+                    // Close any other flipped cards
+                    serviceCards.forEach(c => {
+                        if (c !== card && c.classList.contains('flipped')) {
+                            c.classList.remove('flipped');
+                        }
+                    });
+                    
+                    // Flip this card
+                    card.classList.add('flipped');
+                }
             });
-        }
+        });
         
-        // Add keyboard accessibility for flipped cards
+        // Close buttons
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                if (card) {
+                    card.classList.remove('flipped');
+                }
+            });
+        });
+        
+        // Keyboard accessibility (ESC to close)
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                // Close any flipped cards on ESC key
                 serviceCards.forEach(card => {
                     if (card.classList.contains('flipped')) {
                         card.classList.remove('flipped');
@@ -556,212 +531,182 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Set up 3D tilt effects if not on a touch device
+        // Add 3D tilt effect on hover (if not touch device)
         if (!isTouchDevice()) {
-            initialize3DTiltEffects();
+            serviceCards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    if (!this.classList.contains('flipped')) {
+                        const cardInner = this.querySelector('.service-card-inner');
+                        if (!cardInner) return;
+                        
+                        const rect = this.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateY = ((x - centerX) / centerX) * 5;
+                        const rotateX = -((y - centerY) / centerY) * 5;
+                        
+                        cardInner.style.transform = `
+                            translateY(-10px) 
+                            perspective(1000px) 
+                            rotateX(${rotateX}deg) 
+                            rotateY(${rotateY}deg)
+                        `;
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('flipped')) {
+                        const cardInner = this.querySelector('.service-card-inner');
+                        if (cardInner) {
+                            cardInner.style.transform = '';
+                        }
+                    }
+                });
+            });
         }
-        
-        // Add staggered animation to cards
-        animateCardsOnScroll();
-        
-        // Add resize handler
-        window.addEventListener('resize', handleServicesResize);
-        
-        // Initialize by showing all services first
-        filterServices('all');
     }
     
     /**
-     * Filter services based on selected category
-     * @param {string} category - The category to filter by
+     * Filter services in the carousel by category
+     * @param {string} category - Category to filter
+     * @param {Object} swiper - Swiper instance
      */
-    function filterServices(category) {
-        // Reset any flipped cards
+    function filterServices(category, swiper) {
+        const slides = document.querySelectorAll('.services-carousel .swiper-slide');
+        
+        // Close any flipped cards
         serviceCards.forEach(card => {
             card.classList.remove('flipped');
         });
         
-        // If GSAP is available, use it for smooth filtering animation
-        if (typeof gsap !== 'undefined') {
-            // First hide all cards
-            serviceCards.forEach(card => {
-                if (category !== 'all' && card.getAttribute('data-category') !== category) {
-                    gsap.to(card, {
-                        opacity: 0,
-                        y: 30,
-                        scale: 0.95,
-                        duration: 0.3,
-                        onComplete: () => {
-                            card.style.display = 'none';
-                        }
-                    });
-                }
+        if (category === 'all') {
+            // Show all slides
+            slides.forEach(slide => {
+                slide.classList.remove('swiper-slide-hidden');
             });
-            
-            // Then show and animate matching cards
-            let visibleCards = Array.from(serviceCards).filter(card => 
-                category === 'all' || card.getAttribute('data-category') === category
-            );
-            
-            visibleCards.forEach(card => {
-                card.style.display = 'block';
-            });
-            
-            gsap.fromTo(visibleCards, 
-                { opacity: 0, y: 30, scale: 0.95 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    scale: 1, 
-                    duration: 0.5, 
-                    stagger: 0.1,
-                    ease: "back.out(1.2)",
-                    clearProps: "scale"
-                }
-            );
         } else {
-            // Fallback animation without GSAP
-            serviceCards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    // Show cards with simple animation
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
-                    card.style.display = 'block';
-                    
-                    // Force browser to process the display change
-                    void card.offsetWidth;
-                    
-                    // Animate in
-                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+            // Filter slides by category
+            slides.forEach(slide => {
+                if (slide.getAttribute('data-category') === category) {
+                    slide.classList.remove('swiper-slide-hidden');
                 } else {
-                    // Animate out and hide
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
-                    
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
+                    slide.classList.add('swiper-slide-hidden');
                 }
             });
+        }
+        
+        // Update Swiper
+        if (swiper) {
+            swiper.update();
+            swiper.slideTo(0);
+        }
+        
+        // Animate the active filter button icon
+        const activeButton = document.querySelector('.filter-btn.active');
+        if (activeButton) {
+            const icon = activeButton.querySelector('.filter-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.4)';
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1.2)';
+                }, 300);
+            }
         }
     }
     
     /**
-     * Initialize 3D tilt effects for card hover
+     * Initialize a fallback for the carousel if Swiper is not available
      */
-    function initialize3DTiltEffects() {
-        serviceCards.forEach(card => {
-            // Only apply tilt effect if the card is not flipped
-            card.addEventListener('mousemove', function(e) {
-                if (!this.classList.contains('flipped')) {
-                    const cardInner = this.querySelector('.service-card-inner');
-                    if (!cardInner) return;
-                    
-                    // Get position of mouse relative to card
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left; // x position within the element
-                    const y = e.clientY - rect.top; // y position within the element
-                    
-                    // Calculate rotation based on mouse position
-                    // (limit rotation to small angles for subtlety)
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateY = ((x - centerX) / centerX) * 5; // Max 5 degrees
-                    const rotateX = -((y - centerY) / centerY) * 5; // Max 5 degrees
-                    
-                    // Apply transform with subtle parallax effect
-                    cardInner.style.transform = `
-                        translateY(-10px) 
-                        perspective(1000px) 
-                        rotateX(${rotateX}deg) 
-                        rotateY(${rotateY}deg)
-                    `;
+    function initializeFallbackCarousel() {
+        const carouselWrapper = document.querySelector('.services-carousel-wrapper');
+        const slides = document.querySelectorAll('.services-carousel .swiper-slide');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        
+        if (!carouselWrapper || !slides.length) return;
+        
+        // Add basic styles for the fallback
+        const style = document.createElement('style');
+        style.textContent = `
+            .services-carousel {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+            }
+            .services-carousel .swiper-slide {
+                flex: 0 0 330px;
+                scroll-snap-align: start;
+                margin-right: 30px;
+            }
+            @media (max-width: 768px) {
+                .services-carousel .swiper-slide {
+                    flex: 0 0 280px;
                 }
-            });
-            
-            // Reset transform on mouse leave
-            card.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('flipped')) {
-                    const cardInner = this.querySelector('.service-card-inner');
-                    if (cardInner) {
-                        cardInner.style.transform = '';
-                    }
+            }
+            @media (max-width: 576px) {
+                .services-carousel .swiper-slide {
+                    flex: 0 0 100%;
                 }
-            });
-        });
-    }
-    
-    /**
-     * Animate service cards on scroll using AOS library or IntersectionObserver
-     */
-    function animateCardsOnScroll() {
-        // If AOS library is available, use it
-        if (typeof AOS !== 'undefined') {
-            // AOS is initialized elsewhere, just add attributes
-            serviceCards.forEach((card, index) => {
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', (index % 3) * 100);
-                card.setAttribute('data-aos-offset', '100');
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Create simple pagination dots
+        const paginationContainer = document.querySelector('.carousel-pagination');
+        if (paginationContainer) {
+            const numSlides = Math.ceil(slides.length / 3); // Assuming 3 slides per view
+            
+            for (let i = 0; i < numSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('pagination-dot');
+                if (i === 0) dot.classList.add('active');
+                paginationContainer.appendChild(dot);
+            }
+        }
+        
+        // Basic navigation functionality
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', function() {
+                const carousel = document.querySelector('.services-carousel');
+                carousel.scrollBy({
+                    left: -330,
+                    behavior: 'smooth'
+                });
             });
             
-            // Refresh AOS
-            AOS.refresh();
-        } 
-        // If IntersectionObserver is available, use it as fallback
-        else if ('IntersectionObserver' in window) {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const index = Array.from(serviceCards).indexOf(entry.target);
-                        setTimeout(() => {
-                            entry.target.classList.add('in-view');
-                        }, (index % 3) * 100);
-                        
-                        // Unobserve after animation
-                        observer.unobserve(entry.target);
+            nextButton.addEventListener('click', function() {
+                const carousel = document.querySelector('.services-carousel');
+                carousel.scrollBy({
+                    left: 330,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Get category from data attribute
+                const category = this.getAttribute('data-filter');
+                
+                // Show/hide slides based on category
+                slides.forEach(slide => {
+                    if (category === 'all' || slide.getAttribute('data-category') === category) {
+                        slide.style.display = 'block';
+                    } else {
+                        slide.style.display = 'none';
                     }
                 });
-            }, observerOptions);
-            
-            // Add necessary styles for fade-in animation
-            const style = document.createElement('style');
-            style.textContent = `
-                .services-showcase .service-card {
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: opacity 0.5s ease, transform 0.5s ease;
-                }
-                .services-showcase .service-card.in-view {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // Observe each card
-            serviceCards.forEach(card => {
-                observer.observe(card);
             });
-        }
-    }
-    
-    /**
-     * Handle window resize events for responsive behavior
-     */
-    function handleServicesResize() {
-        // Close any flipped cards on resize to prevent layout issues
-        serviceCards.forEach(card => {
-            if (card.classList.contains('flipped')) {
-                card.classList.remove('flipped');
-            }
         });
     }
     
@@ -1291,32 +1236,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Handle touch device support
+     * Add touch device support for interactive elements
      */
     function setupTouchDeviceSupport() {
         if (isTouchDevice()) {
-            // Add special handling for services section on touch devices
-            const style = document.createElement('style');
-            style.textContent = `
-                @media (hover: none) {
-                    .services-showcase .service-card .service-image-overlay {
-                        opacity: 0.3;
-                    }
-                    .services-showcase .service-card .service-card-inner {
-                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // Touch support for service cards
+            // Add special handling for service cards on touch devices
             serviceCards.forEach(card => {
-                const frontSide = card.querySelector('.service-front');
-                if (frontSide) {
-                    frontSide.addEventListener('touchend', function(e) {
-                        // Only flip if not touching a button
+                // Ensure flip works on touch (except when touching buttons)
+                const cardFront = card.querySelector('.service-front');
+                if (cardFront) {
+                    cardFront.addEventListener('touchend', function(e) {
                         if (!e.target.closest('.service-details-btn')) {
                             e.preventDefault();
+                            
+                            // Reset other cards
+                            serviceCards.forEach(c => {
+                                if (c !== card && c.classList.contains('flipped')) {
+                                    c.classList.remove('flipped');
+                                }
+                            });
+                            
+                            // Flip this card
                             if (!card.classList.contains('flipped')) {
                                 card.classList.add('flipped');
                             }
@@ -1331,18 +1271,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // INITIALIZE ALL COMPONENTS
     // ------------------------------------------------------------------------
     function initAll() {
+        // Core functionality
         initializePreloader();
         initializeHeroVideo();
         initializeAnimations();
         initializeScrollEffects();
         initializeNavigation();
-        initializeServicesSection();
+        
+        // Interactive sections
+        initializeServicesCarousel();
         initializeFAQ();
         initializeGallery();
         initializeBeforeAfterSlider();
         initializeFormValidation();
         initializeCookieConsent();
         initBubbleAboutSection();
+        
+        // Touch device support
         setupTouchDeviceSupport();
     }
     
