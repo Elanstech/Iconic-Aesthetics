@@ -272,14 +272,17 @@
 </section>
 
     <!-- Modern Services Section -->
-<section class="services-modern" id="services">
-  <div class="services-bg-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
+<!-- Premium Services Section -->
+<section class="premium-services" id="services">
+  <!-- Background Elements -->
+  <div class="services-bg">
+    <div class="services-shape shape-1"></div>
+    <div class="services-shape shape-2"></div>
+    <div class="services-shape shape-3"></div>
   </div>
   
   <div class="container">
+    <!-- Section Header -->
     <div class="section-header" data-aos="fade-up">
       <span class="section-subtitle">Our Expertise</span>
       <h2 class="section-title">Premium Beauty Services</h2>
@@ -287,141 +290,190 @@
       <p class="section-description">Discover our range of luxury treatments designed to enhance your natural beauty with precision and care</p>
     </div>
     
-    <!-- Elegant Services Navigation -->
-    <div class="services-navigation" data-aos="fade-up" data-aos-delay="100">
-      <div class="services-tabs">
-        <button class="services-tab active" data-category="all">
-          <span class="tab-icon"><i class="fas fa-spa"></i></span>
-          <span class="tab-label">All Services</span>
+    <!-- Services Showcase -->
+    <div class="services-showcase" data-aos="fade-up" data-aos-delay="200">
+      <!-- Services Navigation -->
+      <div class="services-nav">
+        <button class="nav-arrow prev-service" aria-label="Previous service">
+          <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="services-tab" data-category="makeup">
-          <span class="tab-icon"><i class="fas fa-paint-brush"></i></span>
-          <span class="tab-label">Permanent Makeup</span>
+        <button class="nav-arrow next-service" aria-label="Next service">
+          <i class="fas fa-chevron-right"></i>
         </button>
-        <button class="services-tab" data-category="lashes">
-          <span class="tab-icon"><i class="fas fa-eye"></i></span>
-          <span class="tab-label">Eyelashes</span>
-        </button>
-        <button class="services-tab" data-category="facials">
-          <span class="tab-icon"><i class="fas fa-leaf"></i></span>
-          <span class="tab-label">Facials</span>
-        </button>
-        <div class="tab-indicator"></div>
       </div>
-    </div>
-    
-    <!-- Services Cards Container -->
-    <div class="services-container" data-aos="fade-up" data-aos-delay="200">
-      <!-- Permanent Makeup Card -->
-      <div class="service-card" data-category="makeup">
-        <div class="service-card-inner">
-          <div class="service-front">
+      
+      <!-- Services Carousel -->
+      <div class="services-carousel">
+        <!-- Service Card: Permanent Makeup -->
+        <div class="service-card" data-category="makeup">
+          <div class="service-card-inner">
+            <!-- Service Image -->
             <div class="service-image">
               <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Permanent Makeup">
               <div class="service-overlay"></div>
             </div>
+            
+            <!-- Service Content -->
             <div class="service-content">
-              <div class="service-price">From $250</div>
+              <div class="service-badge">Most Popular</div>
               <h3 class="service-title">Permanent Makeup</h3>
-              <p class="service-excerpt">Enhance your natural features with precision artistry that lasts</p>
-              <button class="service-details-btn">View Details</button>
-            </div>
-          </div>
-          <div class="service-back">
-            <button class="service-close"><i class="fas fa-times"></i></button>
-            <h3 class="service-title">Permanent Makeup</h3>
-            <div class="service-divider"></div>
-            <p class="service-description">Wake up every day with perfect brows, lips, and eyeliner. Our skilled artists create natural-looking enhancements customized to your features.</p>
-            <div class="service-features">
-              <div class="feature-tag"><i class="fas fa-check"></i> Microblading</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Powder Brows</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Lip Blush</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Permanent Eyeliner</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Nano Brows</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Color Correction</div>
-            </div>
-            <div class="service-footer">
-              <div class="service-price">Starting at $250</div>
-              <a href="#booking" class="btn btn-service">Book Now</a>
+              <p class="service-description">Wake up every day with perfect brows, lips, and eyeliner. Our skilled artists create natural-looking enhancements customized to your features.</p>
+              
+              <!-- Service Features -->
+              <div class="service-features">
+                <span class="feature-tag">Microblading</span>
+                <span class="feature-tag">Powder Brows</span>
+                <span class="feature-tag">Lip Blush</span>
+                <span class="feature-tag">Permanent Eyeliner</span>
+              </div>
+              
+              <!-- Service Footer -->
+              <div class="service-footer">
+                <div class="service-price">From $250</div>
+                <a href="#booking" class="service-book-btn">Book Now</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Eyelashes Card -->
-      <div class="service-card" data-category="lashes">
-        <div class="service-card-inner">
-          <div class="service-front">
+        
+        <!-- Service Card: Eyelashes -->
+        <div class="service-card" data-category="lashes">
+          <div class="service-card-inner">
+            <!-- Service Image -->
             <div class="service-image">
               <img src="https://images.unsplash.com/photo-1587400988288-45aac5f2c8d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Eyelash Extensions">
               <div class="service-overlay"></div>
             </div>
+            
+            <!-- Service Content -->
             <div class="service-content">
-              <div class="service-price">From $85</div>
+              <div class="service-badge accent-color">New</div>
               <h3 class="service-title">Eyelash Services</h3>
-              <p class="service-excerpt">Transform your eyes with our luxury lash extensions and lifts</p>
-              <button class="service-details-btn">View Details</button>
+              <p class="service-description">Enhance your natural lashes with our premium lash services. From classic extensions to dramatic volume, we create customized looks that frame your eyes perfectly.</p>
+              
+              <!-- Service Features -->
+              <div class="service-features">
+                <span class="feature-tag">Classic Extensions</span>
+                <span class="feature-tag">Volume Extensions</span>
+                <span class="feature-tag">Hybrid Lashes</span>
+                <span class="feature-tag">Lash Lift & Tint</span>
+              </div>
+              
+              <!-- Service Footer -->
+              <div class="service-footer">
+                <div class="service-price">From $85</div>
+                <a href="#booking" class="service-book-btn">Book Now</a>
+              </div>
             </div>
           </div>
-          <div class="service-back">
-            <button class="service-close"><i class="fas fa-times"></i></button>
-            <h3 class="service-title">Eyelash Services</h3>
-            <div class="service-divider"></div>
-            <p class="service-description">Enhance your natural lashes with our premium lash services. From classic extensions to dramatic volume, we create customized looks that frame your eyes perfectly.</p>
-            <div class="service-features">
-              <div class="feature-tag"><i class="fas fa-check"></i> Classic Extensions</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Volume Extensions</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Hybrid Lashes</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Lash Lift & Tint</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Lash Removal</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Maintenance Fills</div>
+        </div>
+        
+        <!-- Service Card: Facials -->
+        <div class="service-card" data-category="facials">
+          <div class="service-card-inner">
+            <!-- Service Image -->
+            <div class="service-image">
+              <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Facial Treatments">
+              <div class="service-overlay"></div>
             </div>
-            <div class="service-footer">
-              <div class="service-price">Starting at $85</div>
-              <a href="#booking" class="btn btn-service">Book Now</a>
+            
+            <!-- Service Content -->
+            <div class="service-content">
+              <h3 class="service-title">Facial Treatments</h3>
+              <p class="service-description">Revitalize and rejuvenate your skin with our luxury facial treatments tailored to your unique skin type and concerns. Experience the glow.</p>
+              
+              <!-- Service Features -->
+              <div class="service-features">
+                <span class="feature-tag">Signature Facial</span>
+                <span class="feature-tag">Deep Cleansing</span>
+                <span class="feature-tag">Anti-Aging</span>
+                <span class="feature-tag">Hydrating Treatment</span>
+              </div>
+              
+              <!-- Service Footer -->
+              <div class="service-footer">
+                <div class="service-price">From $75</div>
+                <a href="#booking" class="service-book-btn">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Card: Body Treatments -->
+        <div class="service-card" data-category="body">
+          <div class="service-card-inner">
+            <!-- Service Image -->
+            <div class="service-image">
+              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Body Treatments">
+              <div class="service-overlay"></div>
+            </div>
+            
+            <!-- Service Content -->
+            <div class="service-content">
+              <div class="service-badge accent-secondary">Seasonal</div>
+              <h3 class="service-title">Body Treatments</h3>
+              <p class="service-description">Pamper yourself with our luxurious body treatments designed to relax, rejuvenate, and enhance your natural beauty from head to toe.</p>
+              
+              <!-- Service Features -->
+              <div class="service-features">
+                <span class="feature-tag">Body Scrubs</span>
+                <span class="feature-tag">Relaxing Massage</span>
+                <span class="feature-tag">Wraps & Masks</span>
+                <span class="feature-tag">Aromatherapy</span>
+              </div>
+              
+              <!-- Service Footer -->
+              <div class="service-footer">
+                <div class="service-price">From $120</div>
+                <a href="#booking" class="service-book-btn">Book Now</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Facials Card -->
-      <div class="service-card" data-category="facials">
-        <div class="service-card-inner">
-          <div class="service-front">
-            <div class="service-image">
-              <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Facial Treatments">
-              <div class="service-overlay"></div>
-            </div>
-            <div class="service-content">
-              <div class="service-price">From $75</div>
-              <h3 class="service-title">Facial Treatments</h3>
-              <p class="service-excerpt">Revitalize your skin with our customized luxury facials</p>
-              <button class="service-details-btn">View Details</button>
-            </div>
-          </div>
-          <div class="service-back">
-            <button class="service-close"><i class="fas fa-times"></i></button>
-            <h3 class="service-title">Facial Treatments</h3>
-            <div class="service-divider"></div>
-            <p class="service-description">Revitalize and rejuvenate your skin with our luxury facial treatments tailored to your unique skin type and concerns. Experience the glow.</p>
-            <div class="service-features">
-              <div class="feature-tag"><i class="fas fa-check"></i> Signature Facial</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Deep Cleansing</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Anti-Aging</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Hydrating Treatment</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Acne Treatment</div>
-              <div class="feature-tag"><i class="fas fa-check"></i> Chemical Peels</div>
-            </div>
-            <div class="service-footer">
-              <div class="service-price">Starting at $75</div>
-              <a href="#booking" class="btn btn-service">Book Now</a>
-            </div>
-          </div>
+      <!-- Service Progress Indicator -->
+      <div class="service-progress">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="service-counter">
+          <span class="current-slide">1</span>
+          <span class="separator">/</span>
+          <span class="total-slides">4</span>
         </div>
       </div>
     </div>
     
-    <div class="services-cta" data-aos="fade-up" data-aos-delay="300">
+    <!-- Additional Services Highlights -->
+    <div class="service-highlights" data-aos="fade-up" data-aos-delay="300">
+      <div class="highlight-item">
+        <div class="highlight-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h4>Expert Artists</h4>
+        <p>Our certified professionals have years of experience in the beauty industry.</p>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-icon">
+          <i class="fas fa-sparkles"></i>
+        </div>
+        <h4>Premium Products</h4>
+        <p>We use only the highest quality materials for lasting, beautiful results.</p>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h4>Personalized Care</h4>
+        <p>Every treatment is customized to your unique needs and beauty goals.</p>
+      </div>
+    </div>
+    
+    <!-- Call to Action -->
+    <div class="services-cta" data-aos="fade-up" data-aos-delay="400">
       <a href="services.html" class="btn-view-all">
         <span>View All Services</span>
         <i class="fas fa-arrow-right"></i>
