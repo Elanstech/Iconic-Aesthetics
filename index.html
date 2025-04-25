@@ -272,15 +272,13 @@
 </section>
 
     <!-- Modern Services Section -->
-<section class="services-showcase" id="services">
-  <div class="services-bg">
-    <div class="services-particle particle-1"></div>
-    <div class="services-particle particle-2"></div>
-    <div class="services-particle particle-3"></div>
-    <div class="services-particle particle-4"></div>
-    <div class="services-particle particle-5"></div>
+<section class="services-modern" id="services">
+  <div class="services-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
   </div>
-
+  
   <div class="container">
     <div class="section-header" data-aos="fade-up">
       <span class="section-subtitle">Our Expertise</span>
@@ -288,129 +286,143 @@
       <div class="section-divider"></div>
       <p class="section-description">Discover our range of luxury treatments designed to enhance your natural beauty with precision and care</p>
     </div>
-
-    <div class="services-categories" data-aos="fade-up" data-aos-delay="100">
-      <button class="category-btn active" data-category="all">All Services</button>
-      <button class="category-btn" data-category="makeup">Permanent Makeup</button>
-      <button class="category-btn" data-category="lashes">Eyelashes</button>
-      <button class="category-btn" data-category="facials">Facials</button>
+    
+    <!-- Elegant Services Navigation -->
+    <div class="services-navigation" data-aos="fade-up" data-aos-delay="100">
+      <div class="services-tabs">
+        <button class="services-tab active" data-category="all">
+          <span class="tab-icon"><i class="fas fa-spa"></i></span>
+          <span class="tab-label">All Services</span>
+        </button>
+        <button class="services-tab" data-category="makeup">
+          <span class="tab-icon"><i class="fas fa-paint-brush"></i></span>
+          <span class="tab-label">Permanent Makeup</span>
+        </button>
+        <button class="services-tab" data-category="lashes">
+          <span class="tab-icon"><i class="fas fa-eye"></i></span>
+          <span class="tab-label">Eyelashes</span>
+        </button>
+        <button class="services-tab" data-category="facials">
+          <span class="tab-icon"><i class="fas fa-leaf"></i></span>
+          <span class="tab-label">Facials</span>
+        </button>
+        <div class="tab-indicator"></div>
+      </div>
     </div>
-
-    <div class="services-grid" data-aos="fade-up" data-aos-delay="200">
+    
+    <!-- Services Cards Container -->
+    <div class="services-container" data-aos="fade-up" data-aos-delay="200">
       <!-- Permanent Makeup Card -->
       <div class="service-card" data-category="makeup">
         <div class="service-card-inner">
-          <div class="service-card-front">
+          <div class="service-front">
             <div class="service-image">
               <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Permanent Makeup">
               <div class="service-overlay"></div>
             </div>
-            <div class="service-badge">From $250</div>
             <div class="service-content">
-              <h3>Permanent Makeup</h3>
-              <p>Enhance your natural features with precision artistry that lasts</p>
-              <div class="service-icon">
-                <i class="fas fa-paint-brush"></i>
-              </div>
+              <div class="service-price">From $250</div>
+              <h3 class="service-title">Permanent Makeup</h3>
+              <p class="service-excerpt">Enhance your natural features with precision artistry that lasts</p>
+              <button class="service-details-btn">View Details</button>
             </div>
           </div>
-          <div class="service-card-back">
-            <div class="service-header">
-              <h3>Permanent Makeup</h3>
-              <span class="service-close">×</span>
-            </div>
+          <div class="service-back">
+            <button class="service-close"><i class="fas fa-times"></i></button>
+            <h3 class="service-title">Permanent Makeup</h3>
+            <div class="service-divider"></div>
             <p class="service-description">Wake up every day with perfect brows, lips, and eyeliner. Our skilled artists create natural-looking enhancements customized to your features.</p>
             <div class="service-features">
-              <div class="feature"><i class="fas fa-check"></i> Microblading</div>
-              <div class="feature"><i class="fas fa-check"></i> Powder Brows</div>
-              <div class="feature"><i class="fas fa-check"></i> Lip Blush</div>
-              <div class="feature"><i class="fas fa-check"></i> Permanent Eyeliner</div>
-              <div class="feature"><i class="fas fa-check"></i> Nano Brows</div>
-              <div class="feature"><i class="fas fa-check"></i> Color Correction</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Microblading</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Powder Brows</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Lip Blush</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Permanent Eyeliner</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Nano Brows</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Color Correction</div>
             </div>
-            <div class="service-price">Starting at $250</div>
-            <a href="#booking" class="btn-book">Book Now</a>
+            <div class="service-footer">
+              <div class="service-price">Starting at $250</div>
+              <a href="#booking" class="btn btn-service">Book Now</a>
+            </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Eyelashes Card -->
       <div class="service-card" data-category="lashes">
         <div class="service-card-inner">
-          <div class="service-card-front">
+          <div class="service-front">
             <div class="service-image">
               <img src="https://images.unsplash.com/photo-1587400988288-45aac5f2c8d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Eyelash Extensions">
               <div class="service-overlay"></div>
             </div>
-            <div class="service-badge">From $85</div>
             <div class="service-content">
-              <h3>Eyelash Services</h3>
-              <p>Transform your eyes with our luxury lash extensions and lifts</p>
-              <div class="service-icon">
-                <i class="fas fa-eye"></i>
-              </div>
+              <div class="service-price">From $85</div>
+              <h3 class="service-title">Eyelash Services</h3>
+              <p class="service-excerpt">Transform your eyes with our luxury lash extensions and lifts</p>
+              <button class="service-details-btn">View Details</button>
             </div>
           </div>
-          <div class="service-card-back">
-            <div class="service-header">
-              <h3>Eyelash Services</h3>
-              <span class="service-close">×</span>
-            </div>
+          <div class="service-back">
+            <button class="service-close"><i class="fas fa-times"></i></button>
+            <h3 class="service-title">Eyelash Services</h3>
+            <div class="service-divider"></div>
             <p class="service-description">Enhance your natural lashes with our premium lash services. From classic extensions to dramatic volume, we create customized looks that frame your eyes perfectly.</p>
             <div class="service-features">
-              <div class="feature"><i class="fas fa-check"></i> Classic Extensions</div>
-              <div class="feature"><i class="fas fa-check"></i> Volume Extensions</div>
-              <div class="feature"><i class="fas fa-check"></i> Hybrid Lashes</div>
-              <div class="feature"><i class="fas fa-check"></i> Lash Lift & Tint</div>
-              <div class="feature"><i class="fas fa-check"></i> Lash Removal</div>
-              <div class="feature"><i class="fas fa-check"></i> Maintenance Fills</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Classic Extensions</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Volume Extensions</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Hybrid Lashes</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Lash Lift & Tint</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Lash Removal</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Maintenance Fills</div>
             </div>
-            <div class="service-price">Starting at $85</div>
-            <a href="#booking" class="btn-book">Book Now</a>
+            <div class="service-footer">
+              <div class="service-price">Starting at $85</div>
+              <a href="#booking" class="btn btn-service">Book Now</a>
+            </div>
           </div>
         </div>
       </div>
-
+      
       <!-- Facials Card -->
       <div class="service-card" data-category="facials">
         <div class="service-card-inner">
-          <div class="service-card-front">
+          <div class="service-front">
             <div class="service-image">
               <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Facial Treatments">
               <div class="service-overlay"></div>
             </div>
-            <div class="service-badge">From $75</div>
             <div class="service-content">
-              <h3>Facial Treatments</h3>
-              <p>Revitalize your skin with our customized luxury facials</p>
-              <div class="service-icon">
-                <i class="fas fa-spa"></i>
-              </div>
+              <div class="service-price">From $75</div>
+              <h3 class="service-title">Facial Treatments</h3>
+              <p class="service-excerpt">Revitalize your skin with our customized luxury facials</p>
+              <button class="service-details-btn">View Details</button>
             </div>
           </div>
-          <div class="service-card-back">
-            <div class="service-header">
-              <h3>Facial Treatments</h3>
-              <span class="service-close">×</span>
-            </div>
+          <div class="service-back">
+            <button class="service-close"><i class="fas fa-times"></i></button>
+            <h3 class="service-title">Facial Treatments</h3>
+            <div class="service-divider"></div>
             <p class="service-description">Revitalize and rejuvenate your skin with our luxury facial treatments tailored to your unique skin type and concerns. Experience the glow.</p>
             <div class="service-features">
-              <div class="feature"><i class="fas fa-check"></i> Signature Facial</div>
-              <div class="feature"><i class="fas fa-check"></i> Deep Cleansing</div>
-              <div class="feature"><i class="fas fa-check"></i> Anti-Aging</div>
-              <div class="feature"><i class="fas fa-check"></i> Hydrating Treatment</div>
-              <div class="feature"><i class="fas fa-check"></i> Acne Treatment</div>
-              <div class="feature"><i class="fas fa-check"></i> Chemical Peels</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Signature Facial</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Deep Cleansing</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Anti-Aging</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Hydrating Treatment</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Acne Treatment</div>
+              <div class="feature-tag"><i class="fas fa-check"></i> Chemical Peels</div>
             </div>
-            <div class="service-price">Starting at $75</div>
-            <a href="#booking" class="btn-book">Book Now</a>
+            <div class="service-footer">
+              <div class="service-price">Starting at $75</div>
+              <a href="#booking" class="btn btn-service">Book Now</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     
     <div class="services-cta" data-aos="fade-up" data-aos-delay="300">
-      <a href="services.html" class="btn-view-services">
+      <a href="services.html" class="btn-view-all">
         <span>View All Services</span>
         <i class="fas fa-arrow-right"></i>
       </a>
