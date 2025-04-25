@@ -1498,76 +1498,25 @@ blockquote {
 /* =========================================
    Services Section
    ========================================= */
-/* =========================================
-   Modern Services Section Styling
-   ========================================= */
-   
-.services-showcase {
+.services-carousel-section {
   position: relative;
   padding: 10rem 0;
   background: linear-gradient(135deg, #f9f9f9, #f5f5f5);
   overflow: hidden;
 }
 
-/* Container and Responsive Setup */
-.services-container {
+/* Container and Layout */
+.container {
   width: 90%;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
-}
-
-/* Decorative Elements */
-.decorative-circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  z-index: 1;
-}
-
-.circle-1 {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, rgba(216, 163, 157, 0.08), rgba(216, 163, 157, 0.02));
-  top: -150px;
-  right: -100px;
-}
-
-.circle-2 {
-  width: 600px;
-  height: 600px;
-  background: linear-gradient(135deg, rgba(184, 157, 90, 0.06), rgba(184, 157, 90, 0.01));
-  bottom: -200px;
-  left: -200px;
-}
-
-.decorative-line {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(216, 163, 157, 0.4), transparent);
-  z-index: 1;
-}
-
-.line-1 {
-  width: 60%;
-  top: 15%;
-  left: 20%;
-  transform: rotate(-5deg);
-}
-
-.line-2 {
-  width: 40%;
-  bottom: 20%;
-  right: 10%;
-  transform: rotate(5deg);
 }
 
 /* Section Header */
 .section-header {
   text-align: center;
   margin-bottom: 5rem;
-  animation: fadeInUp 0.8s ease-out;
 }
 
 .section-badge {
@@ -1612,7 +1561,7 @@ blockquote {
   line-height: 1.7;
 }
 
-/* Filter Tabs */
+/* Services Filter */
 .services-filter {
   display: flex;
   justify-content: center;
@@ -1620,7 +1569,6 @@ blockquote {
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-bottom: 4rem;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .filter-btn {
@@ -1677,19 +1625,40 @@ blockquote {
   transform: scale(1.2);
 }
 
-/* Services Grid Layout */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 3rem;
-  animation: fadeIn 0.8s ease-out 0.4s both;
+/* Services Carousel Wrapper */
+.services-carousel-wrapper {
+  position: relative;
+  margin-bottom: 5rem;
+  padding: 2rem 0;
+}
+
+/* Swiper Carousel */
+.services-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem;
+}
+
+.swiper-wrapper {
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 350px;
+  height: auto;
+  position: relative;
+  transition-property: transform;
+  margin-right: 30px;
 }
 
 /* Service Cards */
 .service-card {
   perspective: 1000px;
   height: 480px;
-  animation: fadeInUp 0.6s ease;
 }
 
 .service-card-inner {
@@ -1827,7 +1796,7 @@ blockquote {
   color: #a97c7c;
   font-size: 1.4rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .service-meta {
@@ -1895,6 +1864,7 @@ blockquote {
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 2rem;
+  overflow-y: auto;
 }
 
 .detail-item h4 {
@@ -1966,11 +1936,69 @@ blockquote {
   box-shadow: 0 5px 15px rgba(216, 163, 157, 0.3);
 }
 
+/* Carousel Navigation */
+.carousel-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.carousel-prev,
+.carousel-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  color: #5a3d3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: linear-gradient(135deg, #d8a39d, #b27b76);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.carousel-prev.swiper-button-disabled,
+.carousel-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.carousel-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(216, 163, 157, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-pagination .swiper-pagination-bullet-active {
+  width: 30px;
+  border-radius: 10px;
+  background-color: #d8a39d;
+}
+
 /* View All Link */
 .view-all-container {
   text-align: center;
   margin-top: 5rem;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .view-all-link {
@@ -2022,46 +2050,92 @@ blockquote {
   transition: transform 0.3s ease;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+/* Hidden Slides */
+.swiper-slide-hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 3D Effect Enhancement */
+.service-card {
+  transform: perspective(1000px);
+}
+
+.service-card-inner {
+  transform: translateZ(0);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.service-card:hover .service-card-inner {
+  transform: translateY(-10px) translateZ(10px);
+}
+
+/* Animated Card Background */
+.service-front::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(216, 163, 157, 0.05) 0%, transparent 50%);
+  transform: rotate(0deg);
+  animation: rotateGradient 15s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
   }
-  to {
-    opacity: 1;
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.service-content {
+  position: relative;
+  z-index: 1;
 }
 
 /* Media Queries */
 @media (max-width: 1200px) {
-  .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
+  .swiper-slide {
+    width: 320px;
   }
   
   .service-card {
     height: 450px;
   }
+  
+  .section-title {
+    font-size: 3.8rem;
+  }
 }
 
 @media (max-width: 992px) {
-  .services-showcase {
+  .services-carousel-section {
     padding: 8rem 0;
   }
   
+  .swiper-slide {
+    width: 300px;
+  }
+  
+  .service-card {
+    height: 420px;
+  }
+  
   .section-title {
-    font-size: 3.6rem;
+    font-size: 3.4rem;
+  }
+  
+  .section-description {
+    font-size: 1.5rem;
   }
   
   .services-filter {
@@ -2075,25 +2149,32 @@ blockquote {
 }
 
 @media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+  .services-carousel-section {
+    padding: 6rem 0;
   }
   
-  .section-title {
-    font-size: 3.2rem;
+  .swiper-slide {
+    width: 280px;
   }
   
   .service-card {
-    height: 430px;
+    height: 400px;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .service-image {
+    height: 180px;
   }
   
   .service-title {
     font-size: 1.8rem;
   }
   
-  .service-image {
-    height: 200px;
+  .service-description {
+    font-size: 1.3rem;
   }
   
   .services-filter {
@@ -2106,24 +2187,39 @@ blockquote {
   .filter-btn {
     flex-shrink: 0;
   }
+  
+  .carousel-navigation {
+    gap: 1.5rem;
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 576px) {
-  .services-showcase {
-    padding: 6rem 0;
+  .services-carousel-section {
+    padding: 5rem 0;
+  }
+  
+  .swiper-slide {
+    width: 100%;
   }
   
   .section-title {
     font-size: 2.8rem;
   }
   
-  .services-grid {
-    grid-template-columns: 1fr;
+  .section-badge {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
   }
   
   .service-card {
-    max-width: 400px;
-    margin: 0 auto;
+    height: 420px;
   }
   
   .view-all-link {
@@ -2146,8 +2242,8 @@ blockquote {
     opacity: 0.5;
   }
   
-  .service-card:hover .service-title::after {
-    width: 40px;
+  .service-image-overlay {
+    opacity: 0.3;
   }
 }
 
@@ -2163,17 +2259,8 @@ blockquote {
     transition-duration: 0.1s;
   }
   
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .service-front::before {
+    animation: none;
   }
 }
 
