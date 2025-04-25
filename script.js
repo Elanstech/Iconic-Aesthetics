@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileNavClose = document.querySelector('.mobile-nav-close');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     const backToTop = document.getElementById('back-to-top');
-    const serviceTabs = document.querySelectorAll('.service-tab');
-    const servicePanels = document.querySelectorAll('.service-panel');
     const faqItems = document.querySelectorAll('.faq-item');
     const galleryFilters = document.querySelectorAll('.gallery-filter');
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -28,11 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const forms = document.querySelectorAll('form');
     
     // Modern Services Elements
-    const servicesTabs = document.querySelectorAll('.services-tab');
-    const tabIndicator = document.querySelector('.tab-indicator');
-    const serviceCards = document.querySelectorAll('.service-card');
-    const detailsButtons = document.querySelectorAll('.service-details-btn');
-    const closeButtons = document.querySelectorAll('.service-close');
+    const filterButtons = document.querySelectorAll('.services-showcase .filter-btn');
+    const serviceCards = document.querySelectorAll('.services-showcase .service-card');
+    const detailButtons = document.querySelectorAll('.services-showcase .service-details-btn');
+    const closeButtons = document.querySelectorAll('.services-showcase .service-close');
     
     // ------------------------------------------------------------------------
     // HERO VIDEO FUNCTIONALITY
@@ -225,25 +222,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Scroll trigger animations
             if (typeof ScrollTrigger !== 'undefined') {
-                // Service tabs
-                gsap.from('.service-tab', {
-                    scrollTrigger: {
-                        trigger: '.services-tabs',
-                        start: 'top 80%',
-                        toggleActions: 'play none none reverse' // Added proper toggle actions
-                    },
-                    opacity: 0,
-                    y: 20,
-                    stagger: 0.2,
-                    duration: 0.6
-                });
-                
                 // About features
                 gsap.from('.feature', {
                     scrollTrigger: {
                         trigger: '.about-features',
                         start: 'top 80%',
-                        toggleActions: 'play none none reverse' // Added proper toggle actions
+                        toggleActions: 'play none none reverse'
                     },
                     opacity: 0,
                     x: -30,
@@ -256,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTrigger: {
                         trigger: '.gallery-grid',
                         start: 'top 80%',
-                        toggleActions: 'play none none reverse' // Added proper toggle actions
+                        toggleActions: 'play none none reverse'
                     },
                     opacity: 0,
                     y: 30,
@@ -269,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTrigger: {
                         trigger: '.booking-steps',
                         start: 'top 80%',
-                        toggleActions: 'play none none reverse' // Added proper toggle actions
+                        toggleActions: 'play none none reverse'
                     },
                     opacity: 0,
                     x: -30,
@@ -282,12 +266,56 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollTrigger: {
                         trigger: '.contact-info',
                         start: 'top 80%',
-                        toggleActions: 'play none none reverse' // Added proper toggle actions
+                        toggleActions: 'play none none reverse'
                     },
                     opacity: 0,
                     y: 30,
                     stagger: 0.1,
                     duration: 0.6
+                });
+                
+                // Services section animations
+                gsap.from('.services-showcase .section-badge', {
+                    scrollTrigger: {
+                        trigger: '.services-showcase',
+                        start: 'top 85%'
+                    },
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6
+                });
+                
+                gsap.from('.services-showcase .section-title', {
+                    scrollTrigger: {
+                        trigger: '.services-showcase',
+                        start: 'top 85%'
+                    },
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.6,
+                    delay: 0.2
+                });
+                
+                gsap.from('.services-showcase .section-description', {
+                    scrollTrigger: {
+                        trigger: '.services-showcase',
+                        start: 'top 85%'
+                    },
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.6,
+                    delay: 0.3
+                });
+                
+                gsap.from('.services-showcase .filter-btn', {
+                    scrollTrigger: {
+                        trigger: '.services-filter',
+                        start: 'top 90%'
+                    },
+                    opacity: 0,
+                    y: 20,
+                    stagger: 0.1,
+                    duration: 0.5
                 });
             }
         }
@@ -451,459 +479,290 @@ document.addEventListener('DOMContentLoaded', function() {
             setInitialActiveLink();
         }
     }
-    
+
     // ------------------------------------------------------------------------
-    // SERVICES AND TABS (Legacy version)
+    // MODERN SERVICES SECTION
     // ------------------------------------------------------------------------
-    function initializeServiceTabs() {
-        if (!serviceTabs.length || !servicePanels.length) return;
+    function initializeServicesSection() {
+        if (!serviceCards.length) return;
         
-        serviceTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                serviceTabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Get the service ID from the data attribute
-                const serviceId = this.getAttribute('data-service');
-                
-                // Hide all service panels
-                servicePanels.forEach(panel => {
-                    panel.classList.remove('active');
-                });
-                
-                // Show the selected service panel
-                const targetPanel = document.getElementById(serviceId);
-                if (targetPanel) targetPanel.classList.add('active');
-            });
-        });
-    }
-    
-    // ------------------------------------------------------------------------
-    // SERVICES SHOWCASE SECTION (New Redesigned Modern Version)
-    // ------------------------------------------------------------------------
-    function initializeModernServices() {
-        // Get DOM elements
-        const servicesTabs = document.querySelectorAll('.services-tab');
-        const tabIndicator = document.querySelector('.tab-indicator');
-        const serviceCards = document.querySelectorAll('.service-card');
-        const detailsButtons = document.querySelectorAll('.service-details-btn');
-        const closeButtons = document.querySelectorAll('.service-close');
-        
-        // Exit if elements don't exist
-        if (!servicesTabs.length || !serviceCards.length) return;
-        
-        // Set initial tab indicator position
-        if (tabIndicator && servicesTabs.length) {
-            updateTabIndicator(0);
-        }
-        
-        // Setup tab switching
-        servicesTabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                servicesTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Move tab indicator
-                updateTabIndicator(index);
-                
-                // Filter services
-                const category = tab.getAttribute('data-category');
-                filterServices(category);
-                
-                // Animate tab icon
-                const tabIcon = tab.querySelector('.tab-icon');
-                if (tabIcon) {
-                    // Use GSAP if available
-                    if (typeof gsap !== 'undefined') {
-                        gsap.from(tabIcon, {
-                            scale: 0.5,
-                            rotation: -15,
-                            duration: 0.5,
-                            ease: "back.out(1.7)"
-                        });
-                    } else {
-                        // Fallback animation
-                        tabIcon.style.transform = 'scale(0.5) rotate(-15deg)';
-                        setTimeout(() => {
-                            tabIcon.style.transform = 'scale(1.2) rotate(0)';
-                        }, 50);
-                    }
-                }
-            });
-        });
-        
-        // Flip card on details button click
-        detailsButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const card = this.closest('.service-card');
-                if (card) {
-                    // Add flipped class with subtle delay for better animation
-                    setTimeout(() => {
-                        card.classList.add('flipped');
-                    }, 50);
-                }
-            });
-        });
-        
-        // Close details view
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const card = this.closest('.service-card');
-                if (card) {
-                    card.classList.remove('flipped');
-                }
-            });
-        });
-        
-        // Add hover effects for service cards
-        serviceCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('flipped')) {
-                    // Apply hover effects
-                    this.style.transform = 'translateY(-10px)';
-                    this.querySelector('.service-card-inner').style.boxShadow = 
-                        '0 20px 40px rgba(0, 0, 0, 0.15)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('flipped')) {
-                    // Reset hover effects
-                    this.style.transform = '';
-                    this.querySelector('.service-card-inner').style.boxShadow = 
-                        '0 15px 35px rgba(0, 0, 0, 0.1)';
-                }
-            });
-        });
-        
-        // Function to update tab indicator position based on active tab
-        function updateTabIndicator(activeIndex) {
-            if (!tabIndicator) return;
-            
-            const isMobile = window.innerWidth <= 768;
-            
-            if (isMobile) {
-                // For mobile: vertical layout
-                const activeTab = servicesTabs[activeIndex];
-                const tabTop = activeTab.offsetTop - activeTab.parentNode.offsetTop;
-                
-                tabIndicator.style.transform = `translateY(${tabTop}px)`;
-                tabIndicator.style.width = 'calc(100% - 2rem)';
-                tabIndicator.style.height = `${activeTab.offsetHeight}px`;
-            } else {
-                // For desktop: horizontal layout
-                const tabWidth = 100 / servicesTabs.length;
-                
-                tabIndicator.style.transform = `translateX(${activeIndex * tabWidth}%)`;
-                tabIndicator.style.width = `calc(${tabWidth}% - 1rem)`;
-                tabIndicator.style.height = 'calc(100% - 2rem)';
-            }
-        }
-        
-        // Function to filter services by category
-        function filterServices(category) {
-            // Optional: add GSAP stagger animation if available
-            if (typeof gsap !== 'undefined') {
-                // First hide all cards that don't match
-                serviceCards.forEach(card => {
-                    // First reset any flipped cards
-                    card.classList.remove('flipped');
+        // Set up category filtering
+        if (filterButtons.length) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
                     
-                    if (category !== 'all' && card.getAttribute('data-category') !== category) {
-                        gsap.to(card, {
-                            opacity: 0,
-                            y: 20,
-                            scale: 0.95,
-                            duration: 0.3,
-                            onComplete: () => {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-                
-                // Then show and animate cards that do match
-                let visibleCards = Array.from(serviceCards).filter(card => 
-                    category === 'all' || card.getAttribute('data-category') === category
-                );
-                
-                visibleCards.forEach(card => {
-                    card.style.display = 'block';
-                });
-                
-                gsap.fromTo(visibleCards, 
-                    { opacity: 0, y: 20, scale: 0.95 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        scale: 1, 
-                        duration: 0.5, 
-                        stagger: 0.1,
-                        ease: "back.out(1.2)",
-                        clearProps: "scale"
-                    }
-                );
-            } else {
-                // Fallback animation without GSAP
-                serviceCards.forEach(card => {
-                    // Reset flipped state
-                    card.classList.remove('flipped');
+                    // Get category from data attribute
+                    const category = this.getAttribute('data-filter');
                     
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        // Show card with simple animation
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px) scale(0.95)';
-                        card.style.display = 'block';
-                        
-                        // Force browser to process the display change
-                        void card.offsetWidth;
-                        
-                        // Fade in
-                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0) scale(1)';
-                    } else {
-                        // Hide card
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px) scale(0.95)';
-                        
+                    // Animate category icon
+                    const icon = this.querySelector('.filter-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.4)';
                         setTimeout(() => {
-                            card.style.display = 'none';
+                            icon.style.transform = 'scale(1.2)';
                         }, 300);
                     }
+                    
+                    // Filter services by category
+                    filterServices(category);
                 });
-            }
+            });
         }
         
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            // Find active tab index
-            const activeIndex = Array.from(servicesTabs).findIndex(tab => 
-                tab.classList.contains('active')
-            );
-            
-            if (activeIndex >= 0) {
-                // Update indicator position
-                updateTabIndicator(activeIndex);
-            }
-        });
-        
-        // Touch devices support for card flipping
-        if ('ontouchstart' in window) {
-            serviceCards.forEach(card => {
-                // Ensure buttons still work properly on touch devices
-                const cardFront = card.querySelector('.service-front');
-                if (!cardFront) return;
-                
-                cardFront.addEventListener('touchend', function(e) {
-                    // Only flip if the target is not the details button
-                    if (!e.target.closest('.service-details-btn')) {
-                        e.preventDefault();
-                        if (!card.classList.contains('flipped')) {
-                            card.classList.add('flipped');
-                        }
+        // Set up card flip behavior
+        if (detailButtons.length) {
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.service-card');
+                    if (card) {
+                        // Reset any other flipped cards
+                        serviceCards.forEach(c => {
+                            if (c !== card) c.classList.remove('flipped');
+                        });
+                        
+                        // Flip this card
+                        card.classList.add('flipped');
                     }
                 });
             });
         }
+        
+        // Close button to flip back
+        if (closeButtons.length) {
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.service-card');
+                    if (card) {
+                        card.classList.remove('flipped');
+                    }
+                });
+            });
+        }
+        
+        // Add keyboard accessibility for flipped cards
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any flipped cards on ESC key
+                serviceCards.forEach(card => {
+                    if (card.classList.contains('flipped')) {
+                        card.classList.remove('flipped');
+                    }
+                });
+            }
+        });
+        
+        // Set up 3D tilt effects if not on a touch device
+        if (!isTouchDevice()) {
+            initialize3DTiltEffects();
+        }
+        
+        // Add staggered animation to cards
+        animateCardsOnScroll();
+        
+        // Add resize handler
+        window.addEventListener('resize', handleServicesResize);
         
         // Initialize by showing all services first
         filterServices('all');
     }
     
-    // ------------------------------------------------------------------------
-    // SERVICES SHOWCASE SECTION (Previous Modern Version)
-    // ------------------------------------------------------------------------
-    function initializeServicesShowcase() {
-        // Select elements
-        const serviceCards = document.querySelectorAll('.services-showcase .service-card');
-        const categoryBtns = document.querySelectorAll('.services-showcase .category-btn');
-        
-        if (!serviceCards.length) return;
-
-        // Service Card 3D Effect
+    /**
+     * Filter services based on selected category
+     * @param {string} category - The category to filter by
+     */
+    function filterServices(category) {
+        // Reset any flipped cards
         serviceCards.forEach(card => {
-            // Flip card on click
-            card.addEventListener('click', function() {
-                // Only flip if clicking on the front of the card
-                if (!this.classList.contains('flipped')) {
-                    this.classList.add('flipped');
-                }
-            });
-            
-            // Add 3D tilt effect on mousemove when not flipped
-            card.addEventListener('mousemove', function(e) {
-                if (!this.classList.contains('flipped')) {
-                    const cardRect = this.getBoundingClientRect();
-                    const cardWidth = cardRect.width;
-                    const cardHeight = cardRect.height;
-                    
-                    // Calculate mouse position relative to card center
-                    const centerX = cardRect.left + cardWidth / 2;
-                    const centerY = cardRect.top + cardHeight / 2;
-                    const mouseX = e.clientX - centerX;
-                    const mouseY = e.clientY - centerY;
-                    
-                    // Calculate rotation angles (limit to small angles)
-                    const rotateY = mouseX / (cardWidth / 2) * 5; // Max 5 degrees
-                    const rotateX = -mouseY / (cardHeight / 2) * 5; // Max 5 degrees
-                    
-                    // Apply transform
-                    this.querySelector('.service-card-inner').style.transform = 
-                        `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                }
-            });
-            
-            // Reset transform on mouseleave
-            card.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('flipped')) {
-                    this.querySelector('.service-card-inner').style.transform = '';
-                }
-            });
-            
-            // Close button functionality
-            const closeBtn = card.querySelector('.service-close');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent triggering card click
-                    card.classList.remove('flipped');
-                });
-            }
+            card.classList.remove('flipped');
         });
         
-        // Category filtering
-        if (categoryBtns.length) {
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active button
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const category = this.getAttribute('data-category');
-                    
-                    // Filter cards with animation
-                    serviceCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            // Show card with animation
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            
-                            setTimeout(() => {
-                                card.style.display = 'block';
-                                
-                                // Trigger reflow
-                                void card.offsetWidth;
-                                
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            // Hide card with animation
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-        }
-        
-        // GSAP Integration for Services Showcase (if available)
+        // If GSAP is available, use it for smooth filtering animation
         if (typeof gsap !== 'undefined') {
-            // Staggered entrance animation for cards
-            gsap.from('.services-showcase .service-card', {
-                opacity: 0,
-                y: 50,
-                stagger: 0.15,
-                duration: 0.8,
-                ease: "back.out(1.7)",
-                scrollTrigger: {
-                    trigger: '.services-grid',
-                    start: 'top 80%'
-                }
-            });
-            
-            // Animate the service badges
-            gsap.from('.services-showcase .service-badge', {
-                opacity: 0,
-                scale: 0.5,
-                duration: 0.6,
-                stagger: 0.1,
-                delay: 0.5,
-                ease: "back.out(1.7)"
-            });
-            
-            // Animate background particles
-            gsap.to('.services-showcase .services-particle', {
-                x: "random(-30, 30)",
-                y: "random(-30, 30)",
-                duration: "random(20, 40)",
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                stagger: 5
-            });
-        }
-        
-        // Fallback animations for when GSAP is not available
-        if (typeof gsap === 'undefined') {
-            // Add CSS animation classes
-            document.head.insertAdjacentHTML('beforeend', `
-                <style>
-                    @keyframes fadeInUp {
-                        from {
-                            opacity: 0;
-                            transform: translateY(30px);
-                        }
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                    
-                    .services-showcase .service-card {
-                        animation: fadeInUp 0.8s ease-out forwards;
-                        opacity: 0;
-                    }
-                    
-                    .services-showcase .service-card:nth-child(1) { animation-delay: 0.1s; }
-                    .services-showcase .service-card:nth-child(2) { animation-delay: 0.25s; }
-                    .services-showcase .service-card:nth-child(3) { animation-delay: 0.4s; }
-                </style>
-            `);
-        }
-        
-        // Handle card transition for touch devices
-        if ('ontouchstart' in window) {
+            // First hide all cards
             serviceCards.forEach(card => {
-                const cardFront = card.querySelector('.service-card-front');
-                
-                if (cardFront) {
-                    cardFront.addEventListener('touchend', function(e) {
-                        e.preventDefault();
-                        if (!card.classList.contains('flipped')) {
-                            card.classList.add('flipped');
+                if (category !== 'all' && card.getAttribute('data-category') !== category) {
+                    gsap.to(card, {
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.95,
+                        duration: 0.3,
+                        onComplete: () => {
+                            card.style.display = 'none';
                         }
                     });
                 }
-                
-                const closeBtn = card.querySelector('.service-close');
-                if (closeBtn) {
-                    closeBtn.addEventListener('touchend', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        card.classList.remove('flipped');
-                    });
+            });
+            
+            // Then show and animate matching cards
+            let visibleCards = Array.from(serviceCards).filter(card => 
+                category === 'all' || card.getAttribute('data-category') === category
+            );
+            
+            visibleCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            gsap.fromTo(visibleCards, 
+                { opacity: 0, y: 30, scale: 0.95 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1, 
+                    duration: 0.5, 
+                    stagger: 0.1,
+                    ease: "back.out(1.2)",
+                    clearProps: "scale"
+                }
+            );
+        } else {
+            // Fallback animation without GSAP
+            serviceCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    // Show cards with simple animation
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.display = 'block';
+                    
+                    // Force browser to process the display change
+                    void card.offsetWidth;
+                    
+                    // Animate in
+                    card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    // Animate out and hide
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
         }
+    }
+    
+    /**
+     * Initialize 3D tilt effects for card hover
+     */
+    function initialize3DTiltEffects() {
+        serviceCards.forEach(card => {
+            // Only apply tilt effect if the card is not flipped
+            card.addEventListener('mousemove', function(e) {
+                if (!this.classList.contains('flipped')) {
+                    const cardInner = this.querySelector('.service-card-inner');
+                    if (!cardInner) return;
+                    
+                    // Get position of mouse relative to card
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const y = e.clientY - rect.top; // y position within the element
+                    
+                    // Calculate rotation based on mouse position
+                    // (limit rotation to small angles for subtlety)
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateY = ((x - centerX) / centerX) * 5; // Max 5 degrees
+                    const rotateX = -((y - centerY) / centerY) * 5; // Max 5 degrees
+                    
+                    // Apply transform with subtle parallax effect
+                    cardInner.style.transform = `
+                        translateY(-10px) 
+                        perspective(1000px) 
+                        rotateX(${rotateX}deg) 
+                        rotateY(${rotateY}deg)
+                    `;
+                }
+            });
+            
+            // Reset transform on mouse leave
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('flipped')) {
+                    const cardInner = this.querySelector('.service-card-inner');
+                    if (cardInner) {
+                        cardInner.style.transform = '';
+                    }
+                }
+            });
+        });
+    }
+    
+    /**
+     * Animate service cards on scroll using AOS library or IntersectionObserver
+     */
+    function animateCardsOnScroll() {
+        // If AOS library is available, use it
+        if (typeof AOS !== 'undefined') {
+            // AOS is initialized elsewhere, just add attributes
+            serviceCards.forEach((card, index) => {
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index % 3) * 100);
+                card.setAttribute('data-aos-offset', '100');
+            });
+            
+            // Refresh AOS
+            AOS.refresh();
+        } 
+        // If IntersectionObserver is available, use it as fallback
+        else if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(serviceCards).indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('in-view');
+                        }, (index % 3) * 100);
+                        
+                        // Unobserve after animation
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Add necessary styles for fade-in animation
+            const style = document.createElement('style');
+            style.textContent = `
+                .services-showcase .service-card {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.5s ease, transform 0.5s ease;
+                }
+                .services-showcase .service-card.in-view {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Observe each card
+            serviceCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+    }
+    
+    /**
+     * Handle window resize events for responsive behavior
+     */
+    function handleServicesResize() {
+        // Close any flipped cards on resize to prevent layout issues
+        serviceCards.forEach(card => {
+            if (card.classList.contains('flipped')) {
+                card.classList.remove('flipped');
+            }
+        });
     }
     
     // ------------------------------------------------------------------------
@@ -941,7 +800,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // GALLERY
     // ------------------------------------------------------------------------
     function initializeGallery() {
-        if (!galleryFilters.length || !galleryItems.length || typeof gsap === 'undefined') return;
+        if (!galleryFilters.length || !galleryItems.length) return;
         
         galleryFilters.forEach(filter => {
             filter.addEventListener('click', function() {
@@ -955,27 +814,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 const category = this.getAttribute('data-filter');
                 
                 // Filter gallery items
-                galleryItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        gsap.to(item, {
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.3,
-                            onComplete: function() {
-                                item.style.display = 'block';
-                            }
-                        });
-                    } else {
-                        gsap.to(item, {
-                            opacity: 0,
-                            scale: 0.8,
-                            duration: 0.3,
-                            onComplete: function() {
+                if (typeof gsap !== 'undefined') {
+                    galleryItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            gsap.to(item, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.3,
+                                onComplete: function() {
+                                    item.style.display = 'block';
+                                }
+                            });
+                        } else {
+                            gsap.to(item, {
+                                opacity: 0,
+                                scale: 0.8,
+                                duration: 0.3,
+                                onComplete: function() {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    // Fallback without GSAP
+                    galleryItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
                                 item.style.display = 'none';
-                            }
-                        });
-                    }
-                });
+                            }, 300);
+                        }
+                    });
+                }
             });
         });
     }
@@ -1143,153 +1021,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ------------------------------------------------------------------------
-    // LEGACY ABOUT SECTION
-    // ------------------------------------------------------------------------
-    function initModernAboutSection() {
-        // Select elements for animations
-        const featureCards = document.querySelectorAll('.feature-card');
-        const aboutImages = document.querySelectorAll('.about-image-main, .about-image-accent');
-        const experienceTag = document.querySelector('.experience-tag');
-        const quoteSection = document.querySelector('.owner-quote');
-        
-        // Parallax scrolling effect for main image if GSAP is available
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            // Subtle parallax for main image
-            gsap.to('.about-image-main img', {
-                scrollTrigger: {
-                    trigger: '.about-modern',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true
-                },
-                y: 50,
-                ease: 'none'
-            });
-            
-            // Animate the experience tag with a slight rotation on scroll
-            gsap.from(experienceTag, {
-                scrollTrigger: {
-                    trigger: '.about-image-wrapper',
-                    start: 'top 80%',
-                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
-                },
-                opacity: 0,
-                scale: 0.5,
-                rotation: -15,
-                duration: 0.8,
-                ease: 'back.out(1.7)'
-            });
-            
-            // Animate feature cards with proper bidirectional control
-            gsap.from(featureCards, {
-                scrollTrigger: {
-                    trigger: '.about-features',
-                    start: 'top 80%',
-                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
-                },
-                y: 30,
-                opacity: 0,
-                stagger: 0.15,
-                duration: 0.6
-            });
-            
-            // Animate quote section
-            gsap.from(quoteSection, {
-                scrollTrigger: {
-                    trigger: quoteSection,
-                    start: 'top 80%',
-                    toggleActions: 'play reverse restart reverse' // Updated for bidirectional animation
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.8
-            });
-        }
-        
-        // Add hover interactions for feature cards with vanilla JS
-        if (featureCards) {
-            featureCards.forEach(card => {
-                // Add mouse hover effects
-                card.addEventListener('mouseenter', function() {
-                    // Add subtle scale effect to icon
-                    const icon = this.querySelector('.feature-icon');
-                    if (icon) {
-                        icon.style.transform = 'scale(1.1) rotate(5deg)';
-                    }
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    // Reset icon
-                    const icon = this.querySelector('.feature-icon');
-                    if (icon) {
-                        icon.style.transform = 'scale(1) rotate(0deg)';
-                    }
-                });
-            });
-        }
-        
-        // Add scroll-based animations for elements without GSAP
-        if (!window.gsap) {
-            // Simple intersection observer for fade-in effects
-            const fadeInElements = [
-                ...featureCards, 
-                experienceTag, 
-                quoteSection,
-                ...aboutImages
-            ].filter(el => el); // Filter out null elements
-            
-            if (fadeInElements.length && 'IntersectionObserver' in window) {
-                const fadeInObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('fade-in');
-                        } else {
-                            // Remove the class when scrolling back up
-                            entry.target.classList.remove('fade-in');
-                        }
-                        // Don't unobserve - keep observing to handle scroll up/down
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-                
-                fadeInElements.forEach(el => {
-                    el.classList.add('will-animate');
-                    fadeInObserver.observe(el);
-                });
-            }
-        }
-        
-        // Add these classes to your CSS for the fallback animations
-        const styleSheet = document.styleSheets[0];
-        const fadeInRules = `
-            .will-animate {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.8s ease, transform 0.8s ease;
-            }
-            .fade-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-        
-        try {
-            styleSheet.insertRule(fadeInRules, styleSheet.cssRules.length);
-        } catch (e) {
-            // If can't modify stylesheet, create a new style tag
-            const styleTag = document.createElement('style');
-            styleTag.textContent = fadeInRules;
-            document.head.appendChild(styleTag);
-        }
-    }
-
-    // ------------------------------------------------------------------------
-    // NEW BUBBLE ABOUT SECTION - UPDATED WITH FIXED ANIMATIONS 
+    // ABOUT BUBBLE SECTION
     // ------------------------------------------------------------------------
     function initBubbleAboutSection() {
-        // Get elements
+        // Select elements
         const aboutSection = document.querySelector('.about-bubble');
         if (!aboutSection) return;
 
@@ -1368,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // IMPROVED FEATURE CARDS ANIMATION - This is the key fix
+        // IMPROVED FEATURE CARDS ANIMATION
         if (featureCards.length && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             // First ensure all cards are initially at their final state for a clean animation setup
             gsap.set(featureCards, { opacity: 0, y: 50 });
@@ -1490,45 +1225,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Optional: Add parallax effect to background bubbles on scroll
-        window.addEventListener('scroll', function() {
-            if (bubbles.length && aboutSection) {
-                // Get scroll position relative to the about section
-                const rect = aboutSection.getBoundingClientRect();
-                const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-                
-                if (isInView) {
-                    const scrollPos = window.scrollY;
-                    const sectionTop = scrollPos + rect.top;
-                    const relativeScroll = scrollPos - sectionTop;
-                    
-                    bubbles.forEach((bubble, index) => {
-                        // Different parallax speeds for each bubble
-                        const speed = 0.05 + (index * 0.02);
-                        const yOffset = relativeScroll * speed;
-                        
-                        // Apply transform - extract existing transform and add parallax
-                        const currentTransform = bubble.style.transform;
-                        
-                        // If bubble has GSAP transform, we don't want to overwrite it completely
-                        if (currentTransform && !currentTransform.includes('translateY')) {
-                            bubble.style.transform = `${currentTransform} translateY(${yOffset}px)`;
-                        } else {
-                            // Just update the Y transform
-                            const regex = /translateY\([^)]+\)/;
-                            const newTransform = currentTransform.replace(regex, `translateY(${yOffset}px)`);
-                            
-                            if (newTransform === currentTransform) {
-                                bubble.style.transform = `${currentTransform} translateY(${yOffset}px)`;
-                            } else {
-                                bubble.style.transform = newTransform;
-                            }
-                        }
-                    });
-                }
-            }
-        });
-        
         // Feature card hover animations
         featureCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
@@ -1578,59 +1274,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
-        // Improved Intersection Observer fallback for sites without GSAP
-        if (typeof gsap === 'undefined' && 'IntersectionObserver' in window) {
-            const fadeItems = [
-                ...featureCards,
-                testimonial,
-                showcaseMain,
-                showcaseAccent,
-                experienceBadge
-            ].filter(item => item);
-            
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    } else {
-                        // Remove class when scrolling away - this enables bidirectional animation
-                        entry.target.classList.remove('animate-in');
+    }
+    
+    // ------------------------------------------------------------------------
+    // UTILITY FUNCTIONS
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Detect if device is touch-enabled
+     * @returns {boolean} - True if touch device, false otherwise
+     */
+    function isTouchDevice() {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+    }
+    
+    /**
+     * Handle touch device support
+     */
+    function setupTouchDeviceSupport() {
+        if (isTouchDevice()) {
+            // Add special handling for services section on touch devices
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (hover: none) {
+                    .services-showcase .service-card .service-image-overlay {
+                        opacity: 0.3;
                     }
-                    // Don't unobserve - we want to keep tracking for scroll up/down
-                });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -10% 0px'
-            });
-            
-            fadeItems.forEach(item => {
-                item.classList.add('will-animate');
-                fadeObserver.observe(item);
-            });
-            
-            // Add necessary CSS for fallback animations
-            const styleSheet = document.styleSheets[0];
-            const fallbackRules = `
-                .will-animate {
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: opacity 0.8s ease, transform 0.8s ease;
-                }
-                .animate-in {
-                    opacity: 1 !important;
-                    transform: translateY(0) !important;
+                    .services-showcase .service-card .service-card-inner {
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                    }
                 }
             `;
+            document.head.appendChild(style);
             
-            try {
-                styleSheet.insertRule(fallbackRules, styleSheet.cssRules.length);
-            } catch (e) {
-                // If can't modify stylesheet, create a new style tag
-                const styleTag = document.createElement('style');
-                styleTag.textContent = fallbackRules;
-                document.head.appendChild(styleTag);
-            }
+            // Touch support for service cards
+            serviceCards.forEach(card => {
+                const frontSide = card.querySelector('.service-front');
+                if (frontSide) {
+                    frontSide.addEventListener('touchend', function(e) {
+                        // Only flip if not touching a button
+                        if (!e.target.closest('.service-details-btn')) {
+                            e.preventDefault();
+                            if (!card.classList.contains('flipped')) {
+                                card.classList.add('flipped');
+                            }
+                        }
+                    });
+                }
+            });
         }
     }
     
@@ -1643,23 +1336,14 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeAnimations();
         initializeScrollEffects();
         initializeNavigation();
-        
-        // Legacy services sections (will only run if elements exist)
-        initializeServiceTabs();
-        
-        // New modern redesigned services section
-        initializeModernServices();
-        
-        // Previous services showcase section
-        initializeServicesShowcase();
-        
+        initializeServicesSection();
         initializeFAQ();
         initializeGallery();
         initializeBeforeAfterSlider();
         initializeFormValidation();
         initializeCookieConsent();
-        initModernAboutSection();
         initBubbleAboutSection();
+        setupTouchDeviceSupport();
     }
     
     // Start initialization
