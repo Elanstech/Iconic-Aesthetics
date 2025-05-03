@@ -1696,8 +1696,8 @@ blockquote {
   transform-style: preserve-3d;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
+.service-card:hover .service-inner {
+  transform: rotateY(180deg);
 }
 
 .service-inner {
