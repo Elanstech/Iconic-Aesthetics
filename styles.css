@@ -1498,13 +1498,14 @@ blockquote {
 /* =========================================
    Services Section
    ========================================= */
-/* Ultra Services Section */
+
 .ultra-services {
   position: relative;
   padding: 10rem 0;
   background: linear-gradient(135deg, #f8f9fa, #ffffff);
   overflow: hidden;
   z-index: 1;
+  isolation: isolate;
 }
 
 /* Background Animation */
@@ -1690,6 +1691,9 @@ blockquote {
   perspective: 1500px;
   position: relative;
   transition: transform 0.3s ease;
+  z-index: 2;
+  margin-bottom: 2rem;
+  transform-style: preserve-3d;
 }
 
 .service-card:hover {
@@ -1702,10 +1706,13 @@ blockquote {
   transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
   position: relative;
+  z-index: 1;
+  backface-visibility: hidden;
 }
 
-.service-card:hover .service-inner {
-  transform: rotateY(180deg);
+.service-card:hover {
+  transform: translateY(-10px);
+  z-index: 3; /* Add this */
 }
 
 .service-front,
@@ -1863,6 +1870,7 @@ blockquote {
   color: white;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .services-cta::before {
