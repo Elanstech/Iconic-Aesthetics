@@ -1684,7 +1684,7 @@ blockquote {
   margin: 6rem 0;
 }
 
-/* Service Card */
+/* Service Card Flip Effect */
 .service-card {
   height: 480px;
   perspective: 1500px;
@@ -1699,13 +1699,12 @@ blockquote {
 .service-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
   position: relative;
-  cursor: pointer;
 }
 
-.service-card.flipped .service-inner {
+.service-card:hover .service-inner {
   transform: rotateY(180deg);
 }
 
@@ -1749,14 +1748,6 @@ blockquote {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
   color: white;
   text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.4s ease;
-}
-
-.service-card:hover .service-overlay {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .service-name {
@@ -1767,27 +1758,7 @@ blockquote {
 
 .service-tagline {
   font-size: 1.6rem;
-  margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.8);
-}
-
-.service-info-btn {
-  padding: 12px 30px;
-  background: linear-gradient(135deg, #d8a39d, #b27b76);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.service-info-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(216, 163, 157, 0.4);
 }
 
 /* Service Back */
@@ -1961,6 +1932,22 @@ blockquote {
   transition: all 0.3s ease;
 }
 
+/* Animation Classes for JavaScript */
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .services-title {
@@ -2102,22 +2089,6 @@ blockquote {
   .main-cta-btn {
     padding: 14px 30px;
     font-size: 1.4rem;
-  }
-}
-
-/* Animation Classes for JavaScript */
-.animate-in {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
