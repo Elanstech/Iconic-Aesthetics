@@ -411,122 +411,174 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ------------------------------------------------------------------------
-    // SERVICES FUNCTIONALITY (Integrated from services.js)
-    // ------------------------------------------------------------------------
-     function initializeServices() {
-        console.log('Initializing services...');
-        
-        // Initialize service cards
-        initializeServiceCards();
-        
-        // Initialize filter system
-        if (filterButtons.length && serviceCards.length) {
-            console.log(`Found ${filterButtons.length} filter buttons and ${serviceCards.length} service cards`);
-            setupFilterButtons(filterButtons, serviceCards);
+// SERVICES FUNCTIONALITY - WITH HOVER FLIP EFFECT
+// ------------------------------------------------------------------------
+function initializeServices() {
+    // Initialize all services components
+    const filterButtons = document.querySelectorAll('.service-filter');
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    // Make sure elements exist
+    if (!filterButtons.length || !serviceCards.length) {
+        console.error('Filter buttons or service cards not found');
+        return;
+    }
+    
+    // Initialize filter system
+    setupFilterButtons(filterButtons, serviceCards);
+    
+    // Set initial state - show only main services
+    filterServiceCards('all', serviceCards);
+    
+    // Initialize booking buttons
+    initializeBookingButtons();
+    
+    console.log('✅ Services section initialized successfully');
+}
+
+function setupFilterButtons(filterButtons, serviceCards) {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
             
-            // Set initial state - show only main services
-            filterServiceCards('all', serviceCards);
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter cards
+            filterServiceCards(filter, serviceCards);
+            
+            // Animate filter icon
+            const icon = this.querySelector('.filter-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    icon.style.transform = '';
+                }, 300);
+            }
+        });
+    });
+}
+
+function filterServiceCards(filter, serviceCards) {
+    serviceCards.forEach((card, index) => {
+        const category = card.dataset.category;
+        const isMain = card.dataset.main === 'true';
+        let shouldShow = false;
+        
+        // Determine if card should be shown
+        if (filter === 'all') {
+            // For "all" filter, only show main services
+            shouldShow = isMain;
         } else {
-            console.error('Filter buttons or service cards not found');
+            // For specific category filters, show all cards in that category
+            shouldShow = category === filter;
         }
         
-        console.log('✅ Services section initialized successfully');
-    }
+        if (shouldShow) {
+            // Show card with staggered animation
+            card.classList.remove('hidden');
+            card.style.display = 'block';
+            
+            // Add entrance animation with delay
+            setTimeout(() => {
+                card.classList.add('animate-in');
+            }, index * 100);
+        } else {
+            // Hide card immediately
+            card.classList.add('hidden');
+            card.style.display = 'none';
+            card.classList.remove('animate-in');
+        }
+    });
+}
+
+function initializeBookingButtons() {
+    const bookServiceButtons = document.querySelectorAll('.book-service');
+    const mainCTAButton = document.querySelector('.main-cta-btn');
     
-    function initializeServiceCards() {
-        if (!serviceCards.length) return;
-        
-        serviceCards.forEach(card => {
-            // Click handler for card flip
-            card.addEventListener('click', function(e) {
-                // Ignore button clicks
-                if (e.target.closest('button') || e.target.closest('.service-info-btn')) {
-                    console.log('Button click ignored');
-                    return;
+    // Setup booking buttons
+    bookServiceButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card hover effect
+            handleBookingClick(this);
+        });
+    });
+    
+    // Setup main CTA button
+    if (mainCTAButton) {
+        mainCTAButton.addEventListener('click', function() {
+            handleBookingClick(this);
+        });
+    }
+}
+
+function handleBookingClick(button) {
+    // Create ripple effect
+    createRippleEffect(button);
+    
+    // Navigate to booking section
+    setTimeout(() => {
+        navigateToBooking();
+    }, 300);
+}
+
+function createRippleEffect(button) {
+    const ripple = document.createElement('span');
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    
+    ripple.className = 'ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+    
+    button.style.position = 'relative';
+    button.style.overflow = 'hidden';
+    button.appendChild(ripple);
+    
+    // Add ripple animation style if not exists
+    if (!document.querySelector('#ripple-styles')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-styles';
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
                 }
-                
-                console.log('Card clicked:', card);
-                handleCardFlip(this, serviceCards);
-            });
-        });
-        
-        console.log(`✅ Initialized ${serviceCards.length} service cards`);
+            }
+        `;
+        document.head.appendChild(style);
     }
     
-    function handleCardFlip(card, allCards) {
-        card.classList.toggle('flipped');
+    setTimeout(() => ripple.remove(), 600);
+}
+
+function navigateToBooking() {
+    const bookingSection = document.querySelector('#booking');
+    if (bookingSection) {
+        const headerOffset = 100;
+        const elementPosition = bookingSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         
-        // Close other flipped cards
-        allCards.forEach(otherCard => {
-            if (otherCard !== card && otherCard.classList.contains('flipped')) {
-                otherCard.classList.remove('flipped');
-            }
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
-        
-        console.log('Card flip state:', card.classList.contains('flipped'));
+    } else {
+        // Fallback to URL hash
+        window.location.href = '#booking';
     }
-    
-    function setupFilterButtons(filterButtons, serviceCards) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const filter = this.dataset.filter;
-                console.log('Filter clicked:', filter);
-                
-                // Update active state
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Filter cards
-                filterServiceCards(filter, serviceCards);
-            });
-        });
-        
-        console.log('✅ Filter system initialized');
-    }
-    
-    function filterServiceCards(filter, serviceCards) {
-        console.log('Filtering cards with:', filter);
-        
-        serviceCards.forEach((card, index) => {
-            const category = card.dataset.category;
-            const isMain = card.dataset.main === 'true';
-            let shouldShow = false;
-            
-            // Log card data for debugging
-            console.log(`Card ${index}:`, {
-                category: category,
-                isMain: isMain,
-                filter: filter
-            });
-            
-            if (filter === 'all') {
-                // For "all" filter, only show main services
-                shouldShow = isMain;
-            } else {
-                // For specific category filters, show all cards in that category
-                shouldShow = category === filter;
-            }
-            
-            console.log(`Card ${index} shouldShow:`, shouldShow);
-            
-            if (shouldShow) {
-                card.classList.remove('hidden');
-                card.style.display = 'block';
-                
-                // Add entrance animation
-                setTimeout(() => {
-                    card.classList.add('animate-in');
-                }, index * 100);
-            } else {
-                card.classList.add('hidden');
-                card.style.display = 'none';
-                card.classList.remove('animate-in');
-            }
-            
-            // Reset flip state
-            card.classList.remove('flipped');
-        });
-    }
+}
 
     // ------------------------------------------------------------------------
     // FAQ ACCORDIONS
