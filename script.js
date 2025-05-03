@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ------------------------------------------------------------------------
+// ------------------------------------------------------------------------
 // SERVICES FUNCTIONALITY - WITH HOVER FLIP EFFECT
 // ------------------------------------------------------------------------
 function initializeServices() {
