@@ -4,7 +4,7 @@
  * =====================================================
  * 
  * This file handles all functionality for the services section including:
- * - Service filtering
+ * - Service filtering (Main services for "All" category)
  * - Card animations
  * - Booking interactions
  * - Mobile optimizations
@@ -163,7 +163,7 @@ function setupFilterButtons(filterButtons, serviceCards) {
       // Update active state
       updateActiveFilter(filterButtons, this);
       
-      // Filter cards
+      // Filter cards based on the new logic
       filterServiceCards(filter, serviceCards);
       
       // Animate filter icon
@@ -182,11 +182,22 @@ function updateActiveFilter(filterButtons, activeButton) {
 
 /**
  * Filter service cards based on category
+ * UPDATED: "all" filter shows only main services
  */
 function filterServiceCards(filter, serviceCards) {
   serviceCards.forEach((card, index) => {
     const category = card.dataset.category;
-    const shouldShow = filter === 'all' || category === filter;
+    const isMain = card.dataset.main === 'true';
+    let shouldShow = false;
+    
+    // Determine if card should be shown
+    if (filter === 'all') {
+      // For "all" filter, only show main services
+      shouldShow = isMain;
+    } else {
+      // For specific category filters, show all cards in that category
+      shouldShow = category === filter;
+    }
     
     if (shouldShow) {
       // Show card with staggered animation
