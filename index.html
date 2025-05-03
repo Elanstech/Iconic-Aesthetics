@@ -296,33 +296,124 @@
         <span class="filter-icon">🧖‍♀️</span>
         <span class="filter-text">Facials & Skin</span>
       </button>
-      <button class="service-filter" data-filter="other">
-        <span class="filter-icon">⭐</span>
-        <span class="filter-text">Other Services</span>
-      </button>
     </div>
     
     <!-- Services Grid -->
     <div class="services-grid">
-      <!-- Nano Brows - MAIN SERVICE -->
-      <div class="service-card" data-category="permanent" data-main="true" data-aos="zoom-in" data-aos-delay="200">
+      <!-- CATEGORY SUMMARY TILES (shown on "All Services") -->
+      <!-- Permanent Makeup Category -->
+      <div class="service-card" data-category="all" data-main="true" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true')">
+            <div class="service-label">💄 Category</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Permanent Makeup</h3>
+              <p class="service-tagline">Semi-Permanent Solutions</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Permanent Makeup</h3>
+              <div class="service-highlights">
+                <span class="highlight">7 Services</span>
+                <span class="highlight">Long-Lasting</span>
+                <span class="highlight">Natural Results</span>
+              </div>
+              <p class="service-desc">Enhance your features with our range of permanent makeup services. From Nano Brows to Lip Blush, achieve long-lasting beauty with natural-looking results.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">Various</span>
+                  <span class="price-duration">See Details</span>
+                </div>
+              </div>
+              <button class="book-service" onclick="document.querySelector('[data-filter=\'permanent\']').click()">Explore Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lashes & Brows Category -->
+      <div class="service-card" data-category="all" data-main="true" data-aos="zoom-in" data-aos-delay="300">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/LASHCLASSIC.jpeg?raw=true')">
+            <div class="service-label">👁️ Category</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Lashes & Brows</h3>
+              <p class="service-tagline">Eye Enhancements</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Lashes & Brows</h3>
+              <div class="service-highlights">
+                <span class="highlight">6 Services</span>
+                <span class="highlight">Professional</span>
+                <span class="highlight">Customizable</span>
+              </div>
+              <p class="service-desc">From lash extensions to brow lamination, achieve stunning eye-enhancing results with our professional services.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">Various</span>
+                  <span class="price-duration">See Details</span>
+                </div>
+              </div>
+              <button class="book-service" onclick="document.querySelector('[data-filter=\'lashes\']').click()">Explore Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Facials Category -->
+      <div class="service-card" data-category="all" data-main="true" data-aos="zoom-in" data-aos-delay="400">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/30min.jpeg?raw=true')">
+            <div class="service-label">🧖‍♀️ Category</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Facials & Skin</h3>
+              <p class="service-tagline">Skin Rejuvenation</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Facials & Skin</h3>
+              <div class="service-highlights">
+                <span class="highlight">5 Services</span>
+                <span class="highlight">Relaxing</span>
+                <span class="highlight">Results-Driven</span>
+              </div>
+              <p class="service-desc">Rejuvenate your skin with our range of facial treatments, from quick express sessions to comprehensive scar treatments.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">Various</span>
+                  <span class="price-duration">See Details</span>
+                </div>
+              </div>
+              <button class="book-service" onclick="document.querySelector('[data-filter=\'skin\']').click()">Explore Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- PERMANENT MAKEUP SERVICES -->
+      <!-- Nano Brows -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="500">
         <div class="service-inner">
           <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4526.jpg?raw=true')">
             <div class="service-label">💫 Premium</div>
             <div class="service-overlay">
               <h3 class="service-name">Nano Brows</h3>
-              <p class="service-tagline">Perfect Natural Brows</p>
+              <p class="service-tagline">Natural Hair Strokes</p>
             </div>
           </div>
           <div class="service-back">
             <div class="service-details">
               <h3>Nano Brows</h3>
               <div class="service-highlights">
-                <span class="highlight">Natural Looking</span>
-                <span class="highlight">Long Lasting</span>
-                <span class="highlight">Ultra-Fine</span>
+                <span class="highlight">Hair-like Strokes</span>
+                <span class="highlight">18 Months</span>
+                <span class="highlight">Ultra Fine</span>
               </div>
-              <p class="service-desc">Nano Brows is a precision treatment that uses ultra-fine needles to create hair-like strokes that mimic the appearance of natural eyebrows. This technique is ideal for those who want fuller, defined brows with a soft, natural look. Nano Brows can last up to 18 months and require minimal maintenance.</p>
+              <p class="service-desc">Nano Brows is a precision treatment that uses ultra-fine needles to create hair-like strokes that mimic the appearance of natural eyebrows. This technique is ideal for those who want fuller, defined brows with a soft, natural look.</p>
               <div class="service-pricing">
                 <div class="price-detail">
                   <span class="price-amount">$450</span>
@@ -335,14 +426,76 @@
         </div>
       </div>
       
-      <!-- Lip Blush - MAIN SERVICE -->
-      <div class="service-card" data-category="permanent" data-main="true" data-aos="zoom-in" data-aos-delay="400">
+      <!-- Brow Microshading -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="600">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot.jpg?raw=true')">
+            <div class="service-label">🎨 Popular</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Brow Microshading</h3>
+              <p class="service-tagline">Powdered Effect</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Brow Microshading</h3>
+              <div class="service-highlights">
+                <span class="highlight">Powdered Look</span>
+                <span class="highlight">12-18 Months</span>
+                <span class="highlight">Soft Finish</span>
+              </div>
+              <p class="service-desc">Brow Microshading creates a powdered, semi-permanent eyebrow look that is perfect for those who prefer a fuller and more defined appearance. This technique uses tiny dots of pigment to create a soft, powdery finish.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$400</span>
+                  <span class="price-duration">2 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Combo Brows -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="700">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4527.jpg?raw=true')">
+            <div class="service-label">⭐ Combo</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Combo Brows</h3>
+              <p class="service-tagline">Best of Both</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Combo Brows</h3>
+              <div class="service-highlights">
+                <span class="highlight">Hair Strokes</span>
+                <span class="highlight">Shading</span>
+                <span class="highlight">Balanced</span>
+              </div>
+              <p class="service-desc">This includes Microshading with nano brow strokes in the front. The perfect combination of hair strokes and shading for a natural yet defined brow look.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$350</span>
+                  <span class="price-duration">2.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lip Blush -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="800">
         <div class="service-inner">
           <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Neutral%20Modern%20Post%20It%20Positive%20Note%20to%20Self%20Quote%20Instagram%20Pot%20(1).jpg?raw=true')">
             <div class="service-label">💋 Trending</div>
             <div class="service-overlay">
               <h3 class="service-name">Lip Blush</h3>
-              <p class="service-tagline">Natural Lip Enhancement</p>
+              <p class="service-tagline">Natural Enhancement</p>
             </div>
           </div>
           <div class="service-back">
@@ -350,10 +503,10 @@
               <h3>Lip Blush</h3>
               <div class="service-highlights">
                 <span class="highlight">Natural Color</span>
-                <span class="highlight">Fuller Appearance</span>
-                <span class="highlight">Low Maintenance</span>
+                <span class="highlight">1-2 Years</span>
+                <span class="highlight">Youthful</span>
               </div>
-              <p class="service-desc">Lip Blush is a semi-permanent cosmetic tattoo that enhances the natural color of your lips, providing a subtle blush effect. It helps to define your lips and gives them a fuller, more youthful appearance. The results last for 1 to 2 years.</p>
+              <p class="service-desc">Lip Blush is a semi-permanent cosmetic tattoo that enhances the natural color of your lips, providing a subtle blush effect. It helps to define your lips and gives them a fuller, more youthful appearance.</p>
               <div class="service-pricing">
                 <div class="price-detail">
                   <span class="price-amount">$450</span>
@@ -366,25 +519,119 @@
         </div>
       </div>
       
-      <!-- Classic Lash Extensions - MAIN SERVICE -->
-      <div class="service-card" data-category="lashes" data-main="true" data-aos="zoom-in" data-aos-delay="600">
+      <!-- Lip Neutralization -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="900">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/lipnutro.jpeg?raw=true')">
+            <div class="service-label">🔄 Corrective</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Lip Neutralization</h3>
+              <p class="service-tagline">Color Correction</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Lip Neutralization</h3>
+              <div class="service-highlights">
+                <span class="highlight">Even Tone</span>
+                <span class="highlight">Professional</span>
+                <span class="highlight">Custom</span>
+              </div>
+              <p class="service-desc">Lip Neutralization is a specialized technique designed for clients with dark or cool-toned lips. It helps to even out lip color and create a more neutral base, making it easier to enhance with lip blush.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">From $500</span>
+                  <span class="price-duration">2.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Semi-Permanent Eyeliner -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="1000">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_5517.jpg?raw=true')">
+            <div class="service-label">✨ Define</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Semi-Permanent Eyeliner</h3>
+              <p class="service-tagline">Eye Definition</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Semi-Permanent Eyeliner</h3>
+              <div class="service-highlights">
+                <span class="highlight">Defined Lash Line</span>
+                <span class="highlight">Time-Saving</span>
+                <span class="highlight">Multiple Styles</span>
+              </div>
+              <p class="service-desc">Semi-Permanent Eyeliner is a cosmetic tattoo procedure that enhances the appearance of your eyes by adding definition to your lash line. It creates the look of eyeliner without the need for daily application.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$350</span>
+                  <span class="price-duration">2 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scar Camouflage -->
+      <div class="service-card" data-category="permanent" data-main="false" data-aos="zoom-in" data-aos-delay="1100">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/scarcam.jpeg?raw=true')">
+            <div class="service-label">🩹 Medical</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Scar Camouflage</h3>
+              <p class="service-tagline">Skin Restoration</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Scar Camouflage</h3>
+              <div class="service-highlights">
+                <span class="highlight">Medical Grade</span>
+                <span class="highlight">Natural Blend</span>
+                <span class="highlight">Customized</span>
+              </div>
+              <p class="service-desc">Scar Camouflage is a medical tattooing technique used to blend scars with the surrounding skin tone. This service is ideal for clients with scars caused by injury, surgery, or other skin conditions.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">From $400</span>
+                  <span class="price-duration">Varies</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- LASHES & BROWS SERVICES -->
+      <!-- Classic Lash Extensions -->
+      <div class="service-card" data-category="lashes" data-main="false" data-aos="zoom-in" data-aos-delay="1200">
         <div class="service-inner">
           <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/LASHCLASSIC.jpeg?raw=true')">
-            <div class="service-label">👁️ Classic</div>
+            <div class="service-label">✨ Classic</div>
             <div class="service-overlay">
               <h3 class="service-name">Classic Lash Extensions</h3>
-              <p class="service-tagline">Natural Beauty</p>
+              <p class="service-tagline">Natural Length</p>
             </div>
           </div>
           <div class="service-back">
             <div class="service-details">
               <h3>Classic Lash Extensions</h3>
               <div class="service-highlights">
-                <span class="highlight">Individual Lashes</span>
+                <span class="highlight">Individual</span>
                 <span class="highlight">Natural Look</span>
-                <span class="highlight">Customizable</span>
+                <span class="highlight">Lightweight</span>
               </div>
-              <p class="service-desc">Classic Eyelash Extensions are applied individually to your natural lashes to create a fuller, longer lash line. This service is perfect for clients who want a natural, everyday look without the need for mascara. Classic extensions are lightweight and customizable.</p>
+              <p class="service-desc">Classic Eyelash Extensions are applied individually to your natural lashes to create a fuller, longer lash line. This service is perfect for clients who want a natural, everyday look without the need for mascara.</p>
               <div class="service-pricing">
                 <div class="price-detail">
                   <span class="price-amount">$100</span>
@@ -397,18 +644,265 @@
         </div>
       </div>
       
-      <!-- Add all other service cards here following the same pattern -->
+      <!-- 2D/3D Lash Extensions -->
+      <div class="service-card" data-category="lashes" data-main="false" data-aos="zoom-in" data-aos-delay="1300">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Lash.jpeg?raw=true')">
+            <div class="service-label">💫 Volume</div>
+            <div class="service-overlay">
+              <h3 class="service-name">2D/3D Lash Extensions</h3>
+              <p class="service-tagline">Dramatic Volume</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>2D/3D Lash Extensions</h3>
+              <div class="service-highlights">
+                <span class="highlight">Volume</span>
+                <span class="highlight">Dramatic</span>
+                <span class="highlight">Customizable</span>
+              </div>
+              <p class="service-desc">2D/3D Eyelash Extensions involve applying multiple lightweight extensions to each natural lash, creating a more voluminous and dramatic look. This technique is ideal for clients who want bold, glamorous lashes.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$130-$140</span>
+                  <span class="price-duration">2 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Eyelash Lift and Tint -->
+      <div class="service-card" data-category="lashes" data-main="false" data-aos="zoom-in" data-aos-delay="1400">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/Eye%20lash%20lifting.jpeg?raw=true')">
+            <div class="service-label">🌟 Lift</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Eyelash Lift and Tint</h3>
+              <p class="service-tagline">Natural Curl</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Eyelash Lift and Tint</h3>
+              <div class="service-highlights">
+                <span class="highlight">Curled</span>
+                <span class="highlight">Tinted</span>
+                <span class="highlight">Low Maintenance</span>
+              </div>
+              <p class="service-desc">An Eyelash Lift and Tint enhances the appearance of your natural lashes by curling them upwards and adding a semi-permanent tint. This service creates the illusion of longer, thicker lashes.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$125</span>
+                  <span class="price-duration">1.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Eyebrow Lamination and Tint -->
+      <div class="service-card" data-category="lashes" data-main="false" data-aos="zoom-in" data-aos-delay="1500">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_5574.jpeg?raw=true')">
+            <div class="service-label">🧁 Smooth</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Eyebrow Lamination & Tint</h3>
+              <p class="service-tagline">Groomed Perfection</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Eyebrow Lamination & Tint</h3>
+              <div class="service-highlights">
+                <span class="highlight">Smooth</span>
+                <span class="highlight">Fuller</span>
+                <span class="highlight">6-8 Weeks</span>
+              </div>
+              <p class="service-desc">Eyebrow Lamination is a non-invasive treatment that smooths and lifts your eyebrow hairs, giving them a fuller and more polished look. Paired with a tint, this service enhances your natural brow color.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$125</span>
+                  <span class="price-duration">1.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Combo Lash Lift & Brow Lamination -->
+      <div class="service-card" data-category="lashes" data-main="false" data-aos="zoom-in" data-aos-delay="1600">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/IMG_4466.jpeg?raw=true')">
+            <div class="service-label">💝 Combo</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Combo Lash & Brow</h3>
+              <p class="service-tagline">Complete Package</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Combo Lash & Brow</h3>
+              <div class="service-highlights">
+                <span class="highlight">Lash Lift</span>
+                <span class="highlight">Brow Lamination</span>
+                <span class="highlight">Tinted</span>
+              </div>
+              <p class="service-desc">This combo service includes both a lash lift and brow lamination with tint to enhance and define your lashes and brows. The lash lift gives your natural lashes a curled and lifted look.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$200</span>
+                  <span class="price-duration">2.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- FACIALS & SKIN SERVICES -->
+      <!-- 30-Minute Express Facial -->
+      <div class="service-card" data-category="skin" data-main="false" data-aos="zoom-in" data-aos-delay="1700">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/30min.jpeg?raw=true')">
+            <div class="service-label">⚡ Quick</div>
+            <div class="service-overlay">
+              <h3 class="service-name">30-Minute Express Facial</h3>
+              <p class="service-tagline">Fast Refresh</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>30-Minute Express Facial</h3>
+              <div class="service-highlights">
+                <span class="highlight">Quick</span>
+                <span class="highlight">Refreshing</span>
+                <span class="highlight">All Skin Types</span>
+              </div>
+              <p class="service-desc">The 30-Minute Express Facial is perfect for those on the go. This treatment focuses on cleansing, exfoliating, and hydrating your skin in just 30 minutes. It's a quick pick-me-up that will leave your skin refreshed.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$40</span>
+                  <span class="price-duration">30 mins</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 60-Minute European Facial -->
+      <div class="service-card" data-category="skin" data-main="false" data-aos="zoom-in" data-aos-delay="1800">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/60min.jpeg?raw=true')">
+            <div class="service-label">🌟 Premium</div>
+            <div class="service-overlay">
+              <h3 class="service-name">60-Minute European Facial</h3>
+              <p class="service-tagline">Deep Cleansing</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>60-Minute European Facial</h3>
+              <div class="service-highlights">
+                <span class="highlight">Deep Cleanse</span>
+                <span class="highlight">Hydrating</span>
+                <span class="highlight">Relaxing</span>
+              </div>
+              <p class="service-desc">The 60-Minute European Facial is a deep-cleansing treatment that removes impurities, exfoliates dead skin cells, and hydrates your skin for a healthy, radiant glow. Includes a customized mask and relaxing massage.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$90</span>
+                  <span class="price-duration">60 mins</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 90-Minute Dermaplaning Facial -->
+      <div class="service-card" data-category="skin" data-main="false" data-aos="zoom-in" data-aos-delay="1900">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/dermaplaning.jpeg?raw=true')">
+            <div class="service-label">🪄 Advanced</div>
+            <div class="service-overlay">
+              <h3 class="service-name">90-Minute Dermaplaning</h3>
+              <p class="service-tagline">Smooth Exfoliation</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>90-Minute Dermaplaning</h3>
+              <div class="service-highlights">
+                <span class="highlight">Exfoliation</span>
+                <span class="highlight">Smooth</span>
+                <span class="highlight">Results-Driven</span>
+              </div>
+              <p class="service-desc">The 90-Minute Dermaplaning Facial is an advanced exfoliation treatment that uses a sterile surgical scalpel to remove dead skin cells and peach fuzz. This facial leaves your skin feeling incredibly smooth.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$130</span>
+                  <span class="price-duration">90 mins</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Inkless Scar Rejuvenation -->
+      <div class="service-card" data-category="skin" data-main="false" data-aos="zoom-in" data-aos-delay="2000">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://github.com/Elanstech/Iconic-Aesthetics/blob/main/inkless.jpeg?raw=true')">
+            <div class="service-label">🌱 Healing</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Inkless Scar Rejuvenation</h3>
+              <p class="service-tagline">Natural Healing</p>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Inkless Scar Rejuvenation</h3>
+              <div class="service-highlights">
+                <span class="highlight">Microneedling</span>
+                <span class="highlight">Collagen</span>
+                <span class="highlight">Non-Pigment</span>
+              </div>
+              <p class="service-desc">Inkless Scar Rejuvenation is a non-pigment treatment designed to promote the healing of scars and reduce their appearance. This technique involves microneedling and custom serums to stimulate collagen production.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">From $250</span>
+                  <span class="price-duration">1-2 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
     <!-- Bottom CTA -->
-    <div class="services-cta" data-aos="fade-up" data-aos-delay="1800">
+    <div class="services-cta" data-aos="fade-up" data-aos-delay="2100">
       <h3>Ready to Transform Your Beauty?</h3>
       <p>Book a consultation today and start your journey to enhanced natural beauty</p>
       <button class="main-cta-btn">Schedule Your Consultation</button>
     </div>
   </div>
 </section>
-
+    
     <!-- Gallery Section (New) -->
     <section class="gallery section-padding" id="gallery">
         <div class="container">
