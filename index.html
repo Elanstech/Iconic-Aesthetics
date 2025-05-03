@@ -271,631 +271,312 @@
     </div>
 </section>
 
-<!-- Modern Services Carousel Section -->
-<section class="services-carousel-section" id="services">
+<!-- Services Section -->
+<section class="ultra-services" id="services">
+  <!-- Background Animations -->
+  <div class="background-gradient"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  
   <div class="container">
     <!-- Section Header -->
-    <div class="section-header" data-aos="fade-up">
-      <span class="section-badge">Our Beauty Expertise</span>
-      <h2 class="section-title">Premium Services</h2>
-      <p class="section-description">Discover our comprehensive range of premium beauty services, each performed with precision and artistry to enhance your natural beauty.</p>
+    <div class="services-header" data-aos="fade-up">
+      <span class="services-badge">Our Services</span>
+      <h2 class="services-title">Transform Your Beauty</h2>
+      <p class="services-description">Experience premium services tailored to enhance your natural beauty</p>
     </div>
     
-    <!-- Services Category Filter -->
-    <div class="services-filter" data-aos="fade-up">
-      <button class="filter-btn active" data-filter="all">
-        <span class="filter-icon"><i class="fas fa-spa"></i></span>
-        <span>All Services</span>
+    <!-- Filter Navigation -->
+    <div class="services-nav" data-aos="fade-up" data-aos-delay="100">
+      <button class="service-filter active" data-filter="all">
+        <span class="filter-icon">✨</span>
+        <span class="filter-text">All Services</span>
       </button>
-      <button class="filter-btn" data-filter="brows">
-        <span class="filter-icon"><i class="fas fa-eye"></i></span>
-        <span>Brows</span>
+      <button class="service-filter" data-filter="permanent">
+        <span class="filter-icon">💄</span>
+        <span class="filter-text">Permanent Makeup</span>
       </button>
-      <button class="filter-btn" data-filter="lashes">
-        <span class="filter-icon"><i class="fas fa-eye-slash"></i></span>
-        <span>Lashes</span>
+      <button class="service-filter" data-filter="skin">
+        <span class="filter-icon">🧖‍♀️</span>
+        <span class="filter-text">Skincare</span>
       </button>
-      <button class="filter-btn" data-filter="lips">
-        <span class="filter-icon"><i class="fas fa-kiss"></i></span>
-        <span>Lips</span>
+      <button class="service-filter" data-filter="lashes">
+        <span class="filter-icon">👁️</span>
+        <span class="filter-text">Lashes</span>
       </button>
-      <button class="filter-btn" data-filter="skin">
-        <span class="filter-icon"><i class="fas fa-magic"></i></span>
-        <span>Skin & Facials</span>
+      <button class="service-filter" data-filter="other">
+        <span class="filter-icon">⭐</span>
+        <span class="filter-text">Other Services</span>
       </button>
     </div>
     
-    <!-- Services Carousel Wrapper -->
-    <div class="services-carousel-wrapper" data-aos="fade-up">
-      <!-- Main Carousel -->
-      <div class="services-carousel">
-        <div class="swiper-wrapper">
-          <!-- Nano Brows -->
-          <div class="swiper-slide" data-category="brows">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nano Brows">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Nano Brows</h3>
-                    <p class="service-description">Precision treatment using ultra-fine needles to create hair-like strokes for natural-looking eyebrows.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$450</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2-3 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Nano Brows</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Our Nano Brows treatment uses a digital machine with nano needles to create ultra-fine, hair-like strokes. This technique allows for incredible detail and precision, resulting in beautifully natural eyebrows.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Natural-looking results</li>
-                        <li>Semi-permanent (lasts 1-3 years)</li>
-                        <li>Less painful than traditional microblading</li>
-                        <li>Perfect for all skin types</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Minimal downtime with proper aftercare. Avoid getting the area wet for 7-10 days, and avoid sun exposure and swimming for 2 weeks.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <!-- Service Card 1: Microblading -->
+      <div class="service-card" data-category="permanent" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">💫 Premium</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Microblading</h3>
+              <p class="service-tagline">Perfect Natural Brows</p>
+              <button class="service-info-btn">Discover More</button>
             </div>
           </div>
-          
-          <!-- Brow Microshading -->
-          <div class="swiper-slide" data-category="brows">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1601295550453-ac6d4234d3e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Brow Microshading">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Brow Microshading</h3>
-                    <p class="service-description">Creates a powdered, semi-permanent eyebrow look for a fuller and more defined appearance.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$400</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Brow Microshading</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Microshading is a semi-permanent makeup technique that uses a stippling method to create a soft, powdered effect. It creates fuller-looking brows with a more defined, makeup-like finish.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Soft, powdered makeup look</li>
-                        <li>Ideal for oily skin types</li>
-                        <li>Perfect defined shape every day</li>
-                        <li>Long-lasting results (1-3 years)</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Keep the area clean and avoid getting it wet for 7-10 days. Apply the provided aftercare ointment as directed. Avoid sun exposure and swimming for 2 weeks.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Microblading</h3>
+              <div class="service-highlights">
+                <span class="highlight">Natural Looking</span>
+                <span class="highlight">Long Lasting</span>
+                <span class="highlight">Semi-Permanent</span>
+              </div>
+              <p class="service-desc">Achieve perfectly shaped eyebrows with our precision microblading technique. Creates natural-looking hair strokes that last 1-3 years.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$450</span>
+                  <span class="price-duration">2-3 hrs</span>
                 </div>
               </div>
-            </div>
-          </div>
-          
-          <!-- Combo Brows -->
-          <div class="swiper-slide" data-category="brows">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Combo Brows">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Combo Brows</h3>
-                    <p class="service-description">Combines microshading with nano brow strokes in the front for the perfect brow look.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$350</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2-3 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Combo Brows</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>This ultimate brow treatment combines the best of both worlds: nano hair strokes at the front for a natural appearance and microshading at the tail for definition and fullness.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Best of both techniques</li>
-                        <li>Natural look at the front, defined at the tail</li>
-                        <li>Customized to your face shape</li>
-                        <li>Suitable for all skin types</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Keep the area clean and dry for 7-10 days after the procedure. Apply the aftercare ointment as directed. Avoid sun exposure, swimming, and saunas for 2 weeks.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Eyebrow Lamination -->
-          <div class="swiper-slide" data-category="brows">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1621607510072-5df50977ee97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Eyebrow Lamination">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Eyebrow Lamination</h3>
-                    <p class="service-description">Smooths and lifts eyebrow hairs for a fuller, polished look with added tint for enhanced color.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$125</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 1 hour</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Eyebrow Lamination</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Brow lamination is a treatment that restructures your brow hairs to keep them in your desired shape. The tinting process adds color and definition for a more polished look.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Fuller, fluffier-looking brows</li>
-                        <li>Tamed unruly brow hairs</li>
-                        <li>Enhanced color with tinting</li>
-                        <li>Results last 6-8 weeks</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Keep brows dry for 24 hours after treatment. Avoid makeup and skincare products in the brow area for 24 hours. Apply conditioning oil regularly to keep brow hairs healthy.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Lip Blush -->
-          <div class="swiper-slide" data-category="lips">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1528495612343-9ca9f4a9f67c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lip Blush">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Lip Blush</h3>
-                    <p class="service-description">Semi-permanent cosmetic tattoo enhancing natural lip color for a subtle blush effect.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$450</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Lip Blush</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Lip Blush is a semi-permanent cosmetic tattoo that enhances your natural lip color, improves the shape of your lips, and gives the illusion of fuller, more defined lips with a beautiful flush of color.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Enhanced natural lip color</li>
-                        <li>Defined lip shape</li>
-                        <li>Illusion of fuller lips</li>
-                        <li>Long-lasting results (1-2 years)</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Lips will be swollen initially. Apply the provided aftercare balm regularly. Avoid spicy foods, smoking, and drinking from straws during the healing period. Keep the area moisturized.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Lip Neutralization -->
-          <div class="swiper-slide" data-category="lips">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1610631067148-3b39f1658755?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lip Neutralization">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Lip Neutralization</h3>
-                    <p class="service-description">Specialized technique for clients with dark or cool-toned lips to even out lip color.</p>
-                    <div class="service-meta">
-                      <span class="service-price">From $500</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2+ hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Lip Neutralization</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>This specialized treatment is designed for clients with naturally dark or uneven lip pigmentation. It helps to neutralize the natural color, creating a more even canvas before applying a custom lip color.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Evens out lip tone</li>
-                        <li>Reduces appearance of dark or hyperpigmented lips</li>
-                        <li>Creates an ideal base for lip blush</li>
-                        <li>Customized to your natural coloring</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Careful aftercare is essential. Keep lips hydrated with the specialized balm provided. May require multiple sessions for optimal results, depending on natural lip color.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Classic Lash Extensions -->
-          <div class="swiper-slide" data-category="lashes">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classic Lash Extensions">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Classic Lash Extensions</h3>
-                    <p class="service-description">Individual extensions applied to natural lashes for a fuller, longer lash line.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$100</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 1.5 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Classic Lash Extensions</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Our Classic Lash Extensions involve attaching a single extension to each of your natural lashes, creating a perfect balance of length and volume for an enhanced but natural look.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Natural-looking enhancement</li>
-                        <li>Customized length and curl</li>
-                        <li>Wake up with perfect lashes</li>
-                        <li>Lasts 4-6 weeks with proper care</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Avoid getting lashes wet for 24 hours after application. Clean gently with a lash cleanser. Avoid oil-based products near the eyes. Schedule refills every 2-3 weeks for maintenance.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Volume Lash Extensions -->
-          <div class="swiper-slide" data-category="lashes">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1583527944699-79ab473b9497?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Volume Lash Extensions">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Volume Lash Extensions</h3>
-                    <p class="service-description">Multiple extensions per lash for a more voluminous and dramatic look.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$130 - $140</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 2 hours</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Volume Lash Extensions</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Volume lashes involve applying multiple ultra-fine extensions to each natural lash, creating a fluffier, fuller look. We offer 2D (two extensions per lash) and 3D (three extensions per lash) options.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Dramatic, voluminous appearance</li>
-                        <li>Customized density and length</li>
-                        <li>Fuller-looking lash line</li>
-                        <li>Lasts 4-6 weeks with proper care</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Avoid water, steam, and eye products for 24 hours after application. Clean lashes daily with a specialized cleanser. Brush lashes regularly with a clean spoolie brush. Schedule refills every 2-3 weeks.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Lash Lift & Tint -->
-          <div class="swiper-slide" data-category="lashes">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1568339664233-11c2bc5c779a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lash Lift & Tint">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Lash Lift & Tint</h3>
-                    <p class="service-description">Enhances natural lashes by curling them upwards and adding semi-permanent tint.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$125</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 1 hour</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Lash Lift & Tint</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>A lash lift curls your natural lashes from base to tip, while the tint darkens them for a mascara-like effect. The result is naturally enhanced lashes that appear longer and more defined.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>No extensions required</li>
-                        <li>Enhances your natural lashes</li>
-                        <li>Low maintenance</li>
-                        <li>Results last 6-8 weeks</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Keep lashes dry for 24 hours after treatment. Avoid oil-based products around the eyes. No rubbing or touching lashes excessively. Apply conditioning serum if desired.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Express Facial -->
-          <div class="swiper-slide" data-category="skin">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1607779097040-813a901c633a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Express Facial">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Express Facial</h3>
-                    <p class="service-description">Quick pick-me-up facial focusing on cleansing, exfoliating, and hydrating your skin.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$40</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 30 mins</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Express Facial</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Our Express Facial is perfect for clients on the go. It includes cleansing, exfoliation, a targeted mask, and moisturizer application, all tailored to your skin type and concerns.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Quick refresh for your skin</li>
-                        <li>Immediate radiance</li>
-                        <li>Customized to your skin type</li>
-                        <li>Perfect for maintenance between full facials</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Continue with your regular skincare routine. Protect your skin with SPF. Drink plenty of water to maintain hydration. Perfect to schedule every 3-4 weeks for maintenance.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- European Facial -->
-          <div class="swiper-slide" data-category="skin">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1603207688406-6cba4d2352ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="European Facial">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">European Facial</h3>
-                    <p class="service-description">Deep-cleansing treatment with customized mask and relaxing massage for radiant skin.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$90</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 60 mins</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">European Facial</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Our signature European Facial includes deep cleansing, exfoliation, steam, extractions (if needed), a customized mask, facial massage, and finishing treatments. It's a comprehensive treatment for all skin types.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Deep cleansing and purification</li>
-                        <li>Improved circulation</li>
-                        <li>Relaxation and stress reduction</li>
-                        <li>Customized to address your skin concerns</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Avoid direct sun exposure for 24 hours. Use gentle products for 48 hours after treatment. Apply SPF daily. We recommend monthly treatments for optimal results.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Dermaplaning Facial -->
-          <div class="swiper-slide" data-category="skin">
-            <div class="service-card">
-              <div class="service-card-inner">
-                <div class="service-front">
-                  <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dermaplaning Facial">
-                    <div class="service-image-overlay"></div>
-                  </div>
-                  <div class="service-content">
-                    <h3 class="service-title">Dermaplaning Facial</h3>
-                    <p class="service-description">Advanced exfoliation treatment removing dead skin cells and peach fuzz for smoother skin.</p>
-                    <div class="service-meta">
-                      <span class="service-price">$130</span>
-                      <span class="service-duration"><i class="far fa-clock"></i> 90 mins</span>
-                    </div>
-                    <button class="service-details-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="service-back">
-                  <button class="service-close"><i class="fas fa-times"></i></button>
-                  <h3 class="service-title">Dermaplaning Facial</h3>
-                  <div class="service-details">
-                    <div class="detail-item">
-                      <h4>The Process</h4>
-                      <p>Dermaplaning uses a specialized tool to gently remove the top layer of dead skin cells and fine vellus hair (peach fuzz). It's followed by a soothing facial treatment tailored to your skin needs.</p>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Benefits</h4>
-                      <ul class="benefits-list">
-                        <li>Immediately smoother, brighter skin</li>
-                        <li>Removal of fine facial hair</li>
-                        <li>Enhanced product absorption</li>
-                        <li>Makeup applies more smoothly</li>
-                      </ul>
-                    </div>
-                    <div class="detail-item">
-                      <h4>Aftercare</h4>
-                      <p>Avoid sun exposure and use SPF protection. Don't use exfoliants or retinol products for 3-5 days. Keep skin hydrated. Results last about 4 weeks as skin naturally regenerates.</p>
-                    </div>
-                  </div>
-                  <a href="#booking" class="book-service-btn">Book This Service</a>
-                </div>
-              </div>
+              <button class="book-service">Book Appointment</button>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- Carousel Navigation -->
-      <div class="carousel-navigation">
-        <div class="carousel-prev">
-          <i class="fas fa-chevron-left"></i>
+      <!-- Service Card 2: Lip Blush -->
+      <div class="service-card" data-category="permanent" data-aos="zoom-in" data-aos-delay="300">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1484693752268-780d03ed5cc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">💋 Trending</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Lip Blush</h3>
+              <p class="service-tagline">Define Your Natural Beauty</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Lip Blush</h3>
+              <div class="service-highlights">
+                <span class="highlight">Enhanced Color</span>
+                <span class="highlight">Subtle Definition</span>
+                <span class="highlight">Low Maintenance</span>
+              </div>
+              <p class="service-desc">Enhance your natural lip color with a beautiful blush tint. Perfect for adding subtle color that lasts for years.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$450</span>
+                  <span class="price-duration">2-3 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
         </div>
-        <div class="carousel-pagination"></div>
-        <div class="carousel-next">
-          <i class="fas fa-chevron-right"></i>
+      </div>
+      
+      <!-- Service Card 3: Eyeliner -->
+      <div class="service-card" data-category="permanent" data-aos="zoom-in" data-aos-delay="400">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">✨ Popular</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Permanent Eyeliner</h3>
+              <p class="service-tagline">Wake Up Beautiful</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Permanent Eyeliner</h3>
+              <div class="service-highlights">
+                <span class="highlight">Professional Look</span>
+                <span class="highlight">Time Saving</span>
+                <span class="highlight">Water Proof</span>
+              </div>
+              <p class="service-desc">Define your eyes with precision permanent eyeliner. Perfect for a professional look that lasts all day, every day.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$350</span>
+                  <span class="price-duration">2 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 4: European Facial -->
+      <div class="service-card" data-category="skin" data-aos="zoom-in" data-aos-delay="500">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">🌿 Luxury</div>
+            <div class="service-overlay">
+              <h3 class="service-name">European Facial</h3>
+              <p class="service-tagline">Radiant Skin Renewal</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>European Facial</h3>
+              <div class="service-highlights">
+                <span class="highlight">Deep Cleansing</span>
+                <span class="highlight">Rejuvenating</span>
+                <span class="highlight">Relaxing</span>
+              </div>
+              <p class="service-desc">Experience our luxurious European facial with deep cleansing, customized mask treatment, and relaxing massage for radiant skin.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$90</span>
+                  <span class="price-duration">60 min</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 5: Dermaplaning -->
+      <div class="service-card" data-category="skin" data-aos="zoom-in" data-aos-delay="600">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">✨ Advanced</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Dermaplaning</h3>
+              <p class="service-tagline">Smooth Perfection</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Dermaplaning</h3>
+              <div class="service-highlights">
+                <span class="highlight">Exfoliating</span>
+                <span class="highlight">Brightening</span>
+                <span class="highlight">Hair Removal</span>
+              </div>
+              <p class="service-desc">Advanced exfoliation treatment that removes dead skin cells and fine hair for incredibly smooth, glowing skin.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$130</span>
+                  <span class="price-duration">90 min</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 6: Lash Extensions -->
+      <div class="service-card" data-category="lashes" data-aos="zoom-in" data-aos-delay="700">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1583527944699-79ab473b9497?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">👁️ Classic</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Lash Extensions</h3>
+              <p class="service-tagline">Dramatic Eyes</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Lash Extensions</h3>
+              <div class="service-highlights">
+                <span class="highlight">Customizable</span>
+                <span class="highlight">Natural Look</span>
+                <span class="highlight">Long-Lasting</span>
+              </div>
+              <p class="service-desc">Individual lash extensions applied meticulously for a full, dramatic look that lasts weeks. Classic or volume options available.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$100</span>
+                  <span class="price-duration">1.5 hrs</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 7: Lash Lift -->
+      <div class="service-card" data-category="lashes" data-aos="zoom-in" data-aos-delay="800">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1621607510072-5df50977ee97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">⭐ Low Maintenance</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Lash Lift & Tint</h3>
+              <p class="service-tagline">Natural Enhancement</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Lash Lift & Tint</h3>
+              <div class="service-highlights">
+                <span class="highlight">No Extensions</span>
+                <span class="highlight">Curl & Color</span>
+                <span class="highlight">6-8 Week Results</span>
+              </div>
+              <p class="service-desc">Enhance your natural lashes with a lift and tint. Wake up to beautifully curled, darkened lashes that last weeks.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">$125</span>
+                  <span class="price-duration">1 hr</span>
+                </div>
+              </div>
+              <button class="book-service">Book Appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 8: Consultation -->
+      <div class="service-card" data-category="other" data-aos="zoom-in" data-aos-delay="900">
+        <div class="service-inner">
+          <div class="service-front" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+            <div class="service-label">💡 Free</div>
+            <div class="service-overlay">
+              <h3 class="service-name">Free Consultation</h3>
+              <p class="service-tagline">Expert Advice</p>
+              <button class="service-info-btn">Discover More</button>
+            </div>
+          </div>
+          <div class="service-back">
+            <div class="service-details">
+              <h3>Free Consultation</h3>
+              <div class="service-highlights">
+                <span class="highlight">Personalized Plan</span>
+                <span class="highlight">Expert Guidance</span>
+                <span class="highlight">No Obligation</span>
+              </div>
+              <p class="service-desc">Book a complimentary consultation to discuss your beauty goals and discover the perfect treatments for you.</p>
+              <div class="service-pricing">
+                <div class="price-detail">
+                  <span class="price-amount">FREE</span>
+                  <span class="price-duration">30 min</span>
+                </div>
+              </div>
+              <button class="book-service">Book Consultation</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- View All Link -->
-    <div class="view-all-container" data-aos="fade-up">
-      <a href="services.html" class="view-all-link">
-        <span>Explore All Services</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+    <!-- Bottom CTA -->
+    <div class="services-cta" data-aos="fade-up" data-aos-delay="1000">
+      <h3>Ready to Transform Your Beauty?</h3>
+      <p>Book a consultation today and start your journey to enhanced natural beauty</p>
+      <button class="main-cta-btn">Schedule Your Consultation</button>
     </div>
   </div>
 </section>
