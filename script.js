@@ -1,145 +1,74 @@
 /**
  * Iconic Aesthetics - Main JavaScript File
  * 
- * This file contains all interactive functionality for the Iconic Aesthetics website.
- * It is structured in modules for better organization and maintainability.
- * 
- * Table of Contents:
- * 1. Core Setup & Initialization
- * 2. UI Components
- *    - Navigation
- *    - Scroll Effects
- *    - Forms & Validation
- * 3. Feature Modules
- *    - Hero Section
- *    - Services Section
- *    - Gallery & Before/After Sliders
- *    - FAQ Accordion
- *    - Animations & Effects
- * 4. Utilities & Helpers
- * 5. Performance Monitoring
+ * Enhanced with improved scroll animations and performance optimizations
+ * Uses GSAP as the primary animation system for consistency
  */
 
-/* =========================================
-   1. CORE SETUP & INITIALIZATION
-   ========================================= */
-const IconicApp = {
-    // Global settings
-    settings: {
-        prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-        isTouchDevice: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0),
-        isGsapAvailable: typeof gsap !== 'undefined'
-    },
+document.addEventListener('DOMContentLoaded', function() {
+    // ------------------------------------------------------------------------
+    // INITIALIZATION AND GLOBAL VARIABLES
+    // ------------------------------------------------------------------------
+    const body = document.body;
+    const preloader = document.querySelector('.preloader');
+    const header = document.querySelector('.site-header');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const backToTop = document.getElementById('back-to-top');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const galleryFilters = document.querySelectorAll('.gallery-filter');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const cookieConsent = document.getElementById('cookie-consent');
+    const cookieAccept = document.getElementById('cookie-accept');
+    const cookieDecline = document.getElementById('cookie-decline');
+    const forms = document.querySelectorAll('form');
     
-    // Global references to DOM elements
-    elements: {},
+    // Services Carousel Elements
+    const servicesCarousel = document.querySelector('.services-carousel');
+    const filterButtons = document.querySelectorAll('.services-filter .filter-btn, .service-filter');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const detailButtons = document.querySelectorAll('.service-details-btn');
+    const closeButtons = document.querySelectorAll('.service-close');
     
-    // Initialize the application
-    init: function() {
-        this.cacheElements();
-        this.bindEvents();
-        this.initializeModules();
-        
-        console.log('✅ Iconic Aesthetics application initialized');
-    },
+    // Before/After Elements
+    const beforeAfterContainers = document.querySelectorAll('.ba-container');
     
-    // Cache DOM elements for better performance
-    cacheElements: function() {
-        const e = this.elements;
-        
-        // Core elements
-        e.body = document.body;
-        e.header = document.querySelector('.site-header');
-        e.menuToggle = document.querySelector('.menu-toggle');
-        e.mobileNav = document.querySelector('.mobile-nav');
-        e.mobileNavClose = document.querySelector('.mobile-nav-close');
-        e.mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        e.backToTop = document.getElementById('back-to-top');
-        
-        // Feature elements
-        e.preloader = document.querySelector('.preloader');
-        e.heroVideo = document.querySelector('.hero-background-video');
-        e.faqItems = document.querySelectorAll('.faq-item');
-        e.galleryFilters = document.querySelectorAll('.gallery-filter');
-        e.galleryItems = document.querySelectorAll('.gallery-item');
-        e.beforeAfterContainers = document.querySelectorAll('.ba-container');
-        e.serviceFilters = document.querySelectorAll('.service-filter');
-        e.serviceCards = document.querySelectorAll('.service-card');
-        e.forms = document.querySelectorAll('form');
-        e.cookieConsent = document.getElementById('cookie-consent');
-        e.cookieAccept = document.getElementById('cookie-accept');
-        e.cookieDecline = document.getElementById('cookie-decline');
-    },
-    
-    // Bind global events
-    bindEvents: function() {
-        // Window events
-        window.addEventListener('load', IconicApp.Preloader.hide);
-        window.addEventListener('scroll', IconicApp.debounce(IconicApp.ScrollEffects.handleScroll, 10));
-        window.addEventListener('resize', IconicApp.debounce(IconicApp.handleResize, 150));
-        
-        // Error handling
-        window.onerror = IconicApp.handleGlobalError;
-    },
-    
-    // Initialize all modules
-    initializeModules: function() {
-        IconicApp.Preloader.init();
-        IconicApp.Navigation.init();
-        IconicApp.Hero.init();
-        IconicApp.ScrollEffects.init();
-        IconicApp.Services.init();
-        IconicApp.Gallery.init();
-        IconicApp.BeforeAfter.init();
-        IconicApp.FAQ.init();
-        IconicApp.Forms.init();
-        IconicApp.CookieConsent.init();
-        IconicApp.FloatingElements.init();
-        
-        // Initialize animations if GSAP is available
-        if (IconicApp.settings.isGsapAvailable) {
-            IconicApp.Animations.init();
-        }
-    },
-    
-    // Global resize handler
-    handleResize: function() {
-        // Update any necessary dimensions or recalculations
-        IconicApp.BeforeAfter.updateDimensions();
-        
-        // Refresh ScrollTrigger if available
-        if (IconicApp.settings.isGsapAvailable && typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.refresh();
-        }
-    },
-    
-    // Global error handler
-    handleGlobalError: function(message, source, lineno, colno, error) {
-        console.error('Error:', {
-            message: message,
-            source: source,
-            line: lineno,
-            column: colno,
-            error: error
-        });
-        
-        // Continue execution even if there's an error
-        return true;
-    }
-};
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* =========================================
-   2. UI COMPONENTS
-   ========================================= */
-
-/**
- * Preloader Module
- * Handles the website preloader animation and dismissal
- */
-IconicApp.Preloader = {
-    init: function() {
-        const preloader = IconicApp.elements.preloader;
+    // ------------------------------------------------------------------------
+    // PRELOADER WITH ENHANCED ANIMATION
+    // ------------------------------------------------------------------------
+    function initializePreloader() {
         if (!preloader) return;
+        
+        window.addEventListener('load', function() {
+            if (typeof gsap !== 'undefined') {
+                // GSAP animation for smoother preloader exit
+                gsap.to(preloader, {
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    onComplete: function() {
+                        preloader.style.display = 'none';
+                        
+                        // Animate hero section once preloader is gone
+                        animateHeroSection();
+                    }
+                });
+            } else {
+                // Fallback to basic animation
+                setTimeout(function() {
+                    preloader.style.opacity = '0';
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                        animateHeroSection();
+                    }, 600);
+                }, 1000);
+            }
+        });
         
         // Update progress bar in preloader
         const loaderBar = document.querySelector('.loader-bar');
@@ -154,456 +83,18 @@ IconicApp.Preloader = {
                 }
             }, 10);
         }
-    },
-    
-    hide: function() {
-        const preloader = IconicApp.elements.preloader;
-        if (!preloader) return;
-        
-        if (IconicApp.settings.isGsapAvailable) {
-            // GSAP animation for smoother preloader exit
-            gsap.to(preloader, {
-                opacity: 0,
-                duration: 0.8,
-                ease: "power2.out",
-                onComplete: function() {
-                    preloader.style.display = 'none';
-                    IconicApp.Hero.animateContent();
-                }
-            });
-        } else {
-            // Fallback to basic animation
-            setTimeout(function() {
-                preloader.style.opacity = '0';
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                    IconicApp.Hero.animateContent();
-                }, 600);
-            }, 1000);
-        }
     }
-};
-
-/**
- * Navigation Module
- * Handles main navigation, mobile menu, and scroll spy
- */
-IconicApp.Navigation = {
-    init: function() {
-        this.setupMobileMenu();
-        this.setupScrollSpy();
-        this.setupSmoothScroll();
-    },
     
-    setupMobileMenu: function() {
-        const menuToggle = IconicApp.elements.menuToggle;
-        const mobileNav = IconicApp.elements.mobileNav;
-        const mobileNavClose = IconicApp.elements.mobileNavClose;
-        const mobileNavLinks = IconicApp.elements.mobileNavLinks;
-        const body = IconicApp.elements.body;
+    // ------------------------------------------------------------------------
+    // HERO VIDEO FUNCTIONALITY
+    // ------------------------------------------------------------------------
+    function initializeHeroVideo() {
+        const heroVideo = document.querySelector('.hero-background-video');
         
-        if (!menuToggle || !mobileNav) return;
-        
-        // Mobile menu toggle
-        menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
-                body.style.overflow = 'hidden';
-                
-                // Animate menu items with delay
-                mobileNavLinks.forEach((link, index) => {
-                    link.parentElement.style.transitionDelay = `${index * 0.1}s`;
-                });
-            } else {
-                body.style.overflow = '';
-                
-                // Reset transition delay
-                mobileNavLinks.forEach(link => {
-                    link.parentElement.style.transitionDelay = '0s';
-                });
-            }
-        });
-        
-        // Mobile menu close
-        if (mobileNavClose) {
-            mobileNavClose.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-                body.style.overflow = '';
-            });
-        }
-        
-        // Close mobile menu when clicking on links
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-    },
-    
-    setupScrollSpy: function() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        if (!sections.length || !navLinks.length) return;
-        
-        // Improved observer options for more accurate detection
-        const observerOptions = {
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to corresponding link
-                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (activeLink) activeLink.classList.add('active');
-                }
-            });
-        }, observerOptions);
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Set active nav link on page load
-        this.setInitialActiveLink(sections, navLinks);
-    },
-    
-    setInitialActiveLink: function(sections, navLinks) {
-        let currentSection = '';
-        let minDistance = Infinity;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const distance = Math.abs(window.scrollY - sectionTop);
-            
-            if (distance < minDistance) {
-                minDistance = distance;
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        if (currentSection) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.nav-link[href="#${currentSection}"]`);
-            if (activeLink) activeLink.classList.add('active');
-        }
-    },
-    
-    setupSmoothScroll: function() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                
-                if (targetId === '#') return;
-                
-                e.preventDefault();
-                
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const headerHeight = IconicApp.elements.header.offsetHeight;
-                    
-                    // Use GSAP for smoother scrolling if available
-                    if (IconicApp.settings.isGsapAvailable && typeof ScrollToPlugin !== 'undefined') {
-                        gsap.to(window, {
-                            duration: 1.2, 
-                            scrollTo: {
-                                y: targetElement,
-                                offsetY: headerHeight
-                            },
-                            ease: "power3.inOut"
-                        });
-                    } else {
-                        // Fallback to manual calculation for smoother scroll
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                    
-                    // Close mobile menu if open
-                    const mobileNav = IconicApp.elements.mobileNav;
-                    if (mobileNav && mobileNav.classList.contains('active')) {
-                        IconicApp.elements.menuToggle.classList.remove('active');
-                        mobileNav.classList.remove('active');
-                        IconicApp.elements.body.style.overflow = '';
-                    }
-                }
-            });
-        });
-    }
-};
-
-/**
- * Scroll Effects Module
- * Handles scroll-based effects and animations
- */
-IconicApp.ScrollEffects = {
-    init: function() {
-        const backToTop = IconicApp.elements.backToTop;
-        
-        if (backToTop) {
-            backToTop.addEventListener('click', this.scrollToTop);
-        }
-        
-        // Initial check on page load
-        this.handleScroll();
-    },
-    
-    handleScroll: function() {
-        requestAnimationFrame(function() {
-            const header = IconicApp.elements.header;
-            const backToTop = IconicApp.elements.backToTop;
-            
-            if (header) {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }
-            
-            // Back to top button visibility
-            if (backToTop) {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('active');
-                } else {
-                    backToTop.classList.remove('active');
-                }
-            }
-        });
-    },
-    
-    scrollToTop: function(e) {
-        if (e) e.preventDefault();
-        
-        // Use GSAP for smoother scrolling if available
-        if (IconicApp.settings.isGsapAvailable && typeof ScrollToPlugin !== 'undefined') {
-            gsap.to(window, {
-                duration: 1.2, 
-                scrollTo: { y: 0 },
-                ease: "power3.inOut"
-            });
-        } else {
-            // Fallback to native smooth scroll
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    }
-};
-
-/**
- * Forms Module
- * Handles form validation and submission
- */
-IconicApp.Forms = {
-    init: function() {
-        const forms = IconicApp.elements.forms;
-        if (!forms.length) return;
-        
-        forms.forEach(form => {
-            form.addEventListener('submit', this.handleSubmit);
-        });
-    },
-    
-    handleSubmit: function(e) {
-        e.preventDefault();
-        
-        // Validate form
-        let isValid = true;
-        const requiredFields = this.querySelectorAll('[required]');
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                isValid = false;
-                field.classList.add('error');
-                
-                // Add shake animation for invalid fields
-                if (IconicApp.settings.isGsapAvailable) {
-                    gsap.fromTo(field, 
-                        {x: -5},
-                        {x: 0, duration: 0.3, ease: "elastic.out(1, 0.3)"}
-                    );
-                }
-            } else {
-                field.classList.remove('error');
-            }
-        });
-        
-        // Remove any existing message
-        const existingMessage = this.querySelector('.form-message');
-        if (existingMessage) existingMessage.remove();
-        
-        if (isValid) {
-            IconicApp.Forms.showSuccessMessage(this);
-        } else {
-            IconicApp.Forms.showErrorMessage(this);
-        }
-    },
-    
-    showSuccessMessage: function(form) {
-        // Show success message
-        const formMessage = document.createElement('div');
-        formMessage.className = 'form-message success';
-        formMessage.textContent = 'Your message has been sent successfully!';
-        
-        form.reset();
-        form.appendChild(formMessage);
-        
-        // Animate success message
-        if (IconicApp.settings.isGsapAvailable) {
-            gsap.from(formMessage, {
-                y: -20,
-                opacity: 0,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        }
-        
-        // Remove message after 5 seconds
-        setTimeout(() => {
-            IconicApp.Forms.removeMessage(formMessage);
-        }, 5000);
-    },
-    
-    showErrorMessage: function(form) {
-        // Show error message
-        const formMessage = document.createElement('div');
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Please fill in all required fields.';
-        
-        form.appendChild(formMessage);
-        
-        // Animate error message
-        if (IconicApp.settings.isGsapAvailable) {
-            gsap.from(formMessage, {
-                y: -20,
-                opacity: 0,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        }
-        
-        // Remove message after 5 seconds
-        setTimeout(() => {
-            IconicApp.Forms.removeMessage(formMessage);
-        }, 5000);
-    },
-    
-    removeMessage: function(message) {
-        if (!message) return;
-        
-        if (IconicApp.settings.isGsapAvailable) {
-            gsap.to(message, {
-                opacity: 0,
-                y: -20,
-                duration: 0.3,
-                onComplete: () => message.remove()
-            });
-        } else {
-            message.remove();
-        }
-    }
-};
-
-/**
- * Cookie Consent Module
- * Handles cookie consent banner
- */
-IconicApp.CookieConsent = {
-    init: function() {
-        const cookieConsent = IconicApp.elements.cookieConsent;
-        const cookieAccept = IconicApp.elements.cookieAccept;
-        const cookieDecline = IconicApp.elements.cookieDecline;
-        
-        if (!cookieConsent) return;
-        
-        // Check if user has already made a choice
-        const cookieChoice = localStorage.getItem('cookieConsent');
-        
-        if (cookieChoice === null) {
-            // Show cookie consent after 2 seconds
-            setTimeout(() => {
-                cookieConsent.classList.add('active');
-                
-                // Animate entry if GSAP is available
-                if (IconicApp.settings.isGsapAvailable) {
-                    gsap.from(cookieConsent, {
-                        y: 50,
-                        opacity: 0,
-                        duration: 0.6,
-                        ease: "power3.out"
-                    });
-                }
-            }, 2000);
-        }
-        
-        // Handle accept button
-        if (cookieAccept) {
-            cookieAccept.addEventListener('click', () => this.handleChoice('accepted', cookieConsent));
-        }
-        
-        // Handle decline button
-        if (cookieDecline) {
-            cookieDecline.addEventListener('click', () => this.handleChoice('declined', cookieConsent));
-        }
-    },
-    
-    handleChoice: function(choice, cookieConsent) {
-        localStorage.setItem('cookieConsent', choice);
-        
-        if (IconicApp.settings.isGsapAvailable) {
-            gsap.to(cookieConsent, {
-                y: 50,
-                opacity: 0,
-                duration: 0.6,
-                ease: "power3.in",
-                onComplete: () => {
-                    cookieConsent.classList.remove('active');
-                }
-            });
-        } else {
-            cookieConsent.classList.remove('active');
-        }
-    }
-};
-
-/* =========================================
-   3. FEATURE MODULES
-   ========================================= */
-
-/**
- * Hero Module
- * Handles hero section video and animations
- */
-IconicApp.Hero = {
-    init: function() {
-        this.setupHeroVideo();
-        this.setupScrollIndicator();
-    },
-    
-    setupHeroVideo: function() {
-        const heroVideo = IconicApp.elements.heroVideo;
         if (!heroVideo) return;
         
         // Function to check if video can play
-        const checkVideoPlayback = () => {
+        function checkVideoPlayback() {
             const playPromise = heroVideo.play();
             
             if (playPromise !== undefined) {
@@ -623,18 +114,16 @@ IconicApp.Hero = {
                     playButton.setAttribute('aria-label', 'Play video');
                     
                     const videoWrapper = document.querySelector('.hero-video-wrapper');
-                    if (videoWrapper) {
-                        videoWrapper.appendChild(playButton);
-                        
-                        // Add event listener to play button
-                        playButton.addEventListener('click', function() {
-                            heroVideo.play();
-                            playButton.style.display = 'none';
-                        });
-                    }
+                    videoWrapper.appendChild(playButton);
+                    
+                    // Add event listener to play button
+                    playButton.addEventListener('click', function() {
+                        heroVideo.play();
+                        playButton.style.display = 'none';
+                    });
                 });
             }
-        };
+        }
         
         // Check if video is already loaded
         if (heroVideo.readyState >= 2) {
@@ -644,16 +133,10 @@ IconicApp.Hero = {
             heroVideo.addEventListener('loadeddata', checkVideoPlayback);
         }
         
-        // Setup parallax effect if GSAP available
-        this.setupParallaxEffect();
-    },
-    
-    setupParallaxEffect: function() {
+        // Replace AOS with GSAP for hero parallax effect
         const heroContent = document.querySelector('.hero-content');
         
-        if (!heroContent) return;
-        
-        if (IconicApp.settings.isGsapAvailable && typeof ScrollTrigger !== 'undefined') {
+        if (heroContent && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             // Create a smoother parallax effect with GSAP
             gsap.to(heroContent, {
                 y: 80,
@@ -666,7 +149,7 @@ IconicApp.Hero = {
                     scrub: true
                 }
             });
-        } else {
+        } else if (heroContent) {
             // Fallback to basic scroll effect
             window.addEventListener('scroll', function() {
                 const scrollPosition = window.pageYOffset;
@@ -676,49 +159,47 @@ IconicApp.Hero = {
                 }
             });
         }
-    },
-    
-    setupScrollIndicator: function() {
+        
+        // Smooth scroll for scroll indicator
         const scrollIndicator = document.querySelector('.scroll-indicator');
         
-        if (!scrollIndicator) return;
-        
-        scrollIndicator.addEventListener('click', function() {
-            // Get the next section
-            const nextSection = document.querySelector('#about') || 
-                                document.querySelector('section:nth-child(2)');
-            
-            if (nextSection) {
-                const headerHeight = IconicApp.elements.header.offsetHeight;
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', function() {
+                // Get the next section
+                const nextSection = document.querySelector('#about') || 
+                                    document.querySelector('section:nth-child(2)');
                 
-                // Use GSAP for smoother scrolling if available
-                if (IconicApp.settings.isGsapAvailable && typeof ScrollToPlugin !== 'undefined') {
-                    gsap.to(window, {
-                        duration: 1.2, 
-                        scrollTo: {
-                            y: nextSection,
-                            offsetY: headerHeight
-                        },
-                        ease: "power3.inOut"
-                    });
-                } else {
-                    // Fallback to native smooth scroll
-                    const targetPosition = nextSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                if (nextSection) {
+                    // Use GSAP for smoother scrolling if available
+                    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                        gsap.to(window, {
+                            duration: 1.2, 
+                            scrollTo: {
+                                y: nextSection,
+                                offsetY: header.offsetHeight
+                            },
+                            ease: "power3.inOut"
+                        });
+                    } else {
+                        // Fallback to native smooth scroll
+                        nextSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
-            }
-        });
-    },
+            });
+        }
+    }
     
-    animateContent: function() {
+    // ------------------------------------------------------------------------
+    // ANIMATION ENHANCEMENT - HERO SECTION
+    // ------------------------------------------------------------------------
+    function animateHeroSection() {
         const heroContent = document.querySelector('.hero-content');
         if (!heroContent) return;
         
-        if (IconicApp.settings.isGsapAvailable) {
+        if (typeof gsap !== 'undefined') {
             const heroElements = [
                 heroContent.querySelector('.hero-subtitle'),
                 heroContent.querySelector('.hero-title'),
@@ -738,31 +219,226 @@ IconicApp.Hero = {
               .to(heroElements[4], { opacity: 1, y: 0, duration: 0.8 }, "-=0.5");
         }
     }
-};
+    
+    // ------------------------------------------------------------------------
+    // SCROLL EFFECTS
+    // ------------------------------------------------------------------------
+    function initializeScrollEffects() {
+        if (!header) return;
+        
+        // Header scroll effect - optimized to use transform for better performance
+        window.addEventListener('scroll', function() {
+            requestAnimationFrame(function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Back to top button visibility
+                if (backToTop) {
+                    if (window.scrollY > 300) {
+                        backToTop.classList.add('active');
+                    } else {
+                        backToTop.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Back to top button with smooth scrolling
+        if (backToTop) {
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Use GSAP for smoother scrolling if available
+                if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                    gsap.to(window, {
+                        duration: 1.2, 
+                        scrollTo: { y: 0 },
+                        ease: "power3.inOut"
+                    });
+                } else {
+                    // Fallback to native smooth scroll
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+        
+        // Smooth scroll for anchor links - improved with GSAP if available
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = header.offsetHeight;
+                    
+                    // Use GSAP for smoother scrolling if available
+                    if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+                        gsap.to(window, {
+                            duration: 1.2, 
+                            scrollTo: {
+                                y: targetElement,
+                                offsetY: headerHeight
+                            },
+                            ease: "power3.inOut"
+                        });
+                    } else {
+                        // Fallback to manual calculation for smoother scroll
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Close mobile menu if open
+                    if (mobileNav && mobileNav.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                }
+            });
+        });
+    }
+    
+    // ------------------------------------------------------------------------
+    // NAVIGATION
+    // ------------------------------------------------------------------------
+    function initializeNavigation() {
+        // Mobile menu toggle
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                
+                if (mobileNav.classList.contains('active')) {
+                    body.style.overflow = 'hidden';
+                    
+                    // Animate menu items with delay
+                    mobileNavLinks.forEach((link, index) => {
+                        link.parentElement.style.transitionDelay = `${index * 0.1}s`;
+                    });
+                } else {
+                    body.style.overflow = '';
+                    
+                    // Reset transition delay
+                    mobileNavLinks.forEach(link => {
+                        link.parentElement.style.transitionDelay = '0s';
+                    });
+                }
+            });
+        }
+        
+        // Mobile menu close
+        if (mobileNavClose) {
+            mobileNavClose.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                body.style.overflow = '';
+            });
+        }
+        
+        // Close mobile menu when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+        
+        // Enhanced active nav state using Intersection Observer
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        if (sections.length && navLinks.length) {
+            // Improved observer options for more accurate detection
+            const observerOptions = {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        
+                        // Remove active class from all links
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        
+                        // Add active class to corresponding link
+                        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Set active nav link on page load
+            function setInitialActiveLink() {
+                let currentSection = '';
+                let minDistance = Infinity;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const distance = Math.abs(window.scrollY - sectionTop);
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                if (currentSection) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.nav-link[href="#${currentSection}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            }
+            
+            setInitialActiveLink();
+        }
+    }
 
-/**
- * Services Module
- * Handles services section filtering and interactions
- */
-IconicApp.Services = {
-    init: function() {
-        const filterButtons = IconicApp.elements.serviceFilters;
-        const serviceCards = IconicApp.elements.serviceCards;
+    // ------------------------------------------------------------------------
+    // SERVICES FUNCTIONALITY - WITH HOVER FLIP EFFECT
+    // ------------------------------------------------------------------------
+    function initializeServices() {
+        // Initialize all services components
+        const filterButtons = document.querySelectorAll('.service-filter');
+        const serviceCards = document.querySelectorAll('.service-card');
         
         // Make sure elements exist
-        if (!filterButtons.length || !serviceCards.length) return;
+        if (!filterButtons.length || !serviceCards.length) {
+            return;
+        }
         
         // Initialize filter system
-        this.setupFilterButtons(filterButtons, serviceCards);
+        setupFilterButtons(filterButtons, serviceCards);
         
         // Set initial state - show only main services
-        this.filterServiceCards('all', serviceCards);
+        filterServiceCards('all', serviceCards);
         
         // Initialize booking buttons
-        this.initializeBookingButtons();
-    },
-    
-    setupFilterButtons: function(filterButtons, serviceCards) {
+        initializeBookingButtons();
+    }
+
+    function setupFilterButtons(filterButtons, serviceCards) {
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const filter = this.dataset.filter;
@@ -772,7 +448,7 @@ IconicApp.Services = {
                 this.classList.add('active');
                 
                 // Filter cards
-                IconicApp.Services.filterServiceCards(filter, serviceCards);
+                filterServiceCards(filter, serviceCards);
                 
                 // Animate filter icon
                 const icon = this.querySelector('.filter-icon');
@@ -784,11 +460,11 @@ IconicApp.Services = {
                 }
             });
         });
-    },
-    
-    filterServiceCards: function(filter, serviceCards) {
+    }
+
+    function filterServiceCards(filter, serviceCards) {
         // Use GSAP for smoother animations if available
-        if (IconicApp.settings.isGsapAvailable) {
+        if (typeof gsap !== 'undefined') {
             serviceCards.forEach(card => {
                 const category = card.dataset.category;
                 const isMain = card.dataset.main === 'true';
@@ -864,9 +540,9 @@ IconicApp.Services = {
                 }
             });
         }
-    },
-    
-    initializeBookingButtons: function() {
+    }
+
+    function initializeBookingButtons() {
         const bookServiceButtons = document.querySelectorAll('.book-service');
         const mainCTAButton = document.querySelector('.main-cta-btn');
         
@@ -874,31 +550,29 @@ IconicApp.Services = {
         bookServiceButtons.forEach(button => {
             button.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent card hover effect
-                IconicApp.Services.handleBookingClick(this);
+                handleBookingClick(this);
             });
         });
         
         // Setup main CTA button
         if (mainCTAButton) {
             mainCTAButton.addEventListener('click', function() {
-                IconicApp.Services.handleBookingClick(this);
+                handleBookingClick(this);
             });
         }
-    },
-    
-    handleBookingClick: function(button) {
+    }
+
+    function handleBookingClick(button) {
         // Create ripple effect
-        this.createRippleEffect(button);
+        createRippleEffect(button);
         
         // Navigate to booking section
         setTimeout(() => {
-            this.navigateToBooking();
+            navigateToBooking();
         }, 300);
-    },
-    
-    createRippleEffect: function(button) {
-        if (!button) return;
-        
+    }
+
+    function createRippleEffect(button) {
         const ripple = document.createElement('span');
         const rect = button.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -936,15 +610,15 @@ IconicApp.Services = {
         }
         
         setTimeout(() => ripple.remove(), 600);
-    },
-    
-    navigateToBooking: function() {
+    }
+
+    function navigateToBooking() {
         const bookingSection = document.querySelector('#booking');
         if (bookingSection) {
             const headerOffset = 100;
             
             // Use GSAP if available
-            if (IconicApp.settings.isGsapAvailable && typeof ScrollToPlugin !== 'undefined') {
+            if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
                 gsap.to(window, {
                     duration: 1.2, 
                     scrollTo: {
@@ -968,308 +642,11 @@ IconicApp.Services = {
             window.location.href = '#booking';
         }
     }
-};
-
-/**
- * Gallery Module
- * Handles gallery filtering
- */
-IconicApp.Gallery = {
-    init: function() {
-        const galleryFilters = IconicApp.elements.galleryFilters;
-        const galleryItems = IconicApp.elements.galleryItems;
-        
-        if (!galleryFilters.length || !galleryItems.length) return;
-        
-        galleryFilters.forEach(filter => {
-            filter.addEventListener('click', function() {
-                // Remove active class from all filters
-                galleryFilters.forEach(f => f.classList.remove('active'));
-                
-                // Add active class to clicked filter
-                this.classList.add('active');
-                
-                // Get the category from the data attribute
-                const category = this.getAttribute('data-filter');
-                
-                // Filter gallery items with GSAP if available
-                if (IconicApp.settings.isGsapAvailable) {
-                    // Use GSAP for smoother animations
-                    galleryItems.forEach(item => {
-                        const itemCategory = item.getAttribute('data-category');
-                        
-                        if (category === 'all' || itemCategory === category) {
-                            gsap.to(item, {
-                                opacity: 1,
-                                scale: 1,
-                                y: 0,
-                                duration: 0.4,
-                                ease: "power2.out",
-                                onStart: () => {
-                                    item.style.display = 'block';
-                                    item.style.visibility = 'visible';
-                                }
-                            });
-                        } else {
-                            gsap.to(item, {
-                                opacity: 0,
-                                scale: 0.9,
-                                y: 20,
-                                duration: 0.3,
-                                ease: "power2.in",
-                                onComplete: () => {
-                                    item.style.display = 'none';
-                                    item.style.visibility = 'hidden';
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    // Fallback without GSAP
-                    galleryItems.forEach(item => {
-                        const itemCategory = item.getAttribute('data-category');
-                        
-                        if (category === 'all' || itemCategory === category) {
-                            item.style.display = 'block';
-                            item.style.visibility = 'visible';
-                            
-                            // Use setTimeout to create a simple animation effect
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'scale(1) translateY(0)';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'scale(0.9) translateY(20px)';
-                            
-                            // Delay hiding the element until the transition completes
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                                item.style.visibility = 'hidden';
-                            }, 300);
-                        }
-                    });
-                }
-            });
-        });
-    }
-};
-
-/**
- * Before/After Module
- * Handles the interactive before/after sliders
- */
-IconicApp.BeforeAfter = {
-    containerWidths: {},
     
-    init: function() {
-        const baContainers = IconicApp.elements.beforeAfterContainers;
-        
-        if (!baContainers.length) return;
-        
-        baContainers.forEach((container, index) => {
-            const beforeImage = container.querySelector('.before-image');
-            const slider = container.querySelector('.ba-slider');
-            const divider = container.querySelector('.ba-divider');
-            
-            if (!beforeImage || !slider || !divider) return;
-            
-            // Store unique ID for each container
-            const containerId = `ba-container-${index}`;
-            container.dataset.containerId = containerId;
-            
-            // Store container width
-            this.containerWidths[containerId] = container.offsetWidth;
-            
-            // Set initial position to 50%
-            this.setSliderPosition(container, 50);
-            
-            // Setup event listeners
-            this.setupEventListeners(container, containerId);
-            
-            // Add initial hint animation after a delay
-            setTimeout(() => {
-                this.animateHint(container);
-            }, 1000);
-        });
-    },
-    
-    setupEventListeners: function(container, containerId) {
-        const slider = container.querySelector('.ba-slider');
-        
-        if (!slider) return;
-        
-        let isDragging = false;
-        let startX, startPercent;
-        
-        // Handle mouse/touch events
-        const handleStart = (e) => {
-            isDragging = true;
-            
-            // Get container dimensions
-            this.containerWidths[containerId] = container.offsetWidth;
-            const rect = container.getBoundingClientRect();
-            
-            // Get starting X position (works for both mouse and touch)
-            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-            
-            // Calculate starting percentage
-            startPercent = ((startX - rect.left) / this.containerWidths[containerId]) * 100;
-            
-            // Add active class for styling
-            container.classList.add('dragging');
-            
-            // Prevent default behaviors
-            e.preventDefault();
-            e.stopPropagation();
-        };
-        
-        const handleMove = (e) => {
-            if (!isDragging) return;
-            
-            // Use requestAnimationFrame for smoother animation
-            requestAnimationFrame(() => {
-                // Get current X position (works for both mouse and touch)
-                const currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-                
-                // Calculate the container's position and dimensions
-                const rect = container.getBoundingClientRect();
-                
-                // Calculate new percentage
-                const newPercent = ((currentX - rect.left) / this.containerWidths[containerId]) * 100;
-                
-                // Update position
-                this.setSliderPosition(container, newPercent);
-            });
-            
-            // Prevent default behaviors
-            e.preventDefault();
-            e.stopPropagation();
-        };
-        
-        const handleEnd = () => {
-            isDragging = false;
-            container.classList.remove('dragging');
-        };
-        
-        // Add event listeners for both mouse and touch events
-        // Mouse events
-        slider.addEventListener('mousedown', handleStart);
-        window.addEventListener('mousemove', handleMove);
-        window.addEventListener('mouseup', handleEnd);
-        
-        // Touch events
-        slider.addEventListener('touchstart', handleStart, { passive: false });
-        window.addEventListener('touchmove', handleMove, { passive: false });
-        window.addEventListener('touchend', handleEnd);
-    },
-    
-    setSliderPosition: function(container, percent) {
-        const beforeImage = container.querySelector('.before-image');
-        const slider = container.querySelector('.ba-slider');
-        const divider = container.querySelector('.ba-divider');
-        
-        if (!beforeImage || !slider || !divider) return;
-        
-        // Constrain percentage between 0 and 100
-        percent = Math.max(0, Math.min(100, percent));
-        
-        // Use translate3d for better performance
-        const xPos = `${percent}%`;
-        slider.style.transform = `translateX(-50%) translateX(${xPos})`;
-        divider.style.transform = `translateX(-50%) translateX(${xPos})`;
-        
-        // Update clip path for before image
-        beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-        
-        // Adjust label opacity based on slider position
-        const beforeLabel = container.querySelector('.before-label');
-        const afterLabel = container.querySelector('.after-label');
-        
-        if (beforeLabel && afterLabel) {
-            // Make labels fade when slider approaches them
-            const beforeOpacity = percent < 20 ? (percent / 20) : 1;
-            const afterOpacity = percent > 80 ? (100 - percent) / 20 : 1;
-            
-            beforeLabel.style.opacity = beforeOpacity;
-            afterLabel.style.opacity = afterOpacity;
-        }
-    },
-    
-    animateHint: function(container) {
-        // Animated hint showing the slider can be moved
-        const animationDuration = 1500;
-        const startTime = performance.now();
-        
-        // Current position is 50%
-        const startPosition = 50;
-        // Target positions for animation
-        const positions = [65, 35, 50]; // right, left, center
-        const durations = [0.4, 0.4, 0.2]; // portion of total time for each step
-        
-        // Calculate cumulative durations for animation steps
-        const cumulativeDurations = durations.map((d, i) => {
-            return durations.slice(0, i + 1).reduce((a, b) => a + b, 0);
-        });
-        
-        const animateStep = (currentTime) => {
-            const elapsedTime = currentTime - startTime;
-            const progress = Math.min(elapsedTime / animationDuration, 1);
-            
-            let targetPosition;
-            
-            // Determine which step of the animation we're in
-            if (progress <= cumulativeDurations[0]) {
-                // First step: move right
-                const stepProgress = progress / cumulativeDurations[0];
-                targetPosition = startPosition + (positions[0] - startPosition) * this.easeInOutCubic(stepProgress);
-            } else if (progress <= cumulativeDurations[1]) {
-                // Second step: move left
-                const stepProgress = (progress - cumulativeDurations[0]) / (cumulativeDurations[1] - cumulativeDurations[0]);
-                targetPosition = positions[0] + (positions[1] - positions[0]) * this.easeInOutCubic(stepProgress);
-            } else {
-                // Third step: back to center
-                const stepProgress = (progress - cumulativeDurations[1]) / (cumulativeDurations[2] - cumulativeDurations[1]);
-                targetPosition = positions[1] + (positions[2] - positions[1]) * this.easeInOutCubic(stepProgress);
-            }
-            
-            this.setSliderPosition(container, targetPosition);
-            
-            if (progress < 1) {
-                requestAnimationFrame(animateStep);
-            }
-        };
-        
-        // Start animation
-        requestAnimationFrame(animateStep);
-    },
-    
-    // Easing function for smoother animation
-    easeInOutCubic: function(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    },
-    
-    // Update dimensions when window resizes
-    updateDimensions: function() {
-        const baContainers = IconicApp.elements.beforeAfterContainers;
-        if (!baContainers.length) return;
-        
-        baContainers.forEach(container => {
-            const containerId = container.dataset.containerId;
-            if (containerId) {
-                this.containerWidths[containerId] = container.offsetWidth;
-            }
-        });
-    }
-};
-
-/**
- * FAQ Module
- * Handles FAQ accordion functionality
- */
-IconicApp.FAQ = {
-    init: function() {
-        const faqItems = IconicApp.elements.faqItems;
+    // ------------------------------------------------------------------------
+    // FAQ ACCORDIONS
+    // ------------------------------------------------------------------------
+    function initializeFAQ() {
         if (!faqItems.length) return;
         
         faqItems.forEach(item => {
@@ -1296,33 +673,434 @@ IconicApp.FAQ = {
             });
         });
     }
-};
-
-/**
- * Floating Elements Module
- * Handles decorative floating elements and hover effects
- */
-IconicApp.FloatingElements = {
-    init: function() {
-        if (!IconicApp.settings.prefersReducedMotion) {
-            this.initBubbleAnimation();
-            this.initOrbsAnimation();
-            this.initShowcaseHoverEffects();
-            this.initFeatureCardEffects();
-        }
-    },
     
-    initBubbleAnimation: function() {
+    // ------------------------------------------------------------------------
+    // GALLERY
+    // ------------------------------------------------------------------------
+    function initializeGallery() {
+        if (!galleryFilters.length || !galleryItems.length) return;
+        
+        galleryFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                // Remove active class from all filters
+                galleryFilters.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked filter
+                this.classList.add('active');
+                
+                // Get the category from the data attribute
+                const category = this.getAttribute('data-filter');
+                
+                // Filter gallery items
+                if (typeof gsap !== 'undefined') {
+                    // Use GSAP for smoother animations
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        if (category === 'all' || itemCategory === category) {
+                            gsap.to(item, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.4,
+                                ease: "power2.out",
+                                onStart: () => {
+                                    item.style.display = 'block';
+                                }
+                            });
+                        } else {
+                            gsap.to(item, {
+                                opacity: 0,
+                                scale: 0.8,
+                                duration: 0.3,
+                                ease: "power2.in",
+                                onComplete: () => {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    // Fallback without GSAP
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        if (category === 'all' || itemCategory === category) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                }
+            });
+        });
+    }
+    
+    // ------------------------------------------------------------------------
+    // BEFORE-AFTER SLIDER - WITH OPTIMIZED TOUCH HANDLING
+    // ------------------------------------------------------------------------
+    function initializeBeforeAfterSlider() {
+        if (!beforeAfterContainers.length) return;
+        
+        beforeAfterContainers.forEach((container, index) => {
+            const sliderHandle = container.querySelector('.ba-slider');
+            const beforeImage = container.querySelector('.before-image');
+            const divider = container.querySelector('.ba-divider');
+            
+            if (!sliderHandle || !beforeImage || !divider) return;
+            
+            let isDragging = false;
+            let startX, containerWidth;
+            
+            // Set initial position - centered
+            setPosition(container, 50);
+            
+            // More efficient event handling with throttling
+            function handleMove(container, clientX) {
+                if (!isDragging) return;
+                
+                // Use requestAnimationFrame for smoother animation
+                requestAnimationFrame(() => {
+                    if (!containerWidth) {
+                        containerWidth = container.offsetWidth;
+                    }
+                    
+                    const rect = container.getBoundingClientRect();
+                    const x = clientX - rect.left;
+                    setPosition(container, (x / containerWidth) * 100);
+                });
+            }
+            
+            // Mouse events
+            sliderHandle.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                containerWidth = container.offsetWidth;
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                setPosition(container, (x / containerWidth) * 100);
+                e.preventDefault(); // Prevent text selection during drag
+                container.classList.add('dragging');
+            });
+            
+            // Use passive listeners for better performance
+            window.addEventListener('mousemove', function(e) {
+                handleMove(container, e.clientX);
+            }, { passive: true });
+            
+            window.addEventListener('mouseup', function() {
+                isDragging = false;
+                container.classList.remove('dragging');
+            });
+            
+            // Improved touch events
+            sliderHandle.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                containerWidth = container.offsetWidth;
+                const rect = container.getBoundingClientRect();
+                const x = e.touches[0].clientX - rect.left;
+                setPosition(container, (x / containerWidth) * 100);
+                container.classList.add('dragging');
+            }, { passive: true });
+            
+            window.addEventListener('touchmove', function(e) {
+                handleMove(container, e.touches[0].clientX);
+            }, { passive: true });
+            
+            window.addEventListener('touchend', function() {
+                isDragging = false;
+                container.classList.remove('dragging');
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                containerWidth = container.offsetWidth;
+            });
+            
+            // Add initial hint animation after a delay
+            setTimeout(() => {
+                animateHint(container);
+            }, 1000 + index * 200); // Stagger animations
+        });
+    }
+    
+    // Set position for before/after slider
+    function setPosition(container, percent) {
+        // Constrain position between 0 and 100
+        percent = Math.max(0, Math.min(100, percent));
+        
+        const beforeImage = container.querySelector('.before-image');
+        const slider = container.querySelector('.ba-slider');
+        const divider = container.querySelector('.ba-divider');
+        
+        if (!beforeImage || !slider || !divider) return;
+        
+        // Update position using transforms for better performance
+        const xPos = `${percent}%`;
+        slider.style.transform = `translateX(-50%) translateX(${xPos})`;
+        divider.style.transform = `translateX(-50%) translateX(${xPos})`;
+        
+        // Update clip path for before image
+        beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+        
+        // Adjust label opacity based on slider position
+        const beforeLabel = container.querySelector('.before-label');
+        const afterLabel = container.querySelector('.after-label');
+        
+        if (beforeLabel && afterLabel) {
+            // Make labels fade when slider approaches them
+            const beforeOpacity = percent < 20 ? (percent / 20) : 1;
+            const afterOpacity = percent > 80 ? (100 - percent) / 20 : 1;
+            
+            beforeLabel.style.opacity = beforeOpacity;
+            afterLabel.style.opacity = afterOpacity;
+        }
+    }
+    
+    // Animate hint to show slider functionality
+    function animateHint(container) {
+        // Animated hint showing the slider can be moved
+        const steps = [
+            { position: 50, duration: 0 },    // Start
+            { position: 65, duration: 600 },  // Move right
+            { position: 35, duration: 600 },  // Move left
+            { position: 50, duration: 400 }   // Back to center
+        ];
+        
+        let currentStep = 0;
+        
+        function animateStep() {
+            if (currentStep >= steps.length) return;
+            
+            const step = steps[currentStep];
+            const startTime = performance.now();
+            const startPosition = currentStep > 0 ? steps[currentStep - 1].position : 50;
+            const endPosition = step.position;
+            const duration = step.duration;
+            
+            function updateFrame(time) {
+                const elapsed = time - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function
+                const easedProgress = progress < 0.5 ? 
+                    4 * progress * progress * progress : 
+                    1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                // Calculate current position
+                const currentPosition = startPosition + (endPosition - startPosition) * easedProgress;
+                
+                // Update slider position
+                setPosition(container, currentPosition);
+                
+                // Continue animation
+                if (progress < 1) {
+                    requestAnimationFrame(updateFrame);
+                } else {
+                    currentStep++;
+                    if (currentStep < steps.length) {
+                        // Proceed to next step
+                        animateStep();
+                    }
+                }
+            }
+            
+            // Start animation if duration > 0
+            if (duration > 0) {
+                requestAnimationFrame(updateFrame);
+            } else {
+                // Immediate update for duration 0
+                setPosition(container, endPosition);
+                currentStep++;
+                animateStep();
+            }
+        }
+        
+        // Start the animation sequence
+        animateStep();
+    }
+    
+    // ------------------------------------------------------------------------
+    // FORM VALIDATION
+    // ------------------------------------------------------------------------
+    function initializeFormValidation() {
+        if (!forms.length) return;
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('error');
+                        
+                        // Add shake animation for invalid fields
+                        if (typeof gsap !== 'undefined') {
+                            gsap.fromTo(field, 
+                                {x: -5},
+                                {x: 0, duration: 0.3, ease: "elastic.out(1, 0.3)"}
+                            );
+                        }
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
+                
+                // Remove any existing message
+                const existingMessage = form.querySelector('.form-message');
+                if (existingMessage) existingMessage.remove();
+                
+                if (isValid) {
+                    // Show success message
+                    const formMessage = document.createElement('div');
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = 'Your message has been sent successfully!';
+                    
+                    form.reset();
+                    form.appendChild(formMessage);
+                    
+                    // Animate success message
+                    if (typeof gsap !== 'undefined') {
+                        gsap.from(formMessage, {
+                            y: -20,
+                            opacity: 0,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    }
+                } else {
+                    // Show error message
+                    const formMessage = document.createElement('div');
+                    formMessage.className = 'form-message error';
+                    formMessage.textContent = 'Please fill in all required fields.';
+                    
+                    form.appendChild(formMessage);
+                    
+                    // Animate error message
+                    if (typeof gsap !== 'undefined') {
+                        gsap.from(formMessage, {
+                            y: -20,
+                            opacity: 0,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    }
+                }
+                
+                // Remove message after 5 seconds
+                setTimeout(() => {
+                    const message = form.querySelector('.form-message');
+                    if (message) {
+                        if (typeof gsap !== 'undefined') {
+                            gsap.to(message, {
+                                opacity: 0,
+                                y: -20,
+                                duration: 0.3,
+                                onComplete: () => message.remove()
+                            });
+                        } else {
+                            message.remove();
+                        }
+                    }
+                }, 5000);
+            });
+        });
+    }
+    
+    // ------------------------------------------------------------------------
+    // COOKIE CONSENT
+    // ------------------------------------------------------------------------
+    function initializeCookieConsent() {
+        if (!cookieConsent) return;
+        
+        // Check if user has already made a choice
+        const cookieChoice = localStorage.getItem('cookieConsent');
+        
+        if (cookieChoice === null) {
+            // Show cookie consent after 2 seconds
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+                
+                // Animate entry if GSAP is available
+                if (typeof gsap !== 'undefined') {
+                    gsap.from(cookieConsent, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: "power3.out"
+                    });
+                }
+            }, 2000);
+        }
+        
+        // Handle accept button
+        if (cookieAccept) {
+            cookieAccept.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(cookieConsent, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: "power3.in",
+                        onComplete: () => {
+                            cookieConsent.classList.remove('active');
+                        }
+                    });
+                } else {
+                    cookieConsent.classList.remove('active');
+                }
+            });
+        }
+        
+        // Handle decline button
+        if (cookieDecline) {
+            cookieDecline.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'declined');
+                
+                if (typeof gsap !== 'undefined') {
+                    gsap.to(cookieConsent, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: "power3.in",
+                        onComplete: () => {
+                            cookieConsent.classList.remove('active');
+                        }
+                    });
+                } else {
+                    cookieConsent.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // ENHANCED FLOATING ELEMENTS - ABOUT BUBBLE SECTION
+    // ------------------------------------------------------------------------
+    function initializeFloatingElements() {
         // Bubbles animation
         const bubbles = document.querySelectorAll('.bubble');
         
-        if (bubbles.length && IconicApp.settings.isGsapAvailable) {
+        if (bubbles.length && typeof gsap !== 'undefined') {
             bubbles.forEach((bubble, index) => {
                 // Random initial position within bounds
-                const xPos = gsap.utils.random(-30, 30);
-                const yPos = gsap.utils.random(-30, 30);
-                const rotation = gsap.utils.random(-15, 15);
-                const duration = gsap.utils.random(20, 40);
+                const xPos = Math.random() * 60 - 30;
+                const yPos = Math.random() * 60 - 30;
+                const rotation = Math.random() * 30 - 15;
+                const duration = 20 + Math.random() * 20;
                 const delay = index * 2; // Staggered delay for more natural movement
                 
                 // Set initial position
@@ -1334,9 +1112,9 @@ IconicApp.FloatingElements = {
                 
                 // Create floating animation
                 gsap.to(bubble, {
-                    x: xPos + gsap.utils.random(-40, 40),
-                    y: yPos + gsap.utils.random(-40, 40),
-                    rotation: rotation + gsap.utils.random(-20, 20),
+                    x: xPos + (Math.random() * 80 - 40),
+                    y: yPos + (Math.random() * 80 - 40),
+                    rotation: rotation + (Math.random() * 40 - 20),
                     repeat: -1,
                     yoyo: true,
                     duration: duration,
@@ -1345,25 +1123,20 @@ IconicApp.FloatingElements = {
                 });
             });
         }
-    },
-    
-    initOrbsAnimation: function() {
+        
         // Orbs animation in services section
         const orbs = document.querySelectorAll('.orb');
         
-        if (orbs.length && IconicApp.settings.isGsapAvailable) {
+        if (orbs.length && typeof gsap !== 'undefined') {
             orbs.forEach((orb, index) => {
-                const duration = gsap.utils.random(30, 60);
+                const duration = 30 + Math.random() * 30;
                 const delay = index * 5;
-                const path = [{x: 0, y: 0}, {x: 50, y: -100}, {x: -50, y: -200}, {x: 0, y: -300}, {x: 0, y: 0}];
                 
-                // Create a more complex, natural floating path
+                // Simple circular animation as fallback for missing motionPath plugin
                 gsap.to(orb, {
-                    motionPath: {
-                        path: path,
-                        autoRotate: true,
-                        curviness: 1.25
-                    },
+                    y: -100 + Math.random() * -200,
+                    x: Math.random() * 100 - 50,
+                    rotation: 360,
                     duration: duration,
                     delay: delay,
                     repeat: -1,
@@ -1371,13 +1144,11 @@ IconicApp.FloatingElements = {
                 });
             });
         }
-    },
-    
-    initShowcaseHoverEffects: function() {
+        
         // About section showcase hover effects
         const showcase = document.querySelector('.about-showcase');
         
-        if (showcase && !IconicApp.settings.isTouchDevice && window.innerWidth > 992) {
+        if (showcase && window.innerWidth > 992) {
             const showcaseMain = document.querySelector('.showcase-main');
             const showcaseAccent = document.querySelector('.showcase-accent');
             const experienceBadge = document.querySelector('.experience-badge');
@@ -1449,9 +1220,7 @@ IconicApp.FloatingElements = {
                 }
             });
         }
-    },
-    
-    initFeatureCardEffects: function() {
+        
         // Feature card hover effects
         const featureCards = document.querySelectorAll('.feature-card');
         
@@ -1461,7 +1230,7 @@ IconicApp.FloatingElements = {
                 const siblings = Array.from(featureCards).filter(item => item !== this);
                 
                 // Bounce animation for icon
-                if (icon && IconicApp.settings.isGsapAvailable) {
+                if (icon && typeof gsap !== 'undefined') {
                     gsap.to(icon, {
                         scale: 1.2,
                         rotation: 15,
@@ -1471,7 +1240,7 @@ IconicApp.FloatingElements = {
                 }
                 
                 // Subtle push-back effect on sibling cards
-                if (siblings.length && IconicApp.settings.isGsapAvailable) {
+                if (siblings.length && typeof gsap !== 'undefined') {
                     gsap.to(siblings, {
                         scale: 0.98,
                         opacity: 0.8,
@@ -1485,7 +1254,7 @@ IconicApp.FloatingElements = {
                 const siblings = Array.from(featureCards).filter(item => item !== this);
                 
                 // Reset icon animation
-                if (icon && IconicApp.settings.isGsapAvailable) {
+                if (icon && typeof gsap !== 'undefined') {
                     gsap.to(icon, {
                         scale: 1,
                         rotation: 0,
@@ -1494,7 +1263,7 @@ IconicApp.FloatingElements = {
                 }
                 
                 // Reset sibling cards
-                if (siblings.length && IconicApp.settings.isGsapAvailable) {
+                if (siblings.length && typeof gsap !== 'undefined') {
                     gsap.to(siblings, {
                         scale: 1,
                         opacity: 1,
@@ -1504,21 +1273,19 @@ IconicApp.FloatingElements = {
             });
         });
     }
-};
-
-/**
- * Animations Module
- * Handles GSAP-based scroll animations when available
- */
-IconicApp.Animations = {
-    init: function() {
-        if (!IconicApp.settings.isGsapAvailable) return;
+    
+    // ------------------------------------------------------------------------
+    // ANIMATIONS INITIALIZATION
+    // ------------------------------------------------------------------------
+    function initializeAnimations() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            console.warn('GSAP or ScrollTrigger not found - falling back to basic animations');
+            return;
+        }
         
-        // Register ScrollTrigger plugin if necessary
+        // Register ScrollTrigger plugin
         if (gsap.registerPlugin) {
-            if (typeof ScrollTrigger !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
-            }
+            gsap.registerPlugin(ScrollTrigger);
             
             // Also register ScrollToPlugin if available
             if (typeof ScrollToPlugin !== 'undefined') {
@@ -1526,25 +1293,44 @@ IconicApp.Animations = {
             }
         }
         
-        // Initialize section animations
-        this.setupAboutAnimations();
-        this.setupServicesAnimations();
-        this.setupGalleryAnimations();
-        this.setupReviewsAnimations();
-        this.setupFAQAnimations();
-        this.setupBookingAnimations();
-        this.setupInstagramAnimations();
-        this.setupContactAnimations();
-        this.setupNewsletterAnimations();
-        this.setupFooterAnimations();
+        // Initialize AOS with minimal settings to avoid conflicts
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                once: true,
+                disable: window.innerWidth < 768
+            });
+        }
+        
+        // About section animations
+        setupAboutAnimations();
+        
+        // Services section animations
+        setupServicesAnimations();
+        
+        // Gallery section animations
+        setupGalleryAnimations();
+        
+        // Testimonials section animations
+        setupTestimonialsAnimations();
+        
+        // FAQ section animations
+        setupFAQAnimations();
+        
+        // Booking section animations
+        setupBookingAnimations();
+        
+        // Contact section animations
+        setupContactAnimations();
+        
+        // Newsletter section animations
+        setupNewsletterAnimations();
         
         // Refresh all ScrollTriggers after animations are set up
-        if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.refresh();
-        }
-    },
+        ScrollTrigger.refresh();
+    }
     
-    setupAboutAnimations: function() {
+    // About section animations
+    function setupAboutAnimations() {
         // About info text animation
         const aboutContent = document.querySelector('.about-info');
         if (aboutContent) {
@@ -1561,7 +1347,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.about-bubble',
                 start: "top 70%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(aboutElements, {
                         opacity: 1,
@@ -1582,7 +1368,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.about-bubble',
                 start: "top 70%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(aboutShowcase, {
                         opacity: 1,
@@ -1593,9 +1379,10 @@ IconicApp.Animations = {
                 }
             });
         }
-    },
+    }
     
-    setupServicesAnimations: function() {
+    // Services section animations
+    function setupServicesAnimations() {
         // Services header animation
         const servicesHeader = document.querySelector('.services-header');
         if (servicesHeader) {
@@ -1604,7 +1391,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.ultra-services',
                 start: "top 80%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(servicesHeader, {
                         opacity: 1,
@@ -1624,7 +1411,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.services-header',
                 start: "top 70%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(servicesNav, {
                         opacity: 1,
@@ -1638,16 +1425,16 @@ IconicApp.Animations = {
         }
 
         // Enhanced service cards animation
-        const serviceCards = document.querySelectorAll('.service-card[data-main="true"]');
-        if (serviceCards.length) {
-            gsap.set(serviceCards, { opacity: 0, y: 50 });
+        const serviceMainCards = document.querySelectorAll('.service-card[data-main="true"]');
+        if (serviceMainCards.length) {
+            gsap.set(serviceMainCards, { opacity: 0, y: 50 });
             
             ScrollTrigger.create({
                 trigger: '.services-grid',
                 start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
-                    gsap.to(serviceCards, {
+                    gsap.to(serviceMainCards, {
                         opacity: 1,
                         y: 0,
                         duration: 0.8,
@@ -1657,9 +1444,10 @@ IconicApp.Animations = {
                 }
             });
         }
-    },
+    }
     
-    setupGalleryAnimations: function() {
+    // Gallery section animations
+    function setupGalleryAnimations() {
         const galleryElements = [
             document.querySelector('.gallery .section-header'),
             document.querySelector('.gallery-filters'),
@@ -1672,7 +1460,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.gallery',
                 start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(galleryElements, {
                         opacity: 1,
@@ -1683,31 +1471,11 @@ IconicApp.Animations = {
                     });
                 }
             });
-            
-            // Individual gallery items
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            if (galleryItems.length) {
-                gsap.set(galleryItems, { opacity: 0, y: 30 });
-                
-                ScrollTrigger.create({
-                    trigger: '.gallery-grid',
-                    start: "top 80%",
-                    once: IconicApp.settings.prefersReducedMotion,
-                    onEnter: () => {
-                        gsap.to(galleryItems, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.8,
-                            stagger: 0.1,
-                            ease: "power2.out"
-                        });
-                    }
-                });
-            }
         }
-    },
+    }
     
-    setupReviewsAnimations: function() {
+    // Testimonials section animations
+    function setupTestimonialsAnimations() {
         const reviewsElements = [
             document.querySelector('.reviews .section-header'),
             document.querySelector('.reviews-container'),
@@ -1719,7 +1487,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.reviews',
                 start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(reviewsElements, {
                         opacity: 1,
@@ -1731,9 +1499,10 @@ IconicApp.Animations = {
                 }
             });
         }
-    },
+    }
     
-    setupFAQAnimations: function() {
+    // FAQ section animations
+    function setupFAQAnimations() {
         const faqElements = [
             document.querySelector('.faq .section-header'),
             document.querySelector('.faq-content')
@@ -1745,7 +1514,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.faq',
                 start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(faqElements, {
                         opacity: 1,
@@ -1756,31 +1525,11 @@ IconicApp.Animations = {
                     });
                 }
             });
-            
-            // Individual FAQ items
-            const faqItems = document.querySelectorAll('.faq-item');
-            if (faqItems.length) {
-                gsap.set(faqItems, { opacity: 0, y: 20 });
-                
-                ScrollTrigger.create({
-                    trigger: '.faq-content',
-                    start: "top 80%",
-                    once: IconicApp.settings.prefersReducedMotion,
-                    onEnter: () => {
-                        gsap.to(faqItems, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.5,
-                            stagger: 0.1,
-                            ease: "power2.out"
-                        });
-                    }
-                });
-            }
         }
-    },
+    }
     
-    setupBookingAnimations: function() {
+    // Booking section animations
+    function setupBookingAnimations() {
         const bookingElements = [
             document.querySelector('.booking .section-header'),
             document.querySelector('.booking-info'),
@@ -1793,7 +1542,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.booking',
                 start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(bookingElements, {
                         opacity: 1,
@@ -1804,57 +1553,11 @@ IconicApp.Animations = {
                     });
                 }
             });
-            
-            // Booking steps animation
-            const bookingSteps = document.querySelectorAll('.booking-step');
-            if (bookingSteps.length) {
-                gsap.set(bookingSteps, { opacity: 0, x: -30 });
-                
-                ScrollTrigger.create({
-                    trigger: '.booking-steps',
-                    start: "top 80%",
-                    once: IconicApp.settings.prefersReducedMotion,
-                    onEnter: () => {
-                        gsap.to(bookingSteps, {
-                            opacity: 1,
-                            x: 0,
-                            duration: 0.5,
-                            stagger: 0.15,
-                            ease: "back.out(1.2)"
-                        });
-                    }
-                });
-            }
         }
-    },
+    }
     
-    setupInstagramAnimations: function() {
-        const instagramElements = [
-            document.querySelector('.instagram .section-header'),
-            document.querySelector('.instagram-content')
-        ].filter(el => el !== null);
-        
-        if (instagramElements.length) {
-            gsap.set(instagramElements, { opacity: 0, y: 30 });
-            
-            ScrollTrigger.create({
-                trigger: '.instagram',
-                start: "top 75%",
-                once: IconicApp.settings.prefersReducedMotion,
-                onEnter: () => {
-                    gsap.to(instagramElements, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        stagger: 0.2,
-                        ease: "power2.out"
-                    });
-                }
-            });
-        }
-    },
-    
-    setupContactAnimations: function() {
+    // Contact section animations
+    function setupContactAnimations() {
         const mapContainer = document.querySelector('.map-container');
         if (mapContainer) {
             gsap.set(mapContainer, { opacity: 0, y: 30 });
@@ -1862,7 +1565,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.contact',
                 start: "top 80%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(mapContainer, {
                         opacity: 1,
@@ -1873,9 +1576,10 @@ IconicApp.Animations = {
                 }
             });
         }
-    },
+    }
     
-    setupNewsletterAnimations: function() {
+    // Newsletter section animations
+    function setupNewsletterAnimations() {
         const newsletterContent = document.querySelector('.newsletter-content');
         if (newsletterContent) {
             gsap.set(newsletterContent, { opacity: 0, y: 30 });
@@ -1883,7 +1587,7 @@ IconicApp.Animations = {
             ScrollTrigger.create({
                 trigger: '.newsletter',
                 start: "top 80%",
-                once: IconicApp.settings.prefersReducedMotion,
+                once: prefersReducedMotion,
                 onEnter: () => {
                     gsap.to(newsletterContent, {
                         opacity: 1,
@@ -1894,69 +1598,137 @@ IconicApp.Animations = {
                 }
             });
         }
-    },
+    }
     
-    setupFooterAnimations: function() {
-        const footerContent = document.querySelector('.footer-content');
-        if (footerContent) {
-            gsap.set(footerContent, { opacity: 0, y: 30 });
-            
-            ScrollTrigger.create({
-                trigger: '.footer',
-                start: "top 90%",
-                once: IconicApp.settings.prefersReducedMotion,
-                onEnter: () => {
-                    gsap.to(footerContent, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        ease: "power2.out"
+    // ------------------------------------------------------------------------
+    // UTILITY FUNCTIONS
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Detect if device is touch-enabled
+     * @returns {boolean} - True if touch device, false otherwise
+     */
+    function isTouchDevice() {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+    }
+    
+    /**
+     * Add touch device support for interactive elements
+     */
+    function setupTouchDeviceSupport() {
+        if (isTouchDevice()) {
+            // Add special handling for service cards on touch devices
+            serviceCards.forEach(card => {
+                // Ensure flip works on touch (except when touching buttons)
+                const cardFront = card.querySelector('.service-front');
+                if (cardFront) {
+                    cardFront.addEventListener('touchend', function(e) {
+                        if (!e.target.closest('.service-details-btn')) {
+                            e.preventDefault();
+                            
+                            // Reset other cards
+                            serviceCards.forEach(c => {
+                                if (c !== card && c.classList.contains('flipped')) {
+                                    c.classList.remove('flipped');
+                                }
+                            });
+                            
+                            // Flip this card
+                            if (!card.classList.contains('flipped')) {
+                                card.classList.add('flipped');
+                            }
+                        }
                     });
                 }
             });
+            
+            // Make before/after sliders work better on touch devices
+            document.querySelectorAll('.ba-container').forEach(container => {
+                container.classList.add('touch-device');
+            });
         }
     }
-};
-
-/* =========================================
-   4. UTILITIES & HELPERS
-   ========================================= */
-
-/**
- * Debounce helper function
- * Limits how often a function can be called
- */
-IconicApp.debounce = function(func, wait, immediate) {
-    let timeout;
-    return function() {
-        const context = this, args = arguments;
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
+    
+    /**
+     * Debounce helper function
+     * Limits how often a function can be called
+     */
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
         };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
+    }
+    
+    // ------------------------------------------------------------------------
+    // INITIALIZE ALL COMPONENTS
+    // ------------------------------------------------------------------------
+    function initAll() {
+        // Core functionality
+        initializePreloader();
+        initializeHeroVideo();
+        initializeScrollEffects();
+        initializeNavigation();
+        
+        // Use GSAP for all animations
+        initializeAnimations();
+        
+        // Interactive sections
+        initializeServices();
+        initializeFAQ();
+        initializeGallery();
+        initializeBeforeAfterSlider(); // Initialize our new component
+        initializeFormValidation();
+        initializeCookieConsent();
+        initializeFloatingElements();
+        
+        // Touch device support
+        setupTouchDeviceSupport();
+        
+        console.log('✅ Iconic Aesthetics application initialized');
+    }
+    
+    // Start initialization
+    initAll();
+});
+
+// -----------------------------------------------------------------------------
+// ERROR HANDLING & PERFORMANCE MONITORING
+// -----------------------------------------------------------------------------
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error('Error:', {
+        message: message,
+        source: source,
+        line: lineno,
+        column: colno,
+        error: error
+    });
+    
+    // Continue execution even if there's an error
+    return true;
 };
 
-/* =========================================
-   5. PERFORMANCE MONITORING
-   ========================================= */
+// Performance monitoring
 if ('performance' in window && 'mark' in window.performance) {
-    performance.mark('js-execution-start');
+    performance.mark('js-execution-end');
     
     window.addEventListener('load', function() {
         performance.mark('page-fully-loaded');
         
-        performance.measure('js-execution', 'js-execution-start', 'page-fully-loaded');
+        performance.measure('js-execution', 'navigationStart', 'js-execution-end');
+        performance.measure('page-load', 'navigationStart', 'page-fully-loaded');
         
-        console.log('Page Load Time:', performance.getEntriesByName('js-execution')[0].duration.toFixed(2) + 'ms');
+        console.log('JS Execution Time:', performance.getEntriesByName('js-execution')[0].duration.toFixed(2) + 'ms');
+        console.log('Page Load Time:', performance.getEntriesByName('page-load')[0].duration.toFixed(2) + 'ms');
     });
 }
-
-// Initialize the application when the DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    IconicApp.init();
-});
