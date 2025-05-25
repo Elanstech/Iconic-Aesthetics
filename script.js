@@ -613,6 +613,242 @@
     }
 
     // =======================================================================
+// BOOKING EMAIL FUNCTIONALITY
+// =======================================================================
+
+function sendBookingEmail() {
+    const form = document.getElementById('booking-form');
+    
+    // Check if form exists
+    if (!form) {
+        console.error('Booking form not found');
+        alert('Booking form not found. Please refresh the page and try again.');
+        return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Get form values with fallbacks
+    const name = formData.get('name')?.trim() || '';
+    const email = formData.get('email')?.trim() || '';
+    const phone = formData.get('phone')?.trim() || '';
+    const service = formData.get('service')?.trim() || '';
+    const date = formData.get('date')?.trim() || '';
+    const time = formData.get('time')?.trim() || '';
+    const message = formData.get('message')?.trim() || '';
+    
+    // Validate required fields
+    const requiredFields = [
+        { value: name, name: 'Full Name' },
+        { value: email, name: 'Email Address' },
+        { value: phone, name: 'Phone Number' },
+        { value: service, name: 'Service' },
+        { value: date, name: 'Preferred Date' },
+        { value: time, name: 'Preferred Time' }
+    ];
+    
+    const missingFields = requiredFields.filter(field => !field.value);
+    
+    if (missingFields.length > 0) {
+        const fieldNames = missingFields.map(field => field.name).join(', ');
+        alert(`Please fill in the following required fields: ${fieldNames}`);
+        
+        // Highlight missing fields
+        requiredFields.forEach(field => {
+            const input = form.querySelector(`[name="${field.name.toLowerCase().replace(/\s+/g, '')}"]`) || 
+                         form.querySelector(`[name="${field.name.toLowerCase().replace(/\s+/g, '').replace('preferred', '')}"]`);
+            if (input) {
+                if (!field.value) {
+                    input.style.borderColor = '#e74c3c';
+                    input.style.boxShadow = '0 0 5px rgba(231, 76, 60, 0.3)';
+                } else {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                }
+            }
+        });
+        
+        return;
+    }
+    
+    // Clear any error styling
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.style.borderColor = '';
+        input.style.boxShadow = '';
+    });
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        const emailInput = form.querySelector('[name="email"]');
+        if (emailInput) {
+            emailInput.style.borderColor = '#e74c3c';
+            emailInput.style.boxShadow = '0 0 5px rgba(231, 76, 60, 0.3)';
+        }
+        return;
+    }
+    
+    // Format date for better readability
+    const formatDate = (dateString) => {
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        } catch (error) {
+            return dateString;
+        }
+    };
+    
+    // Create email subject
+    const subject = encodeURIComponent(`New Booking Request - ${service}`);
+    
+    // Create comprehensive email body
+    const emailBody = `
+Dear Iconic Aesthetics Team,
+
+I would like to book an appointment with the following details:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CLIENT INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+APPOINTMENT DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Service Requested: ${service}
+Preferred Date: ${formatDate(date)}
+Preferred Time: ${time}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ADDITIONAL INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${message || 'No additional requests or questions'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Please confirm my appointment or contact me to schedule an alternative time if the requested slot is not available. I look forward to hearing from you soon!
+
+Thank you for your time and consideration.
+
+Best regards,
+${name}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This booking request was submitted through the Iconic Aesthetics website.
+For questions, please contact the client directly at ${email} or ${phone}.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    `.trim();
+    
+    const body = encodeURIComponent(emailBody);
+    
+    // Create mailto link
+    const mailtoLink = `mailto:iconicastheicsis@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Check if mailto is supported
+    try {
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message after a short delay
+        setTimeout(() => {
+            const confirmationMessage = `
+Your email client should have opened with your booking request for ${service}.
+
+Please send the email to complete your booking request.
+
+If your email client didn't open, you can manually send an email to:
+iconicastheicsis@gmail.com
+
+We'll get back to you within 24 hours to confirm your appointment!
+            `.trim();
+            
+            alert(confirmationMessage);
+            
+            // Optional: Clear form after successful submission
+            // form.reset();
+            
+        }, 500);
+        
+        // Track booking attempt (if analytics is available)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'booking_attempt', {
+                'event_category': 'engagement',
+                'event_label': service,
+                'value': 1
+            });
+        }
+        
+    } catch (error) {
+        console.error('Error opening email client:', error);
+        
+        // Fallback: Show manual contact information
+        const fallbackMessage = `
+Unable to open your email client automatically.
+
+Please manually send an email to: iconicastheicsis@gmail.com
+
+Include the following information:
+• Your name: ${name}
+• Service: ${service}
+• Preferred date: ${formatDate(date)}
+• Preferred time: ${time}
+• Your phone: ${phone}
+• Your email: ${email}
+${message ? `• Additional notes: ${message}` : ''}
+
+We apologize for the inconvenience and will respond within 24 hours!
+        `.trim();
+        
+        alert(fallbackMessage);
+    }
+}
+
+/**
+ * Initialize booking functionality when DOM is ready
+ */
+function initBookingScript() {
+    // Make function globally available
+    window.sendBookingEmail = sendBookingEmail;
+    
+    // Add event listeners for better user experience
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        // Clear error styling when user starts typing
+        const inputs = bookingForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Set minimum date to today
+        const dateInput = bookingForm.querySelector('[name="date"]');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+    }
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBookingScript);
+} else {
+    initBookingScript();
+}
+
+    // =======================================================================
     // FORMS
     // =======================================================================
     function initForms() {
