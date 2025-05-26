@@ -752,7 +752,7 @@ For questions, please contact the client directly at ${email} or ${phone}.
     const body = encodeURIComponent(emailBody);
     
     // Create mailto link
-    const mailtoLink = `mailto:iconicastheicsis@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:sholomovi@gmail.com?subject=${subject}&body=${body}`;
     
     // Check if mailto is supported
     try {
@@ -767,7 +767,7 @@ Your email client should have opened with your booking request for ${service}.
 Please send the email to complete your booking request.
 
 If your email client didn't open, you can manually send an email to:
-iconicastheicsis@gmail.com
+sholomovi@gmail.com
 
 We'll get back to you within 24 hours to confirm your appointment!
             `.trim();
