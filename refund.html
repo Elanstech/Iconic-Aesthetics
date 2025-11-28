@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Iconic Aesthetics Refund & Cancellation Policy - Learn about our booking terms, cancellation fees, and credit options.">
+    <title>Refund Policy - Iconic Aesthetics</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://res.cloudinary.com/demo/image/fetch/https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" type="image/jpeg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           CSS Variables
+           ========================================= */
+        :root {
+            --primary-color: #d8a39d;
+            --primary-light: #ffd8d3;
+            --primary-dark: #b27b76;
+            --secondary-color: #b89d5a;
+            --text-color: #5a3d3d;
+            --text-light: #a97c7c;
+            --bg-color: #f9f9f9;
+            --white: #ffffff;
+            --black: #000000;
+            --gray-light: #f5f5f5;
+            
+            --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.1);
+            --radius-lg: 24px;
+            --radius-pill: 100px;
+            --transition-fast: 0.3s;
+        }
+
+        /* =========================================
+           Reset & Base Styles
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =========================================
+           Header
+           ========================================= */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 3.5rem;
+            border-radius: var(--radius-pill);
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--primary-gradient);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(216, 163, 157, 0.4);
+            transition: all var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(216, 163, 157, 0.5);
+        }
+
+        /* =========================================
+           Main Content
+           ========================================= */
+        .refund-section {
+            margin-top: 100px;
+            padding: 10rem 0;
+            min-height: calc(100vh - 100px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .page-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: linear-gradient(45deg, rgba(216, 163, 157, 0.1), rgba(216, 163, 157, 0.2));
+            border: 1px solid rgba(216, 163, 157, 0.3);
+            border-radius: 50px;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-family: 'Marcellus', serif;
+            font-size: 4.5rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-divider {
+            height: 3px;
+            width: 80px;
+            background: var(--primary-gradient);
+            margin: 2rem auto;
+            border-radius: var(--radius-pill);
+        }
+
+        .page-description {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Policy Cards */
+        .policy-grid {
+            display: grid;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .policy-card {
+            background: var(--white);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .policy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-gradient);
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .policy-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(216, 163, 157, 0.2), rgba(216, 163, 157, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .policy-card h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 2.4rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-card p {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .policy-card ul {
+            margin-left: 2rem;
+        }
+
+        .policy-card li {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .policy-card li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .highlight-box .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .highlight-box .btn-primary:hover {
+            background: var(--gray-light);
+        }
+
+        /* Fee Box */
+        .fee-box {
+            background: rgba(216, 163, 157, 0.1);
+            border: 2px solid var(--primary-color);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .fee-amount {
+            font-family: 'Marcellus', serif;
+            font-size: 5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .fee-description {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 5rem 0;
+            background: var(--gray-light);
+            border-radius: var(--radius-lg);
+            margin-top: 5rem;
+        }
+
+        .contact-section h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 8rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 80px;
+            width: auto;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            font-size: 1.4rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+        }
+
+        .copyright {
+            font-size: 1.4rem;
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+        }
+
+        .designer-credit {
+            font-size: 1.4rem;
+            color: #a0a0a0;
+        }
+
+        .designer-credit a {
+            color: var(--primary-color);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-fast);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* =========================================
+           Responsive Design
+           ========================================= */
+        @media screen and (max-width: 768px) {
+            html {
+                font-size: 55%;
+            }
+
+            .header-inner {
+                height: 80px;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .refund-section {
+                padding: 6rem 0;
+            }
+
+            .page-title {
+                font-size: 3.5rem;
+            }
+
+            .policy-card {
+                padding: 3rem 2rem;
+            }
+
+            .highlight-box {
+                padding: 3rem 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .page-title {
+                font-size: 3rem;
+            }
+
+            .fee-amount {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+                </a>
+            </div>
+            <a href="index.html#booking" class="btn-primary">Book Now</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="refund-section">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <span class="page-badge">Our Policies</span>
+                <h1 class="page-title">Refund & Cancellation Policy</h1>
+                <div class="page-divider"></div>
+                <p class="page-description">Please read our policies carefully before booking your appointment</p>
+            </div>
+
+            <!-- Policy Cards -->
+            <div class="policy-grid">
+                <!-- Service Finality -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Service Finality</h3>
+                    <p>All services rendered at Iconic Aesthetics are considered final. We take great care to ensure your satisfaction, and all treatments are performed by certified professionals using premium products.</p>
+                    <ul>
+                        <li>All services are final — no refunds will be issued</li>
+                        <li>Consultations are provided before all permanent makeup services</li>
+                        <li>Aftercare instructions are given to ensure optimal results</li>
+                    </ul>
+                </div>
+
+                <!-- Service Credits -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Service Credits</h3>
+                    <p>While we don't offer refunds, we value your loyalty and satisfaction. Service credits may be applied toward future appointments.</p>
+                    <ul>
+                        <li>Credits may be used toward other services</li>
+                        <li>Credits are valid for 12 months from issue date</li>
+                        <li>Credits are non-transferable and non-refundable</li>
+                        <li>Touch-up sessions are subject to separate pricing</li>
+                    </ul>
+                </div>
+
+                <!-- Cherry Packages -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Cherry Package Policy</h3>
+                    <p>Our Cherry packages are specially priced bundles designed to give you the best value. These packages have specific terms:</p>
+                    <ul>
+                        <li>Cherry packages are non-refundable once started</li>
+                        <li>All services must be completed within the package timeframe</li>
+                        <li>Unused services expire after 6 months</li>
+                        <li>Package services cannot be transferred to another person</li>
+                    </ul>
+                </div>
+
+                <!-- Cancellation Policy -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <h3>Cancellation & Rescheduling</h3>
+                    <p>We understand that schedules change. To maintain fairness to all clients and our team, we enforce the following policy:</p>
+                    <ul>
+                        <li>24-hour notice required to reschedule without penalty</li>
+                        <li>Cancellations with less than 24 hours notice incur a fee</li>
+                        <li>Emergency situations are handled on a case-by-case basis</li>
+                        <li>Please call us directly to reschedule or cancel</li>
+                    </ul>
+
+                    <div class="fee-box">
+                        <div class="fee-amount">$35</div>
+                        <div class="fee-description">No-Show / Late Cancellation Fee</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlight Box -->
+            <div class="highlight-box">
+                <h3>Questions About Our Policies?</h3>
+                <p>Our team is here to help! If you have any questions or concerns about our refund and cancellation policies, please don't hesitate to reach out.</p>
+                <a href="index.html#contact" class="btn-primary">Contact Us</a>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h3>Get in Touch</h3>
+                <p>Need to reschedule or have questions? Contact us directly:</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(917) 938-1194</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>sholomovi@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://github.com/Elanstech/Iconic-Aesthetics/blob/main/logobeauty.jpeg?raw=true" alt="Iconic Aesthetics Logo">
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Iconic Aesthetics. All Rights Reserved.</p>
+                </div>
+                <div class="designer-credit">
+                    <p>Designed by <a href="https://elanstechworld.com" target="_blank" rel="noopener">Elan's Tech World</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Back to Top functionality
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.policy-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+
+</body>
+</html>
